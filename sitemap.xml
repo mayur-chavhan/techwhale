@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="https://techwhale.in/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<url>
+<loc>https://techwhale.in/</loc>
+</url>
+<url>
+<loc>https://techwhale.in/git-workflow-for-developers-and-devops/</loc>
+<lastmod>2020-06-30T17:24:14+05:30</lastmod>
+<image:image>
+<image:loc>https://techwhale.in/media/posts/3/l2mvWRp1.png</image:loc>
+<image:title><![CDATA[git-workflow-for-developers]]></image:title>
+</image:image>
+</url>
+<url>
+<loc>https://techwhale.in/how-to-install-ansible-on-ubuntu-1804-debian-10-buster/</loc>
+<lastmod>2020-06-30T17:46:44+05:30</lastmod>
+<image:image>
+<image:loc>https://techwhale.in/media/posts/2/Webp.net-compress-image-3.jpg</image:loc>
+<image:title><![CDATA[install ansible on ubuntu 18 and debian 10]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://techwhale.in/media/posts/2/imageedit_16_2728091063.png</image:loc>
+<image:title><![CDATA[ansible]]></image:title>
+</image:image>
+</url>
+<url>
+<loc>https://techwhale.in/how-to-install-docker-and-docker-compose-on-ubuntu-1804/</loc>
+<lastmod>2020-06-30T17:23:33+05:30</lastmod>
+<image:image>
+<image:loc>https://techwhale.in/media/posts/5/Webp.net-compress-image-2.jpg</image:loc>
+<image:title><![CDATA[How to install docker on Ubuntu 18.04]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://techwhale.in/media/posts/5/docker-cloud-twitter-card.png</image:loc>
+<image:title><![CDATA[Docker-Image]]></image:title>
+</image:image>
+</url>
+<url>
+<loc>https://techwhale.in/how-to-install-nginx-proxy-manager-on-raspberry-pi-4-arm64/</loc>
+<lastmod>2020-07-18T00:21:05+05:30</lastmod>
+<image:image>
+<image:loc>https://techwhale.in/media/posts/8/imageedit_31_2317095391.jpg</image:loc>
+<image:title><![CDATA[install-nginx-proxy-manager-raspberry-pi-4-b]]></image:title>
+</image:image>
+</url>
+<url>
+<loc>https://techwhale.in/how-to-install-portainer-on-linux-os-ubuntu-debian-centos-raspbian/</loc>
+<lastmod>2020-06-26T04:34:18+05:30</lastmod>
+<image:image>
+<image:loc>https://techwhale.in/media/posts/10/Annotation-2020-06-25-082542-min-compressed.jpg</image:loc>
+<image:title><![CDATA[Install Portainer]]></image:title>
+</image:image>
+</url>
+<url>
+<loc>https://techwhale.in/how-to-setup-user-ssh-keys-on-ubuntu-1804/</loc>
+<lastmod>2020-06-30T17:22:43+05:30</lastmod>
+<image:image>
+<image:loc>https://techwhale.in/media/posts/6/image-0-compressed.jpg</image:loc>
+<image:title><![CDATA[setup ssh keys on linux]]></image:title>
+</image:image>
+</url>
+<url>
+<loc>https://techwhale.in/install-jitsi-meet-on-ubuntu-1804/</loc>
+<lastmod>2020-06-25T22:18:06+05:30</lastmod>
+<image:image>
+<image:loc>https://techwhale.in/media/posts/4/image-8-compressed.jpg</image:loc>
+<image:title><![CDATA[]]></image:title>
+</image:image>
+</url>
+</urlset>

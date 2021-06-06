@@ -1,0 +1,586 @@
+<!doctype html><html amp lang="en-in"><head><meta charset="utf-8"><title>Guide : Git workflow for Developers - TechWhale</title><meta name="description" content="Guide for git workflow for developers"><link rel="canonical" href="https://techwhale.in/git-workflow-for-developers-and-devops/"><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"><link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" type="text/css"><script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script><script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script><script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script><script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://techwhale.in/amp/git-workflow-for-developers-and-devops/"},"headline":"Guide : Git workflow for Developers","datePublished":"2020-05-18T01:16","dateModified":"2020-06-30T17:24","image":{"@type":"ImageObject","url":"https://techwhale.in/media/posts/3/l2mvWRp1.png","height":399,"width":550},"description":"Guide for git workflow for developers","author":{"@type":"Person","name":"Mayur Chavhan"},"publisher":{"@type":"Organization","name":"Mayur Chavhan","logo":{"@type":"ImageObject","url":"https://techwhale.in/media/website/imageedit_30_3485913178.png","height":128,"width":783}}}</script><style amp-custom>article,
+aside,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
+  display: block; }
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  margin: 0;
+  padding: 0; }
+
+li {
+  list-style: none; }
+
+amp-img {
+  max-width: 100%; }
+
+button,
+input,
+select,
+textarea {
+  font: inherit; }
+
+html {
+  font-size: 1rem; }
+
+body {
+  background: #f1f1f1;
+  color: #262626;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  line-height: 1.6; }
+
+a {
+  color:  #039be5;
+  text-decoration: none;
+  -webkit-transition: all 0.12s linear 0s;
+  -o-transition: all 0.12s linear 0s;
+  transition: all 0.12s linear 0s; }
+
+a:hover {
+  color: #262626;
+  text-decoration: underline;
+  -webkit-text-decoration-skip: ink;
+  text-decoration-skip: ink; }
+
+a:active {
+  color: #262626; }
+
+a:focus {
+  outline: 2px dotted #039be5; }
+
+figure,
+blockquote,
+p,
+ul,
+ol,
+dl,
+table,
+hr,
+fieldset {
+  margin-top: 1.6rem; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #262626;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-top: 2.13333rem; }
+
+h1 {
+  font-size: 1.67583rem;
+  font-weight: normal; }
+
+h2 {
+  font-size: 1.4729rem; }
+
+h3 {
+  font-size: 1.29454rem; }
+
+h4 {
+  font-size: 1.13778rem; }
+
+h5 {
+  font-size: 1rem; }
+
+h6 {
+  font-size: 0.87891rem; }
+
+h2 + p,
+h3 + p,
+h4 + p,
+h5 + p,
+h6 + p {
+  margin-top: 0.8rem; }
+
+b,
+strong {
+  font-weight: 600; }
+
+blockquote {
+  color: #6c7175;
+  font-family: "Droid Serif", "Times", "Source Serif Pro", serif;
+  font-style: italic;
+  padding: 1.33333rem 0.53333rem 1.33333rem 3.2rem;
+  position: relative; }
+  blockquote:before {
+    display: block;
+    content: "\201C";
+    font-size: 4.41226rem;
+    position: absolute;
+    left: 0;
+    top: -12px;
+    color: rgba(108, 113, 117, 0.5); }
+  blockquote > :nth-child(1) {
+    margin-top: 0; }
+
+ul,
+ol {
+  margin-left: 2rem; }
+  ul > li,
+  ol > li {
+    list-style: inherit;
+    padding: 0 0 0.26667rem 0.26667rem; }
+
+dl dt {
+  color: #262626;
+  font-weight: 600; }
+
+code,
+pre {
+  background-color: #f1f1f1;
+  font-family: monospace; }
+
+pre {
+  margin: 1.6rem 0 0;
+  padding: 1.6rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-x: auto; }
+  pre > code {
+    color: #262626;
+    padding: 0; }
+
+code {
+  border-radius: 3px;
+  color: #262626;
+  padding: 0.26667rem 0.53333rem; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid #d4d4d4;
+  width: 100%;
+  overflow-x: auto;
+  vertical-align: top;
+  text-align: left;
+  white-space: nowrap; }
+  table th {
+    font-weight: 500;
+    padding: 0.53333rem 1.06667rem; }
+  table tr {
+    border-bottom: 1px solid #d4d4d4; }
+    table tr:nth-child(2n) {
+      background: #f1f1f1; }
+  table td {
+    padding: 0.53333rem 1.06667rem; }
+
+figcaption {
+  clear: both;
+  color: rgba(108, 113, 117, 0.6);
+  font-size: 0.82397rem;
+  margin: 0.8rem 0 0;
+  text-align: center; }
+
+sub,
+sup {
+  font-size: 65%; }
+
+hr {
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
+
+.btn, [type=button],
+[type=submit],
+button {
+  background: #039be5;
+  border: none;
+  border-radius: 2px;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.87891rem;
+  font-weight: 500;
+  line-height: 1.9;
+  padding: 0.53333rem 1.33333rem;
+  text-align: center;
+  text-decoration: none;
+  -webkit-transition: all .15s ease;
+  -o-transition: all .15s ease;
+  transition: all .15s ease;
+  width: auto; }
+  .btn:hover, [type=button]:hover,
+  [type=submit]:hover,
+  button:hover {
+    background: #262626;
+    color: #ffffff; }
+  .btn:focus, [type=button]:focus,
+  [type=submit]:focus,
+  button:focus {
+    outline: none; }
+  .btn-outline {
+    border: 1px solid #ddd;
+    background: #ffffff;
+    border-radius: 3px;
+    color: #262626; }
+
+[type=button],
+[type=submit],
+button {
+  text-transform: uppercase;
+  -webkit-appearance: none;
+  -moz-appearance: none; }
+
+.navbar {
+  background: #039be5;
+  -webkit-box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+  line-height: 3;
+  max-height: 4rem; }
+  .navbar > div {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: left;
+    max-width: 700px;
+    margin: 0 auto; }
+  .navbar a {
+    color: #ffffff;
+    text-decoration: none; }
+  .navbar-sidebar-toggle {
+    left: 0;
+    position: relative;
+    text-indent: -99999rem; }
+    .navbar-sidebar-toggle:before {
+      content: "";
+      display: block;
+      border-top: 0.375rem double #ffffff;
+      border-bottom: 0.125rem solid #ffffff;
+      height: 0.125rem;
+      position: absolute;
+      text-indent: 0;
+      top: 50%;
+      width: 1.3rem;
+      -webkit-transform: translate(0px, -50%);
+      -ms-transform: translate(0px, -50%);
+      transform: translate(0px, -50%); }
+
+
+.logo {
+            background-image: url('https://techwhale.in/media/website/imageedit_30_3485913178.png');
+            background-size: auto 2rem;
+            background-repeat: no-repeat;
+            background-position: center center;
+            display: inline-block;
+  font-weight: 600;
+  line-height: 1;
+            margin: 0 auto;
+            height: 2rem;
+            text-indent: -9999px;
+            width: 240px;vertical-align: middle;
+        }
+        .logo.logo-text {
+            line-height: 2;
+            text-align: center;
+            text-indent: 0;
+        }
+
+amp-sidebar {
+  background: #ffffff;
+  width: 240px; }
+  amp-sidebar > ul {
+    margin: 0.8rem 0 0;
+    padding: 0; }
+    amp-sidebar > ul ul {
+      border-left: 1px solid #d4d4d4;
+      margin: 0.53333rem 0 0; }
+    amp-sidebar > ul li {
+      color: #262626;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      list-style: none;
+      line-height: 1.4;
+      padding: 0.42667rem 1.06667rem; }
+      amp-sidebar > ul li li {
+        font-weight: normal;
+        padding: 0.26667rem 0 0.26667rem 1.06667rem; }
+    amp-sidebar > ul a,
+    amp-sidebar > ul a:visited {
+      color: #262626; }
+
+.bg-white {
+  background: #ffffff; }
+
+.wrap-page {
+  max-width: 700px;
+  margin: 0 auto; }
+
+@media all and (max-width: 43.6875em) {
+  .wrap-inner {
+    padding: 0 6%; } }
+
+.page-title {
+  background: #ffffff;
+  -webkit-box-shadow: 0 2px 3px rgba(38, 38, 38, 0.1);
+  box-shadow: 0 2px 3px rgba(38, 38, 38, 0.1);
+  margin-bottom: 0.8rem;
+  padding: 1.6rem 6%; }
+  .page-title > h1 {
+    margin: 0;
+    font-size: 1.29454rem; }
+  .page-title > p {
+    font-size: 0.87891rem;
+    color: #6c7175;
+    line-height: 1.3;
+    margin: 0.26667rem 0 0; }
+  .page-title-author {
+    border-radius: 50%;
+    float: left;
+    height: 2.5rem;
+    width: 2.5rem; }
+    .page-title-author + h1 {
+      margin-left: 3.5rem; }
+      .page-title-author + h1 + p {
+        margin-left: 3.5rem; }
+
+.card {
+  background: #ffffff;
+  -webkit-box-shadow: 0 2px 3px rgba(38, 38, 38, 0.1);
+  box-shadow: 0 2px 3px rgba(38, 38, 38, 0.1);
+  margin-bottom: 0.8rem;
+  padding-bottom: 1.06667rem; }
+
+  .card-meta {
+    border-top: 1px solid #d4d4d4;
+    color: rgba(108, 113, 117, 0.6);
+    font-size: 0.7242rem;
+    font-weight: 500;
+    margin-top: 1.06667rem;
+    padding-top: 1.06667rem;
+    text-transform: uppercase; }
+    .card-meta a + time:before {
+      content: "";
+      background: #d4d4d4;
+      display: inline-block;
+      height: 3px;
+      margin: 0 8px;
+      width: 3px;
+      vertical-align: middle;
+      border-radius: 50%; }
+  .card-text {
+    font-size: 0.9375rem;
+    overflow: hidden;
+    padding: 0 6%; }
+    .card-text h2 {
+      font-size: 1.13778rem; }
+
+.post {
+  margin-bottom: 2.13333rem; }
+  .post-featured-image {
+    margin-top: 0;
+    position: relative; }
+    .post-featured-image > figcaption {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 3px;
+      color: #ffffff;
+      position: absolute;
+      bottom: 0.8rem;
+      padding: 0 0.26667rem;
+      right: 6%; }
+  .post-header {
+    margin-bottom: 2.13333rem; }
+  .post-meta {
+    border-bottom: 1px solid #d4d4d4;
+    color: rgba(108, 113, 117, 0.6);
+    font-size: 0.7242rem;
+    font-weight: 500;
+    margin-top: 1.06667rem;
+    padding-bottom: 1.06667rem;
+    text-transform: uppercase; }
+    .post-meta a + time:before {
+      content: "";
+      background: #d4d4d4;
+      display: inline-block;
+      height: 3px;
+      margin: 0 8px;
+      width: 3px;
+      vertical-align: middle;
+      border-radius: 50%; }
+  .post-tag {
+    margin: 0; }
+    .post-tag > li {
+      display: inline-block;
+      padding: 0; }
+      .post-tag > li a {
+        background: #f1f1f1;
+        border-radius: 2px;
+        color: #6c7175;
+        font-size: 0.77248rem;
+        display: inline-block;
+        margin: 0 0.26667rem 0.26667rem 0;
+        padding: 0.26667rem 0.53333rem; }
+        .post-tag > li a:hover {
+          background: #039be5;
+          color: #ffffff;
+          text-decoration: none; }
+  .post-share {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-top: 1.6rem;
+    width: 100%; }
+    .post-share amp-social-share {
+      -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+      flex: 1 0 auto;
+      background-size: 24px; }
+  .post-scroll {
+    color: #ffffff;
+    background: #039be5;
+    bottom: 10px;
+    border-radius: 50%;
+    border: none;
+    -webkit-box-shadow: 0 1px 1.5px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(38, 38, 38, 0.24);
+    box-shadow: 0 1px 1.5px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(38, 38, 38, 0.24);
+    font-size: 1.13778rem;
+    height: 46px;
+    opacity: 0;
+    outline: none;
+    position: fixed;
+    padding: 0;
+    right: 4%;
+    visibility: hidden;
+    width: 46px;
+    z-index: 9999; }
+    .post-scroll-marker {
+      height: 0px;
+      position: absolute;
+      top: 100px;
+      width: 0px; }
+        .post-pagination {
+    background: #f1f1f1;
+    -webkit-box-shadow: inset 0 2px 3px rgba(38, 38, 38, 0.1);
+    box-shadow: inset 0 2px 3px rgba(38, 38, 38, 0.1);
+    border-top: 1px solid #d4d4d4;
+    padding: 1.06667rem 0; }
+    .post-pagination > div {
+      line-height: 1.2;
+      padding: 0.53333rem 1.06667rem;
+      text-align: center; }
+      .post-pagination > div span {
+        display: block;
+        color: #6c7175;
+        font-size: 0.7242rem;
+        font-weight: 500;
+        margin-bottom: 0.26667rem;
+        text-transform: uppercase; }
+    .post-pagination-prev a:before {
+      content: "\2190";
+      margin-right: 0.26667rem; }
+    .post-pagination-next a:after {
+      content: "\2192";
+      margin-left: 0.26667rem; }
+
+aside {
+  margin: 1.6rem 0 0; }
+
+.align-left {
+  text-align: left; }
+
+.align-right {
+  text-align: right; }
+
+.align-center {
+  text-align: center; }
+
+.align-justify {
+  text-align: justify; }
+
+.msg {
+  border-left: 2px solid transparent;
+  padding: 1.06667rem 1.06667rem; }
+  .msg--highlight {
+    background-color: #fff8e6;
+    border-color: #e2ac4f; }
+  .msg--info {
+    background: rgba(45, 97, 201, 0.03);
+    border-color: #039be5; }
+  .msg--success {
+    background: #f7fbf6;
+    border-color: #5ab44b; }
+  .msg--warning {
+    background: #fff3f3;
+    border-color: #c06367;
+    color: #a94442; }
+
+.dropcap:first-letter {
+  float: left;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 2.16943rem;
+  line-height: 0.7;
+  margin-right: 0.53333rem;
+  padding: 0.53333rem 0.53333rem 0.53333rem 0; }
+
+.pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 0.8rem 0; }
+  .pagination > a {
+    padding-left: 0;
+    padding-right: 0;
+    width: 49%; }
+  .pagination-right {
+    margin-left: auto; }
+
+.bottom {
+  background: #039be5;
+  color: #ffffff;
+  padding: 1.06667rem 4%;
+  text-align: center; }</style><style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript><script async src="https://cdn.ampproject.org/v0.js"></script><script custom-element="amp-animation" src="https://cdn.ampproject.org/v0/amp-animation-0.1.js" async></script><script custom-element="amp-position-observer" src="https://cdn.ampproject.org/v0/amp-position-observer-0.1.js" async></script></head><body class="bg-white"><nav class="navbar wrap-inner" id="top"><div><a on="tap:navbar-sidebar.toggle" class="navbar-sidebar-toggle" title="Menu">Menu</a> <a class="logo" href="https://techwhale.in/amp/">TechWhale</a></div></nav><main class="wrap-page"><article class="post"><figure class="post-featured-image"><amp-img src="https://techwhale.in/media/posts/3/l2mvWRp1.png" alt="git-workflow-for-developers" srcset="https://techwhale.in/media/posts/3/responsive/l2mvWRp1-xs.png 300w ,https://techwhale.in/media/posts/3/responsive/l2mvWRp1-sm.png 480w ,https://techwhale.in/media/posts/3/responsive/l2mvWRp1-md.png 768w" sizes="(max-width: 768px) 100vw, 768px" height="399" layout="responsive" width="550"></amp-img><figcaption>Guide for Github Workflow</figcaption></figure><div class="wrap-inner"><header class="post-header"><h1>Guide : Git workflow for Developers</h1><p class="post-meta">By <a href="https://techwhale.in/amp/authors/mayur-chavhan/" rel="nofollow" title="Mayur Chavhan">Mayur Chavhan</a> <time datetime="2020-05-18T01:16">May 18, 2020</time></p></header><p><span> </span></p><div class="post__toc"><h3>Table of Contents</h3><ul><li><a href="#mcetoc_1e8i9uj8q3">Overview:</a></li><li><a href="#mcetoc_1e8i9m22q1">Why Git or Github?</a></li><li><a href="#c217">The Workflow Cheat Sheet</a></li></ul></div><h3 id="mcetoc_1e8i9uj8q3">Overview:</h3><p><span>Git is a top distributed version control system and Nowadays all programmers and developers are dependent on its workflow. Manage to set up a proper Git code workflow is essential for projects that involve group collaboration. Follow procedures to keep working copy of your project through identifying code problems and evolving into a big scale project.</span></p><p><span>One of the biggest git repository hosting is Github. </span><a href="https://git-scm.com/"><span>Git</span></a><span> is a distributed version control system accessible through a CLI. Git is </span><a href="https://en.wikipedia.org/wiki/Free_and_open-source_software"><span>free and open-source software</span></a><span> distributed under the terms of the </span><a href="https://en.wikipedia.org/wiki/GNU_General_Public_License"><span>GNU General Public License</span></a><span> version 2.</span></p><p><span> Using Github, I can share all of my coding projects with the world. Github has a plethora of unique features that enhance the git experience and make collaborative coding simple. I am far from a Git or Github expert, but this is a short guide to get you started with Git on Github:</span></p><h3 id="mcetoc_1e8i9m22q1"><strong>Why Git or Github?</strong></h3><p>It is the best and most popular system available for managing and tracking any code changes also it allows other developers to collaborate on projects at any scale.</p><p>In simple words, GitHub is a “hub” for everyone who is working with the Git version control system. It provides a variety of features to make developers' jobs much easier and it's open for the public so anyone can share their code to the development community and can do better projects or make existing code repositories much better by power of collaboration.</p><p>System like Git become a lot more obvious once you make sense of how they truly work. The objective of this guide is to reveal some insight into how Git functions in the engine. We're going to investigate a portion of Git's center ideas including its fundamental item stockpiling, how submits work, how branches and labels work, and we'll take a gander at the various types of converging in Git including the much-dreaded rebase. Ideally toward the finish, all things considered, you'll have a strong comprehension of these ideas and will have the option to utilize a portion of Git's further developed highlights with certainty.<br><br>It's important now that this guide isn't proposed to be a's first experience with Git. This guide was composed for individuals who as of now use Git, however might want to more readily comprehend it by taking a look in the engine, and get familiar with a couple of slick deceives en route. All things considered, we should start.</p><p class="msg msg--info"><span>This is a short guide to get you started with Git on Github:</span></p><table><tbody><tr><td class="align-center"><p><strong>Repository </strong></p></td><td><p><span>Commonly called the “repo,” this is where all of the updated versions (and the primary version) of a project are stored. This is your staging ground for the project. Each repo has a unique URL for easy access.</span></p></td></tr><tr><td class="align-center"><p><strong>Forking </strong></p></td><td><p><span>Unless developers pay for a private repository, their project can be viewed by all other members of the GitHub community. If these members feel they could make a worthy contribution, then they can create a new project (repository) from yours. This is called “forking a repo.”</span></p></td></tr><tr><td class="align-center"><p><strong>Pull Request</strong></p></td><td><p><span>After forking a repo and making new changes to existing code, GitHub users can invite the developers of the original repository to view the changes.</span></p></td></tr><tr><td class="align-center"><p><strong>Merging </strong></p></td><td><p><span>If you like the changes someone made after forking your repository, you can opt to accept those changes and merge them with your existing repository.</span></p></td></tr><tr><td class="align-center"><p><strong>Changelogs </strong></p></td><td><p><span>This lets developers working on a single project see all changes, who made them, and when.</span></p></td></tr></tbody></table><p><span>Git workflow is the mixer of steps that we have to follow before starting the development cycle means how developers pull, push, commit, clone and manage code.</span></p><h3 id="c217" class="hp hq ds ar aq hr du lr dw ls hu lt hw lu hy lv ia">The Workflow Cheat Sheet</h3><p class="msg msg--success"><span id="2f9d" data-selectable-paragraph="">--------------------------------------------<br>Managing your Local Repo<br>--------------------------------------------<br>NOTE: If you need to hard reset your local repo to match<br>the remote master use the following commands:<br>$ git fetch origin<br>$ git reset --hard origin/master<br><br>Undo the act of committing, leaving everything else intact:<br>$ git reset --soft HEAD^:<br><br>Undo the act of committing and everything you'd staged,<br>but leave the work tree (your files intact):<br>$ git reset HEAD^<br><br>Completely undo it, throwing away all uncommitted changes,<br>resetting everything to the previous commit:<br>$ git reset --hard HEAD^<br><br>--------------------------------------------<br>BEGIN WORKFLOW<br>--------------------------------------------<br>Clone the Repo to local machine:<br>$ git clone https://github.com/user_name/repo_name.git<br><br>Make sure the local master is up-to-date:<br>$ git pull origin master<br><br>Create new branch:<br>$ git banch branch_name<br><br>Move to branch:<br>$ git checkout branch_name<br><br>Navigate file structure as needed:<br>$ ls<br>$ cd folder_name<br><br>Add the files to the branch:<br>$ git add .<br><br>Verify file:<br>$ git status<br><br>Commit the files:<br>$ git commit -m "comment"<br><br>Add branch and files to the Remote Repo:<br>$ git push -u origin branch_name<br><br>Go to the github website to manage pull request and merge.<br><br>Switch back to local master so you can delete the local branch:<br>$ git checkout master<br><br>Delete local branch:<br>$ git branch -d branch_name<br>OR<br>$ git branch -D branch_name<br><br>If you don't want to go to the website, you can merge your branch<br>to the master locally and push the new master to the remote repo:<br><br>Switch back to master branch:<br>$ git checkout master<br><br>Merge the branch with the local master:<br>$ git merge branch_name -m "comment"<br><br>Push the local master to the remote master:<br>$ git push origin master<br><br>Delete local branch:<br>$ git branch -d branch_name<br>OR<br>$ git branch -D branch_name</span></p><p> </p><aside><ul class="post-tag"><li><a href="https://techwhale.in/amp/category/techwale/">TechWhale Guides</a></li><li><a href="https://techwhale.in/amp/category/tutorials/">Tutorials</a></li></ul><div class="post-share"><amp-social-share type="system" width="40" height="40" data-param-text="Guide : Git workflow for Developers"></amp-social-share><amp-social-share type="facebook" width="40" height="40" data-param-app_id="" data-param-text="Guide : Git workflow for Developers" data-param-href="https://techwhale.in/amp/git-workflow-for-developers-and-devops/"></amp-social-share><amp-social-share type="twitter" width="40" height="40" data-param-text="Guide : Git workflow for Developers" data-param-url="https://techwhale.in/amp/git-workflow-for-developers-and-devops/"></amp-social-share><amp-social-share type="pinterest" width="40" height="40" data-param-url="https://techwhale.in/amp/git-workflow-for-developers-and-devops/"></amp-social-share><amp-social-share type="tumblr" width="40" height="40" data-param-text="Guide : Git workflow for Developers" data-param-url="https://techwhale.in/amp/git-workflow-for-developers-and-devops/"></amp-social-share><amp-social-share type="whatsapp" width="40" height="40" data-param-text="Guide : Git workflow for Developers" data-param-url="https://techwhale.in/amp/git-workflow-for-developers-and-devops/"></amp-social-share></div></aside></div></article><nav class="post-pagination wrap-inner"><div class="post-pagination-prev"><span>Previous Post</span> <a href="https://techwhale.in/amp/how-to-install-ansible-on-ubuntu-1804-debian-10-buster/">How to install Ansible on Ubuntu 18.04 / Debian 10 Buster</a></div><div class="post-pagination-next"><span>Next Post</span> <a href="https://techwhale.in/amp/install-jitsi-meet-on-ubuntu-1804/">Install Jitsi Meet on Ubuntu 18.04</a></div></nav></main><amp-animation id="showAnim" layout="nodisplay"><script type="application/json">{
+                    "duration": "200ms",
+                    "fill": "both",
+                    "iterations": "1",
+                    "direction": "alternate",
+                    "animations": [{
+                        "selector": ".post-scroll",
+                        "keyframes": [{
+                            "opacity": "1",
+                            "visibility": "visible",
+                            "transform": "scale(1)"
+                        }]
+                    }]
+                }</script></amp-animation><amp-animation id="hideAnim" layout="nodisplay"><script type="application/json">{
+                    "duration": "200ms",
+                    "fill": "both",
+                    "iterations": "1",
+                    "direction": "alternate",
+                    "animations": [{
+                        "selector": ".post-scroll",
+                        "keyframes": [{
+                            "opacity": "0",
+                            "visibility": "hidden",
+                            "transform": "scale(0.1)"
+                        }]
+                    }]
+                }</script></amp-animation><div class="post-scroll-marker"><amp-position-observer on="enter:hideAnim.start; exit:showAnim.start" layout="nodisplay"></amp-position-observer></div><button class="post-scroll" on="tap:top.scrollTo(duration=200)">&#8593;</button><footer class="bottom"><b>TechWhale </b>&copy, Mayur Chavhan</footer><amp-sidebar id="navbar-sidebar" layout="nodisplay"><ul><li><a href="https://techwhale.in/amp/" title="home">Home</a></li><li><a href="https://techwhale.in/amp/category/devops/">Guides</a></li><li><a href="https://techwhale.in/amp/category/tutorials/">Tutorials</a></li><li><a href="https://techwhale.in/amp/authors/mayur-chavhan/">Contact</a></li></ul></amp-sidebar></body></html>

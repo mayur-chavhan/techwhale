@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://techwhale.in/sitemap.xml
