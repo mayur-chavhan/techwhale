@@ -3,7 +3,7 @@
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2020-07-18T00:21:05+05:30</updated>
+    <updated>2021-06-06T21:54:13+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
@@ -19,7 +19,7 @@
             <category term="Tutorials"/>
             <category term="Docker"/>
 
-        <updated>2020-06-26T04:34:18+05:30</updated>
+        <updated>2021-06-06T21:54:13+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/10/Annotation-2020-06-25-082542-min-compressed.jpg" alt="Install Portainer" />
@@ -75,7 +75,7 @@
   </p>
 
   <p class="msg msg--success">
-    sudo docker run --name portainer --restart=unless-stopped -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer <br>
+    <code>sudo docker run --name portainer --restart=unless-stopped -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer </code><br>
   </p>
 
   <p>
@@ -95,7 +95,7 @@
   </p>
 
   <p id="httppublicipaddress9000br" class="msg msg--info">
-    http://[public-ip-address]:9000<br>
+    <code>http://[public-ip-address]:9000</code><br>
   </p>
 
   <p>
@@ -111,7 +111,7 @@
   </p>
 
   <p class="msg msg--success">
-    sudo docker ps 
+    <code>sudo docker ps</code> 
   </p>
 
   <p>
@@ -119,7 +119,7 @@
   </p>
 
   <p class="msg msg--success">
-    ❯ docker ps<br>CONTAINER ID        IMAGE                                COMMAND             CREATED             STATUS              PORTS                                                               NAMES<br>9a83bdecfc56        portainer/portainer                  "/portainer"        2 hours ago         Up 2 hours          0.0.0.0:8000-8000/tcp, 0.0.0.0:9000-&gt;9000/tcp                      portainer<br>
+    ❯ <code>docker ps</code><br>CONTAINER ID        IMAGE                                COMMAND             CREATED             STATUS              PORTS                                                               NAMES<br>9a83bdecfc56        portainer/portainer                  "/portainer"        2 hours ago         Up 2 hours          0.0.0.0:8000-8000/tcp, 0.0.0.0:9000-&gt;9000/tcp                      portainer<br>
   </p>
 
   <p>
@@ -135,7 +135,7 @@
   </p>
 
   <p class="msg msg--success">
-    sudo docker pull portainer/portainer
+    <code>sudo docker pull portainer/portainer</code>
   </p>
 
   <p>
@@ -143,7 +143,7 @@
   </p>
 
   <p class="msg msg--success">
-    sudo docker stop portainer 
+    <code>sudo docker stop portainer</code> 
   </p>
 
   <p>
@@ -155,7 +155,7 @@
   </p>
 
   <p class="msg msg--success">
-    sudo docker rm portainer <br>
+    <code>sudo docker rm portainer </code><br>
   </p>
 
   <p>
@@ -167,7 +167,7 @@
   </p>
 
   <p class="msg msg--success">
-    sudo docker run --name portainer --restart=unless-stopped -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer <br>
+    <code>sudo docker run --name portainer --restart=unless-stopped -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer </code><br>
   </p>
 
   <p>
