@@ -3,7 +3,7 @@
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2021-06-06T22:01:14+05:30</updated>
+    <updated>2021-06-06T22:14:41+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
@@ -19,11 +19,11 @@
             <category term="Tutorials"/>
             <category term="Docker"/>
 
-        <updated>2021-06-06T22:01:14+05:30</updated>
+        <updated>2021-06-06T22:14:41+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/10/Annotation-2020-06-25-082542-min-compressed.jpg" alt="Install Portainer" />
-                     In this line of command, We specified docker name "portainer" and port in which Portainer Docker can be accessible to the public network. Which in this case is port "9000" Now, Go to the browser and put Docker Host Server IP in there like&hellip;
+                     Portainer is docker web GUI application in where you can manage all your docker containers, Images and Volumes. It offers more features than just showing docker containers but you can even manage other docker nodes in one Portainer application.&nbsp; This guide will show you&hellip;
                 ]]>
             </summary>
         <content type="html">
@@ -73,8 +73,7 @@
   <p>
     Now, Here we go, To Install Portainer here is this one line command that simply pulls up the Portainer image.
   </p>
-<div id="$">sudo docker run --name portainer --restart=unless-stopped -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer 
-</div>
+<pre class="line-numbers  language-bash"><code>sudo docker run --name portainer --restart=unless-stopped -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer </code></pre>
 
   <p>
     In this line of command, We specified docker name "portainer" and port in which Portainer Docker can be accessible to the public network. Which in this case is port "<strong>9000</strong>"
