@@ -3,7 +3,7 @@
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2021-06-06T21:54:13+05:30</updated>
+    <updated>2021-06-06T22:00:17+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
@@ -19,7 +19,7 @@
             <category term="Tutorials"/>
             <category term="Docker"/>
 
-        <updated>2021-06-06T21:54:13+05:30</updated>
+        <updated>2021-06-06T21:59:40+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/10/Annotation-2020-06-25-082542-min-compressed.jpg" alt="Install Portainer" />
@@ -73,10 +73,8 @@
   <p>
     Now, Here we go, To Install Portainer here is this one line command that simply pulls up the Portainer image.
   </p>
-
-  <p class="msg msg--success">
-    <code>sudo docker run --name portainer --restart=unless-stopped -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer </code><br>
-  </p>
+<pre id="$" class="line-numbers  language-bash"><code>sudo docker run --name portainer --restart=unless-stopped -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer 
+</code></pre>
 
   <p>
     In this line of command, We specified docker name "portainer" and port in which Portainer Docker can be accessible to the public network. Which in this case is port "<strong>9000</strong>"
@@ -93,10 +91,8 @@
   <p>
     Now, Go to the browser and put Docker Host Server IP in there like this:<br>
   </p>
-
-  <p id="httppublicipaddress9000br" class="msg msg--info">
-    <code>http://[public-ip-address]:9000</code><br>
-  </p>
+<pre id="httppublicipaddress9000br" class="line-numbers  language-python"><code>http://[public-ip-address]:9000
+</code></pre>
 
   <p>
     Replace your public ip address in above field and if you are running docker in your private machine then put your private IP like : <strong>192.168.0.10:9000,192.168.1.10:9000</strong> and so on..
@@ -109,18 +105,15 @@
   <p>
     To check if portainer is running on your host machine simply run below command,
   </p>
-
-  <p class="msg msg--success">
-    <code>sudo docker ps</code> 
-  </p>
+<pre class="line-numbers  language-bash"><code>sudo docker ps</code></pre>
 
   <p>
     <strong>Command Output:</strong>
   </p>
-
-  <p class="msg msg--success">
-    ❯ <code>docker ps</code><br>CONTAINER ID        IMAGE                                COMMAND             CREATED             STATUS              PORTS                                                               NAMES<br>9a83bdecfc56        portainer/portainer                  "/portainer"        2 hours ago         Up 2 hours          0.0.0.0:8000-8000/tcp, 0.0.0.0:9000-&gt;9000/tcp                      portainer<br>
-  </p>
+<pre class="line-numbers  language-bash"><code>❯ docker ps
+CONTAINER ID        IMAGE                                COMMAND             CREATED             STATUS              PORTS                                                               NAMES
+9a83bdecfc56        portainer/portainer                  "/portainer"        2 hours ago         Up 2 hours          0.0.0.0:8000-8000/tcp, 0.0.0.0:9000-&gt;9000/tcp                      portainer
+</code></pre>
 
   <p>
     Above output it shows that it exposes application to port 8000 and port 9000 but we use 9000 to access Portainer GUI.
@@ -133,18 +126,12 @@
   <p>
     If you want to update Docker of Portainer then simple run these following commands,
   </p>
-
-  <p class="msg msg--success">
-    <code>sudo docker pull portainer/portainer</code>
-  </p>
+<pre class="line-numbers  language-bash"><code>sudo docker pull portainer/portainer</code></pre>
 
   <p>
     Above command will pull the latest image from official docker repository but it will not update the current running Portainer Docker so we will stop the running container so it will use updated image.
   </p>
-
-  <p class="msg msg--success">
-    <code>sudo docker stop portainer</code> 
-  </p>
+<pre class="line-numbers  language-bash"><code>sudo docker stop portainer </code></pre>
 
   <p>
     Here we have stopped our Portainer container and if you seem to notice we don't have to use docker id to stop portainer container but we used "portainer" name and this happened because we gave our docker container a name called "portainer" so using a name for container is makes easy to manage like stop and run the container.
@@ -153,10 +140,8 @@
   <p>
     Now, Delete old Portainer image to replace updated one.
   </p>
-
-  <p class="msg msg--success">
-    <code>sudo docker rm portainer </code><br>
-  </p>
+<pre class="line-numbers  language-bash"><code>sudo docker rm portainer 
+</code></pre>
 
   <p>
     Above command will delete only image but not the volume where we are keeping our Portainer data.
@@ -165,10 +150,8 @@
   <p>
     Re-run the docker portainer command to launch portainer with updated image at same volume and exposed ports we have given before.
   </p>
-
-  <p class="msg msg--success">
-    <code>sudo docker run --name portainer --restart=unless-stopped -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer </code><br>
-  </p>
+<pre class="line-numbers  language-bash"><code>sudo docker run --name portainer --restart=unless-stopped -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer 
+</code></pre>
 
   <p>
     Check again for docker process and if it's running then we are good to know. Hope this guide helped you.
@@ -192,7 +175,7 @@
             <category term="TechWhale Guides"/>
             <category term="Docker"/>
 
-        <updated>2020-07-18T00:21:05+05:30</updated>
+        <updated>2021-06-06T22:00:17+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/8/imageedit_31_2317095391.jpg" alt="install-nginx-proxy-manager-raspberry-pi-4-b" />
@@ -232,9 +215,9 @@
 <li>[Optional] <strong><a href="https://www.portainer.io/" target="_blank" rel="noopener noreferrer">Portainer</a></strong></li>
 </ol>
 <h2 id="mcetoc_1eal5oajo7">Step-1: <strong>Create folders.</strong></h2>
-<pre id="mcetoc_1eal0kjhq1" class="msg msg--success">sudo mkdir npman</pre>
+<pre id="mcetoc_1eal0kjhq1" class="msg msg--success"><code>sudo mkdir npman</code></pre>
 <p>Inside NPman folder create these three folders [data, data/mysql and letsencrypt] or run below command,</p>
-<pre id="mcetoc_1eal0m35g3" class="msg msg--success">sudo mkdir -p npman/{data/mysql,letsencrypt}</pre>
+<pre id="mcetoc_1eal0m35g3" class="msg msg--success"><code>sudo mkdir -p npman/{data/mysql,letsencrypt}</code></pre>
 <h2 id="mcetoc_1eal5q1579"><strong>Step-2: </strong><strong>Create a file called "config.json"</strong></h2>
 <p id="mcetoc_1eal64sejd"><strong>paste below lines of code into it.</strong></p>
 <pre>{
