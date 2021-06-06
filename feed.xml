@@ -3,7 +3,7 @@
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2021-06-07T03:17:10+05:30</updated>
+    <updated>2021-06-07T03:18:34+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
@@ -21,7 +21,7 @@
             <category term="Tricks and Hack"/>
             <category term="Automation"/>
 
-        <updated>2021-06-07T03:17:10+05:30</updated>
+        <updated>2021-06-07T03:18:34+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/15/Untitled-Design.jpg" alt="auto turn on and off laptop charger whenever battery gets low and full." />
@@ -51,11 +51,10 @@
 <p><span style="font-weight: 400;">So if you have some Linux experience then you can understand from the shell script that i have created two if conditions and in the first condition, it compares current battery percentage to start the plug when battery reaches below or equal to 40%.</span></p>
 <p><span style="font-weight: 400;">Second condition when battery percentage reaches above or equal to 90% smart plug should automatically turn off.</span></p>
 <p><span style="font-weight: 400;">Using Curl -X POST followed by url change plug state when condition is satisfied so you need to replace both of your both IFTTT urls from the sequematic link in the script.</span></p>
-<pre><span style="font-weight: 400;">curl -X POST</span><a href="https://sequematic.com/trigger-ifttt-webhook/your-id/your-key/switch_on"><span style="font-weight: 400;"> </span><span style="font-weight: 400;">https://sequematic.com/trigger-ifttt-webhook/your-id/your-key/switch_on</span></a><span style="font-weight: 400;"> &gt;/dev/null 2&gt;&amp;1</span></pre>
 <p><span style="font-weight: 400;">This is a simple task given in a simple script but how can this script know every time this battery value changes ?</span></p>
 <p><span style="font-weight: 400;">As always, Linux has inbuilt tools like Cronjob, Where, I have given a timer to run this script for every 5 min to check battery percentage and script will check its logic.</span></p>
 <p><span style="font-weight: 400;">Checkout below cronjob.</span></p>
-<pre><span style="font-weight: 400;">*/5 * * * * bash /home/mayur/charge-battery-script.sh</span></pre>
+<pre>*/5 * * * * bash /home/mayur/charge-battery-script.sh</pre>
 <p><span style="font-weight: 400;">Voila!! It worked like magic.</span></p>
 <p><span style="font-weight: 400;"> </span><span style="font-weight: 400;">Hope it helps someone and let us know your opinion if you have a way to improve it.</span></p>
 <p><span style="font-weight: 400;">Thank you for reading!</span></p>
