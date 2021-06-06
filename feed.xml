@@ -3,7 +3,7 @@
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2021-06-06T23:04:08+05:30</updated>
+    <updated>2021-06-07T00:02:02+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
@@ -19,11 +19,11 @@
             <category term="Tutorials"/>
             <category term="Docker"/>
 
-        <updated>2021-06-06T23:04:08+05:30</updated>
+        <updated>2021-06-07T00:02:02+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/10/Annotation-2020-06-25-082542-min-compressed.jpg" alt="Install Portainer" />
-                     Portainer is docker web GUI application in where you can manage all your docker containers, Images and Volumes. It offers more features than just showing docker containers but you can even manage other docker nodes in one Portainer application.&nbsp; This guide will show you&hellip;
+                     Replace your public ip address in above field and if you are running docker in your private machine then put your private IP like : 192.168.0.10:9000,192.168.1.10:9000 and so on.. To check if portainer is running on your host machine simply run below command, sudo&hellip;
                 ]]>
             </summary>
         <content type="html">
@@ -74,8 +74,8 @@
     Now, Here we go, To Install Portainer here is this one line command that simply pulls up the Portainer image.
   </p>
 
-  <p class="msg msg--info">
-    sudo docker run --name portainer --restart=unless-stopped -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer&nbsp;
+  <p>
+    <mark>sudo docker run --name portainer --restart=unless-stopped -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer</mark>
   </p>
 
   <p>
@@ -93,7 +93,7 @@
   <p>
     Now, Go to the browser and put Docker Host Server IP in there like this:
   </p>
-<pre class="line-numbers  language-bash"><code>http://[public-ip-address]:9000</code></pre>
+<div>http://[public-ip-address]:9000</div>
 
   <p>
     Replace your public ip address in above field and if you are running docker in your private machine then put your private IP like : <strong>192.168.0.10:9000,192.168.1.10:9000</strong> and so on..
@@ -106,7 +106,10 @@
   <p>
     To check if portainer is running on your host machine simply run below command,
   </p>
-<pre class="line-numbers  language-bash"><code>sudo docker ps</code></pre>
+
+  <p>
+    sudo docker ps
+  </p>
 
   <p>
     <strong>Command Output:</strong>
@@ -175,7 +178,7 @@ CONTAINER ID        IMAGE                                COMMAND             CRE
             <category term="TechWhale Guides"/>
             <category term="Docker"/>
 
-        <updated>2021-06-06T22:00:17+05:30</updated>
+        <updated>2021-06-07T00:01:25+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/8/imageedit_31_2317095391.jpg" alt="install-nginx-proxy-manager-raspberry-pi-4-b" />
@@ -215,9 +218,9 @@ CONTAINER ID        IMAGE                                COMMAND             CRE
 <li>[Optional] <strong><a href="https://www.portainer.io/" target="_blank" rel="noopener noreferrer">Portainer</a></strong></li>
 </ol>
 <h2 id="mcetoc_1eal5oajo7">Step-1: <strong>Create folders.</strong></h2>
-<pre id="mcetoc_1eal0kjhq1" class="msg msg--success"><code>sudo mkdir npman</code></pre>
+<pre>sudo mkdir npman</pre>
 <p>Inside NPman folder create these three folders [data, data/mysql and letsencrypt] or run below command,</p>
-<pre id="mcetoc_1eal0m35g3" class="msg msg--success"><code>sudo mkdir -p npman/{data/mysql,letsencrypt}</code></pre>
+<pre>sudo mkdir -p npman/{data/mysql,letsencrypt}</pre>
 <h2 id="mcetoc_1eal5q1579"><strong>Step-2: </strong><strong>Create a file called "config.json"</strong></h2>
 <p id="mcetoc_1eal64sejd"><strong>paste below lines of code into it.</strong></p>
 <pre>{
@@ -262,7 +265,7 @@ services:
 <h2 id="mcetoc_1eal5rduib">Step-5: Run Docker-Compose File</h2>
 <p> </p>
 <p><strong>Run Docker-Compose command to download docker images and services,</strong></p>
-<p id="mcetoc_1eal2u9u47" class="msg msg--success"><strong>sudo docker-compose up -d</strong></p>
+<pre id="mcetoc_1eal2u9u47" class="msg msg--success"><strong>sudo docker-compose up -d</strong></pre>
 <p>If you have Portainer running then go into the Portainer UI, And in the Stacks, add a new stack named "NPMan" and paste above docker-compose code and deploy it.</p>
 <p>After deployment check if container health and port are showing like this..</p>
 <figure class="post__image post__image--center"><img loading="lazy"  src="https://i.imgur.com/TvK1WNK.png" data-is-external-image="true"  alt="Portainer-Nginx-Proxy-Manager" width="1901" height="328"></figure>
