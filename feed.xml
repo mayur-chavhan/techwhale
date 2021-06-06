@@ -3,7 +3,7 @@
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2021-06-06T22:29:30+05:30</updated>
+    <updated>2021-06-06T22:33:14+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
@@ -19,7 +19,7 @@
             <category term="Tutorials"/>
             <category term="Docker"/>
 
-        <updated>2021-06-06T22:29:30+05:30</updated>
+        <updated>2021-06-06T22:33:14+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/10/Annotation-2020-06-25-082542-min-compressed.jpg" alt="Install Portainer" />
@@ -88,10 +88,9 @@
     </h2>
 
   <p>
-    Now, Go to the browser and put Docker Host Server IP in there like this:<br>
+    Now, Go to the browser and put Docker Host Server IP in there like this:
   </p>
-<pre id="httppublicipaddress9000br" class="line-numbers  language-python"><code>http://[public-ip-address]:9000
-</code></pre>
+<pre class="line-numbers  language-bash"><code>http://[public-ip-address]:9000</code></pre>
 
   <p>
     Replace your public ip address in above field and if you are running docker in your private machine then put your private IP like : <strong>192.168.0.10:9000,192.168.1.10:9000</strong> and so on..
@@ -109,10 +108,9 @@
   <p>
     <strong>Command Output:</strong>
   </p>
-<pre class="line-numbers  language-bash"><code>❯ docker ps
+<pre class="line-numbers  language-bash"><code>docker ps
 CONTAINER ID        IMAGE                                COMMAND             CREATED             STATUS              PORTS                                                               NAMES
-9a83bdecfc56        portainer/portainer                  "/portainer"        2 hours ago         Up 2 hours          0.0.0.0:8000-8000/tcp, 0.0.0.0:9000-&gt;9000/tcp                      portainer
-</code></pre>
+9a83bdecfc56        portainer/portainer                  "/portainer"        2 hours ago         Up 2 hours          0.0.0.0:8000-8000/tcp, 0.0.0.0:9000-&gt;9000/tcp                      portainer</code></pre>
 
   <p>
     Above output it shows that it exposes application to port 8000 and port 9000 but we use 9000 to access Portainer GUI.
@@ -130,7 +128,7 @@ CONTAINER ID        IMAGE                                COMMAND             CRE
   <p>
     Above command will pull the latest image from official docker repository but it will not update the current running Portainer Docker so we will stop the running container so it will use updated image.
   </p>
-<pre class="line-numbers  language-bash"><code>sudo docker stop portainer </code></pre>
+<pre class="line-numbers  language-bash"><code>sudo docker stop portainer </code></pre>
 
   <p>
     Here we have stopped our Portainer container and if you seem to notice we don't have to use docker id to stop portainer container but we used "portainer" name and this happened because we gave our docker container a name called "portainer" so using a name for container is makes easy to manage like stop and run the container.
