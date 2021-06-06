@@ -3,7 +3,7 @@
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2021-06-07T01:33:01+05:30</updated>
+    <updated>2021-06-07T01:41:50+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
@@ -17,7 +17,7 @@
         <link href="https://techwhale.in/smart-plug-on-web-hook-for-charging-laptop/"/>
         <id>https://techwhale.in/smart-plug-on-web-hook-for-charging-laptop/</id>
 
-        <updated>2021-06-07T01:33:01+05:30</updated>
+        <updated>2021-06-07T01:41:50+05:30</updated>
             <summary>
                 <![CDATA[
                     Whenever my laptop charging gets full it always frustrates me to turn off charging cause i read somewhere keeping charging on 100% will damage your laptop battery. Past two years i used ASUS Laptops where they have inbuilt hardware charging limit to 80% so i&hellip;
@@ -40,11 +40,12 @@
 <p>Cool !! Now my plug can be turn on from internet using just a POST request. It was so simple so what now? How can i turn on whenever my laptop needs charging ?</p>
 <p>Since, i'm always use Ubuntu as my main OS so it was a piece of cake for me to automate this process and if you want to do this on your Windows then i suggest you should turn on WSL Feature "Windows Subsystem for Linux" which of course enables Linux (Ubuntu) in your windows.</p>
 <p>As always i wrote a very simple bash script [ Literally, It is very simple ], Check it out.</p>
-<pre>#!/bin/bash<br><br># get battery percentage<br><br>battery_current_charge=$(upower -i $(upower -e | grep '/battery') | grep --color=never -E percentage|xargs|cut -d' ' -f2|sed s/%//)<br><br># check if battery percentage with your set value, mine is 40<br>if [[ $battery_current_charge -le "40" ]]; then<br><br># if you using Ubuntu then below notify command will show you notification<br><br>notify-send "Auto Charging" "Script Executed!"<br><br>#This will trigger switch on if condition is satisfied <br>curl -X POST https://sequematic.com/trigger-ifttt-webhook/your-id/your-key/switch_on &gt;/dev/null 2&gt;&amp;1<br><br>fi<br><br>if [[ $battery_current_charge -ge "90" ]]; then<br><br># This condition will turn off the charging when limit hit to 90<br>curl -X POST https://sequematic.com/trigger-ifttt-webhook/your-id/your-key/switch_off &gt;/dev/null 2&gt;&amp;1<br><br>fi</pre>
-<p>So if you have some linux experience then you can understand from the shell script that i have created two if conditions and in first condition i have compared to start the plug when battery reaches 40%.</p>
-<p>Second condition where battery reaches 90% plug should automatically turn off.</p>
-<p>I have used this script and put it in cronjob where i have given timer to run this script for every 5 min to check battery percentage so if battery reaches below 40% the plug will be turn on and if battery reaches 90% then it will turn off automatically. </p>
-<pre>*/5 * * * * bash /home/mayur/charge-battery-script.sh</pre>
+<div class="post__iframe"><iframe loading="lazy" src="https://paste.stacksmile.com/embed/0UhnWtuzKr"></iframe></div>
+<p>So if you have some Linux experience then you can understand from the shell script that i have created two if conditions and in first condition, it compared current battery percentage to start the plug when battery reaches below or equal to 40%.</p>
+<p>Second condition when battery percentage reaches above or equal to 90% smart plug should automatically turn off.</p>
+<p>This is simple task given in a simple script but how can this script know every time this battery value changes ?</p>
+<p>As always, Linux has inbuilt tools like Cronjob, Where, I have given timer to run this script for every 5 min to check battery percentage and script will check its logic.</p>
+<p><span style="background-color: var(--gray-1); font-size: 0.88889em; white-space: pre-wrap; color: var(--text-editor-body-color); font-family: var(--font-base); font-weight: var(--font-weight-normal);">*/5 * * * * bash /home/mayur/charge-battery-script.sh</span></p>
 <p> </p>
 <p>Voila!! It worked like a magic.</p>
 <p> </p>
