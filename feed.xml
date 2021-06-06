@@ -3,7 +3,7 @@
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2021-06-07T02:20:43+05:30</updated>
+    <updated>2021-06-07T02:31:53+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
@@ -21,7 +21,7 @@
             <category term="Tricks and Hack"/>
             <category term="Automation"/>
 
-        <updated>2021-06-07T02:20:43+05:30</updated>
+        <updated>2021-06-07T02:31:53+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/15/Untitled-Design.jpg" alt="auto turn on and off laptop charger whenever battery gets low and full." />
@@ -52,7 +52,7 @@
 <p>This is simple task given in a simple script but how can this script know every time this battery value changes ?</p>
 <p>As always, Linux has inbuilt tools like Cronjob, Where, I have given timer to run this script for every 5 min to check battery percentage and script will check its logic.</p>
 <p>Checkout below cronjob.</p>
-<pre><span style="background-color: var(--gray-1); font-size: 0.88889em; white-space: pre-wrap; color: var(--text-editor-body-color); font-family: var(--font-base); font-weight: var(--font-weight-normal);">*/5 * * * * bash /home/mayur/charge-battery-script.sh</span></pre>
+<pre>*/5 * * * * bash /home/mayur/charge-battery-script.sh</pre>
 <p>Voila!! It worked like a magic.</p>
 <p> </p>
 <address>Hope it helps someone and let us know your opinion if you have a way to improve it.</address>
