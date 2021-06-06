@@ -3,7 +3,7 @@
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2021-06-07T00:02:02+05:30</updated>
+    <updated>2021-06-07T00:07:34+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
@@ -19,7 +19,7 @@
             <category term="Tutorials"/>
             <category term="Docker"/>
 
-        <updated>2021-06-07T00:02:02+05:30</updated>
+        <updated>2021-06-07T00:04:56+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/10/Annotation-2020-06-25-082542-min-compressed.jpg" alt="Install Portainer" />
@@ -178,7 +178,7 @@ CONTAINER ID        IMAGE                                COMMAND             CRE
             <category term="TechWhale Guides"/>
             <category term="Docker"/>
 
-        <updated>2021-06-07T00:01:25+05:30</updated>
+        <updated>2021-06-07T00:07:34+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/8/imageedit_31_2317095391.jpg" alt="install-nginx-proxy-manager-raspberry-pi-4-b" />
@@ -261,22 +261,23 @@ services:
       MYSQL_PASSWORD: password
     volumes:
       - './data/mysql:/var/lib/mysql'</pre>
-<p class="msg msg--info"> Change MySQL password for production security purpose.</p>
+<address class="msg msg--info"> Change MySQL password for production security purpose.</address>
 <h2 id="mcetoc_1eal5rduib">Step-5: Run Docker-Compose File</h2>
 <p> </p>
 <p><strong>Run Docker-Compose command to download docker images and services,</strong></p>
-<pre id="mcetoc_1eal2u9u47" class="msg msg--success"><strong>sudo docker-compose up -d</strong></pre>
+<pre><strong>sudo docker-compose up -d</strong></pre>
 <p>If you have Portainer running then go into the Portainer UI, And in the Stacks, add a new stack named "NPMan" and paste above docker-compose code and deploy it.</p>
 <p>After deployment check if container health and port are showing like this..</p>
 <figure class="post__image post__image--center"><img loading="lazy"  src="https://i.imgur.com/TvK1WNK.png" data-is-external-image="true"  alt="Portainer-Nginx-Proxy-Manager" width="1901" height="328"></figure>
 <h2 id="mcetoc_1eal5s74vc">Step-6: Login to NPMan dashboard</h2>
-<p>Go to browser and replace &lt;&lt;docker-host-server-ip&gt;&gt; to docker host server ip like this,<br><a href="http://&lt;&lt;docker-host-serve-ip&gt;&gt;:81/login">http://&lt;&lt;docker-host-server-ip&gt;&gt;:81/login</a></p>
+<address>Go to browser and replace &lt;&lt;docker-host-server-ip&gt;&gt; to docker host server ip like this,</address><address><br><a href="http://&lt;&lt;docker-host-serve-ip&gt;&gt;:81/login">http://&lt;&lt;docker-host-server-ip&gt;&gt;:81/login</a></address>
 <p><img loading="lazy" src="https://i.imgur.com/4RE3JjY.png" data-is-external-image="true" ></p>
 <p>If everything goes right then enter below default credentials,</p>
 <p><strong>Credential for NPMan,</strong></p>
-<p class="msg msg--highlight  msg--success"><span style="text-decoration: underline;">Email</span>: <a href="mailto:admin@example.com">admin@example.com</a><br><br><span style="text-decoration: underline;">Password</span>: changeme</p>
+<p> </p>
+<address class="msg msg--highlight  msg--success"><span style="text-decoration: underline;">Email</span>: <a href="mailto:admin@example.com">admin@example.com</a><br><br><span style="text-decoration: underline;">Password</span>: changeme</address>
 <p>Visit our repository has all codes in this tutorial,</p>
-<p class="msg msg--success"><a href="https://github.com/mrGh0s7/Nginx-Proxy-Manager">https://github.com/mrGh0s7/Nginx-Proxy-Manager</a></p>
+<p class="msg msg--success msg--highlight  post__lead">https://github.com/mayur-chavhan/Nginx-Proxy-Manager</p>
 <p> </p>
 <p>Cheers!</p>
 <blockquote>
