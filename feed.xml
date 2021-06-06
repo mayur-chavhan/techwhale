@@ -3,7 +3,7 @@
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2021-06-07T02:42:11+05:30</updated>
+    <updated>2021-06-07T02:57:23+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
@@ -21,7 +21,7 @@
             <category term="Tricks and Hack"/>
             <category term="Automation"/>
 
-        <updated>2021-06-07T02:42:11+05:30</updated>
+        <updated>2021-06-07T02:57:23+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/15/Untitled-Design.jpg" alt="auto turn on and off laptop charger whenever battery gets low and full." />
@@ -49,9 +49,8 @@
 <div class="post__iframe"><iframe loading="lazy" src="https://paste.stacksmile.com/embed/0UhnWtuzKr"></iframe></div>
 <p>So if you have some Linux experience then you can understand from the shell script that i have created two if conditions and in first condition, it compared current battery percentage to start the plug when battery reaches below or equal to 40%.</p>
 <p>Second condition when battery percentage reaches above or equal to 90% smart plug should automatically turn off.</p>
-<p>this command gives switch to turn on state when condition is satisfy so you need to replace your both IFTTT url link in the script.</p>
-<pre id="pre" class=" line-numbers pre-editor  language-bash"><code class=" language-bash"><span class="token function">curl</span> -X POST <a class="token url-link" href="https://sequematic.com/trigger-ifttt-webhook/your-id/your-key/switch_on">https://sequematic.com/trigger-ifttt-webhook/your-id/your-key/switch_on</a> <span class="token operator">&gt;</span>/dev/null 2<span class="token operator">&gt;</span><span class="token operator">&amp;</span>1
-</code></pre>
+<p>Using Curl -X POST followed by url change plug state when condition is satisfy so you need to replace your both IFTTT url from sequematic link in the script.</p>
+<pre>curl -X POST <a href="https://sequematic.com/trigger-ifttt-webhook/your-id/your-key/switch_on">https://sequematic.com/trigger-ifttt-webhook/your-id/your-key/switch_on</a> &gt;/dev/null 2&gt;&amp;1</pre>
 <p>This is simple task given in a simple script but how can this script know every time this battery value changes ?</p>
 <p>As always, Linux has inbuilt tools like Cronjob, Where, I have given timer to run this script for every 5 min to check battery percentage and script will check its logic.</p>
 <p>Checkout below cronjob.</p>
