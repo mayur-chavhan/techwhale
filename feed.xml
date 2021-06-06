@@ -3,7 +3,7 @@
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2021-06-07T02:31:53+05:30</updated>
+    <updated>2021-06-07T02:38:55+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
@@ -72,11 +72,11 @@
             <category term="Tutorials"/>
             <category term="Docker"/>
 
-        <updated>2021-06-07T00:04:56+05:30</updated>
+        <updated>2021-06-07T02:38:55+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/10/Annotation-2020-06-25-082542-min-compressed.jpg" alt="Install Portainer" />
-                     Replace your public ip address in above field and if you are running docker in your private machine then put your private IP like : 192.168.0.10:9000,192.168.1.10:9000 and so on.. To check if portainer is running on your host machine simply run below command, sudo&hellip;
+                     Portainer is docker web GUI application in where you can manage all your docker containers, Images and Volumes. It offers more features than just showing docker containers but you can even manage other docker nodes in one Portainer application.&nbsp; This guide will show you&hellip;
                 ]]>
             </summary>
         <content type="html">
@@ -146,7 +146,10 @@
   <p>
     Now, Go to the browser and put Docker Host Server IP in there like this:
   </p>
-<div>http://[public-ip-address]:9000</div>
+
+  <p class="msg msg--success">
+    http://[public-ip-address]:9000
+  </p>
 
   <p>
     Replace your public ip address in above field and if you are running docker in your private machine then put your private IP like : <strong>192.168.0.10:9000,192.168.1.10:9000</strong> and so on..
@@ -160,16 +163,17 @@
     To check if portainer is running on your host machine simply run below command,
   </p>
 
-  <p>
+  <p class="msg msg--success">
     sudo docker ps
   </p>
 
   <p>
     <strong>Command Output:</strong>
   </p>
-<pre class="line-numbers  language-bash"><code>docker ps
-CONTAINER ID        IMAGE                                COMMAND             CREATED             STATUS              PORTS                                                               NAMES
-9a83bdecfc56        portainer/portainer                  "/portainer"        2 hours ago         Up 2 hours          0.0.0.0:8000-8000/tcp, 0.0.0.0:9000-&gt;9000/tcp                      portainer</code></pre>
+
+  <p class="msg msg--highlight">
+    docker ps<br>CONTAINER ID        IMAGE                                COMMAND             CREATED             STATUS              PORTS                                                               NAMES<br>9a83bdecfc56        portainer/portainer                  "/portainer"        2 hours ago         Up 2 hours          0.0.0.0:8000-8000/tcp, 0.0.0.0:9000-&gt;9000/tcp                      portainer
+  </p>
 
   <p>
     Above output it shows that it exposes application to port 8000 and port 9000 but we use 9000 to access Portainer GUI.
@@ -182,12 +186,18 @@ CONTAINER ID        IMAGE                                COMMAND             CRE
   <p>
     If you want to update Docker of Portainer then simple run these following commands,
   </p>
-<pre class="line-numbers  language-bash"><code>sudo docker pull portainer/portainer</code></pre>
+
+  <p class="msg msg--success">
+    sudo docker pull portainer/portainer
+  </p>
 
   <p>
     Above command will pull the latest image from official docker repository but it will not update the current running Portainer Docker so we will stop the running container so it will use updated image.
   </p>
-<pre class="line-numbers  language-bash"><code>sudo docker stop portainer </code></pre>
+
+  <p class="msg msg--success">
+    sudo docker stop portainer&nbsp;
+  </p>
 
   <p>
     Here we have stopped our Portainer container and if you seem to notice we don't have to use docker id to stop portainer container but we used "portainer" name and this happened because we gave our docker container a name called "portainer" so using a name for container is makes easy to manage like stop and run the container.
@@ -196,8 +206,10 @@ CONTAINER ID        IMAGE                                COMMAND             CRE
   <p>
     Now, Delete old Portainer image to replace updated one.
   </p>
-<pre class="line-numbers  language-bash"><code>sudo docker rm portainer 
-</code></pre>
+
+  <p class="msg msg--success">
+    sudo docker rm portainer <br>
+  </p>
 
   <p>
     Above command will delete only image but not the volume where we are keeping our Portainer data.
@@ -206,8 +218,10 @@ CONTAINER ID        IMAGE                                COMMAND             CRE
   <p>
     Re-run the docker portainer command to launch portainer with updated image at same volume and exposed ports we have given before.
   </p>
-<pre class="line-numbers  language-bash"><code>sudo docker run --name portainer --restart=unless-stopped -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer 
-</code></pre>
+
+  <p class="msg msg--success">
+    sudo docker run --name portainer --restart=unless-stopped -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer <br>
+  </p>
 
   <p>
     Check again for docker process and if it's running then we are good to know. Hope this guide helped you.
