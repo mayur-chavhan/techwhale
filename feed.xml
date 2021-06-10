@@ -3,7 +3,7 @@
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2021-06-07T03:31:10+05:30</updated>
+    <updated>2021-06-10T21:19:21+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
@@ -21,7 +21,7 @@
             <category term="Tricks and Hack"/>
             <category term="Automation"/>
 
-        <updated>2021-06-07T03:31:10+05:30</updated>
+        <updated>2021-06-10T21:19:21+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/15/Untitled-Design.jpg" alt="auto turn on and off laptop charger whenever battery gets low and full." />
@@ -32,10 +32,10 @@
             <![CDATA[
                     <img src="https://techwhale.in/media/posts/15/Untitled-Design.jpg" alt="auto turn on and off laptop charger whenever battery gets low and full." />
                 <p><span style="font-weight: 400;">It always frustrates me to turn off charging cause i read that always plugged in charging will damage your laptop battery but since i'm using a laptop it always draws power so keeping on charging all the time is good or bad that is another debate.</span></p>
-<p><span style="font-weight: 400;">I have an ASUS Laptop where they have inbuilt a hardware charging limit to 80% so i thought that it must be important that's why ASUS has done it. But now, the office gave me another work laptop which is DELL and sadly given model doesn't have a hardware charging limit available and while it's plugged and charging at full, it sometimes heats up so bad I feel warm below my fingers. 😩</span></p>
+<p><span style="font-weight: 400;">I have an ASUS Laptop where they have inbuilt a hardware charging limit to 80% so i thought that it must be important that's why ASUS has done it. But now, the office gave me another work laptop which is DELL and sadly given model doesn't have a hardware charging limit available and while it's plugged and charging at full, sometimes finger feels heat while typing. 😩</span></p>
 <p><img loading="lazy" src="https://www.xda-developers.com/files/2020/09/depth-of-charge.jpg" data-is-external-image="true"  alt="The ASUS ZenFone 7 and ROG Phone 3 support passthrough charging"></p>
 <p><span style="font-weight: 400;">So here I have a problem so I thought, What if I can build a simple charger solution which can be turned automatically ON when charging gets low or reaches a set limit and it will gets off when laptop charging reaches 90%. So you can see its simple logic and positively it turned out it was very much fun to achieve that i want to share this little project. 😎</span></p>
-<p><span style="font-weight: 400;">Of course to turn the switch ON and OFF, I would need to get a wireless plug so I found the cheapest smart plug available on Amazon which advertised as works with Alexa so without any research I thought it must work with everything. Boy! i was so wrong but eventually it worked out just fine cause i went to my only friend who helped me to fix this kind of issue as always and helped me just fine. you all know by its name "google". 🤓</span></p>
+<p><span style="font-weight: 400;">Of course to turn the switch ON and OFF, I would need to get a wireless plug so I found the cheapest smart plug available on Amazon which advertised as works with Alexa so without any research I thought it must work with everything. Boy! i was wrong but eventually it worked out just fine, cause i went to my only friend who helped me to fix this kind of issue as always and helped me just fine. you all know by its name "google". 🤓</span></p>
 <p><span style="font-weight: 400;">So this Solimo Smart Plug has this app called "Smart Life" to setup your device with your local centralized Wi-Fi router so you can talk to this "IOT" device from anywhere.</span></p>
 <figure class="align-center"><img loading="lazy"  src="https://images-na.ssl-images-amazon.com/images/I/51-Q1%2BQbCDL._SL1500_.jpg" data-is-external-image="true"  alt="Buy Amazon Brand - Solimo Smart Plug, 16A, Works with Alexa Online at Low  Prices in India - Amazon.in" width="465" height="465"></figure>
 <p><span style="font-weight: 400;">So i register myself on to the app and proceed with usage turning ON and OFF.  Also, This app has multi functionality like i can set it up like a timer but sadly i have to setup the timer again and again like Microwave or create a scene where i can connect to other services like location, temperature etc. which is all fine but it's useless for the purpose and what i want to achieve.</span></p>
@@ -46,7 +46,6 @@
 <p><img loading="lazy" src="https://www.fanjoe.be/wp-content/uploads/2020/06/SEQUEmatic-06.png" data-is-external-image="true"  alt="Lier Smart Life / Tuya à IFTTT après le 26 mai 2020 | Fanjoe&amp;#39;s website..."></p>
 <p><span style="font-weight: 400;">In the above screenshot you can see two sequences are created which are "socket-switch-on" and "socket-switch-off". In those sequences two steps have been created.</span></p>
 <p><span style="font-weight: 400;">Cool !! Now my plug can be turned on from the internet using just a POST request. It was so simple so what now? How can I turn on whenever my laptop needs charging ?</span></p>
-<p><span style="font-weight: 400;">Since, i always use Ubuntu as my main OS so it was a piece of cake for me to automate this process and if you want to do this on your Windows then, i suggest you should turn on WSL Feature "Windows Subsystem for Linux" which of course enables Linux (Ubuntu) in your windows.</span></p>
 <p><span style="font-weight: 400;">As always I wrote a very simple bash script [ Literally, It is very simple ], Check it out.</span></p>
 <div class="post__iframe"><iframe loading="lazy" src="https://paste.stacksmile.com/embed/0UhnWtuzKr"></iframe></div>
 <p><span style="font-weight: 400;">So if you have some Linux experience then you can understand from the shell script that i have created two if conditions and in the first condition, it compares current battery percentage to start the plug when battery reaches below or equal to 40%.</span></p>
@@ -57,6 +56,7 @@
 <p><span style="font-weight: 400;">Checkout below cronjob.</span></p>
 <pre>*/5 * * * * bash charge-battery-script.sh</pre>
 <p><span style="font-weight: 400;">Voila!! It worked like magic.</span></p>
+<p><span style="font-weight: 400;">Since, i always use Ubuntu as my main OS so it was a piece of cake for me to automate this process and if you want to do this on your Windows then, i suggest you should turn on WSL Feature "Windows Subsystem for Linux" which of course enables Linux (Ubuntu) in your windows.</span></p>
 <p>I can think many usage from this automation somethings like turn on smart lights or change the colour of smart light, smart socket or plug activity from your laptop.</p>
 <p> </p>
 <address><span style="font-weight: 400;"> </span><span style="font-weight: 400;">Hope you found this article interesting and let us know your opinion if you have a way to improve it.</span></address>
