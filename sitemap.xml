@@ -6,7 +6,7 @@
 </url>
 <url>
 <loc>https://techwhale.in/automate-smart-plug-to-charge-laptop-using-webhook-and-shell-script/</loc>
-<lastmod>2021-06-10T21:30:54+05:30</lastmod>
+<lastmod>2021-06-14T12:42:53+05:30</lastmod>
 <image:image>
 <image:loc>https://techwhale.in/media/posts/15/Untitled-Design.jpg</image:loc>
 <image:title><![CDATA[auto turn on and off laptop charger whenever battery gets low and full.]]></image:title>
@@ -38,6 +38,10 @@
 </url>
 <url>
 <loc>https://techwhale.in/category/ubuntu/</loc>
+</url>
+<url>
+<loc>https://techwhale.in/commands-to-get-linux-system-and-hardware-information/</loc>
+<lastmod>2021-06-13T17:47:14+05:30</lastmod>
 </url>
 <url>
 <loc>https://techwhale.in/git-workflow-for-developers-and-devops/</loc>
