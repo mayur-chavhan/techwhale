@@ -10,27 +10,6 @@
     <id>https://techwhale.in</id>
 
     <entry>
-        <title> Commands to get Linux System and Hardware Information</title>
-        <author>
-            <name>Mayur Chavhan</name>
-        </author>
-        <link href="https://techwhale.in/commands-to-get-linux-system-and-hardware-information/"/>
-        <id>https://techwhale.in/commands-to-get-linux-system-and-hardware-information/</id>
-
-        <updated>2021-06-13T17:47:14+05:30</updated>
-            <summary>
-                <![CDATA[
-                    If you have just started linux journey or you have some few years of linux experience then you should know about your system information and hardware information using just simple tools which are inbuilt in the linux. This will help you to understand what's going&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <p>If you have just started linux journey or you have some few years of linux experience then you should know about your system information and hardware information using just simple tools which are inbuilt in the linux.</p>
-<p>This will help you to understand what's going on the system you are operating.</p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
         <title>Automate Smart Plug to charge laptop using Webhook and Shell Script.</title>
         <author>
             <name>Mayur Chavhan</name>

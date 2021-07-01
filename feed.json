@@ -11,20 +11,6 @@
     },
     "items": [
         {
-            "id": "https://techwhale.in/commands-to-get-linux-system-and-hardware-information/",
-            "url": "https://techwhale.in/commands-to-get-linux-system-and-hardware-information/",
-            "title": " Commands to get Linux System and Hardware Information",
-            "summary": "If you have just started linux journey or you have some few years of linux experience then you should know about your system information and hardware information using just simple tools which are inbuilt in the linux. This will help you to understand what's going&hellip;",
-            "content_html": "<p>If you have just started linux journey or you have some few years of linux experience then you should know about your system information and hardware information using just simple tools which are inbuilt in the linux.</p>\n<p>This will help you to understand what's going on the system you are operating.</p>",
-            "author": {
-                "name": "Mayur Chavhan"
-            },
-            "tags": [
-            ],
-            "date_published": "2021-06-13T17:47:14+05:30",
-            "date_modified": "2021-06-13T17:47:14+05:30"
-        },
-        {
             "id": "https://techwhale.in/automate-smart-plug-to-charge-laptop-using-webhook-and-shell-script/",
             "url": "https://techwhale.in/automate-smart-plug-to-charge-laptop-using-webhook-and-shell-script/",
             "title": "Automate Smart Plug to charge laptop using Webhook and Shell Script.",
