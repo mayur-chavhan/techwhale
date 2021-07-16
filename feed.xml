@@ -20,7 +20,7 @@
         <updated>2021-07-09T03:09:59+05:30</updated>
             <summary>
                 <![CDATA[
-                    I know it's seems risky to put out your whole server from PHP page. As a System Admin we knows any security holes can be very dangerous. Same time as we put things in risk we understand about risk and we always know some one&hellip;
+                    I know it's seems risky to put out your whole server from PHP page. As a System Admin we knows&hellip;
                 ]]>
             </summary>
         <content type="html">
@@ -55,7 +55,7 @@
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/15/Untitled-Design.jpg" alt="auto turn on and off laptop charger whenever battery gets low and full." />
-                    In the world of automation, it little gives me heebie-jeebies to turn on and off charging when needed cause I read that always plugged in charging will damage your laptop battery but since I'm using a laptop it always draws power so keeping on charging&hellip;
+                    In the world of automation, it little gives me heebie-jeebies to turn on and off charging when needed cause I&hellip;
                 ]]>
             </summary>
         <content type="html">
@@ -127,7 +127,7 @@
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/10/Annotation-2020-06-25-082542-min-compressed.jpg" alt="Install Portainer" />
-                     Portainer is docker web GUI application in where you can manage all your docker containers, Images and Volumes. It offers more features than just showing docker containers but you can even manage other docker nodes in one Portainer application.&nbsp; This guide will show you&hellip;
+                     Portainer is docker web GUI application in where you can manage all your docker containers, Images and Volumes. It&hellip;
                 ]]>
             </summary>
         <content type="html">
@@ -300,7 +300,7 @@
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/8/imageedit_31_2317095391.jpg" alt="install-nginx-proxy-manager-raspberry-pi-4-b" />
-                     Overview: In DevOps deployments Reverse Proxy is very common for port routing in backend applications. One of the popular is Traefik. Similar to Traefik there are HAproxy and Nginx. HAproxy which is known for Server Load Balancer but also can be used as a&hellip;
+                     Overview: In DevOps deployments Reverse Proxy is very common for port routing in backend applications. One of the popular&hellip;
                 ]]>
             </summary>
         <content type="html">
@@ -423,7 +423,7 @@ services:
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/6/image-0-compressed.jpg" alt="setup ssh keys on linux" />
-                     Overview SSH [ Secure Shell ] is a famous encrypted protocol are widely becoming popular for communicate server access. For security purpose SSH provide lot of features and one of the famous is SSH Keys and for some its complicated and mostly biased to&hellip;
+                     Overview SSH [ Secure Shell ] is a famous encrypted protocol are widely becoming popular for communicate server access.
                 ]]>
             </summary>
         <content type="html">
@@ -509,7 +509,7 @@ services:
 </div>
 <hr>
 <h3 id="mcetoc_1e8pdg7j87">Overview</h3>
-<figure class="post__image post__image--center" ><img loading="lazy" src="https://techwhale.in/media/posts/5/docker-cloud-twitter-card.png" sizes="(max-width: 48em) 100vw, 768px" srcset="https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-xs.png 300w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-sm.png 480w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-md.png 768w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-lg.png 1024w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-xl.png 1360w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-2xl.png 1600w"  alt="Docker-Image" width="1586" height="600">
+<figure class="post__image post__image--center" ><img loading="lazy" src="https://techwhale.in/media/posts/5/docker-cloud-twitter-card.png" sizes="(max-width: 48em) 100vw, 768px" srcset="https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-xs.png 300w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-sm.png 480w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-md.png 768w"  alt="Docker-Image" width="1586" height="600">
 <figcaption >Docker Container Image</figcaption>
 </figure>
 <p> </p>
@@ -581,7 +581,7 @@ services:
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/4/image-8-compressed.jpg" alt="" />
-                    Provisioning New Ubuntu 18.04 x64 VPS Create a new sudo user. A domain jitsi.server.com being pointed to the server instance mentioned above. Update server packages: For security and performance purposes, its necessary to update the Ubuntu 18.04 LTS system to the latest status: sudo apt&hellip;
+                    Provisioning New Ubuntu 18.04 x64 VPS Create a new sudo user. A domain jitsi.server.com being pointed to the server instance&hellip;
                 ]]>
             </summary>
         <content type="html">
@@ -635,7 +635,7 @@ services:
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/3/l2mvWRp1.png" alt="git-workflow-for-developers" />
-                     Git is a top distributed version control system and Nowadays all programmers and developers are dependent on its workflow. Manage to set up a proper Git code workflow is essential for projects that involve group collaboration. Follow procedures to keep working copy of your&hellip;
+                     Git is a top distributed version control system and Nowadays all programmers and developers are dependent on its workflow.
                 ]]>
             </summary>
         <content type="html">
@@ -727,7 +727,7 @@ services:
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/2/Webp.net-compress-image-3.jpg" alt="install ansible on ubuntu 18 and debian 10" />
-                     What is Ansible? Ansible is an open source DevOps automation tool that solves server provisioning in installing tools, configuration, deployment and provisioning. It leverages SSH to communicate between servers. It uses the playbook which states every steps of automation jobs, and playbook uses a simple language called&hellip;
+                     What is Ansible? Ansible is an open source DevOps automation tool that solves server provisioning in installing tools, configuration, deployment and provisioning.
                 ]]>
             </summary>
         <content type="html">
@@ -745,7 +745,7 @@ services:
 </ul>
 </div>
 <h3 id="mcetoc_1e887o48e3">What is Ansible?</h3>
-<figure class="post__image post__image--center"><img loading="lazy"  src="https://techwhale.in/media/posts/2/imageedit_16_2728091063.png" sizes="(max-width: 48em) 100vw, 768px" srcset="https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-xs.png 300w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-sm.png 480w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-md.png 768w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-lg.png 1024w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-xl.png 1360w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-2xl.png 1600w"  alt="ansible" width="359" height="284"></figure>
+<figure class="post__image post__image--center"><img loading="lazy"  src="https://techwhale.in/media/posts/2/imageedit_16_2728091063.png" sizes="(max-width: 48em) 100vw, 768px" srcset="https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-xs.png 300w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-sm.png 480w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-md.png 768w"  alt="ansible" width="359" height="284"></figure>
 <p id="mcetoc_1e8hhbh66b">Ansible is an open source DevOps automation tool that solves server provisioning in installing tools, configuration, deployment and provisioning. It leverages SSH to communicate between servers. It uses the playbook which states every steps of automation jobs, and playbook uses a simple language called "YAML".</p>
 <hr>
 <h3 id="mcetoc_1e883n8jk0">Prerequisites :</h3>
