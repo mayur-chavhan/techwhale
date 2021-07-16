@@ -6,7 +6,7 @@
 </url>
 <url>
 <loc>https://techwhale.in/automate-smart-plug-to-charge-laptop-using-webhook-and-shell-script/</loc>
-<lastmod>2021-07-01T13:34:59+05:30</lastmod>
+<lastmod>2021-07-16T17:10:42+05:30</lastmod>
 <image:image>
 <image:loc>https://techwhale.in/media/posts/15/Untitled-Design.jpg</image:loc>
 <image:title><![CDATA[auto turn on and off laptop charger whenever battery gets low and full.]]></image:title>
@@ -102,5 +102,9 @@
 <image:loc>https://techwhale.in/media/posts/4/image-8-compressed.jpg</image:loc>
 <image:title><![CDATA[]]></image:title>
 </image:image>
+</url>
+<url>
+<loc>https://techwhale.in/run-bash-script-from-php-page/</loc>
+<lastmod>2021-07-09T03:09:59+05:30</lastmod>
 </url>
 </urlset>

@@ -3,12 +3,42 @@
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2021-07-01T13:34:59+05:30</updated>
+    <updated>2021-07-16T17:10:42+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
     <id>https://techwhale.in</id>
 
+    <entry>
+        <title>Run Bash Script from PHP Page</title>
+        <author>
+            <name>Mayur Chavhan</name>
+        </author>
+        <link href="https://techwhale.in/run-bash-script-from-php-page/"/>
+        <id>https://techwhale.in/run-bash-script-from-php-page/</id>
+
+        <updated>2021-07-09T03:09:59+05:30</updated>
+            <summary>
+                <![CDATA[
+                    I know it's seems risky to put out your whole server from PHP page. As a System Admin we knows any security holes can be very dangerous. Same time as we put things in risk we understand about risk and we always know some one&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>I know it's seems risky to put out your whole server from PHP page. As a System Admin we knows any security holes can be very dangerous.</p>
+<p>Same time as we put things in risk we understand about risk and we always know some one is always step ahead to beat you but what doesn't kill you makes you stronger.</p>
+<p>Ahh!! Enough about big words and lets get into if you want to know how you can access a Bash / Shell Script through a simple PHP code and securing it and it always fun to learn something everyday, Don't you think? I've learned bash script and my daily work depends on Linux, updating code and for some file monitoring, i wrote bunch of scripts but for that i have always sticks to my laptop so i want flexibility to do things from my phone as well but of course keeping in all security in mind.</p>
+<p>First, We know root user should be kept away from these script as attacker will try to use any command injection or PHP vulnerability to gain access the server so we want to make sure, Whoever runs the bash script should not be a sudo user or web server user, It should be like who has no other system access permission and only able to execute bash script.</p>
+<p>Second thing will be the php script where we are going to call bash script and put its output on the browser. In PHP there's a shell function that use for executing shell commands so that's perfect for us to execute bash script. so we are going to take some number input and we are going to see output of a bash script.</p>
+<p>"Visudo" is a tool to edit user permissions but there are bunch of alternative tools in Linux if you are already familiar with it but for this example i have one CentOS server so lets move on.</p>
+<p>Let's create a user called "ghost" which will have only permission to execute bash script in visudo and will have nologin permission</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>Automate Smart Plug to charge laptop using Webhook and Shell Script.</title>
         <author>
@@ -21,7 +51,7 @@
             <category term="Tricks and Hack"/>
             <category term="Automation"/>
 
-        <updated>2021-07-01T13:34:59+05:30</updated>
+        <updated>2021-07-16T17:10:42+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/15/Untitled-Design.jpg" alt="auto turn on and off laptop charger whenever battery gets low and full." />
@@ -49,7 +79,7 @@
 <p>In the above screenshot, you can see two sequences are created which are "socket-switch-on" and "socket-switch-off". In those sequences, two steps have been created.</p>
 <p>Cool !! Now my plug can be turned on from the internet using just a POST request. It was so simple so what now? How can I turn it on whenever my laptop needs charging?</p>
 <p>As always I wrote a very simple bash script [ Literally, It is very simple ], Check it out.</p>
-<p> </p>
+<div class="post__iframe"><iframe loading="lazy" src="http://paste.stacksmile.com/embed/0UhnWtuzKr"></iframe></div>
 <p>So if you have some Linux experience then you can understand from the shell script that I have created two if conditions and in the first condition, it compares the current battery percentage to start the plug when the battery reaches below or equal to 40%.</p>
 <p>The second condition when the battery percentage reaches above or equal to 90% smart plug should automatically turn off.</p>
 <p>In the shell script, the URL taken from sequematic can change the plug state when the condition is satisfied so you need to replace both of your <a href="https://ifttt.com">IFTTT</a> URLs from the sequematic link in the script.</p>
