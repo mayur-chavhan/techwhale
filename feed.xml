@@ -3,7 +3,7 @@
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2021-07-16T17:33:53+05:30</updated>
+    <updated>2021-07-16T18:48:00+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
@@ -21,7 +21,7 @@
             <category term="Tricks and Hack"/>
             <category term="Automation"/>
 
-        <updated>2021-07-16T17:33:53+05:30</updated>
+        <updated>2021-07-16T18:48:00+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/15/Untitled-Design.jpg" alt="auto turn on and off laptop charger whenever battery gets low and full." />
@@ -61,6 +61,30 @@
 <p>Cool !! Now my plug can be turned on from the internet using just a POST request. It was so simple so what now? How can I turn it on whenever my laptop needs charging?</p>
 <h4 id="mcetoc_1fani75hnp">Write or Download Bash Script for an automation.</h4>
 <p>As always I wrote a very simple bash script [ Literally, It is very simple ], Check it out.</p>
+<pre id="pre" class=" line-numbers pre-editor  language-bash"><code class=" language-bash"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token comment"># get battery percentage</span>
+
+battery_current_charge<span class="token operator">=</span><span class="token variable">$(upower -i <span class="token punctuation">$(</span>upower -e <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'/battery'</span>)</span> <span class="token operator">|</span> <span class="token function">grep</span> --color<span class="token operator">=</span>never -E percentage<span class="token operator">|</span><span class="token function">xargs</span><span class="token operator">|</span><span class="token function">cut</span> -d<span class="token string">' '</span> -f2<span class="token operator">|</span><span class="token function">sed</span> s/%//<span class="token punctuation">)</span>
+
+<span class="token comment"># check if battery percentage with your set value, mine is 40</span>
+<span class="token keyword keyword-if">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$battery_current_charge</span> -le <span class="token string">"40"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>
+
+<span class="token comment"># if you using Ubuntu then below notify command will show you notification</span>
+
+<span class="token function">notify-send</span> <span class="token string">"Auto Charging"</span> <span class="token string">"Script Executed!"</span>
+
+<span class="token comment">#This will trigger switch on if condition is satisfied</span>
+<span class="token function">curl</span> -X POST <a class="token url-link" href="https://sequematic.com/trigger-ifttt-webhook/your-id/">https://sequematic.com/trigger-ifttt-webhook/your-id/</a><span class="token operator">&lt;</span>insert-your-key<span class="token operator">&gt;</span>/switch_on <span class="token operator">&gt;</span>/dev/null 2<span class="token operator">&gt;</span><span class="token operator">&amp;</span>1
+
+<span class="token keyword keyword-fi">fi</span>
+
+<span class="token keyword keyword-if">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$battery_current_charge</span> -ge <span class="token string">"90"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword keyword-then">then</span>
+
+<span class="token comment"># This condition will turn off the charging when limit hit to 90</span>
+<span class="token function">curl</span> -X POST <a class="token url-link" href="https://sequematic.com/trigger-ifttt-webhook/your-id/">https://sequematic.com/trigger-ifttt-webhook/your-id/</a><span class="token operator">&lt;</span>insert-your-key<span class="token operator">&gt;</span>/switch_off <span class="token operator">&gt;</span>/dev/null 2<span class="token operator">&gt;</span><span class="token operator">&amp;</span>1
+
+<span class="token keyword keyword-fi">fi</span></code></pre>
 <div class="post__iframe"><iframe loading="lazy" style="border: none; width: 100%; min-height: 400px;" src="http://paste.stacksmile.com/embed/0UhnWtuzKr"></iframe></div>
 <p>So if you have some Linux experience then you can understand from the shell script that I have created two if conditions and in the first condition, it compares the current battery percentage to start the plug when the battery reaches below or equal to 40%.</p>
 <p>The second condition when the battery percentage reaches above or equal to 90% smart plug should automatically turn off.</p>
