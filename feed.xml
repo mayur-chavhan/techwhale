@@ -3,7 +3,7 @@
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2021-07-16T18:54:19+05:30</updated>
+    <updated>2021-07-16T18:56:43+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
@@ -21,7 +21,7 @@
             <category term="Tricks and Hack"/>
             <category term="Automation"/>
 
-        <updated>2021-07-16T18:54:19+05:30</updated>
+        <updated>2021-07-16T18:56:43+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/15/Untitled-Design.jpg" alt="auto turn on and off laptop charger whenever battery gets low and full." />
@@ -61,7 +61,7 @@
 <p>Cool !! Now my plug can be turned on from the internet using just a POST request. It was so simple so what now? How can I turn it on whenever my laptop needs charging?</p>
 <h4 id="mcetoc_1fani75hnp">Write or Download Bash Script for an automation.</h4>
 <p>As always I wrote a very simple bash script [ Literally, It is very simple ], Check it out.</p>
-<p><code>#!/bin/bash # get battery percentage battery_current_charge=$(upower -i $(upower -e | grep '/battery') | grep --color=never -E percentage|xargs|cut -d' ' -f2|sed s/%//) # check if battery percentage with your set value, mine is 40 if [[ $battery_current_charge -le "40" ]]; then # if you using Ubuntu then below notify command will show you notification notify-send "Auto Charging" "Script Executed!" #This will trigger switch on if condition is satisfied curl -X POST https://sequematic.com/trigger-ifttt-webhook/your-id//switch_on &gt;/dev/null 2&gt;&amp;1 fi if [[ $battery_current_charge -ge "90" ]]; then # This condition will turn off the charging when limit hit to 90 curl -X POST https://sequematic.com/trigger-ifttt-webhook/your-id//switch_off &gt;/dev/null 2&gt;&amp;1 fi</code></p>
+<pre>#!/bin/bash <br><br># get battery percentage <br><br>battery_current_charge=$(upower -i $(upower -e | grep '/battery') | grep --color=never -E percentage|xargs|cut -d' ' -f2|sed s/%//) <br><br># check if battery percentage with your set value, mine is 40 <br><br>if [[ $battery_current_charge -le "40" ]]; then <br><br># if you using Ubuntu then below notify command will show you notification notify-send "Auto Charging" "Script Executed!" <br>#This will trigger switch on if condition is satisfied <br><br>curl -X POST https://sequematic.com/trigger-ifttt-webhook/your-id//switch_on &gt;/dev/null 2&gt;&amp;1 <br>fi <br><br>if [[ $battery_current_charge -ge "90" ]]; then <br># This condition will turn off the charging when limit hit to 90 curl -X POST https://sequematic.com/trigger-ifttt-webhook/your-id//switch_off &gt;/dev/null 2&gt;&amp;1 <br>fi</pre>
 <p>So if you have some Linux experience then you can understand from the shell script that I have created two if conditions and in the first condition, it compares the current battery percentage to start the plug when the battery reaches below or equal to 40%.</p>
 <p>The second condition when the battery percentage reaches above or equal to 90% smart plug should automatically turn off.</p>
 <p>In the shell script, the URL taken from sequematic can change the plug state when the condition is satisfied so you need to replace both of your <a href="https://ifttt.com">IFTTT</a> URLs from the sequematic link in the script.</p>
