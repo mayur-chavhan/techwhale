@@ -37,9 +37,6 @@
 <loc>https://techwhale.in/category/tutorials/</loc>
 </url>
 <url>
-<loc>https://techwhale.in/category/tutorials/page/2/</loc>
-</url>
-<url>
 <loc>https://techwhale.in/category/ubuntu/</loc>
 </url>
 <url>
@@ -105,9 +102,5 @@
 <image:loc>https://techwhale.in/media/posts/4/image-8-compressed.jpg</image:loc>
 <image:title><![CDATA[]]></image:title>
 </image:image>
-</url>
-<url>
-<loc>https://techwhale.in/run-bash-script-from-php-page/</loc>
-<lastmod>2021-07-09T03:09:59+05:30</lastmod>
 </url>
 </urlset>

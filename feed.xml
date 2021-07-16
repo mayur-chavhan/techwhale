@@ -10,36 +10,6 @@
     <id>https://techwhale.in</id>
 
     <entry>
-        <title>Run Bash Script from PHP Page</title>
-        <author>
-            <name>Mayur Chavhan</name>
-        </author>
-        <link href="https://techwhale.in/run-bash-script-from-php-page/"/>
-        <id>https://techwhale.in/run-bash-script-from-php-page/</id>
-
-        <updated>2021-07-09T03:09:59+05:30</updated>
-            <summary>
-                <![CDATA[
-                    I know it's seems risky to put out your whole server from PHP page. As a System Admin we knows&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <p>I know it's seems risky to put out your whole server from PHP page. As a System Admin we knows any security holes can be very dangerous.</p>
-<p>Same time as we put things in risk we understand about risk and we always know some one is always step ahead to beat you but what doesn't kill you makes you stronger.</p>
-<p>Ahh!! Enough about big words and lets get into if you want to know how you can access a Bash / Shell Script through a simple PHP code and securing it and it always fun to learn something everyday, Don't you think? I've learned bash script and my daily work depends on Linux, updating code and for some file monitoring, i wrote bunch of scripts but for that i have always sticks to my laptop so i want flexibility to do things from my phone as well but of course keeping in all security in mind.</p>
-<p>First, We know root user should be kept away from these script as attacker will try to use any command injection or PHP vulnerability to gain access the server so we want to make sure, Whoever runs the bash script should not be a sudo user or web server user, It should be like who has no other system access permission and only able to execute bash script.</p>
-<p>Second thing will be the php script where we are going to call bash script and put its output on the browser. In PHP there's a shell function that use for executing shell commands so that's perfect for us to execute bash script. so we are going to take some number input and we are going to see output of a bash script.</p>
-<p>"Visudo" is a tool to edit user permissions but there are bunch of alternative tools in Linux if you are already familiar with it but for this example i have one CentOS server so lets move on.</p>
-<p>Let's create a user called "ghost" which will have only permission to execute bash script in visudo and will have nologin permission</p>
-<p> </p>
-<p> </p>
-<p> </p>
-<p> </p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
         <title>Automate Smart Plug to charge laptop using Webhook and Shell Script.</title>
         <author>
             <name>Mayur Chavhan</name>
@@ -55,7 +25,7 @@
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/15/Untitled-Design.jpg" alt="auto turn on and off laptop charger whenever battery gets low and full." />
-                    In the world of automation, it little gives me heebie-jeebies to turn on and off charging when needed cause I&hellip;
+                    In the world of automation, it little gives me heebie-jeebies to turn on and off charging when needed cause I read that always plugged in charging will damage your laptop battery but since I'm using a laptop it always draws power so keeping on charging&hellip;
                 ]]>
             </summary>
         <content type="html">
@@ -127,7 +97,7 @@
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/10/Annotation-2020-06-25-082542-min-compressed.jpg" alt="Install Portainer" />
-                     Portainer is docker web GUI application in where you can manage all your docker containers, Images and Volumes. It&hellip;
+                     Portainer is docker web GUI application in where you can manage all your docker containers, Images and Volumes. It offers more features than just showing docker containers but you can even manage other docker nodes in one Portainer application.&nbsp; This guide will show you&hellip;
                 ]]>
             </summary>
         <content type="html">
@@ -300,7 +270,7 @@
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/8/imageedit_31_2317095391.jpg" alt="install-nginx-proxy-manager-raspberry-pi-4-b" />
-                     Overview: In DevOps deployments Reverse Proxy is very common for port routing in backend applications. One of the popular&hellip;
+                     Overview: In DevOps deployments Reverse Proxy is very common for port routing in backend applications. One of the popular is Traefik. Similar to Traefik there are HAproxy and Nginx. HAproxy which is known for Server Load Balancer but also can be used as a&hellip;
                 ]]>
             </summary>
         <content type="html">
@@ -423,7 +393,7 @@ services:
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/6/image-0-compressed.jpg" alt="setup ssh keys on linux" />
-                     Overview SSH [ Secure Shell ] is a famous encrypted protocol are widely becoming popular for communicate server access.
+                     Overview SSH [ Secure Shell ] is a famous encrypted protocol are widely becoming popular for communicate server access. For security purpose SSH provide lot of features and one of the famous is SSH Keys and for some its complicated and mostly biased to&hellip;
                 ]]>
             </summary>
         <content type="html">
@@ -509,7 +479,7 @@ services:
 </div>
 <hr>
 <h3 id="mcetoc_1e8pdg7j87">Overview</h3>
-<figure class="post__image post__image--center" ><img loading="lazy" src="https://techwhale.in/media/posts/5/docker-cloud-twitter-card.png" sizes="(max-width: 48em) 100vw, 768px" srcset="https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-xs.png 300w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-sm.png 480w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-md.png 768w"  alt="Docker-Image" width="1586" height="600">
+<figure class="post__image post__image--center" ><img loading="lazy" src="https://techwhale.in/media/posts/5/docker-cloud-twitter-card.png" sizes="(max-width: 48em) 100vw, 768px" srcset="https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-xs.png 300w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-sm.png 480w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-md.png 768w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-lg.png 1024w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-xl.png 1360w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-2xl.png 1600w"  alt="Docker-Image" width="1586" height="600">
 <figcaption >Docker Container Image</figcaption>
 </figure>
 <p> </p>
@@ -581,7 +551,7 @@ services:
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/4/image-8-compressed.jpg" alt="" />
-                    Provisioning New Ubuntu 18.04 x64 VPS Create a new sudo user. A domain jitsi.server.com being pointed to the server instance&hellip;
+                    Provisioning New Ubuntu 18.04 x64 VPS Create a new sudo user. A domain jitsi.server.com being pointed to the server instance mentioned above. Update server packages: For security and performance purposes, its necessary to update the Ubuntu 18.04 LTS system to the latest status: sudo apt&hellip;
                 ]]>
             </summary>
         <content type="html">
@@ -635,7 +605,7 @@ services:
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/3/l2mvWRp1.png" alt="git-workflow-for-developers" />
-                     Git is a top distributed version control system and Nowadays all programmers and developers are dependent on its workflow.
+                     Git is a top distributed version control system and Nowadays all programmers and developers are dependent on its workflow. Manage to set up a proper Git code workflow is essential for projects that involve group collaboration. Follow procedures to keep working copy of your&hellip;
                 ]]>
             </summary>
         <content type="html">
@@ -727,7 +697,7 @@ services:
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/2/Webp.net-compress-image-3.jpg" alt="install ansible on ubuntu 18 and debian 10" />
-                     What is Ansible? Ansible is an open source DevOps automation tool that solves server provisioning in installing tools, configuration, deployment and provisioning.
+                     What is Ansible? Ansible is an open source DevOps automation tool that solves server provisioning in installing tools, configuration, deployment and provisioning. It leverages SSH to communicate between servers. It uses the playbook which states every steps of automation jobs, and playbook uses a simple language called&hellip;
                 ]]>
             </summary>
         <content type="html">
@@ -745,7 +715,7 @@ services:
 </ul>
 </div>
 <h3 id="mcetoc_1e887o48e3">What is Ansible?</h3>
-<figure class="post__image post__image--center"><img loading="lazy"  src="https://techwhale.in/media/posts/2/imageedit_16_2728091063.png" sizes="(max-width: 48em) 100vw, 768px" srcset="https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-xs.png 300w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-sm.png 480w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-md.png 768w"  alt="ansible" width="359" height="284"></figure>
+<figure class="post__image post__image--center"><img loading="lazy"  src="https://techwhale.in/media/posts/2/imageedit_16_2728091063.png" sizes="(max-width: 48em) 100vw, 768px" srcset="https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-xs.png 300w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-sm.png 480w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-md.png 768w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-lg.png 1024w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-xl.png 1360w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-2xl.png 1600w"  alt="ansible" width="359" height="284"></figure>
 <p id="mcetoc_1e8hhbh66b">Ansible is an open source DevOps automation tool that solves server provisioning in installing tools, configuration, deployment and provisioning. It leverages SSH to communicate between servers. It uses the playbook which states every steps of automation jobs, and playbook uses a simple language called "YAML".</p>
 <hr>
 <h3 id="mcetoc_1e883n8jk0">Prerequisites :</h3>
