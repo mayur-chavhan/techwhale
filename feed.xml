@@ -3,7 +3,7 @@
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2021-07-20T02:04:38+05:30</updated>
+    <updated>2021-07-20T02:08:28+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
@@ -18,8 +18,9 @@
         <id>https://techwhale.in/how-to-secure-your-site-from-sql-injection-exploits-and-spamming-agents-using-nginx/</id>
             <category term="Tutorials"/>
             <category term="TechWhale Guides"/>
+            <category term="Nginx"/>
 
-        <updated>2021-07-20T02:04:38+05:30</updated>
+        <updated>2021-07-20T02:08:28+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/19/secure-nginx-server-2.png" alt="nginx securing configuration for attacker using SQL injection, File Injection, SPAM and User Agents" />

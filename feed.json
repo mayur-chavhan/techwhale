@@ -22,10 +22,11 @@
             },
             "tags": [
                    "Tutorials",
-                   "TechWhale Guides"
+                   "TechWhale Guides",
+                   "Nginx"
             ],
             "date_published": "2021-07-20T01:07:56+05:30",
-            "date_modified": "2021-07-20T02:04:38+05:30"
+            "date_modified": "2021-07-20T02:08:28+05:30"
         },
         {
             "id": "https://techwhale.in/how-to-create-swap-partition-on-aws-ec2-instance-for-ubuntu-2004/",
