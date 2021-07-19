@@ -48,6 +48,18 @@
 </image:image>
 </url>
 <url>
+<loc>https://techwhale.in/how-to-create-swap-partition-on-aws-ec2-instance-for-ubuntu-2004/</loc>
+<lastmod>2021-07-19T17:07:26+05:30</lastmod>
+<image:image>
+<image:loc>https://techwhale.in/media/posts/18/how-to-create-swap-parition-ubuntu-204-2.png</image:loc>
+<image:title><![CDATA[create swap partition on ubuntu 204]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://techwhale.in/media/posts/18/how-to-create-swap-parition-ubuntu-204.png</image:loc>
+<image:title><![CDATA[How to create swap partition on ubuntu 20.04 aws ec2, gcp, digital ocean instance]]></image:title>
+</image:image>
+</url>
+<url>
 <loc>https://techwhale.in/how-to-install-ansible-on-ubuntu-1804-debian-10-buster/</loc>
 <lastmod>2020-06-30T17:46:44+05:30</lastmod>
 <image:image>
