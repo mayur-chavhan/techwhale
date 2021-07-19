@@ -3,14 +3,14 @@
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2021-07-19T17:55:09+05:30</updated>
+    <updated>2021-07-19T19:46:07+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
     <id>https://techwhale.in</id>
 
     <entry>
-        <title>How to create Swap Partition on AWS / EC2 Instance for Ubuntu 20.04</title>
+        <title>How to create Swap Partition on Ubuntu 20.04 and Debian 10</title>
         <author>
             <name>Mayur Chavhan</name>
         </author>
@@ -19,7 +19,7 @@
             <category term="Ubuntu"/>
             <category term="Tutorials"/>
 
-        <updated>2021-07-19T17:55:09+05:30</updated>
+        <updated>2021-07-19T19:46:07+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/18/how-to-create-swap-parition-ubuntu-204-3.png" alt="create swap partition on ubuntu 204" />
@@ -45,14 +45,14 @@
 <h2 id="mcetoc_1fav8m12l1g">Create a File</h2>
 <p>Consider, You got an instance or VPS of 2 vCore and 2 GB RAM.</p>
 <p>Use below command to create a 1 GB of Swap,</p>
-<pre>$ sudo dd if=/dev/zero of=/var/swapfile bs=1M count=1024</pre>
+<pre><code>$ sudo dd if=/dev/zero of=/var/swapfile bs=1M count=1024</code></pre>
 <p>Above command will create a file "swapfile" in "/var" folder, but also learn what's the command actually doing,</p>
 <p>bs=1M count=1024 will create 1GB "swapfile", so you can change count if you want to use count as 2048, 4096 for 2GB and 4GB respectively.</p>
 <p>Alternative, Similar command you can use to create swapfile , </p>
 <pre>$ sudo fallocate -l 1G /var/swapfile</pre>
 <h2 id="mcetoc_1fav8m12l1h">Convert file into SWAP compatible file.</h2>
 <p>Now, Let's convert this file into an actual swap,</p>
-<pre><code>$ sudo mkswap /var/</code>swapfile</pre>
+<pre>$ sudo mkswap /var/swapfile</pre>
 <p>We almost done,</p>
 <h2 id="mcetoc_1fav8m12l1i">Mount SWAP File</h2>
 <pre>$ sudo swapon /var/swapfile</pre>
@@ -65,7 +65,7 @@
 <p>Just add an entry to "/etc/fstab" file, Which System check if any partition needs to be mounted at boot.</p>
 <pre>$ echo "/var/swapfile swap swap defaults 0 0" | sudo tee -a /etc/fstab</pre>
 <p>That's it. You've just upgraded your server with a virtual RAM.</p>
-<figure class="post__image"><img loading="lazy"  src="https://techwhale.in/media/posts/18/aws-swap-fstab.png" sizes="(max-width: 48em) 100vw, 768px" srcset="https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-xs.png 300w ,https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-sm.png 480w ,https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-md.png 768w ,https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-lg.png 1024w ,https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-xl.png 1360w ,https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-2xl.png 1600w"  alt="aws-swap-fstab" width="956" height="66"></figure>
+<figure class="post__image"><img loading="lazy"  src="https://techwhale.in/media/posts/18/aws-swap-fstab.png" sizes="(max-width: 48em) 100vw, 768px" srcset="https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-xs.png 300w ,https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-sm.png 480w ,https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-md.png 768w ,https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-lg.png 1024w ,https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-xl.png 1360w ,https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-2xl.png 1600w"  alt="aws-swap-fstab" width="905" height="63"></figure>
 <p>If you feel like a geek and really want to see summary of swap partition,</p>
 <pre>$ swapon --summary</pre>
             ]]>
