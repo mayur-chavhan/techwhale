@@ -104,6 +104,14 @@
 </image:image>
 </url>
 <url>
+<loc>https://techwhale.in/how-to-secure-your-site-from-sql-injection-exploits-and-spamming-agents-using-nginx/</loc>
+<lastmod>2021-07-20T02:04:38+05:30</lastmod>
+<image:image>
+<image:loc>https://techwhale.in/media/posts/19/secure-nginx-server-2.png</image:loc>
+<image:title><![CDATA[nginx securing configuration for attacker using SQL injection, File Injection, SPAM and User Agents]]></image:title>
+</image:image>
+</url>
+<url>
 <loc>https://techwhale.in/how-to-setup-user-ssh-keys-on-ubuntu-1804/</loc>
 <lastmod>2020-06-30T17:22:43+05:30</lastmod>
 <image:image>

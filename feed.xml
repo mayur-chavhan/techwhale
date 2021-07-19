@@ -3,12 +3,141 @@
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2021-07-19T19:46:07+05:30</updated>
+    <updated>2021-07-20T02:04:38+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
     <id>https://techwhale.in</id>
 
+    <entry>
+        <title>How to secure your site from SQL Injection, Exploits and Spamming Agents using Nginx.</title>
+        <author>
+            <name>Mayur Chavhan</name>
+        </author>
+        <link href="https://techwhale.in/how-to-secure-your-site-from-sql-injection-exploits-and-spamming-agents-using-nginx/"/>
+        <id>https://techwhale.in/how-to-secure-your-site-from-sql-injection-exploits-and-spamming-agents-using-nginx/</id>
+            <category term="Tutorials"/>
+            <category term="TechWhale Guides"/>
+
+        <updated>2021-07-20T02:04:38+05:30</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://techwhale.in/media/posts/19/secure-nginx-server-2.png" alt="nginx securing configuration for attacker using SQL injection, File Injection, SPAM and User Agents" />
+                    Nginx is one of most popular web server that has so many features that even it may surprise you. One of best feature of Nginx that it has huge library of security policies that it makes your web-server absolute hacker-proof and you won't even need&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <img src="https://techwhale.in/media/posts/19/secure-nginx-server-2.png" alt="nginx securing configuration for attacker using SQL injection, File Injection, SPAM and User Agents" />
+                <p>Nginx is one of most popular web server that has so many features that even it may surprise you. One of best feature of Nginx that it has huge library of security policies that it makes your web-server absolute hacker-proof and you won't even need another tool to protect your sites.</p>
+<p>All your Nginx sites config can be import from another location so for clean code we are going to keep the security policies on a separate configuration file.</p>
+<p>Lets call our file a <span style="color: #3598db;"><strong>security.conf</strong></span> under <strong>"<span style="color: #f1c40f;">/etc/nginx/</span>"</strong></p>
+<p>There are variant of attacks can be done by attackers and famous attack types are listed down below,</p>
+<ul>
+<li>SQL Injection</li>
+<li>File Injection</li>
+<li>Spam</li>
+<li>User Agents</li>
+<li>Bandwidth Hogs and Hacking Tools</li>
+</ul>
+<p>Here's the <span style="color: #3598db;"><strong>security.conf</strong></span> file content as follows,</p>
+<pre><code>$ cd /etc/nginx</code></pre>
+<pre><code>$ nano security.conf</code></pre>
+<p>Paste below code into the file and save the file using CTRL + X and ENTER.</p>
+<pre data-trimmed="true"><code>##
+# Protection against SQL injection
+##
+location ~* "(eval()"  { deny all; }
+location ~* "(127.0.0.1)"  { deny all; }
+location ~*</code> "([a-z0-9]{2000})" <code>{ deny all; }
+location ~* "(javascript:)(.*)(;)"  { deny all; }
+location ~* "(base64_encode)(.*)(()"  { deny all; }
+location ~* "(GLOBALS|REQUEST)(=|[|%)"  { deny all; }
+location ~* "(&lt;|%3C).*script.*(&gt;|%3)" { deny all; }
+location ~ "(|...|../|~|`|&lt;|&gt;||)" { deny all; }
+location ~* "(boot.ini|etc/passwd|self/environ)" { deny all; }
+location ~* "(thumbs?(_editor|open)?|tim(thumb)?).php" { deny all; }
+location ~* "('|")(.*)(drop|insert|md5|select|union)" { deny all; }
+location ~* "(https?|ftp|php):/" { deny all; }
+location ~* "(='|=%27|/'/?)." { deny all; }
+location ~ "({0}|(/(|...|+++|"")" { deny all; }
+location ~ "(~|`|&lt;|&gt;|:|;|%||s|{|}|[|]||)" { deny all; }
+location ~* "/(=|$&amp;|_mm|(wp-)?config.|cgi-|etc/passwd|muieblack)" { deny all; }
+location ~* "(&amp;pws=0|_vti_|(null)|{$itemURL}|echo(.*)kae|etc/passwd|eval(|self/environ)" { deny all; }
+location ~* ".(aspx?|bash|bak?|cfg|cgi|dll|exe|git|hg|ini|jsp|log|mdb|out|sql|svn|swp|tar|rdf)$" { deny all; }
+location ~* "/(^$|mobiquo|phpinfo|shell|sqlpatch|thumb|thumb_editor|thumbopen|timthumb|webshell).php" { deny all; }
+##
+# Block SQL injections Attacks
+##
+set $block_sql_injections 0; if ($query_string ~ "union.*select.*(") { set $block_sql_injections 1; }
+if ($query_string ~ "union.*all.*select.*") { set $block_sql_injections 1; }
+if ($query_string ~ "concat.*(") { set $block_sql_injections 1; }
+if ($block_sql_injections = 1) { return 404; }
+##
+# Block File injections Attacks
+##
+set $block_file_injections 0;
+if ($query_string ~ "[a-zA-Z0-9_]=http://") { set $block_file_injections 1; }
+if ($query_string ~ "[a-zA-Z0-9_]=(..//?)+") { set $block_file_injections 1; }
+if ($query_string ~ "[a-zA-Z0-9_]=/([a-z0-9_.]//?)+") { set $block_file_injections 1; }
+if ($block_file_injections = 1) { return 404; }
+##
+# Block common bad exploits 
+##
+set $block_common_exploits 0;
+if ($query_string ~ "(&lt;|%3C).*script.*(&gt;|%3E)") { set $block_common_exploits 1; }
+if ($query_string ~ "GLOBALS(=|[|%[0-9A-Z]{0,2})") { set $block_common_exploits 1; }
+if ($query_string ~ "_REQUEST(=|[|%[0-9A-Z]{0,2})") { set $block_common_exploits 1; }
+if ($query_string ~ "proc/self/environ") { set $block_common_exploits 1; }
+if ($query_string ~ "mosConfig_[a-zA-Z_]{1,21}(=|%3D)") { set $block_common_exploits 1; }
+if ($query_string ~ "base64_(en|de)code(.*)") { set $block_common_exploits 1; }
+if ($block_common_exploits = 1) { return 404; }
+##
+# Block SPAM Keywords
+##
+set $block_spam 0;
+if ($query_string ~ "b(ultram|unicauca|valium|viagra|vicodin|xanax|ypxaieo)b") { set $block_spam 1; }
+if ($query_string ~ "b(erections|hoodia|huronriveracres|impotence|levitra|libido)b") { set $block_spam 1; }
+if ($query_string ~ "b(ambien|bluespill|cialis|cocaine|ejaculation|erectile)b") { set $block_spam 1; }
+if ($query_string ~ "b(lipitor|phentermin|pro[sz]ac|sandyauer|tramadol|troyhamby)b") { set $block_spam 1; }
+if ($block_spam = 1) { return 404; }
+##
+# Block bad user agents
+##
+set $block_user_agents 0;
+# Don't disable wget if you need it to run cron jobs!
+#if ($http_user_agent ~ "Wget") { set $block_user_agents 1; }
+# Disable Akeeba Remote Control 2.5 and earlier
+if ($http_user_agent ~ "Indy Library") { set $block_user_agents 1; }
+##
+# Common bandwidth hoggers and hacking tools.
+##
+if ($http_user_agent ~ "libwww-perl") { set $block_user_agents 1; }
+if ($http_user_agent ~ "GetRight") { set $block_user_agents 1; }
+if ($http_user_agent ~ "GetWeb!") { set $block_user_agents 1; }
+if ($http_user_agent ~ "Go!Zilla") { set $block_user_agents 1; }
+if ($http_user_agent ~ "Download Demon") { set $block_user_agents 1; }
+if ($http_user_agent ~ "Go-Ahead-Got-It") { set $block_user_agents 1; }
+if ($http_user_agent ~ "TurnitinBot") { set $block_user_agents 1; }
+if ($http_user_agent ~ "GrabNet") { set $block_user_agents 1; }
+if ($block_user_agents = 1) { return 404; }
+##
+<br></code></pre>
+<p>Now, Go to the site-available folder and add the below line to running site configuration file to secure the site,</p>
+<p>For example, If you wish to protect the <a href="http://www.example.com.conf">www.example.com.conf</a> then edit the file and add before closing " } " </p>
+<pre><code> include security.conf;</code></pre>
+<p>Since, security.conf file exists at /etc/nginx folder root path so you don't have to put whole file path.</p>
+<p>After these changes you will need to reload nginx configuration if everything is in order but before that verify Nginx configuration is working properly following this command,</p>
+<pre><code>$ sudo nginx -t</code></pre>
+<p>if output of above command shows this then it's mean all went OK...</p>
+<pre data-trimmed="true"><code>nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful</code></pre>
+<p>Next step is to reload Nginx service to see the effect of configuration we made in the website.</p>
+<pre><code>$ service nginx reload</code></pre>
+<p>Voila!! You're SET!!</p>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>How to create Swap Partition on Ubuntu 20.04 and Debian 10</title>
         <author>
