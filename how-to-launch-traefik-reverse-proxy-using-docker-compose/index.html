@@ -4,18 +4,18 @@
     <meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>How to create Swap Partition on Ubuntu 20.04 and Debian 10 - TechWhale </title>
+    <title>How to launch Traefik reverse proxy using docker-compose? - TechWhale </title>
 	
     
-	<link rel="canonical" href="https://techwhale.in/how-to-create-swap-partition-on-aws-ec2-instance-for-ubuntu-2004/">
-	<link rel="amphtml" href="https://techwhale.in/amp/how-to-create-swap-partition-on-aws-ec2-instance-for-ubuntu-2004/">
+	<link rel="canonical" href="https://techwhale.in/how-to-launch-traefik-reverse-proxy-using-docker-compose/">
+	<link rel="amphtml" href="https://techwhale.in/amp/how-to-launch-traefik-reverse-proxy-using-docker-compose/">
 	<link rel="alternate" type="application/atom+xml" href="https://techwhale.in/feed.xml" />
 <link rel="alternate" type="application/json" href="https://techwhale.in/feed.json" />
 
     
 	    <link rel="shortcut icon" href="https://techwhale.in/media/website/imageedit_26_9569312189.png" type="image/x-icon" />
     <link rel="stylesheet" href="https://techwhale.in/assets/css/style.css?v=6e37bdefa93b9b319c60b4c7e2c515fc">	
-	<script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://techwhale.in/how-to-create-swap-partition-on-aws-ec2-instance-for-ubuntu-2004/"},"headline":"How to create Swap Partition on Ubuntu 20.04 and Debian 10","datePublished":"2021-07-19T17:07","dateModified":"2021-07-19T19:46","image":{"@type":"ImageObject","url":"https://techwhale.in/media/posts/18/how-to-create-swap-parition-ubuntu-204-3.png","height":1023,"width":2048},"description":"Easy steps to create swap partition on Ubuntu 20.04 for servers and Desktop users","author":{"@type":"Person","name":"Mayur Chavhan","url":"https://techwhale.in/authors/mayur-chavhan/"},"publisher":{"@type":"Organization","name":"Mayur Chavhan","logo":{"@type":"ImageObject","url":"https://techwhale.in/media/website/imageedit_19_3669952192.png","height":183,"width":778}}}</script>
+	<script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://techwhale.in/how-to-launch-traefik-reverse-proxy-using-docker-compose/"},"headline":"How to launch Traefik reverse proxy using docker-compose?","datePublished":"2022-06-29T22:17","dateModified":"2022-12-26T01:45","image":{"@type":"ImageObject","url":"https://techwhale.in/media/website/imageedit_19_3669952192.png","height":183,"width":778},"description":"Install free and open source application on Linux, Docker, Virtualization, Ansible Automation","author":{"@type":"Person","name":"Mayur Chavhan","url":"https://techwhale.in/authors/mayur-chavhan/"},"publisher":{"@type":"Organization","name":"Mayur Chavhan","logo":{"@type":"ImageObject","url":"https://techwhale.in/media/website/imageedit_19_3669952192.png","height":183,"width":778}}}</script>
         
 	<link rel="stylesheet" href="{{css "prism.css" }}">
  
@@ -116,24 +116,10 @@
 <main class="main">
       <article class="post">
 
-               <figure class="post__featured-image">                      
-                  <img
-                     src="https://techwhale.in/media/posts/18/how-to-create-swap-parition-ubuntu-204-3.png"
-                           srcset="https://techwhale.in/media/posts/18/responsive/how-to-create-swap-parition-ubuntu-204-3-xs.png 300w ,https://techwhale.in/media/posts/18/responsive/how-to-create-swap-parition-ubuntu-204-3-sm.png 480w ,https://techwhale.in/media/posts/18/responsive/how-to-create-swap-parition-ubuntu-204-3-md.png 768w ,https://techwhale.in/media/posts/18/responsive/how-to-create-swap-parition-ubuntu-204-3-lg.png 1024w ,https://techwhale.in/media/posts/18/responsive/how-to-create-swap-parition-ubuntu-204-3-xl.png 1360w ,https://techwhale.in/media/posts/18/responsive/how-to-create-swap-parition-ubuntu-204-3-2xl.png 1600w" sizes="(max-width: 1600px) 100vw, 1600px"
-                      loading="eager"
-                     height="1023"
-                     width="2048"
-                     alt="create swap partition on ubuntu 204">
-                     
-                     <figcaption>
-                        How to create swap partition on Ubuntu 20.04
-                        Mayur Chavhan
-                     </figcaption>                      
-               </figure>
 
          <header class="u-header post__header">
             <h1>
-               How to create Swap Partition on Ubuntu 20.04 and Debian 10
+               How to launch Traefik reverse proxy using docker-compose?
             </h1>
                <div class="u-header__meta u-small">
 
@@ -141,64 +127,65 @@
                   <div>
                            <a href="https://techwhale.in/authors/mayur-chavhan/" title="Mayur Chavhan">Mayur Chavhan</a>
 
-                        <time datetime="2021-07-19T17:07">
-                              July 19, 2021
+                        <time datetime="2022-06-29T22:17">
+                              June 29, 2022
                         </time>
 
-                           <a
-                              href="https://techwhale.in/category/tutorials/"
-                              class="u-tag u-tag--1">Tutorials</a>                            
                   </div>
 
                </div>
          </header>
 
          <div class="post__entry u-inner">
-            <div class="post__toc">
-<h3>Table of Contents</h3>
-<ul>
-<li><a href="#mcetoc_1fav8m12l1g">Create a File</a></li>
-<li><a href="#mcetoc_1fav8m12l1h">Convert file into SWAP compatible file.</a></li>
-<li><a href="#mcetoc_1fav8m12l1i">Mount SWAP File</a></li>
-<li><a href="#mcetoc_1fav8m12l1j">Add SWAP at system boot entry.</a></li>
-</ul>
+            <p>There is a growing demand for centralised, multi-domain, and secure application hosting in light of the proliferation of reverse proxy services. This is partly due to the accessibility of numerous open source projects that encourage experimentation.<br><br>Therefore, Traefik is introduced as a reverse proxy, and although there is much discussion about how easy it is to use, most users will find the documentation to be difficult to understand. Even though I am one of them, I have found a method to overcome my situation, and I hope to teach others to do the same.<br><br>I'm using Traefik as a reverse proxy to publish and secure services that are running in Docker containers because that's where most of the popular open source projects are housed. In this blog post, I'll show you how to use docker-compose to deploy Traefik 2 across many hosts on a local machine.<br><br>If you're using Docker and want to utilize Traefik as a reverse proxy, you may use docker-compose to set up the Traefik container and any additional containers you'd like to run behind the proxy.</p>
+<p>Here is an example <code>docker-compose.yml</code> file that sets up Traefik as a reverse proxy:</p>
+<div class="bg-black mb-4 rounded-md">
+<div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans" style="text-align: center;"> </div>
+<pre class="p-4 overflow-y-auto"><code class="!whitespace-pre-wrap hljs language-yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">'3'</span>
+
+<span class="hljs-attr">services:</span>
+  <span class="hljs-attr">traefik:</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">traefik:latest</span>
+    <span class="hljs-attr">command:</span> <span class="hljs-string">--api</span> <span class="hljs-string">--docker</span>
+    <span class="hljs-attr">ports:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">"80:80"</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">"8080:8080"</span>
+    <span class="hljs-attr">volumes:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">/var/run/docker.sock:/var/run/docker.sock</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">./traefik.toml:/etc/traefik/traefik.toml</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">./acme.json:/acme.json</span>
+    <span class="hljs-attr">networks:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">web</span>
+
+<span class="hljs-attr">networks:</span>
+  <span class="hljs-attr">web:</span>
+    <span class="hljs-attr">driver:</span> <span class="hljs-string">bridge</span>
+</code></pre>
+<div> </div>
+<div>This <code>docker-compose.yml</code> file does the following:</div>
 </div>
-<p>On AWS, If you are using smaller instance type like t2.small and t3.small or any Digital Ocean instance you are using which requires more RAM resources then you know it won't be enough for your application and it's application performance will take hit.</p>
-<figure class="post__image post__image--center"><img decoding="async" loading="lazy"  src="https://arkit.co.in/wp-content/uploads/2016/07/swap-space-arkit.jpg" alt="swap file system An Incredibly Easy Method That Works faster" width="450" height="188" data-is-external-image="true"></figure>
-<p>Since, We have SSD / NVMe Storage solutions which are very fast can be use as an alternative to operate as a RAM so we can create a SWAP partition which is basically tells Operating System to store CPU operation data on the disk partition when RAM space is not sufficient but SWAP partition is not fast as traditional RAM but it gets the job done with very little work.</p>
-<p>This article specifically made to help you to enable SWAP Partition to mount on the system for your instance or VPS.  Any Ubuntu or Debian based Linux operating system has same commands to set SWAP partition so you this guide will be useful for any debian based OS also for Ubuntu Desktop Users as well.</p>
-<h2 id="mcetoc_1fav8m12l1g">Create a File</h2>
-<p>Consider, You got an instance or VPS of 2 vCore and 2 GB RAM.</p>
-<p>Use below command to create a 1 GB of Swap,</p>
-<pre><code>$ sudo dd if=/dev/zero of=/var/swapfile bs=1M count=1024</code></pre>
-<p>Above command will create a file "swapfile" in "/var" folder, but also learn what's the command actually doing,</p>
-<p>bs=1M count=1024 will create 1GB "swapfile", so you can change count if you want to use count as 2048, 4096 for 2GB and 4GB respectively.</p>
-<p>Alternative, Similar command you can use to create swapfile , </p>
-<pre>$ sudo fallocate -l 1G /var/swapfile</pre>
-<h2 id="mcetoc_1fav8m12l1h">Convert file into SWAP compatible file.</h2>
-<p>Now, Let's convert this file into an actual swap,</p>
-<pre>$ sudo mkswap /var/swapfile</pre>
-<p>We almost done,</p>
-<h2 id="mcetoc_1fav8m12l1i">Mount SWAP File</h2>
-<pre>$ sudo swapon /var/swapfile</pre>
-<p>Now we are done, We have mounted an swapfile into swap partition so CPU will use it if RAM storage is nearly full.</p>
-<p>You can check if swap partition properly mounted or not by using below command,</p>
-<pre>$ sudo swapon --show</pre>
-<h2><figure class="post__image post__image--center"><img decoding="async" loading="lazy"  src="https://techwhale.in/media/posts/18/aws-swap-file-2.png" alt="aws-swapfile-ubuntu" width="920" height="107" sizes="(max-width: 48em) 100vw, 768px" srcset="https://techwhale.in/media/posts/18/responsive/aws-swap-file-2-xs.png 300w ,https://techwhale.in/media/posts/18/responsive/aws-swap-file-2-sm.png 480w ,https://techwhale.in/media/posts/18/responsive/aws-swap-file-2-md.png 768w ,https://techwhale.in/media/posts/18/responsive/aws-swap-file-2-lg.png 1024w ,https://techwhale.in/media/posts/18/responsive/aws-swap-file-2-xl.png 1360w ,https://techwhale.in/media/posts/18/responsive/aws-swap-file-2-2xl.png 1600w"></figure></h2>
-<h2 id="mcetoc_1fav8m12l1j">Add SWAP at system boot entry.</h2>
-<p>At times, When VPS or instance will get rebooted or at system boot, Swap partition will get unmounted if it's entry not added in system boot entry.</p>
-<p>Just add an entry to "/etc/fstab" file, Which System check if any partition needs to be mounted at boot.</p>
-<pre>$ echo "/var/swapfile swap swap defaults 0 0" | sudo tee -a /etc/fstab</pre>
-<p>That's it. You've just upgraded your server with a virtual RAM.</p>
-<figure class="post__image"><img decoding="async" loading="lazy"  src="https://techwhale.in/media/posts/18/aws-swap-fstab.png" alt="aws-swap-fstab" width="905" height="63" sizes="(max-width: 48em) 100vw, 768px" srcset="https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-xs.png 300w ,https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-sm.png 480w ,https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-md.png 768w ,https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-lg.png 1024w ,https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-xl.png 1360w ,https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-2xl.png 1600w"></figure>
-<p>If you feel like a geek and really want to see summary of swap partition,</p>
-<pre>$ swapon --summary</pre>
+<ul>
+<li>Defines a single service, named <code>traefik</code>, that runs the latest version of the Traefik Docker image.</li>
+<li>Exposes the Traefik dashboard on port 8080 and the default HTTP port (80) to the host machine.</li>
+<li>Mounts the Docker socket file as a volume, so that Traefik can listen for container events and update its configuration accordingly.</li>
+<li>Mounts a configuration file (<code>traefik.toml</code>) and an ACME JSON file (<code>acme.json</code>), which are used to configure Traefik's behavior and store SSL certificates, respectively.</li>
+<li>Creates a custom network named <code>web</code> and assigns the <code>traefik</code> service to it.</li>
+</ul>
+<p>To start Traefik and any other containers behind the proxy, run the following command:</p>
+<div class="bg-black mb-4 rounded-md">
+<div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans"> </div>
+<pre class="p-4 overflow-y-auto"><code class="!whitespace-pre-wrap hljs language-bash">$ docker-compose up -d
+</code></pre>
+</div>
+<p>This will start the <code>traefik</code> service in the background (detached mode) and create any other necessary containers, as specified in the <code>docker-compose.yml</code> file.</p>
+<p>Note: The specific configuration options used in the <code>traefik.toml</code> file will depend on your specific needs and setup. You can find more information about how to configure Traefik in the <a href="https://docs.traefik.io/" target="_new">Traefik documentation</a>.</p>
+<p> </p>
          </div>
          
             <aside class="post__aside">
                   <div class="post__share">
                         <a
-                           href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftechwhale.in%2Fhow-to-create-swap-partition-on-aws-ec2-instance-for-ubuntu-2004%2F"
+                           href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftechwhale.in%2Fhow-to-launch-traefik-reverse-proxy-using-docker-compose%2F"
                            class="js-share facebook"
                            title="Share with Facebook"
                            rel="nofollow noopener noreferrer"
@@ -209,7 +196,7 @@
                         </a>
                      
                         <a
-                           href="https://twitter.com/share?url=https%3A%2F%2Ftechwhale.in%2Fhow-to-create-swap-partition-on-aws-ec2-instance-for-ubuntu-2004%2F&amp;via=%40techwhale.in&amp;text=How%20to%20create%20Swap%20Partition%20on%20Ubuntu%2020.04%20and%20Debian%2010"
+                           href="https://twitter.com/share?url=https%3A%2F%2Ftechwhale.in%2Fhow-to-launch-traefik-reverse-proxy-using-docker-compose%2F&amp;via=%40techwhale.in&amp;text=How%20to%20launch%20Traefik%20reverse%20proxy%20using%20docker-compose%3F"
                            class="js-share twitter"
                            title="Share with Twitter"
                            rel="nofollow noopener noreferrer"
@@ -222,7 +209,7 @@
                      
                      
                         <a
-                           href="https://wa.me/?text=How%20to%20create%20Swap%20Partition%20on%20Ubuntu%2020.04%20and%20Debian%2010 https%3A%2F%2Ftechwhale.in%2Fhow-to-create-swap-partition-on-aws-ec2-instance-for-ubuntu-2004%2F"
+                           href="https://wa.me/?text=How%20to%20launch%20Traefik%20reverse%20proxy%20using%20docker-compose%3F https%3A%2F%2Ftechwhale.in%2Fhow-to-launch-traefik-reverse-proxy-using-docker-compose%2F"
                            class="js-share whatsapp"
                            rel="nofollow noopener noreferrer"
                            title="Share with WhatsApp"
@@ -233,7 +220,7 @@
                         </a>
                      
                         <a
-                           href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftechwhale.in%2Fhow-to-create-swap-partition-on-aws-ec2-instance-for-ubuntu-2004%2F"
+                           href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftechwhale.in%2Fhow-to-launch-traefik-reverse-proxy-using-docker-compose%2F"
                            class="js-share linkedin"
                            title="Share with LinkedIn"
                            rel="nofollow noopener noreferrer"
@@ -247,53 +234,23 @@
             </aside>
             <footer class="post__footer">
         
-                     <ul class="post__tag box">
-                           <li>
-                              <a
-                                 href="https://techwhale.in/category/tutorials/"
-                                 class="u-tag u-tag--1"
-                                 title="Tutorials">Tutorials</a>
-                           </li>
-                           <li>
-                              <a
-                                 href="https://techwhale.in/category/ubuntu/"
-                                 class="u-tag u-tag--1"
-                                 title="Ubuntu">Ubuntu</a>
-                           </li>
-                     </ul>
 
 
                      <nav class="post__nav box">
                            <div class="post__nav__prev">
-                              <a href="https://techwhale.in/automate-smart-plug-to-charge-laptop-using-webhook-and-shell-script/" class="post__nav__link" rel="prev">
-                                       <img 
-                                          src="https://techwhale.in/media/posts/15/responsive/Untitled-Design-xs.jpg" 
-                                           loading="lazy"  
-                                          alt="auto turn on and off laptop charger whenever battery gets low and full."
-                                          height="628" 
-                                          width="1200">                                   
-                                 <div class="u-small">
-                                    Previous Post
-                                    <h5>
-                                       Automate Smart Plug to charge laptop using Webhook and Shell Script.
-                                    </h5>
-                                 </div>
-                              </a>
-                           </div>
-                           <div class="post__nav__next">
-                              <a href="https://techwhale.in/how-to-secure-your-site-from-sql-injection-exploits-and-spamming-agents-using-nginx/" class="post__nav__link" rel="next">
-                                 <div class="u-small">
-                                    Next Post
-                                    <h5>
-                                       How to secure your site from SQL Injection, Exploits and Spamming Agents using Nginx.
-                                    </h5>
-                                 </div>
+                              <a href="https://techwhale.in/how-to-secure-your-site-from-sql-injection-exploits-and-spamming-agents-using-nginx/" class="post__nav__link" rel="prev">
                                        <img 
                                           src="https://techwhale.in/media/posts/19/responsive/secure-nginx-server-2-xs.png" 
                                            loading="lazy"  
                                           alt="nginx securing configuration for attacker using SQL injection, File Injection, SPAM and User Agents"
                                           height="1021" 
                                           width="2048">                                   
+                                 <div class="u-small">
+                                    Previous Post
+                                    <h5>
+                                       How to secure your site from SQL Injection, Exploits and Spamming Agents using Nginx.
+                                    </h5>
+                                 </div>
                               </a>
                            </div>
                      </nav>
@@ -304,74 +261,56 @@
                         </h3>
                         <div class="post__related-wrap">
                               <figure class="post__related-item">
-                                       <a href="https://techwhale.in/how-to-install-portainer-on-linux-os-ubuntu-debian-centos-raspbian/" class="c-card__image">
+                                       <a href="https://techwhale.in/how-to-secure-your-site-from-sql-injection-exploits-and-spamming-agents-using-nginx/" class="c-card__image">
                                           <img 
-                                             src="https://techwhale.in/media/posts/10/responsive/Annotation-2020-06-25-082542-min-compressed-xs.jpg" 
+                                             src="https://techwhale.in/media/posts/19/responsive/secure-nginx-server-2-xs.png" 
                                               loading="lazy" 
-                                             height="623"
-                                             width="1269"
-                                             alt="Install Portainer">
+                                             height="1021"
+                                             width="2048"
+                                             alt="nginx securing configuration for attacker using SQL injection, File Injection, SPAM and User Agents">
                                        </a>                                     
                                  <figcaption>
                                     <h4 class="post__related-title">
-                                       <a href="https://techwhale.in/how-to-install-portainer-on-linux-os-ubuntu-debian-centos-raspbian/" class="inverse">How to install Portainer on Linux OS (Ubuntu, Debian, CentOS, Raspbian)</a>
+                                       <a href="https://techwhale.in/how-to-secure-your-site-from-sql-injection-exploits-and-spamming-agents-using-nginx/" class="inverse">How to secure your site from SQL Injection, Exploits and Spamming Agents using Nginx.</a>
                                     </h4>
-                                    <time datetime="2020-06-15T13:03" class="u-small">
-                                          June 15, 2020
+                                    <time datetime="2021-07-20T01:07" class="u-small">
+                                          July 20, 2021
                                     </time>
                                  </figcaption>
                               </figure>
                               <figure class="post__related-item">
-                                       <a href="https://techwhale.in/how-to-setup-user-ssh-keys-on-ubuntu-1804/" class="c-card__image">
+                                       <a href="https://techwhale.in/automate-smart-plug-to-charge-laptop-using-webhook-and-shell-script/" class="c-card__image">
                                           <img 
-                                             src="https://techwhale.in/media/posts/6/responsive/image-0-compressed-xs.jpg" 
+                                             src="https://techwhale.in/media/posts/15/responsive/Untitled-Design-xs.jpg" 
                                               loading="lazy" 
-                                             height="1109"
-                                             width="1496"
-                                             alt="setup ssh keys on linux">
+                                             height="628"
+                                             width="1200"
+                                             alt="auto turn on and off laptop charger whenever battery gets low and full.">
                                        </a>                                     
                                  <figcaption>
                                     <h4 class="post__related-title">
-                                       <a href="https://techwhale.in/how-to-setup-user-ssh-keys-on-ubuntu-1804/" class="inverse">How to setup user SSH Keys on Ubuntu 18.04</a>
+                                       <a href="https://techwhale.in/automate-smart-plug-to-charge-laptop-using-webhook-and-shell-script/" class="inverse">Automate Smart Plug to charge laptop using Webhook and Shell Script.</a>
                                     </h4>
-                                    <time datetime="2020-05-23T16:53" class="u-small">
-                                          May 23, 2020
+                                    <time datetime="2021-06-07T01:17" class="u-small">
+                                          June 7, 2021
                                     </time>
                                  </figcaption>
                               </figure>
                               <figure class="post__related-item">
-                                       <a href="https://techwhale.in/how-to-install-docker-and-docker-compose-on-ubuntu-1804/" class="c-card__image">
+                                       <a href="https://techwhale.in/how-to-install-nginx-proxy-manager-on-raspberry-pi-4-arm64/" class="c-card__image">
                                           <img 
-                                             src="https://techwhale.in/media/posts/5/responsive/Webp.net-compress-image-2-xs.jpg" 
+                                             src="https://techwhale.in/media/posts/8/responsive/imageedit_31_2317095391-xs.jpg" 
                                               loading="lazy" 
-                                             height="769"
-                                             width="1476"
-                                             alt="How to install docker on Ubuntu 18.04">
+                                             height="585"
+                                             width="780"
+                                             alt="install-nginx-proxy-manager-raspberry-pi-4-b">
                                        </a>                                     
                                  <figcaption>
                                     <h4 class="post__related-title">
-                                       <a href="https://techwhale.in/how-to-install-docker-and-docker-compose-on-ubuntu-1804/" class="inverse">How to install docker and docker-compose on Ubuntu 18.04</a>
+                                       <a href="https://techwhale.in/how-to-install-nginx-proxy-manager-on-raspberry-pi-4-arm64/" class="inverse">How to install &quot;Nginx Proxy Manager&quot; on Raspberry Pi 4 [arm64]</a>
                                     </h4>
-                                    <time datetime="2020-05-20T21:38" class="u-small">
-                                          May 20, 2020
-                                    </time>
-                                 </figcaption>
-                              </figure>
-                              <figure class="post__related-item">
-                                       <a href="https://techwhale.in/install-jitsi-meet-on-ubuntu-1804/" class="c-card__image">
-                                          <img 
-                                             src="https://techwhale.in/media/posts/4/responsive/image-8-compressed-xs.jpg" 
-                                              loading="lazy" 
-                                             height="722"
-                                             width="1376"
-                                             alt="">
-                                       </a>                                     
-                                 <figcaption>
-                                    <h4 class="post__related-title">
-                                       <a href="https://techwhale.in/install-jitsi-meet-on-ubuntu-1804/" class="inverse">Install Jitsi Meet on Ubuntu 18.04</a>
-                                    </h4>
-                                    <time datetime="2020-05-18T01:58" class="u-small">
-                                          May 18, 2020
+                                    <time datetime="2020-06-13T01:03" class="u-small">
+                                          June 13, 2020
                                     </time>
                                  </figcaption>
                               </figure>

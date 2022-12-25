@@ -107,8 +107,12 @@
 </image:image>
 </url>
 <url>
+<loc>https://techwhale.in/how-to-launch-traefik-reverse-proxy-using-docker-compose/</loc>
+<lastmod>2022-12-26T01:45:58+05:30</lastmod>
+</url>
+<url>
 <loc>https://techwhale.in/how-to-secure-your-site-from-sql-injection-exploits-and-spamming-agents-using-nginx/</loc>
-<lastmod>2021-07-20T02:08:28+05:30</lastmod>
+<lastmod>2022-07-25T00:13:00+05:30</lastmod>
 <image:image>
 <image:loc>https://techwhale.in/media/posts/19/secure-nginx-server-2.png</image:loc>
 <image:title><![CDATA[nginx securing configuration for attacker using SQL injection, File Injection, SPAM and User Agents]]></image:title>

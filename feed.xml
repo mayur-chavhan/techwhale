@@ -1,14 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2021-07-20T02:08:28+05:30</updated>
+    <updated>2022-12-26T01:45:58+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
     <id>https://techwhale.in</id>
 
+    <entry>
+        <title>How to launch Traefik reverse proxy using docker-compose?</title>
+        <author>
+            <name>Mayur Chavhan</name>
+        </author>
+        <link href="https://techwhale.in/how-to-launch-traefik-reverse-proxy-using-docker-compose/"/>
+        <id>https://techwhale.in/how-to-launch-traefik-reverse-proxy-using-docker-compose/</id>
+
+        <updated>2022-12-26T01:45:58+05:30</updated>
+            <summary>
+                <![CDATA[
+                    There is a growing demand for centralised, multi-domain, and secure application hosting in light of the proliferation of reverse proxy services. This is partly due to the accessibility of numerous open source projects that encourage experimentation. Therefore, Traefik is introduced as a reverse proxy, and&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>There is a growing demand for centralised, multi-domain, and secure application hosting in light of the proliferation of reverse proxy services. This is partly due to the accessibility of numerous open source projects that encourage experimentation.<br><br>Therefore, Traefik is introduced as a reverse proxy, and although there is much discussion about how easy it is to use, most users will find the documentation to be difficult to understand. Even though I am one of them, I have found a method to overcome my situation, and I hope to teach others to do the same.<br><br>I'm using Traefik as a reverse proxy to publish and secure services that are running in Docker containers because that's where most of the popular open source projects are housed. In this blog post, I'll show you how to use docker-compose to deploy Traefik 2 across many hosts on a local machine.<br><br>If you're using Docker and want to utilize Traefik as a reverse proxy, you may use docker-compose to set up the Traefik container and any additional containers you'd like to run behind the proxy.</p>
+<p>Here is an example <code>docker-compose.yml</code> file that sets up Traefik as a reverse proxy:</p>
+<div class="bg-black mb-4 rounded-md">
+<div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans" style="text-align: center;"> </div>
+<pre class="p-4 overflow-y-auto"><code class="!whitespace-pre-wrap hljs language-yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">'3'</span>
+
+<span class="hljs-attr">services:</span>
+  <span class="hljs-attr">traefik:</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">traefik:latest</span>
+    <span class="hljs-attr">command:</span> <span class="hljs-string">--api</span> <span class="hljs-string">--docker</span>
+    <span class="hljs-attr">ports:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">"80:80"</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">"8080:8080"</span>
+    <span class="hljs-attr">volumes:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">/var/run/docker.sock:/var/run/docker.sock</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">./traefik.toml:/etc/traefik/traefik.toml</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">./acme.json:/acme.json</span>
+    <span class="hljs-attr">networks:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">web</span>
+
+<span class="hljs-attr">networks:</span>
+  <span class="hljs-attr">web:</span>
+    <span class="hljs-attr">driver:</span> <span class="hljs-string">bridge</span>
+</code></pre>
+<div> </div>
+<div>This <code>docker-compose.yml</code> file does the following:</div>
+</div>
+<ul>
+<li>Defines a single service, named <code>traefik</code>, that runs the latest version of the Traefik Docker image.</li>
+<li>Exposes the Traefik dashboard on port 8080 and the default HTTP port (80) to the host machine.</li>
+<li>Mounts the Docker socket file as a volume, so that Traefik can listen for container events and update its configuration accordingly.</li>
+<li>Mounts a configuration file (<code>traefik.toml</code>) and an ACME JSON file (<code>acme.json</code>), which are used to configure Traefik's behavior and store SSL certificates, respectively.</li>
+<li>Creates a custom network named <code>web</code> and assigns the <code>traefik</code> service to it.</li>
+</ul>
+<p>To start Traefik and any other containers behind the proxy, run the following command:</p>
+<div class="bg-black mb-4 rounded-md">
+<div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans"> </div>
+<pre class="p-4 overflow-y-auto"><code class="!whitespace-pre-wrap hljs language-bash">$ docker-compose up -d
+</code></pre>
+</div>
+<p>This will start the <code>traefik</code> service in the background (detached mode) and create any other necessary containers, as specified in the <code>docker-compose.yml</code> file.</p>
+<p>Note: The specific configuration options used in the <code>traefik.toml</code> file will depend on your specific needs and setup. You can find more information about how to configure Traefik in the <a href="https://docs.traefik.io/" target="_new">Traefik documentation</a>.</p>
+<p> </p>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>How to secure your site from SQL Injection, Exploits and Spamming Agents using Nginx.</title>
         <author>
@@ -16,11 +78,12 @@
         </author>
         <link href="https://techwhale.in/how-to-secure-your-site-from-sql-injection-exploits-and-spamming-agents-using-nginx/"/>
         <id>https://techwhale.in/how-to-secure-your-site-from-sql-injection-exploits-and-spamming-agents-using-nginx/</id>
+        <media:content url="https://techwhale.in/media/posts/19/secure-nginx-server-2.png" medium="image" />
             <category term="Tutorials"/>
             <category term="TechWhale Guides"/>
             <category term="Nginx"/>
 
-        <updated>2021-07-20T02:08:28+05:30</updated>
+        <updated>2022-07-25T00:13:00+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/19/secure-nginx-server-2.png" alt="nginx securing configuration for attacker using SQL injection, File Injection, SPAM and User Agents" />
@@ -29,7 +92,7 @@
             </summary>
         <content type="html">
             <![CDATA[
-                    <img src="https://techwhale.in/media/posts/19/secure-nginx-server-2.png" alt="nginx securing configuration for attacker using SQL injection, File Injection, SPAM and User Agents" />
+                    <p><img src="https://techwhale.in/media/posts/19/secure-nginx-server-2.png" class="type:primaryImage" alt="nginx securing configuration for attacker using SQL injection, File Injection, SPAM and User Agents" /></p>
                 <p>Nginx is one of most popular web server that has so many features that even it may surprise you. One of best feature of Nginx that it has huge library of security policies that it makes your web-server absolute hacker-proof and you won't even need another tool to protect your sites.</p>
 <p>All your Nginx sites config can be import from another location so for clean code we are going to keep the security policies on a separate configuration file.</p>
 <p>Lets call our file a <span style="color: #3598db;"><strong>security.conf</strong></span> under <strong>"<span style="color: #f1c40f;">/etc/nginx/</span>"</strong></p>
@@ -42,8 +105,8 @@
 <li>Bandwidth Hogs and Hacking Tools</li>
 </ul>
 <p>Here's the <span style="color: #3598db;"><strong>security.conf</strong></span> file content as follows,</p>
-<pre><code>$ cd /etc/nginx</code></pre>
-<pre><code>$ nano security.conf</code></pre>
+<pre><code class="language-bash">$ cd /etc/nginx</code></pre>
+<pre><code class="language-bash">$ nano security.conf </code></pre>
 <p>Paste below code into the file and save the file using CTRL + X and ENTER.</p>
 <pre data-trimmed="true"><code>##
 # Protection against SQL injection
@@ -146,6 +209,7 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful</code></pre>
         </author>
         <link href="https://techwhale.in/how-to-create-swap-partition-on-aws-ec2-instance-for-ubuntu-2004/"/>
         <id>https://techwhale.in/how-to-create-swap-partition-on-aws-ec2-instance-for-ubuntu-2004/</id>
+        <media:content url="https://techwhale.in/media/posts/18/how-to-create-swap-parition-ubuntu-204-3.png" medium="image" />
             <category term="Ubuntu"/>
             <category term="Tutorials"/>
 
@@ -153,12 +217,12 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful</code></pre>
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/18/how-to-create-swap-parition-ubuntu-204-3.png" alt="create swap partition on ubuntu 204" />
-                     On AWS, If you are using smaller instance type like t2.small and t3.small or any Digital Ocean instance you are using which requires more RAM resources then you know it won't be enough for your application and it's application performance will take hit. Since,&hellip;
+                    On AWS, If you are using smaller instance type like t2.small and t3.small or any Digital Ocean instance you are using which requires more RAM resources then you know it won't be enough for your application and it's application performance will take hit. Since, We&hellip;
                 ]]>
             </summary>
         <content type="html">
             <![CDATA[
-                    <img src="https://techwhale.in/media/posts/18/how-to-create-swap-parition-ubuntu-204-3.png" alt="create swap partition on ubuntu 204" />
+                    <p><img src="https://techwhale.in/media/posts/18/how-to-create-swap-parition-ubuntu-204-3.png" class="type:primaryImage" alt="create swap partition on ubuntu 204" /></p>
                 <div class="post__toc">
 <h3>Table of Contents</h3>
 <ul>
@@ -169,7 +233,7 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful</code></pre>
 </ul>
 </div>
 <p>On AWS, If you are using smaller instance type like t2.small and t3.small or any Digital Ocean instance you are using which requires more RAM resources then you know it won't be enough for your application and it's application performance will take hit.</p>
-<figure class="post__image post__image--center"><img loading="lazy"  src="https://arkit.co.in/wp-content/uploads/2016/07/swap-space-arkit.jpg" data-is-external-image="true"  alt="swap file system An Incredibly Easy Method That Works faster" width="450" height="188"></figure>
+<figure class="post__image post__image--center"><img decoding="async" loading="lazy"  src="https://arkit.co.in/wp-content/uploads/2016/07/swap-space-arkit.jpg" alt="swap file system An Incredibly Easy Method That Works faster" width="450" height="188" data-is-external-image="true"></figure>
 <p>Since, We have SSD / NVMe Storage solutions which are very fast can be use as an alternative to operate as a RAM so we can create a SWAP partition which is basically tells Operating System to store CPU operation data on the disk partition when RAM space is not sufficient but SWAP partition is not fast as traditional RAM but it gets the job done with very little work.</p>
 <p>This article specifically made to help you to enable SWAP Partition to mount on the system for your instance or VPS.  Any Ubuntu or Debian based Linux operating system has same commands to set SWAP partition so you this guide will be useful for any debian based OS also for Ubuntu Desktop Users as well.</p>
 <h2 id="mcetoc_1fav8m12l1g">Create a File</h2>
@@ -189,13 +253,13 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful</code></pre>
 <p>Now we are done, We have mounted an swapfile into swap partition so CPU will use it if RAM storage is nearly full.</p>
 <p>You can check if swap partition properly mounted or not by using below command,</p>
 <pre>$ sudo swapon --show</pre>
-<h2><figure class="post__image post__image--center"><img loading="lazy"  src="https://techwhale.in/media/posts/18/aws-swap-file-2.png" sizes="(max-width: 48em) 100vw, 768px" srcset="https://techwhale.in/media/posts/18/responsive/aws-swap-file-2-xs.png 300w ,https://techwhale.in/media/posts/18/responsive/aws-swap-file-2-sm.png 480w ,https://techwhale.in/media/posts/18/responsive/aws-swap-file-2-md.png 768w ,https://techwhale.in/media/posts/18/responsive/aws-swap-file-2-lg.png 1024w ,https://techwhale.in/media/posts/18/responsive/aws-swap-file-2-xl.png 1360w ,https://techwhale.in/media/posts/18/responsive/aws-swap-file-2-2xl.png 1600w"  alt="aws-swapfile-ubuntu" width="920" height="107"></figure></h2>
+<h2><figure class="post__image post__image--center"><img decoding="async" loading="lazy"  src="https://techwhale.in/media/posts/18/aws-swap-file-2.png" alt="aws-swapfile-ubuntu" width="920" height="107" sizes="(max-width: 48em) 100vw, 768px" srcset="https://techwhale.in/media/posts/18/responsive/aws-swap-file-2-xs.png 300w ,https://techwhale.in/media/posts/18/responsive/aws-swap-file-2-sm.png 480w ,https://techwhale.in/media/posts/18/responsive/aws-swap-file-2-md.png 768w ,https://techwhale.in/media/posts/18/responsive/aws-swap-file-2-lg.png 1024w ,https://techwhale.in/media/posts/18/responsive/aws-swap-file-2-xl.png 1360w ,https://techwhale.in/media/posts/18/responsive/aws-swap-file-2-2xl.png 1600w"></figure></h2>
 <h2 id="mcetoc_1fav8m12l1j">Add SWAP at system boot entry.</h2>
 <p>At times, When VPS or instance will get rebooted or at system boot, Swap partition will get unmounted if it's entry not added in system boot entry.</p>
 <p>Just add an entry to "/etc/fstab" file, Which System check if any partition needs to be mounted at boot.</p>
 <pre>$ echo "/var/swapfile swap swap defaults 0 0" | sudo tee -a /etc/fstab</pre>
 <p>That's it. You've just upgraded your server with a virtual RAM.</p>
-<figure class="post__image"><img loading="lazy"  src="https://techwhale.in/media/posts/18/aws-swap-fstab.png" sizes="(max-width: 48em) 100vw, 768px" srcset="https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-xs.png 300w ,https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-sm.png 480w ,https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-md.png 768w ,https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-lg.png 1024w ,https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-xl.png 1360w ,https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-2xl.png 1600w"  alt="aws-swap-fstab" width="905" height="63"></figure>
+<figure class="post__image"><img decoding="async" loading="lazy"  src="https://techwhale.in/media/posts/18/aws-swap-fstab.png" alt="aws-swap-fstab" width="905" height="63" sizes="(max-width: 48em) 100vw, 768px" srcset="https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-xs.png 300w ,https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-sm.png 480w ,https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-md.png 768w ,https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-lg.png 1024w ,https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-xl.png 1360w ,https://techwhale.in/media/posts/18/responsive/aws-swap-fstab-2xl.png 1600w"></figure>
 <p>If you feel like a geek and really want to see summary of swap partition,</p>
 <pre>$ swapon --summary</pre>
             ]]>
@@ -208,6 +272,7 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful</code></pre>
         </author>
         <link href="https://techwhale.in/automate-smart-plug-to-charge-laptop-using-webhook-and-shell-script/"/>
         <id>https://techwhale.in/automate-smart-plug-to-charge-laptop-using-webhook-and-shell-script/</id>
+        <media:content url="https://techwhale.in/media/posts/15/Untitled-Design.jpg" medium="image" />
             <category term="Ubuntu"/>
             <category term="Tutorials"/>
             <category term="Tricks and Hack"/>
@@ -222,7 +287,7 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful</code></pre>
             </summary>
         <content type="html">
             <![CDATA[
-                    <img src="https://techwhale.in/media/posts/15/Untitled-Design.jpg" alt="auto turn on and off laptop charger whenever battery gets low and full." />
+                    <p><img src="https://techwhale.in/media/posts/15/Untitled-Design.jpg" class="type:primaryImage" alt="auto turn on and off laptop charger whenever battery gets low and full." /></p>
                 <p>In the world of automation, it little gives me heebie-jeebies to turn on and off charging when needed cause I read that always plugged in charging will damage your laptop battery but since I'm using a laptop it always draws power so keeping on charging all the time is good or bad that is debate we don't want to get in, so here we go..</p>
 <div class="post__toc">
 <h3>Table of Contents</h3>
@@ -235,20 +300,20 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful</code></pre>
 </div>
 <p>ASUS Laptop where they have inbuilt a hardware charging limit to 80% so I thought that it must be important that's why ASUS has done it. But now, the office gave me another working laptop which is DELL, and sadly given the model doesn't have a hardware charging limit available and while it's plugged and charging at full, sometimes laptop gets hot and its bad if you live in tropical area like myself. 😩</p>
 <p>Anyhow, You can see limiting the charging can increase your laptop's battery life a little better.</p>
-<figure class="align-center"><img loading="lazy"  src="https://www.xda-developers.com/files/2020/09/depth-of-charge.jpg" data-is-external-image="true"  alt="The ASUS ZenFone 7 and ROG Phone 3 support passthrough charging"></figure>
+<figure class="align-center"><img decoding="async" loading="lazy"  src="https://www.xda-developers.com/files/2020/09/depth-of-charge.jpg" alt="The ASUS ZenFone 7 and ROG Phone 3 support passthrough charging" data-is-external-image="true"></figure>
 <p>So here I have a problem so I thought, What if I can build a simple plug as a charger solution that can be turned automatically ON when charging gets low or reaches a set limit and it will get off when laptop charging reaches above 90%. and vice versa. So it a simple and fun to build this want to share this little project. 😎</p>
 <h4 id="mcetoc_1fani75hnn">Get a SMART Switch</h4>
 <p>The first step is to get a wireless plug so I found the cheapest smart plug available on Amazon. which advertised as works with Alexa so without any research I thought it must work with everything. Boy! I was wrong but eventually, it worked out just fine, just went to my super helpful everyone's favourite friend who helped me to fix this kind of issue as always and you all know by its name "google". 🤓</p>
 <p>So this Solimo Smart Plug has this app called "Smart Life" to set up your device with your local centralized Wi-Fi router so you can talk to this "IOT" device from anywhere.</p>
 <p>https://amzn.to/354UpQW</p>
-<figure class="gmail-align-center align-center"><img loading="lazy"  src="https://images-na.ssl-images-amazon.com/images/I/51-Q1%2BQbCDL._SL1500_.jpg" data-is-external-image="true"  alt="Buy Amazon Brand - Solimo Smart Plug, 16A, Works with Alexa Online at Low  Prices in India - Amazon.in" width="465" height="465"></figure>
+<figure class="gmail-align-center align-center"><img decoding="async" loading="lazy"  src="https://images-na.ssl-images-amazon.com/images/I/51-Q1%2BQbCDL._SL1500_.jpg" alt="Buy Amazon Brand - Solimo Smart Plug, 16A, Works with Alexa Online at Low  Prices in India - Amazon.in" width="465" height="465" data-is-external-image="true"></figure>
 <p>So I register myself on the app and proceed with usage turning ON and OFF.  Also, This app has multi-functionality like I can set it up like a timer but sadly I have to set up the timer again and again like Microwave or create a scene where I can connect to other services like location, temperature, etc. which is all fine but it's useless for the purpose and what I want to achieve.</p>
-<figure class="gmail-align-center align-center"><img loading="lazy"  src="https://www.ismartlife.me/images/ifttt@2x.png" data-is-external-image="true"  alt="Smart Life" width="392" height="436"></figure>
+<figure class="gmail-align-center align-center"><img decoding="async" loading="lazy"  src="https://www.ismartlife.me/images/ifttt@2x.png" alt="Smart Life" width="392" height="436" data-is-external-image="true"></figure>
 <h4 id="mcetoc_1fani75hno">Create an account on Sequematic</h4>
 <p>If you are familiar with IFTTT it's simply "IF THIS THEN THAT" and my project is all about that so I wanted to find an option to turn the plug state from my laptop whenever charging is necessary. Then I found out that I can turn on the device through Webhook, where I change the plug state as I want and the webhook is available on IFTTT. Then I searched in IFTTT if there's an applet available for "Smart Life" and found some applets.</p>
 <p>Great !! but then the PROBLEM occurred, where it showed my plug is unavailable in the applet settings so I search about it and found "Smart Life" broke ties with IFTTT so I search more than found out about another app called "Brilliant Smart" and really it's not that brilliant which turns out the same <br>Table of Contents<br>1. Get a SMART Switch<br>2. Create an account on Sequematic<br>3. Write or Download Bash Script for an automation.<br>4. Cronjob for scheduled task run.<br>Table of Contents<br>1. Get a SMART Switch<br>2. Create an account on Sequematic<br>3. Write or Download Bash Script for an automation.<br>4. Cronjob for scheduled task run.<br><br>failure as "Smart Life" then I went again for help on the internet and finally someone on Reddit said that there's another website which still can access "Smart Life" API and that site is "<a href="https://sequematic.com/" target="_blank" rel="noopener noreferrer">sequematic</a>" which finally done all the work for me.</p>
 <p>Sequematic is really easy to set up so I created a step by creating a <a href="https://en.wikipedia.org/wiki/Webhook" target="_blank" rel="noopener noreferrer">webhook</a> where I gave the state name as a "turn_on" and set parameter "on" and another step I have added a switch to turn on whenever a POST request on the web-hook is being sent.</p>
-<figure class="align-center"><img loading="lazy"  src="https://www.fanjoe.be/wp-content/uploads/2020/06/SEQUEmatic-06.png" data-is-external-image="true"  alt="Lier Smart Life / Tuya à IFTTT après le 26 mai 2020 | Fanjoe&amp;#39;s website..."></figure>
+<figure class="align-center"><img decoding="async" loading="lazy"  src="https://www.fanjoe.be/wp-content/uploads/2020/06/SEQUEmatic-06.png" alt="Lier Smart Life / Tuya à IFTTT après le 26 mai 2020 | Fanjoe&amp;#39;s website..." data-is-external-image="true"></figure>
 <p>In the above screenshot, you can see two sequences are created which are "socket-switch-on" and "socket-switch-off". In those sequences, two steps have been created.</p>
 <p>Cool !! Now my plug can be turned on from the internet using just a POST request. It was so simple so what now? How can I turn it on whenever my laptop needs charging?</p>
 <h4 id="mcetoc_1fani75hnp">Write or Download Bash Script for an automation.</h4>
@@ -282,6 +347,7 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful</code></pre>
         </author>
         <link href="https://techwhale.in/how-to-install-portainer-on-linux-os-ubuntu-debian-centos-raspbian/"/>
         <id>https://techwhale.in/how-to-install-portainer-on-linux-os-ubuntu-debian-centos-raspbian/</id>
+        <media:content url="https://techwhale.in/media/posts/10/Annotation-2020-06-25-082542-min-compressed.jpg" medium="image" />
             <category term="Tutorials"/>
             <category term="Docker"/>
 
@@ -289,12 +355,12 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful</code></pre>
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/10/Annotation-2020-06-25-082542-min-compressed.jpg" alt="Install Portainer" />
-                     Portainer is docker web GUI application in where you can manage all your docker containers, Images and Volumes. It offers more features than just showing docker containers but you can even manage other docker nodes in one Portainer application.&nbsp; This guide will show you&hellip;
+                    Portainer is docker web GUI application in where you can manage all your docker containers, Images and Volumes. It offers more features than just showing docker containers but you can even manage other docker nodes in one Portainer application.&nbsp; This guide will show you how&hellip;
                 ]]>
             </summary>
         <content type="html">
             <![CDATA[
-                    <img src="https://techwhale.in/media/posts/10/Annotation-2020-06-25-082542-min-compressed.jpg" alt="Install Portainer" />
+                    <p><img src="https://techwhale.in/media/posts/10/Annotation-2020-06-25-082542-min-compressed.jpg" class="type:primaryImage" alt="Install Portainer" /></p>
                 
   <p id="overviewbr">
     <br>
@@ -454,6 +520,7 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful</code></pre>
         </author>
         <link href="https://techwhale.in/how-to-install-nginx-proxy-manager-on-raspberry-pi-4-arm64/"/>
         <id>https://techwhale.in/how-to-install-nginx-proxy-manager-on-raspberry-pi-4-arm64/</id>
+        <media:content url="https://techwhale.in/media/posts/8/imageedit_31_2317095391.jpg" medium="image" />
             <category term="Tutorials"/>
             <category term="TechWhale Guides"/>
             <category term="Docker"/>
@@ -462,12 +529,12 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful</code></pre>
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/8/imageedit_31_2317095391.jpg" alt="install-nginx-proxy-manager-raspberry-pi-4-b" />
-                     Overview: In DevOps deployments Reverse Proxy is very common for port routing in backend applications. One of the popular is Traefik. Similar to Traefik there are HAproxy and Nginx. HAproxy which is known for Server Load Balancer but also can be used as a&hellip;
+                    Overview: In DevOps deployments Reverse Proxy is very common for port routing in backend applications. One of the popular is Traefik. Similar to Traefik there are HAproxy and Nginx. HAproxy which is known for Server Load Balancer but also can be used as a reverse&hellip;
                 ]]>
             </summary>
         <content type="html">
             <![CDATA[
-                    <img src="https://techwhale.in/media/posts/8/imageedit_31_2317095391.jpg" alt="install-nginx-proxy-manager-raspberry-pi-4-b" />
+                    <p><img src="https://techwhale.in/media/posts/8/imageedit_31_2317095391.jpg" class="type:primaryImage" alt="install-nginx-proxy-manager-raspberry-pi-4-b" /></p>
                 <div class="post__toc">
 <h3>Table of Contents</h3>
 <ul>
@@ -484,11 +551,11 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful</code></pre>
 <p><span style="font-weight: 400;">In DevOps deployments Reverse Proxy is very common for port routing in backend applications. One of the popular is <a href="https://containo.us/traefik/" target="_blank" rel="noopener noreferrer">Traefik</a>. Similar to Traefik there are HAproxy and Nginx.</span></p>
 <p><span style="font-weight: 400;"><a href="http://www.haproxy.org/" target="_blank" rel="noopener noreferrer">HAproxy </a>which is known for Server Load Balancer but also can be used as a reverse proxy.</span></p>
 <p><span style="font-weight: 400;">Nginx is the fastest web server that can also be used as a reverse proxy for backend applications. </span></p>
-<figure class="post__image post__image--center"><img loading="lazy"  src="https://i.imgur.com/0hZKBEF.png" data-is-external-image="true"  alt="Reverse-Proxy" width="1137" height="286"></figure>
+<figure class="post__image post__image--center"><img decoding="async" loading="lazy"  src="https://i.imgur.com/0hZKBEF.png" alt="Reverse-Proxy" width="1137" height="286" data-is-external-image="true"></figure>
 <p><span style="font-weight: 400;">All these three are excellent and popular reverse proxies used in servers but all these have one common problem: they need to write configuration files and it's not noobie server admin friendly since it involves years of experience to understand how exactly reverse proxy works. In Nginx and HAproxy, When you need to install SSL certificates for domai, It makes the configuration a little complicated and tiresome where in Traefik, It automatically handles domain certificates which makes Traefik awesome.</span></p>
 <p><span style="font-weight: 400;">When i started learning Traefik it took few months for me to get a proper grip on its configuration and i learned on old Traefik version and when new Traefik versions came out then i have to read their documentation for new version changes plus then i have to added new changes to docker-compose file so my docker container can properly communicate with Traefik routing which adds big sigh for me. Don't get me wrong Traefik is still best for reverse proxy and if you can write Bash and Ansible Yaml scripts to automate with docker or backend applications then you're golden.</span><span style="font-weight: 400;">Where "Jamie Curnow" aka "</span><a href="https://jc21.com/"><span style="font-weight: 400;">jc21</span></a><span style="font-weight: 400;">" did all these three things in a single docker GUI application called "Nginx Proxy Manager '' In which you can easily bind backend applications without writing a single line of code. Which makes it easy enough for newbie server admin also for Developers who don’t need to learn reverse proxy complex configurations.</span></p>
 <p>This installation can run same for any linux distros out there also docker image file also supports architecture for <a href="https://en.wikipedia.org/wiki/ARM_architecture" target="_blank" rel="noopener noreferrer">armhf and arm64</a> so it can easily run on Raspberry Pi 3B and 4B without any issue. I personally used Raspbian Lite for testing purpose and it works well.</p>
-<figure class="post__image post__image--center" ><img loading="lazy" src="https://i.imgur.com/urx8Zmg.png" data-is-external-image="true"  alt="Nnginx-Proxy-Manager" width="593" height="224">
+<figure class="post__image post__image--center" ><img decoding="async" loading="lazy" src="https://i.imgur.com/urx8Zmg.png" alt="Nnginx-Proxy-Manager" width="593" height="224" data-is-external-image="true">
 <figcaption >Nginx-Proxy-Manager</figcaption>
 </figure>
 <h2 id="mcetoc_1eal5nqjb5"><strong>Prerequisite:</strong></h2>
@@ -548,10 +615,10 @@ services:
 <pre><strong>sudo docker-compose up -d</strong></pre>
 <p>If you have Portainer running then go into the Portainer UI, And in the Stacks, add a new stack named "NPMan" and paste above docker-compose code and deploy it.</p>
 <p>After deployment check if container health and port are showing like this..</p>
-<figure class="post__image post__image--center"><img loading="lazy"  src="https://i.imgur.com/TvK1WNK.png" data-is-external-image="true"  alt="Portainer-Nginx-Proxy-Manager" width="1901" height="328"></figure>
+<figure class="post__image post__image--center"><img decoding="async" loading="lazy"  src="https://i.imgur.com/TvK1WNK.png" alt="Portainer-Nginx-Proxy-Manager" width="1901" height="328" data-is-external-image="true"></figure>
 <h2 id="mcetoc_1eal5s74vc">Step-6: Login to NPMan dashboard</h2>
 <address>Go to browser and replace &lt;&lt;docker-host-server-ip&gt;&gt; to docker host server ip like this,</address><address><br><a href="http://&lt;&lt;docker-host-serve-ip&gt;&gt;:81/login">http://&lt;&lt;docker-host-server-ip&gt;&gt;:81/login</a></address>
-<p><img loading="lazy" src="https://i.imgur.com/4RE3JjY.png" data-is-external-image="true" ></p>
+<p><img decoding="async" loading="lazy" src="https://i.imgur.com/4RE3JjY.png" data-is-external-image="true"></p>
 <p>If everything goes right then enter below default credentials,</p>
 <p><strong>Credential for NPMan,</strong></p>
 <p> </p>
@@ -577,6 +644,7 @@ services:
         </author>
         <link href="https://techwhale.in/how-to-setup-user-ssh-keys-on-ubuntu-1804/"/>
         <id>https://techwhale.in/how-to-setup-user-ssh-keys-on-ubuntu-1804/</id>
+        <media:content url="https://techwhale.in/media/posts/6/image-0-compressed.jpg" medium="image" />
             <category term="Ubuntu"/>
             <category term="Tutorials"/>
             <category term="TechWhale Guides"/>
@@ -585,12 +653,12 @@ services:
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/6/image-0-compressed.jpg" alt="setup ssh keys on linux" />
-                     Overview SSH [ Secure Shell ] is a famous encrypted protocol are widely becoming popular for communicate server access. For security purpose SSH provide lot of features and one of the famous is SSH Keys and for some its complicated and mostly biased to&hellip;
+                    Overview SSH [ Secure Shell ] is a famous encrypted protocol are widely becoming popular for communicate server access. For security purpose SSH provide lot of features and one of the famous is SSH Keys and for some its complicated and mostly biased to use&hellip;
                 ]]>
             </summary>
         <content type="html">
             <![CDATA[
-                    <img src="https://techwhale.in/media/posts/6/image-0-compressed.jpg" alt="setup ssh keys on linux" />
+                    <p><img src="https://techwhale.in/media/posts/6/image-0-compressed.jpg" class="type:primaryImage" alt="setup ssh keys on linux" /></p>
                 <div class="post__toc">
 <h3>Table of Contents</h3>
 <ul>
@@ -617,17 +685,17 @@ services:
 </tbody>
 </table>
 <p>Above command will generate 2048 bit RSA key pair consists of public and private keys. [ id_rsa and id_rsa.pub ] When you run ssh-keygen command it will ask for custom path to store your keys but for now default location is shown in below image.</p>
-<p><img loading="lazy" src="https://i.imgur.com/NFHy3XT.png" data-is-external-image="true" ></p>
+<p><img decoding="async" loading="lazy" src="https://i.imgur.com/NFHy3XT.png" data-is-external-image="true"></p>
 <p><strong> Press enter to select default path for RSA keys.</strong></p>
 <p>Next, You should then see the following prompt:</p>
 <p class="msg msg--highlight ">Enter passphrase (empty for no passphrase):</p>
 <p>Additional security if you want to protect your SSH key using passphrase and empty for no passphrase so when you establish remote connection it will not ask for password everytime but its highly recommended that you should use passphrase and it gives more security and that's what we need.</p>
-<p><img loading="lazy" src="https://i.imgur.com/DQska4v.png" data-is-external-image="true" ></p>
+<p><img decoding="async" loading="lazy" src="https://i.imgur.com/DQska4v.png" data-is-external-image="true"></p>
 <p> Here's the result after creation of the key</p>
 <p class="msg msg--success"><strong>Your identification has been saved in /your_home/.ssh/id_rsa.</strong><br><br><strong>Your public key has been saved in /your_home/.ssh/id_rsa.pub.</strong><br><br><strong>The key fingerprint is:</strong><br><strong>SHA256:tQX64BUmMF2BY1wUSTdeJEYQQUjFIf9wrUAz0RJlaU4 user@remote-server</strong><br><strong>The key's randomart image is:</strong><br><strong>+---[RSA 2048]----+</strong><br><strong>| o=+@^#Ooo |</strong><br><strong>| .BB+XE= |</strong><br><strong>| .o.*=+ . |</strong><br><strong>| . = B.. |</strong><br><strong>| S o o |</strong><br><strong>| |</strong><br><strong>| |</strong><br><strong>| |</strong><br><strong>| |</strong><br><strong>+----[SHA256]-----+</strong></p>
 <p> </p>
 <p> And at this path you'll find ssh keys as follows,</p>
-<figure class="post__image"><img loading="lazy"  src="https://i.imgur.com/xhRQmXn.png" data-is-external-image="true"  alt="ssh-key-path" width="689" height="236"></figure>
+<figure class="post__image"><img decoding="async" loading="lazy"  src="https://i.imgur.com/xhRQmXn.png" alt="ssh-key-path" width="689" height="236" data-is-external-image="true"></figure>
 <p> That's it, Now you've generated public and private ssh key on your machine. Next step is very easy and we have to copy our public key to remote server so we can SSH Key based authentication for SSH.</p>
 <h3 id="mcetoc_1e91n4u7m1">Step 2 : Copy SSH Public Key to remote server.</h3>
 <p>Now we have SSH public key which can authenticate remote machine from our host machine. There is fastest method to copy public key ID to remote host is simple tool called <strong>"ssh-copy-id" </strong></p>
@@ -648,16 +716,22 @@ services:
         </author>
         <link href="https://techwhale.in/how-to-install-docker-and-docker-compose-on-ubuntu-1804/"/>
         <id>https://techwhale.in/how-to-install-docker-and-docker-compose-on-ubuntu-1804/</id>
+        <media:content url="https://techwhale.in/media/posts/5/Webp.net-compress-image-2.jpg" medium="image" />
             <category term="Ubuntu"/>
             <category term="Tutorials"/>
             <category term="TechWhale Guides"/>
             <category term="Docker"/>
 
         <updated>2020-06-30T17:23:33+05:30</updated>
-            <summary></summary>
+            <summary>
+                <![CDATA[
+                        <img src="https://techwhale.in/media/posts/5/Webp.net-compress-image-2.jpg" alt="How to install docker on Ubuntu 18.04" />
+                    Overview Docker Container Image Docker is an application that makes it simple and easy to run application processes in a container, which are like virtual machines, but more small, more resource-friendly, and more dependent on the host OS Kernel. Docker-Compose in other hand is more&hellip;
+                ]]>
+            </summary>
         <content type="html">
             <![CDATA[
-                    <img src="https://techwhale.in/media/posts/5/Webp.net-compress-image-2.jpg" alt="How to install docker on Ubuntu 18.04" />
+                    <p><img src="https://techwhale.in/media/posts/5/Webp.net-compress-image-2.jpg" class="type:primaryImage" alt="How to install docker on Ubuntu 18.04" /></p>
                 <div class="post__toc">
 <h3>Table of Contents</h3>
 <ul>
@@ -671,7 +745,7 @@ services:
 </div>
 <hr>
 <h3 id="mcetoc_1e8pdg7j87">Overview</h3>
-<figure class="post__image post__image--center" ><img loading="lazy" src="https://techwhale.in/media/posts/5/docker-cloud-twitter-card.png" sizes="(max-width: 48em) 100vw, 768px" srcset="https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-xs.png 300w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-sm.png 480w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-md.png 768w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-lg.png 1024w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-xl.png 1360w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-2xl.png 1600w"  alt="Docker-Image" width="1586" height="600">
+<figure class="post__image post__image--center" ><img decoding="async" loading="lazy" src="https://techwhale.in/media/posts/5/docker-cloud-twitter-card.png" alt="Docker-Image" width="1586" height="600" sizes="(max-width: 48em) 100vw, 768px" srcset="https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-xs.png 300w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-sm.png 480w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-md.png 768w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-lg.png 1024w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-xl.png 1360w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-2xl.png 1600w">
 <figcaption >Docker Container Image</figcaption>
 </figure>
 <p> </p>
@@ -735,6 +809,7 @@ services:
         </author>
         <link href="https://techwhale.in/install-jitsi-meet-on-ubuntu-1804/"/>
         <id>https://techwhale.in/install-jitsi-meet-on-ubuntu-1804/</id>
+        <media:content url="https://techwhale.in/media/posts/4/image-8-compressed.jpg" medium="image" />
             <category term="Ubuntu"/>
             <category term="Tutorials"/>
             <category term="TechWhale Guides"/>
@@ -748,7 +823,7 @@ services:
             </summary>
         <content type="html">
             <![CDATA[
-                    <img src="https://techwhale.in/media/posts/4/image-8-compressed.jpg" alt="" />
+                    <p><img src="https://techwhale.in/media/posts/4/image-8-compressed.jpg" class="type:primaryImage" alt="" /></p>
                 <h3 id="Prerequisites">Provisioning</h3>
 <ul>
 <li>New Ubuntu 18.04 x64 VPS</li>
@@ -790,6 +865,7 @@ services:
         </author>
         <link href="https://techwhale.in/git-workflow-for-developers-and-devops/"/>
         <id>https://techwhale.in/git-workflow-for-developers-and-devops/</id>
+        <media:content url="https://techwhale.in/media/posts/3/l2mvWRp1.png" medium="image" />
             <category term="Tutorials"/>
             <category term="TechWhale Guides"/>
 
@@ -797,12 +873,12 @@ services:
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/3/l2mvWRp1.png" alt="git-workflow-for-developers" />
-                     Git is a top distributed version control system and Nowadays all programmers and developers are dependent on its workflow. Manage to set up a proper Git code workflow is essential for projects that involve group collaboration. Follow procedures to keep working copy of your&hellip;
+                    Git is a top distributed version control system and Nowadays all programmers and developers are dependent on its workflow. Manage to set up a proper Git code workflow is essential for projects that involve group collaboration. Follow procedures to keep working copy of your project&hellip;
                 ]]>
             </summary>
         <content type="html">
             <![CDATA[
-                    <img src="https://techwhale.in/media/posts/3/l2mvWRp1.png" alt="git-workflow-for-developers" />
+                    <p><img src="https://techwhale.in/media/posts/3/l2mvWRp1.png" class="type:primaryImage" alt="git-workflow-for-developers" /></p>
                 <p><span style="font-weight: 400;"> </span></p>
 <div class="post__toc">
 <h3>Table of Contents</h3>
@@ -879,6 +955,7 @@ services:
         </author>
         <link href="https://techwhale.in/how-to-install-ansible-on-ubuntu-1804-debian-10-buster/"/>
         <id>https://techwhale.in/how-to-install-ansible-on-ubuntu-1804-debian-10-buster/</id>
+        <media:content url="https://techwhale.in/media/posts/2/Webp.net-compress-image-3.jpg" medium="image" />
             <category term="Ubuntu"/>
             <category term="DevOps"/>
             <category term="Debian"/>
@@ -889,12 +966,12 @@ services:
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/2/Webp.net-compress-image-3.jpg" alt="install ansible on ubuntu 18 and debian 10" />
-                     What is Ansible? Ansible is an open source DevOps automation tool that solves server provisioning in installing tools, configuration, deployment and provisioning. It leverages SSH to communicate between servers. It uses the playbook which states every steps of automation jobs, and playbook uses a simple language called&hellip;
+                    What is Ansible? Ansible is an open source DevOps automation tool that solves server provisioning in installing tools, configuration, deployment and provisioning. It leverages SSH to communicate between servers. It uses the playbook which states every steps of automation jobs, and playbook uses a simple language called "YAML".
                 ]]>
             </summary>
         <content type="html">
             <![CDATA[
-                    <img src="https://techwhale.in/media/posts/2/Webp.net-compress-image-3.jpg" alt="install ansible on ubuntu 18 and debian 10" />
+                    <p><img src="https://techwhale.in/media/posts/2/Webp.net-compress-image-3.jpg" class="type:primaryImage" alt="install ansible on ubuntu 18 and debian 10" /></p>
                 <div class="post__toc">
 <h3>Table of Contents</h3>
 <ul>
@@ -907,7 +984,7 @@ services:
 </ul>
 </div>
 <h3 id="mcetoc_1e887o48e3">What is Ansible?</h3>
-<figure class="post__image post__image--center"><img loading="lazy"  src="https://techwhale.in/media/posts/2/imageedit_16_2728091063.png" sizes="(max-width: 48em) 100vw, 768px" srcset="https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-xs.png 300w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-sm.png 480w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-md.png 768w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-lg.png 1024w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-xl.png 1360w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-2xl.png 1600w"  alt="ansible" width="359" height="284"></figure>
+<figure class="post__image post__image--center"><img decoding="async" loading="lazy"  src="https://techwhale.in/media/posts/2/imageedit_16_2728091063.png" alt="ansible" width="359" height="284" sizes="(max-width: 48em) 100vw, 768px" srcset="https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-xs.png 300w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-sm.png 480w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-md.png 768w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-lg.png 1024w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-xl.png 1360w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-2xl.png 1600w"></figure>
 <p id="mcetoc_1e8hhbh66b">Ansible is an open source DevOps automation tool that solves server provisioning in installing tools, configuration, deployment and provisioning. It leverages SSH to communicate between servers. It uses the playbook which states every steps of automation jobs, and playbook uses a simple language called "YAML".</p>
 <hr>
 <h3 id="mcetoc_1e883n8jk0">Prerequisites :</h3>
@@ -933,7 +1010,7 @@ services:
 <p id="mcetoc_1e8hh5qdi4" class="msg msg--success"><strong>sudo apt-get install ansible -y</strong></p>
 <p>Our installation process has been done. Now let’s check ansible version. </p>
 <p id="mcetoc_1e8hhi53oc" class="msg msg--success"><strong>sudo ansible --version</strong></p>
-<figure class="post__image post__image--center"><a href="https://i.imgur.com/YSu2ISW.png"><img loading="lazy"  src="https://i.imgur.com/YSu2ISW.png" data-is-external-image="true"  alt="" width="1283" height="172"></figure></a></p>
+<figure class="post__image post__image--center"><a href="https://i.imgur.com/YSu2ISW.png"><img decoding="async" loading="lazy"  src="https://i.imgur.com/YSu2ISW.png" alt="" width="1283" height="172" data-is-external-image="true"></figure></a></p>
 <p>That's all folks. Happy Hacking!!</p>
 <p> </p>
             ]]>
