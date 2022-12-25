@@ -15,7 +15,7 @@
     
 	    <link rel="shortcut icon" href="https://techwhale.in/media/website/imageedit_26_9569312189.png" type="image/x-icon" />
     <link rel="stylesheet" href="https://techwhale.in/assets/css/style.css?v=6e37bdefa93b9b319c60b4c7e2c515fc">	
-	<script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://techwhale.in/how-to-launch-traefik-reverse-proxy-using-docker-compose/"},"headline":"How to launch Traefik reverse proxy using docker-compose?","datePublished":"2022-06-29T22:17","dateModified":"2022-12-26T01:45","image":{"@type":"ImageObject","url":"https://techwhale.in/media/website/imageedit_19_3669952192.png","height":183,"width":778},"description":"Install free and open source application on Linux, Docker, Virtualization, Ansible Automation","author":{"@type":"Person","name":"Mayur Chavhan","url":"https://techwhale.in/authors/mayur-chavhan/"},"publisher":{"@type":"Organization","name":"Mayur Chavhan","logo":{"@type":"ImageObject","url":"https://techwhale.in/media/website/imageedit_19_3669952192.png","height":183,"width":778}}}</script>
+	<script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://techwhale.in/how-to-launch-traefik-reverse-proxy-using-docker-compose/"},"headline":"How to launch Traefik reverse proxy using docker-compose?","datePublished":"2022-06-29T22:17","dateModified":"2022-12-26T03:02","image":{"@type":"ImageObject","url":"https://techwhale.in/media/posts/21/Untitled-Design.png","height":1256,"width":2400},"description":"launch traefik reverse proxy using docker compose yaml file","author":{"@type":"Person","name":"Mayur Chavhan","url":"https://techwhale.in/authors/mayur-chavhan/"},"publisher":{"@type":"Organization","name":"Mayur Chavhan","logo":{"@type":"ImageObject","url":"https://techwhale.in/media/website/imageedit_19_3669952192.png","height":183,"width":778}}}</script>
         
 	<link rel="stylesheet" href="{{css "prism.css" }}">
  
@@ -116,6 +116,20 @@
 <main class="main">
       <article class="post">
 
+               <figure class="post__featured-image">                      
+                  <img
+                     src="https://techwhale.in/media/posts/21/Untitled-Design.png"
+                           srcset="https://techwhale.in/media/posts/21/responsive/Untitled-Design-xs.png 300w ,https://techwhale.in/media/posts/21/responsive/Untitled-Design-sm.png 480w ,https://techwhale.in/media/posts/21/responsive/Untitled-Design-md.png 768w ,https://techwhale.in/media/posts/21/responsive/Untitled-Design-lg.png 1024w ,https://techwhale.in/media/posts/21/responsive/Untitled-Design-xl.png 1360w ,https://techwhale.in/media/posts/21/responsive/Untitled-Design-2xl.png 1600w" sizes="(max-width: 1600px) 100vw, 1600px"
+                      loading="eager"
+                     height="1256"
+                     width="2400"
+                     alt="traefik-in-docker-compose">
+                     
+                     <figcaption>
+                        traefik-in-docker-compose
+                        Mayur Chavhan
+                     </figcaption>                      
+               </figure>
 
          <header class="u-header post__header">
             <h1>
@@ -137,7 +151,9 @@
          </header>
 
          <div class="post__entry u-inner">
-            <p>There is a growing demand for centralised, multi-domain, and secure application hosting in light of the proliferation of reverse proxy services. This is partly due to the accessibility of numerous open source projects that encourage experimentation.<br><br>Therefore, Traefik is introduced as a reverse proxy, and although there is much discussion about how easy it is to use, most users will find the documentation to be difficult to understand. Even though I am one of them, I have found a method to overcome my situation, and I hope to teach others to do the same.<br><br>I'm using Traefik as a reverse proxy to publish and secure services that are running in Docker containers because that's where most of the popular open source projects are housed. In this blog post, I'll show you how to use docker-compose to deploy Traefik 2 across many hosts on a local machine.<br><br>If you're using Docker and want to utilize Traefik as a reverse proxy, you may use docker-compose to set up the Traefik container and any additional containers you'd like to run behind the proxy.</p>
+            <p>There is a growing demand for centralised, multi-domain, and secure application hosting in light of the proliferation of reverse proxy services. This is partly due to the accessibility of numerous open source projects that encourage experimentation.<br><br>Therefore, Traefik is introduced as a reverse proxy, and although there is much discussion about how easy it is to use, most users will find the documentation to be difficult to understand. Even though I am one of them, I have found a method to overcome my situation, and I hope to teach others to do the same.<br><br>I'm using Traefik as a reverse proxy to publish and secure services that are running in Docker containers because that's where most of the popular open source projects are housed. In this blog post, I'll show you how to use docker-compose to deploy Traefik 2 across many hosts on a local machine.</p>
+<figure class="post__image"><img decoding="async" loading="lazy"  src="https://techwhale.in/media/posts/21/DALLE-2022-12-26-02.49.31-3d-render-of-whale-with-containers-in-sea.png" alt="" width="1024" height="1024" sizes="(max-width: 48em) 100vw, 768px" srcset="https://techwhale.in/media/posts/21/responsive/DALLE-2022-12-26-02.49.31-3d-render-of-whale-with-containers-in-sea-xs.png 300w ,https://techwhale.in/media/posts/21/responsive/DALLE-2022-12-26-02.49.31-3d-render-of-whale-with-containers-in-sea-sm.png 480w ,https://techwhale.in/media/posts/21/responsive/DALLE-2022-12-26-02.49.31-3d-render-of-whale-with-containers-in-sea-md.png 768w ,https://techwhale.in/media/posts/21/responsive/DALLE-2022-12-26-02.49.31-3d-render-of-whale-with-containers-in-sea-lg.png 1024w ,https://techwhale.in/media/posts/21/responsive/DALLE-2022-12-26-02.49.31-3d-render-of-whale-with-containers-in-sea-xl.png 1360w ,https://techwhale.in/media/posts/21/responsive/DALLE-2022-12-26-02.49.31-3d-render-of-whale-with-containers-in-sea-2xl.png 1600w"></figure>
+<p><br>If you're using Docker and want to utilize Traefik as a reverse proxy, you may use docker-compose to set up the Traefik container and any additional containers you'd like to run behind the proxy.</p>
 <p>Here is an example <code>docker-compose.yml</code> file that sets up Traefik as a reverse proxy:</p>
 <div class="bg-black mb-4 rounded-md">
 <div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans" style="text-align: center;"> </div>
@@ -253,6 +269,22 @@
                                  </div>
                               </a>
                            </div>
+                           <div class="post__nav__next">
+                              <a href="https://techwhale.in/update-your-docker-compose-containers-easily-with-two-steps/" class="post__nav__link" rel="next">
+                                 <div class="u-small">
+                                    Next Post
+                                    <h5>
+                                       &quot;Streamline Your Container Updates with Docker: A Step-by-Step Guide&quot;
+                                    </h5>
+                                 </div>
+                                       <img 
+                                          src="https://techwhale.in/media/posts/23/responsive/Untitled-Design-1-xs.png" 
+                                           loading="lazy"  
+                                          alt=""
+                                          height="1256" 
+                                          width="2400">                                   
+                              </a>
+                           </div>
                      </nav>
 
                      <div class="post__related box">
@@ -332,6 +364,23 @@
             <h3 class="box__title">Featured</h3>
             <ul class="featured__container">
                      <li class="featured__item">
+                                 <a href="https://techwhale.in/how-to-launch-traefik-reverse-proxy-using-docker-compose/" class="featured__image-link">
+                                    <img 
+                                       src="https://techwhale.in/media/posts/21/responsive/Untitled-Design-xs.png"
+                                       class="lazyload"
+                                        loading="lazy" 
+                                       alt="traefik-in-docker-compose" 
+                                       height="1256" 
+                                       width="1256">
+                                 </a>                               
+                        <div>
+                           <a href="https://techwhale.in/how-to-launch-traefik-reverse-proxy-using-docker-compose/" class="featured__title">How to launch Traefik reverse proxy using docker-compose?</a>
+                              <time class="u-small" datetime="2022-06-29T22:17">
+                                    June 29, 2022
+                              </time>
+                        </div>
+                     </li>
+                     <li class="featured__item">
                                  <a href="https://techwhale.in/how-to-secure-your-site-from-sql-injection-exploits-and-spamming-agents-using-nginx/" class="featured__image-link">
                                     <img 
                                        src="https://techwhale.in/media/posts/19/responsive/secure-nginx-server-2-xs.png"
@@ -399,23 +448,6 @@
                               </time>
                         </div>
                      </li>
-                     <li class="featured__item">
-                                 <a href="https://techwhale.in/how-to-install-nginx-proxy-manager-on-raspberry-pi-4-arm64/" class="featured__image-link">
-                                    <img 
-                                       src="https://techwhale.in/media/posts/8/responsive/imageedit_31_2317095391-xs.jpg"
-                                       class="lazyload"
-                                        loading="lazy" 
-                                       alt="install-nginx-proxy-manager-raspberry-pi-4-b" 
-                                       height="585" 
-                                       width="585">
-                                 </a>                               
-                        <div>
-                           <a href="https://techwhale.in/how-to-install-nginx-proxy-manager-on-raspberry-pi-4-arm64/" class="featured__title">How to install &quot;Nginx Proxy Manager&quot; on Raspberry Pi 4 [arm64]</a>
-                              <time class="u-small" datetime="2020-06-13T01:03">
-                                    June 13, 2020
-                              </time>
-                        </div>
-                     </li>
             </ul>
          </section>
       <section class="box">
@@ -445,7 +477,7 @@
                      <div>
                         <a href="https://techwhale.in/authors/mayur-chavhan/" class="authors__title">Mayur Chavhan</a>
                            <span class="u-small">Post: 
-                              11
+                              12
                            </span>
                      </div>
                   </li>
