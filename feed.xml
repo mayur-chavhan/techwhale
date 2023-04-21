@@ -3,7 +3,7 @@
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2023-04-21T19:36:22+05:30</updated>
+    <updated>2023-04-21T21:55:22+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
@@ -16,15 +16,19 @@
         </author>
         <link href="https://techwhale.in/how-to-bypass-specific-website-or-ip-from-openvpn-connection-on-mac/"/>
         <id>https://techwhale.in/how-to-bypass-specific-website-or-ip-from-openvpn-connection-on-mac/</id>
+        <media:content url="https://techwhale.in/media/posts/33/bypass-openvpn.jpg" medium="image" />
+            <category term="TechWhale Guides"/>
 
-        <updated>2023-04-21T19:32:59+05:30</updated>
+        <updated>2023-04-21T21:55:22+05:30</updated>
             <summary>
                 <![CDATA[
+                        <img src="https://techwhale.in/media/posts/33/bypass-openvpn.jpg" alt="bypass-openvpn" />
                     We all have sites that needs to bypass the VPN connection and OpenVPN is popular open source VPN software but it lacks to have bypass a website from it’s network but if you’ve a mac then it’s a easy process as shown in below guide&hellip;
                 ]]>
             </summary>
         <content type="html">
             <![CDATA[
+                    <p><img src="https://techwhale.in/media/posts/33/bypass-openvpn.jpg" class="type:primaryImage" alt="bypass-openvpn" /></p>
                 <p>We all have sites that needs to bypass the VPN connection and OpenVPN is popular open source VPN software but it lacks to have bypass a website from it’s network but if you’ve a mac then it’s a easy process as shown in below guide and hope it helps you.</p>
 <p>To bypass specific websites or IP addresses from OpenVPN connection on a Mac, you can use the route command to exclude them from the VPN tunnel. Here’s how you can do it:</p>
 <ol>
