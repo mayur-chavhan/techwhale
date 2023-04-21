@@ -3,22 +3,346 @@
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2022-12-26T03:10:09+05:30</updated>
+    <updated>2023-04-21T19:36:22+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
     <id>https://techwhale.in</id>
 
     <entry>
-        <title>&quot;Streamline Your Container Updates with Docker: A Step-by-Step Guide&quot;</title>
+        <title>How to bypass specific website or IP from OpenVPN connection on Mac</title>
+        <author>
+            <name>Mayur Chavhan</name>
+        </author>
+        <link href="https://techwhale.in/how-to-bypass-specific-website-or-ip-from-openvpn-connection-on-mac/"/>
+        <id>https://techwhale.in/how-to-bypass-specific-website-or-ip-from-openvpn-connection-on-mac/</id>
+
+        <updated>2023-04-21T19:32:59+05:30</updated>
+            <summary>
+                <![CDATA[
+                    We all have sites that needs to bypass the VPN connection and OpenVPN is popular open source VPN software but it lacks to have bypass a website from it’s network but if you’ve a mac then it’s a easy process as shown in below guide&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>We all have sites that needs to bypass the VPN connection and OpenVPN is popular open source VPN software but it lacks to have bypass a website from it’s network but if you’ve a mac then it’s a easy process as shown in below guide and hope it helps you.</p>
+<p>To bypass specific websites or IP addresses from OpenVPN connection on a Mac, you can use the route command to exclude them from the VPN tunnel. Here’s how you can do it:</p>
+<ol>
+<li><p>Open the Terminal app on your Mac. You can find it in Applications &gt; Utilities.</p>
+</li>
+<li><p>First, find your default gateway IP address. You can do this by running the following command in Terminal:</p>
+</li>
+</ol>
+<pre><code>netstat -nr | grep default
+</code></pre>
+<p>This command will display your default gateway IP address in the second column. Note it down as you’ll need it in the next steps.</p>
+<ol start="3">
+<li>Now, find the IP address of the website you want to bypass. You can use the following command, replacing “example.com” with the website you want to bypass:</li>
+</ol>
+<pre><code>nslookup example.com
+</code></pre>
+<p>This command will give you the IP address of the website. Note it down as you’ll need it in the next steps.</p>
+<ol start="4">
+<li>To bypass the website from theOpenVPN connection, use the route command with the following syntax, replacing “your_gateway_ip” with the default gateway IP you noted down earlier, and “website_ip” with the IP address of the website you want to bypass:</li>
+</ol>
+<pre><code>sudo route add -host website_ip your_gateway_ip
+</code></pre>
+<p>For example, if your default gateway IP is 192.168.1.1 and the website’s IP is 123.45.67.89, the command would be:</p>
+<pre><code>sudo route add -host 123.45.67.89 192.168.1.1
+</code></pre>
+<ol start="5">
+<li><p>You will be prompted to enter your Mac’s admin password to execute the command. Once you’ve entered the password, the route will be added, and the specified website will be bypassed from the OpenVPN connection.</p>
+</li>
+<li><p>To check if the bypass is working, you can visit the website and check your IP address. It should show your regular IP address instead of the VPN IP address.</p>
+</li>
+<li><p>If you want to remove the bypass, you can use the following command, replacing “website_ip” with the IP address of the website you want to remove the bypass for:</p>
+</li>
+</ol>
+<pre><code>sudo route delete -host website_ip
+</code></pre>
+<ol start="8">
+<li>You can repeat steps 3-7 for any additional websites or IP addresses you want to bypass from the OpenVPN connection.</li>
+</ol>
+<p>Note: These changes are temporary and will be reset when you restart your Mac. To make the bypass permanent, you can create a script to run these commands at startup or add them to your OpenVPN configuration file.</p>
+
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>How to use SystemCtl for Daily Usage and It&#x27;s Helpful Tips </title>
+        <author>
+            <name>Mayur Chavhan</name>
+        </author>
+        <link href="https://techwhale.in/command-systemctl-helpful-tips-and-usage-for-you-to-tryout/"/>
+        <id>https://techwhale.in/command-systemctl-helpful-tips-and-usage-for-you-to-tryout/</id>
+
+        <updated>2023-04-21T19:36:22+05:30</updated>
+            <summary>
+                <![CDATA[
+                    When it comes to Linux, the systemctl command is your go-to for managing services. It controls the boot process and allows you to start, stop, enable, disable, and check the status of services. In order to make the most of the systemctl command, consider the&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>When it comes to Linux, the systemctl command is your go-to for managing services. It controls the boot process and allows you to start, stop, enable, disable, and check the status of services.<br><br>In order to make the most of the systemctl command, consider the following:<br><br>Services Provided List The list-units option and the —type=service flag will display a complete list of available services.</p>
+<pre><br>systemctl list-units —type=service</pre>
+<p><br><br>Just a list of all the defunct services, please. Use the —all option to see a list of all the disabled services:</p>
+<pre>Entering systemctl list-units —type=service —all</pre>
+<p>To launch a service: You can activate a service by typing "start" followed by the service's name.</p>
+<pre>servicename systemctl start</pre>
+<p>Service termination is accomplished by issuing the stop command followed by the service's name.</p>
+<pre>servicename stop systemctl</pre>
+<p>To restart a service, type the restart command, then the name of the service.</p>
+<pre>systemctl restart yourservicename</pre>
+<p>Activate a service by issuing the enable command followed by the service's name, as in:<br><br>To activate the service, type</p>
+<pre><span style="color: var(--text-primary-color); font-family: var(--editor-font-family); font-size: inherit; font-weight: var(--font-weight-normal);">systemctl enable servicename</span></pre>
+<p>Use the disable command followed by the name of the service to prevent it from starting automatically.</p>
+<pre> systemctl disable servicename</pre>
+<p>Verify the current condition of a service: The status command, followed by the name of the service to check, is used to do just that.</p>
+<pre>  systemctl status servicename</pre>
+<p>Review the service's logs to see if there were any errors. Journalctl service name will display the service's logs.<br><br>copy paste this into a terminal:</p>
+<pre>journalctl -u servicename</pre>
+<p><br>If you have modified the system manager configuration and want to apply your changes, you can do so with the daemon-reload command.</p>
+<pre>daemon-reload systemctl</pre>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Master the Linux Terminal: 50 Essential Commands You Need to Know</title>
+        <author>
+            <name>Mayur Chavhan</name>
+        </author>
+        <link href="https://techwhale.in/master-the-linux-terminal-50-essential-commands-you-need-to-know/"/>
+        <id>https://techwhale.in/master-the-linux-terminal-50-essential-commands-you-need-to-know/</id>
+
+        <updated>2022-12-27T02:07:05+05:30</updated>
+            <summary>
+                <![CDATA[
+                    As a Linux user, the terminal is an essential tool for interacting with your operating system. From installing and updating software to managing files and performing advanced tasks, the terminal allows you to accomplish a wide range of tasks more efficiently than using a graphical&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>As a Linux user, the terminal is an essential tool for interacting with your operating system. From installing and updating software to managing files and performing advanced tasks, the terminal allows you to accomplish a wide range of tasks more efficiently than using a graphical user interface (GUI).</p>
+<p>Here are 50 important Linux commands you should know:</p>
+<p>cd - Change the current directory
+ls - List the files in a directory
+pwd - Print the current working directory
+mkdir - Create a new directory
+rmdir - Remove an empty directory
+rm - Remove a file or directory
+cp - Copy a file or directory
+mv - Move a file or directory
+cat - Display the contents of a file
+less - View the contents of a file one page at a time
+head - Display the first few lines of a file
+tail - Display the last few lines of a file
+grep - Search for patterns in a file
+find - Search for files based on criteria
+sort - Sort the lines in a file
+uniq - Remove duplicate lines from a file
+wc - Count the number of lines, words, and characters in a file
+chmod - Change the permissions of a file or directory
+chown - Change the owner of a file or directory
+sudo - Run a command with superuser privileges
+su - Switch to a different user account
+whoami - Display the current user’s username
+passwd - Change the current user’s password
+ping - Test a network connection
+traceroute - Trace the route packets take to a destination
+telnet - Connect to a remote server using the Telnet protocol
+ssh - Connect to a remote server using the SSH protocol
+scp - Copy files between servers using the SSH protocol
+ftp - Transfer files using the FTP protocol
+rsync - Synchronize files between servers
+tar - Create and extract archives
+gzip - Compress and decompress files
+bzip2 - Compress and decompress files
+unzip - Extract files from a ZIP archive
+gunzip - Decompress a GZIP archive
+bunzip2 - Decompress a BZIP2 archive
+apt-get - Install and manage packages on Debian-based systems
+yum - Install and manage packages on Red Hat-based systems
+dnf - Install and manage packages on Fedora-based systems
+systemctl - Manage system services
+service - Manage system services
+journalctl - View the system log
+dmesg - View the kernel log
+top - Display information about the top CPU and</p>
+
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>&quot;Mastering DevOps Tools: A Practical Guide to Boost Your Skills&quot;</title>
+        <author>
+            <name>Mayur Chavhan</name>
+        </author>
+        <link href="https://techwhale.in/mastering-devops-tools-a-practical-guide-to-boost-your-skills/"/>
+        <id>https://techwhale.in/mastering-devops-tools-a-practical-guide-to-boost-your-skills/</id>
+
+        <updated>2022-12-26T19:42:32+05:30</updated>
+            <summary>
+                <![CDATA[
+                    Because the DevOps movement has been gaining steam over the past several years, it is becoming increasingly vital for those who work in the technology industry to maintain familiarity with the most recent developments in both trends and methodologies. As a result, many IT professionals&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <div class="w-full border-b border-black/10 dark:border-gray-900/50 text-gray-800 dark:text-gray-100 group bg-gray-50 dark:bg-[#444654]">
+<div class="text-base gap-4 md:gap-6 m-auto md:max-w-2xl lg:max-w-2xl xl:max-w-3xl p-4 md:py-6 flex lg:px-0">
+<div class="relative flex w-[calc(100%-50px)] md:flex-col lg:w-[calc(100%-115px)]">
+<div class="flex flex-grow flex-col gap-3">
+<div class="min-h-[20px] flex flex-col items-start gap-4 whitespace-pre-wrap">
+<div class="markdown prose w-full break-words dark:prose-invert light">
+<p><span data-preserver-spaces="true">Because the DevOps movement has been gaining steam over the past several years, it is becoming increasingly vital for those who work in the technology industry to maintain familiarity with the most recent developments in both trends and methodologies. As a result, many IT professionals have set their sights on the year 2023 to become "masters" of DevOps.</span></p>
+<p><span data-preserver-spaces="true">The combination of software development and software operations is referred to as "DevOps," It is a process that requires coordination between teams responsible for software development and teams responsible for software operations. DevOps practitioners aspire to continuously give value to their clients by improving the speed, quality, and consistency of the software delivery process. They do this by leveraging modern automation tools and processes.</span></p>
+<p><span data-preserver-spaces="true">In the year 2023, if you would like to become an expert in DevOps, the following are some pointers to get you started:</span></p>
+<p><span data-preserver-spaces="true">1. Get Familiar with the Fundamentals To become an expert in DevOps, you must first become familiar with the fundamentals of the process. To get started, you should familiarize with the essentials, such as continuous integration and delivery. It would help if you also familiarize with common DevOps tools and methods, such as Docker, Kubernetes, and Ansible.</span></p>
+<p><span data-preserver-spaces="true">2. Obtain a Certification: Although obtaining certificates is not essential to become a master of DevOps, doing so can be an effective approach to demonstrating your abilities and understanding. Certifications such as the Red Hat Certified System Administrator (RHCSA) and the Certified Kubernetes Administrator are quite common in the DevOps industry (CKA).</span></p>
+<p><span data-preserver-spaces="true">3. Participate in a Community Participating in a DevOps community is an excellent method to keep up with the most recent developments in best practices and trends. Find online forums, in-person gatherings, and conferences covering DevOps issues and attend those.</span></p>
+<p><span data-preserver-spaces="true">4. Automate Everything: Automation is the cornerstone of DevOps, and it is important to become a master of DevOps in 2023. Automating everything you do is the fourth step to becoming a master of DevOps. Make it a priority to acquire knowledge of operating automation tools like Jenkins and Ansible, and gain experience configuring automated pipelines and processes.</span></p>
+<p><span data-preserver-spaces="true">5. Always Stay Current Because the DevOps landscape is in a perpetual evolution, it is essential always to be updated on the most recent trends and practices. Staying updated requires that you keep up with the newest news and blogs, participate in webinars, and follow industry experts.</span></p>
+<p><span data-preserver-spaces="true">As a developer or IT professional, keeping up with the latest tools and techniques in the DevOps field is essential. Whether you're new to DevOps or have been working in the field for a while, there are always new tools to learn and ways to improve your skills.</span></p>
+<p><span data-preserver-spaces="true">Here are some tips for learning and using DevOps tools effectively:</span></p>
+<ol>
+<li><span data-preserver-spaces="true">Please choose the right tools for your needs: There are countless DevOps tools available, so it's important to choose the ones that are right for your project or organization. Consider factors such as your team's skills and experience, the technology stack you're using, and the goals you're trying to achieve.</span></li>
+<li><span data-preserver-spaces="true">Get hands-on experience: The best way to learn a new tool is to use it. Set aside time to experiment with different tools and see how they work in a real-world setting. This will help you understand their capabilities and limitations and give you the confidence to use them effectively in your projects.</span></li>
+<li><span data-preserver-spaces="true">Learn from others: Many resources are available for learning about DevOps tools, including online courses, tutorials, and blogs. Follow experts in the field, join online communities, and seek out opportunities to learn from others who are experienced with the tools you're interested in.</span></li>
+<li><span data-preserver-spaces="true">Automate as much as possible: Automation is a key component of DevOps, and many tools are designed to automate various tasks and processes. Take your time to learn how to use these tools to automate tasks and streamline your workflow, as this will save you time and effort in the long run.</span></li>
+<li><span data-preserver-spaces="true">Keep learning: The DevOps field is constantly evolving, and new tools and techniques are always being developed. Stay up-to-date with the latest developments and continue learning new skills to stay competitive in your career.</span></li>
+</ol>
+<p><span data-preserver-spaces="true">By following these tips and putting in the effort to learn and use DevOps tools effectively, you'll be well on path to mastering the field and becoming a valuable asset to your team or organization. Happy learning!</span></p>
+<p><span data-preserver-spaces="true"> </span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Increase your salary and prepare yourself for DevOps in the year 2023.</title>
+        <author>
+            <name>Mayur Chavhan</name>
+        </author>
+        <link href="https://techwhale.in/prepare-yourself-for-the-arrival-of-devops-in-the-year-2023/"/>
+        <id>https://techwhale.in/prepare-yourself-for-the-arrival-of-devops-in-the-year-2023/</id>
+
+        <updated>2022-12-26T03:44:33+05:30</updated>
+            <summary>
+                <![CDATA[
+                    As a software engineer or IT professional, you are always looking for ways to improve your skills and advance your career. One area that can be particularly lucrative is DevOps, a set of practices that combines software development and operations to streamline the delivery of&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>As a software engineer or IT professional, you are always looking for ways to improve your skills and advance your career. One area that can be particularly lucrative is DevOps, a set of practices that combines software development and operations to streamline the delivery of software. By learning DevOps, you can increase your value as an employee and potentially negotiate a higher salary.</p>
+<p>Here are some tips for scaling your salary with DevOps in 2023:</p>
+<ol>
+<li>
+<p>Learn the fundamentals: Start by familiarizing yourself with the core concepts of DevOps, such as continuous integration, continuous delivery, and infrastructure as code.</p>
+</li>
+<li>
+<p>Gain experience with popular tools: To be a successful DevOps engineer, you will need to be proficient with tools such as Git, Docker, Jenkins, and Ansible. These tools are used to automate the build, test, and deployment process, as well as manage infrastructure.</p>
+</li>
+<li>
+<p>Join a DevOps team: The best way to learn DevOps is by doing it. Look for opportunities to join a DevOps team at your current company or consider seeking out a new job with a company that values DevOps practices.</p>
+</li>
+<li>
+<p>Build your network: DevOps is a rapidly evolving field, and staying up to date with the latest trends and technologies is crucial. Attend meetups, conferences, and online events to connect with other DevOps professionals and learn from experts in the field.</p>
+</li>
+<li>
+<p>Pursue certification: While not required, earning a DevOps certification can help you stand out in the job market and demonstrate your expertise to potential employers. There are several options to choose from, including the Certified Kubernetes Administrator (CKA) and the Certified Cloud Native Professional (CCNP).</p>
+</li>
+</ol>
+<p>By investing in your DevOps skills, you can increase your value as an employee and potentially negotiate a higher salary. With the right combination of knowledge, experience, and networking, you can position yourself as a valuable asset to any organization and scale your salary in 2023 and beyond.</p>
+<p>As a developer or IT professional, staying up-to-date with the latest tools and technologies is crucial in order to remain competitive in the job market. This is especially true in the field of DevOps, where the use of automation and other technologies can greatly improve the efficiency and reliability of software delivery. With that in mind, here are some tools and practices that you should consider adopting in preparation for DevOps in 2023:</p>
+<ol>
+<li>
+<p>Containerization: Containerization involves packaging applications and their dependencies into a self-contained unit that can be easily deployed and run on any host. This makes it easy to deploy applications in a consistent environment, regardless of the underlying infrastructure. Docker is currently the most popular tool for containerization, but alternatives such as Kubernetes and Apache Mesos are also worth considering.</p>
+</li>
+<li>
+<p>Infrastructure as code (IaC): IaC involves using code to automate the provisioning and management of infrastructure resources, such as servers, networking, and storage. This allows you to version control your infrastructure and makes it easier to reproduce and scale your environment. Some popular tools for IaC include Terraform, Ansible, and CloudFormation.</p>
+</li>
+<li>
+<p>Continuous integration (CI) and continuous delivery (CD): CI and CD are practices that involve automatically building, testing, and deploying code changes as they are made. This allows for faster and more reliable software delivery, as it reduces the risk of errors and makes it easier to roll back changes if necessary. Tools such as Jenkins, Travis CI, and CircleCI can help automate this process.</p>
+</li>
+<li>
+<p>Monitoring and logging: In order to effectively manage and troubleshoot a distributed system, it's important to have visibility into the various components and their behavior. This can be achieved through monitoring tools such as Datadog, New Relic, and Prometheus, which allow you to track key metrics and alerts in real-time. Additionally, logging tools such as Elasticsearch, Logstash, and Kibana (ELK stack) can help you collect and analyze log data from your applications and infrastructure.</p>
+</li>
+<li>
+<p>Collaboration and communication: DevOps is all about collaboration and communication, and there are a number of tools that can help facilitate this process. Tools such as Slack, Microsoft Teams, and Asana can help team members stay connected and share information in real-time. Additionally, code review tools such as GitHub, Bitbucket, and GitLab can help teams collaborate on code changes and ensure that code is of high quality before it is deployed.</p>
+</li>
+</ol>
+<p>By adopting these tools and practices, you can position yourself to be well-prepared for the demands of DevOps in 2023 and beyond. As always, it's important to keep an eye on emerging technologies and stay open to learning and adapting as the field evolves.</p>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>The Best 10 DevOps Tools Available for Use in 2023</title>
+        <author>
+            <name>Mayur Chavhan</name>
+        </author>
+        <link href="https://techwhale.in/the-best-10-devops-tools-available-for-use-in-2023/"/>
+        <id>https://techwhale.in/the-best-10-devops-tools-available-for-use-in-2023/</id>
+
+        <updated>2022-12-26T03:21:22+05:30</updated>
+            <summary>
+                <![CDATA[
+                    Git: Git is a version control system that is widely used for software development and version control. It allows developers to track changes to their code and collaborate with team members on projects. Docker: Docker is a containerization platform that allows developers to package applications&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <ol>
+<li>
+<p>Git: Git is a version control system that is widely used for software development and version control. It allows developers to track changes to their code and collaborate with team members on projects.</p>
+</li>
+<li>
+<p>Docker: Docker is a containerization platform that allows developers to package applications and their dependencies into containers, which can then be easily deployed on any host.</p>
+</li>
+<li>
+<p>Jenkins: Jenkins is an open-source automation server that helps automate parts of the software development process. It can be used to build, test, and deploy software projects.</p>
+</li>
+<li>
+<p>Ansible: Ansible is an open-source configuration management tool that can be used to automate the deployment and management of applications and infrastructure.</p>
+</li>
+<li>
+<p>Kubernetes: Kubernetes is an open-source container orchestration platform that allows developers to deploy and manage containerized applications at scale.</p>
+</li>
+<li>
+<p>Nagios: Nagios is a popular open-source monitoring tool that can be used to monitor servers, applications, and network devices.</p>
+</li>
+<li>
+<p>Terraform: Terraform is an infrastructure as code (IAC) tool that allows developers to define and manage infrastructure resources using declarative configuration files.</p>
+</li>
+<li>
+<p>ELK Stack: The ELK Stack (Elasticsearch, Logstash, and Kibana) is a popular open-source log management platform that allows developers to collect, process, and visualize log data.</p>
+</li>
+<li>
+<p>Grafana: Grafana is an open-source visualization and monitoring platform that allows developers to create dashboards and alerts for their applications and infrastructure.</p>
+</li>
+<li>
+<p>Splunk: Splunk is a powerful log management and analysis platform that allows developers to search, analyze, and visualize log data in real-time.</p>
+</li>
+</ol>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Streamline Your Container Updates with Docker: A Step-by-Step Guide</title>
         <author>
             <name>Mayur Chavhan</name>
         </author>
         <link href="https://techwhale.in/update-your-docker-compose-containers-easily-with-two-steps/"/>
         <id>https://techwhale.in/update-your-docker-compose-containers-easily-with-two-steps/</id>
         <media:content url="https://techwhale.in/media/posts/23/Untitled-Design-1.png" medium="image" />
+            <category term="Docker"/>
 
-        <updated>2022-12-26T03:10:09+05:30</updated>
+        <updated>2022-12-26T03:46:56+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/23/Untitled-Design-1.png" alt="" />
@@ -89,8 +413,10 @@
         <link href="https://techwhale.in/how-to-launch-traefik-reverse-proxy-using-docker-compose/"/>
         <id>https://techwhale.in/how-to-launch-traefik-reverse-proxy-using-docker-compose/</id>
         <media:content url="https://techwhale.in/media/posts/21/Untitled-Design.png" medium="image" />
+            <category term="Docker"/>
+            <category term="DevOps"/>
 
-        <updated>2022-12-26T03:02:50+05:30</updated>
+        <updated>2022-12-26T03:17:27+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/21/Untitled-Design.png" alt="traefik-in-docker-compose" />
