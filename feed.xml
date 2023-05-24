@@ -3,12 +3,46 @@
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2023-04-21T21:55:22+05:30</updated>
+    <updated>2023-05-24T18:25:21+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
     <id>https://techwhale.in</id>
 
+    <entry>
+        <title>How to install PM2 (Process Management) on Ubuntu 22.10 / Debian 11</title>
+        <author>
+            <name>Mayur Chavhan</name>
+        </author>
+        <link href="https://techwhale.in/how-to-install-pm2-process-management-on-ubuntu-2210-debian-11/"/>
+        <id>https://techwhale.in/how-to-install-pm2-process-management-on-ubuntu-2210-debian-11/</id>
+        <media:content url="https://techwhale.in/media/posts/34/install-pm2.png" medium="image" />
+            <category term="Ubuntu"/>
+            <category term="Tutorials"/>
+            <category term="DevOps"/>
+            <category term="Debian"/>
+
+        <updated>2023-05-24T18:25:21+05:30</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://techwhale.in/media/posts/34/install-pm2.png" alt="" />
+                    PM2 is a fantastic process manager designed specifically for Node.js applications. Throughout my journey as a web developer, I've worked extensively with Node.js. I've had to schedule and manage a multitude of Node.js applications using CRON, which, let me tell you, was no walk in&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://techwhale.in/media/posts/34/install-pm2.png" class="type:primaryImage" alt="" /></p>
+                
+  <p>
+    PM2 is a fantastic process manager designed specifically for Node.js applications.<br><br>Throughout my journey as a web developer, I've worked extensively with Node.js. I've had to schedule and manage a multitude of Node.js applications using CRON, which, let me tell you, was no walk in the park. That was until I discovered PM2! It was a game-changer, making my life significantly easier. PM2 ensures my apps are always up and running, and it automatically refreshes them whenever I make updates. Plus, it gives me the flexibility to manually set the reload time using CRON or adjust the restart delay for any application. The best part? It works seamlessly across all operating systems!<br><br>Now, you might be thinking, "Is PM2 only for Node.js apps?" The answer is a resounding no! While PM2 was indeed created with Node.js applications in mind, its utility isn't confined to just that. After using PM2 for a while, I discovered that it can manage scripts from any programming language! I gave it a whirl with Python, and guess what? It worked like a charm!<br><br>In this article, I'm going to share a practical example of how you can schedule and automate your Python scripts using PM2. So, buckle up and let's dive in!<br><br>Step 1: Update Your System<br><br>First things first, let's make sure your system is up-to-date. Open up your terminal and type in the following command:<br><br><code>sudo apt update<br></code><br>This command will fetch the list of available updates and then upgrade your system. The -y flag automatically confirms all prompts, saving you from having to manually approve each update.<br><br>Step 2: Install Node.js<br><br>PM2 is a Node.js application, so we'll need to have Node.js installed on our system. Here's how to do it:<br><br><code>sudo apt install nodejs -y<br></code><br>Once the installation is complete, you can verify it by checking the version of Node.js:<br><br><code>nodejs -v<br></code><br>You should see a version number as the output, which means Node.js is installed correctly.<br><br>Step 3: Install NPM (Node Package Manager)<br><br>NPM is the default package manager for Node.js and it's what we'll use to install PM2. To install NPM, use the following command:<br><br><code>sudo apt install npm -y<br></code><br>Just like we did with Node.js, we can check if NPM is installed correctly:<br><br><code>npm -v<br></code><br>If you see a version number, you're good to go!<br><br>Step 4: Install PM2<br><br>Now that we have Node.js and NPM installed, we can finally install PM2. Here's the command to do it:<br><br><code>sudo npm install -g pm2<br></code><br>The -g flag installs PM2 globally, which means you can use it from any directory on your system.<br><br>To check if PM2 is installed correctly, you can use the following command:<br><br><code>pm2 -v<br></code><br>If you see a version number, congratulations! You've successfully installed PM2 on your Ubuntu 22.10 or Debian 11 system.<br><br>Step 5: Set PM2 to Start on Boot<br><br>One of the great things about PM2 is that it can automatically restart your applications if your system reboots. To set this up, you can use the following command:<br><br><code>pm2 startup<br></code><br>This command will generate a command that you need to run with superuser privileges. Copy the outputted command and run it:<br><br><br><code>sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u yourusername --hp /home/yourusername<br></code><br>Remember to replace yourusername with your actual username.<br><br>And there you have it! You've installed PM2 on your Ubuntu 22.10 or Debian 11 system. Now you can use PM2 to manage and keep your Node.js, Python or Any script or applications running in the background.<br><br>Thank you for reading.
+  </p>
+
+  <p>
+    
+  </p>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>How to bypass specific website or IP from OpenVPN connection on Mac</title>
         <author>

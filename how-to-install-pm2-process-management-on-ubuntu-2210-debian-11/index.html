@@ -4,10 +4,10 @@
     <meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>How to install Portainer on Linux OS</title>
+    <title>How to install PM2 (Process Management) on Ubuntu 22.10 / Debian 11 - TechWhale </title>
 	
     
-	<link rel="canonical" href="https://techwhale.in/how-to-install-portainer-on-linux-os-ubuntu-debian-centos-raspbian/">
+	<link rel="canonical" href="https://techwhale.in/how-to-install-pm2-process-management-on-ubuntu-2210-debian-11/">
 	
 	<link rel="alternate" type="application/atom+xml" href="https://techwhale.in/feed.xml" />
 <link rel="alternate" type="application/json" href="https://techwhale.in/feed.json" />
@@ -15,7 +15,7 @@
     
 	    <link rel="shortcut icon" href="https://techwhale.in/media/website/imageedit_26_9569312189.png" type="image/x-icon" />
     <link rel="stylesheet" href="https://techwhale.in/assets/css/style.css?v=6e37bdefa93b9b319c60b4c7e2c515fc">	
-	<script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://techwhale.in/how-to-install-portainer-on-linux-os-ubuntu-debian-centos-raspbian/"},"headline":"How to install Portainer on Linux OS (Ubuntu, Debian, CentOS, Raspbian)","datePublished":"2020-06-15T13:03","dateModified":"2021-06-07T02:38","image":{"@type":"ImageObject","url":"https://techwhale.in/media/posts/10/Annotation-2020-06-25-082542-min-compressed.jpg","height":623,"width":1269},"description":"How to install Portainer on Linux OS","author":{"@type":"Person","name":"Mayur Chavhan","url":"https://techwhale.in/authors/mayur-chavhan/"},"publisher":{"@type":"Organization","name":"Mayur Chavhan","logo":{"@type":"ImageObject","url":"https://techwhale.in/media/website/imageedit_19_3669952192.png","height":183,"width":778}}}</script>
+	<script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://techwhale.in/how-to-install-pm2-process-management-on-ubuntu-2210-debian-11/"},"headline":"How to install PM2 (Process Management) on Ubuntu 22.10 / Debian 11","datePublished":"2023-05-19T11:53","dateModified":"2023-05-24T18:25","image":{"@type":"ImageObject","url":"https://techwhale.in/media/posts/34/install-pm2.png","height":628,"width":1200},"description":"Install free and open source application on Linux, Docker, Virtualization, Ansible Automation","author":{"@type":"Person","name":"Mayur Chavhan","url":"https://techwhale.in/authors/mayur-chavhan/"},"publisher":{"@type":"Organization","name":"Mayur Chavhan","logo":{"@type":"ImageObject","url":"https://techwhale.in/media/website/imageedit_19_3669952192.png","height":183,"width":778}}}</script>
         
 	<link rel="stylesheet" href="{{css "prism.css" }}">
  
@@ -118,22 +118,18 @@
 
                <figure class="post__featured-image">                      
                   <img
-                     src="https://techwhale.in/media/posts/10/Annotation-2020-06-25-082542-min-compressed.jpg"
-                           srcset="https://techwhale.in/media/posts/10/responsive/Annotation-2020-06-25-082542-min-compressed-xs.jpg 300w ,https://techwhale.in/media/posts/10/responsive/Annotation-2020-06-25-082542-min-compressed-sm.jpg 480w ,https://techwhale.in/media/posts/10/responsive/Annotation-2020-06-25-082542-min-compressed-md.jpg 768w ,https://techwhale.in/media/posts/10/responsive/Annotation-2020-06-25-082542-min-compressed-lg.jpg 1024w ,https://techwhale.in/media/posts/10/responsive/Annotation-2020-06-25-082542-min-compressed-xl.jpg 1360w ,https://techwhale.in/media/posts/10/responsive/Annotation-2020-06-25-082542-min-compressed-2xl.jpg 1600w" sizes="(max-width: 1600px) 100vw, 1600px"
+                     src="https://techwhale.in/media/posts/34/install-pm2.png"
+                           srcset="https://techwhale.in/media/posts/34/responsive/install-pm2-xs.png 300w ,https://techwhale.in/media/posts/34/responsive/install-pm2-sm.png 480w ,https://techwhale.in/media/posts/34/responsive/install-pm2-md.png 768w ,https://techwhale.in/media/posts/34/responsive/install-pm2-lg.png 1024w ,https://techwhale.in/media/posts/34/responsive/install-pm2-xl.png 1360w ,https://techwhale.in/media/posts/34/responsive/install-pm2-2xl.png 1600w" sizes="(max-width: 1600px) 100vw, 1600px"
                       loading="eager"
-                     height="623"
-                     width="1269"
-                     alt="Install Portainer">
+                     height="628"
+                     width="1200"
+                     alt="">
                      
-                     <figcaption>
-                        Install Portainer
-                        
-                     </figcaption>                      
                </figure>
 
          <header class="u-header post__header">
             <h1>
-               How to install Portainer on Linux OS (Ubuntu, Debian, CentOS, Raspbian)
+               How to install PM2 (Process Management) on Ubuntu 22.10 / Debian 11
             </h1>
                <div class="u-header__meta u-small">
 
@@ -141,13 +137,13 @@
                   <div>
                            <a href="https://techwhale.in/authors/mayur-chavhan/" title="Mayur Chavhan">Mayur Chavhan</a>
 
-                        <time datetime="2020-06-15T13:03">
-                              June 15, 2020
+                        <time datetime="2023-05-19T11:53">
+                              May 19, 2023
                         </time>
 
                            <a
-                              href="https://techwhale.in/category/docker/"
-                              class="u-tag u-tag--1">Docker</a>                            
+                              href="https://techwhale.in/category/tutorials/"
+                              class="u-tag u-tag--1">Tutorials</a>                            
                   </div>
 
                </div>
@@ -155,160 +151,19 @@
 
          <div class="post__entry u-inner">
             
-  <p id="overviewbr">
-    <br>
-  </p>
-
-  <div class="post__toc">
-    <h3>Index:</h3>
-    <ul>
-      <li><a href="#overviewbr">Overview:<br></a></li><li><a href="#installationbr">Installation.<br></a></li><li><a href="#acess-portainer-gui">Acess Portainer GUI</a></li><li><a href="#portainer-docker-processnbsp">Portainer Docker Process&nbsp;</a></li><li><a href="#update-portainer">Update Portainer</a></li>
-    </ul>
-  </div>
-  
-
-    <h2 id="overviewbr">
-      Overview:<br>
-    </h2>
-
   <p>
-    Portainer is docker web GUI application in where you can manage all your docker containers, Images and Volumes. It offers more features than just showing docker containers but you can even manage other docker nodes in one Portainer application.&nbsp;<br>
+    PM2 is a fantastic process manager designed specifically for Node.js applications.<br><br>Throughout my journey as a web developer, I've worked extensively with Node.js. I've had to schedule and manage a multitude of Node.js applications using CRON, which, let me tell you, was no walk in the park. That was until I discovered PM2! It was a game-changer, making my life significantly easier. PM2 ensures my apps are always up and running, and it automatically refreshes them whenever I make updates. Plus, it gives me the flexibility to manually set the reload time using CRON or adjust the restart delay for any application. The best part? It works seamlessly across all operating systems!<br><br>Now, you might be thinking, "Is PM2 only for Node.js apps?" The answer is a resounding no! While PM2 was indeed created with Node.js applications in mind, its utility isn't confined to just that. After using PM2 for a while, I discovered that it can manage scripts from any programming language! I gave it a whirl with Python, and guess what? It worked like a charm!<br><br>In this article, I'm going to share a practical example of how you can schedule and automate your Python scripts using PM2. So, buckle up and let's dive in!<br><br>Step 1: Update Your System<br><br>First things first, let's make sure your system is up-to-date. Open up your terminal and type in the following command:<br><br><code>sudo apt update<br></code><br>This command will fetch the list of available updates and then upgrade your system. The -y flag automatically confirms all prompts, saving you from having to manually approve each update.<br><br>Step 2: Install Node.js<br><br>PM2 is a Node.js application, so we'll need to have Node.js installed on our system. Here's how to do it:<br><br><code>sudo apt install nodejs -y<br></code><br>Once the installation is complete, you can verify it by checking the version of Node.js:<br><br><code>nodejs -v<br></code><br>You should see a version number as the output, which means Node.js is installed correctly.<br><br>Step 3: Install NPM (Node Package Manager)<br><br>NPM is the default package manager for Node.js and it's what we'll use to install PM2. To install NPM, use the following command:<br><br><code>sudo apt install npm -y<br></code><br>Just like we did with Node.js, we can check if NPM is installed correctly:<br><br><code>npm -v<br></code><br>If you see a version number, you're good to go!<br><br>Step 4: Install PM2<br><br>Now that we have Node.js and NPM installed, we can finally install PM2. Here's the command to do it:<br><br><code>sudo npm install -g pm2<br></code><br>The -g flag installs PM2 globally, which means you can use it from any directory on your system.<br><br>To check if PM2 is installed correctly, you can use the following command:<br><br><code>pm2 -v<br></code><br>If you see a version number, congratulations! You've successfully installed PM2 on your Ubuntu 22.10 or Debian 11 system.<br><br>Step 5: Set PM2 to Start on Boot<br><br>One of the great things about PM2 is that it can automatically restart your applications if your system reboots. To set this up, you can use the following command:<br><br><code>pm2 startup<br></code><br>This command will generate a command that you need to run with superuser privileges. Copy the outputted command and run it:<br><br><br><code>sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u yourusername --hp /home/yourusername<br></code><br>Remember to replace yourusername with your actual username.<br><br>And there you have it! You've installed PM2 on your Ubuntu 22.10 or Debian 11 system. Now you can use PM2 to manage and keep your Node.js, Python or Any script or applications running in the background.<br><br>Thank you for reading.
   </p>
 
   <p>
-    This guide will show you how easy is to install Portainer on any linux machines but before that you need to keep in mind that it needs some preparation before installing it.&nbsp;
+    
   </p>
-
-  <p>
-    There are two method is to install Portainer but this guide  will show you the easiest one.
-  </p>
-
-    <h2 id="installationbr">
-      Installation.<br>
-    </h2>
-
-  <p>
-    The easiest method to install Portainer is of course is docker. To manage Docker, you need to deploy a docker container that contains Portainer binary and it access host docker process file to get all information what are docker containers with volumes are running.
-  </p>
-
-  <p>
-    Check out our guide on how to install Docker on Linux so you can install Portainer.
-  </p>
-
-  <p>
-    Now, Here we go, To Install Portainer here is this one line command that simply pulls up the Portainer image.
-  </p>
-
-  <p>
-    <mark>sudo docker run --name portainer --restart=unless-stopped -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer</mark>
-  </p>
-
-  <p>
-    In this line of command, We specified docker name "portainer" and port in which Portainer Docker can be accessible to the public network. Which in this case is port "<strong>9000</strong>"
-  </p>
-
-  <ul>
-    <li>"-v portainer_data" is host location where on the Docker Host the Portainer data.</li><li>"-v /var/run/docker.sock" is Docker process where portainer can access all information and control docker applications.</li><li>"portainer/portainer" is the official docker image which will get pull from official Docker repository.</li>
-  </ul>
-
-    <h2 id="acess-portainer-gui">
-      Acess Portainer GUI
-    </h2>
-
-  <p>
-    Now, Go to the browser and put Docker Host Server IP in there like this:
-  </p>
-
-  <p class="msg msg--success">
-    http://[public-ip-address]:9000
-  </p>
-
-  <p>
-    Replace your public ip address in above field and if you are running docker in your private machine then put your private IP like : <strong>192.168.0.10:9000,192.168.1.10:9000</strong> and so on..
-  </p>
-
-    <h2 id="portainer-docker-processnbsp">
-      Portainer Docker Process&nbsp;
-    </h2>
-
-  <p>
-    To check if portainer is running on your host machine simply run below command,
-  </p>
-
-  <p class="msg msg--success">
-    sudo docker ps
-  </p>
-
-  <p>
-    <strong>Command Output:</strong>
-  </p>
-
-  <p class="msg msg--highlight">
-    docker ps<br>CONTAINER ID        IMAGE                                COMMAND             CREATED             STATUS              PORTS                                                               NAMES<br>9a83bdecfc56        portainer/portainer                  "/portainer"        2 hours ago         Up 2 hours          0.0.0.0:8000-8000/tcp, 0.0.0.0:9000-&gt;9000/tcp                      portainer
-  </p>
-
-  <p>
-    Above output it shows that it exposes application to port 8000 and port 9000 but we use 9000 to access Portainer GUI.
-  </p>
-
-    <h2 id="update-portainer">
-      Update Portainer
-    </h2>
-
-  <p>
-    If you want to update Docker of Portainer then simple run these following commands,
-  </p>
-
-  <p class="msg msg--success">
-    sudo docker pull portainer/portainer
-  </p>
-
-  <p>
-    Above command will pull the latest image from official docker repository but it will not update the current running Portainer Docker so we will stop the running container so it will use updated image.
-  </p>
-
-  <p class="msg msg--success">
-    sudo docker stop portainer&nbsp;
-  </p>
-
-  <p>
-    Here we have stopped our Portainer container and if you seem to notice we don't have to use docker id to stop portainer container but we used "portainer" name and this happened because we gave our docker container a name called "portainer" so using a name for container is makes easy to manage like stop and run the container.
-  </p>
-
-  <p>
-    Now, Delete old Portainer image to replace updated one.
-  </p>
-
-  <p class="msg msg--success">
-    sudo docker rm portainer <br>
-  </p>
-
-  <p>
-    Above command will delete only image but not the volume where we are keeping our Portainer data.
-  </p>
-
-  <p>
-    Re-run the docker portainer command to launch portainer with updated image at same volume and exposed ports we have given before.
-  </p>
-
-  <p class="msg msg--success">
-    sudo docker run --name portainer --restart=unless-stopped -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer <br>
-  </p>
-
-  <p>
-    Check again for docker process and if it's running then we are good to know. Hope this guide helped you.
-  </p>
-
-    <figure class="blockquote">
-      <blockquote>Thank you for reading!</blockquote>
-      <figcaption>Mayur Chavhan</figcaption>
-    </figure>
          </div>
          
             <aside class="post__aside">
                   <div class="post__share">
                         <a
-                           href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftechwhale.in%2Fhow-to-install-portainer-on-linux-os-ubuntu-debian-centos-raspbian%2F"
+                           href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftechwhale.in%2Fhow-to-install-pm2-process-management-on-ubuntu-2210-debian-11%2F"
                            class="js-share facebook"
                            title="Share with Facebook"
                            rel="nofollow noopener noreferrer"
@@ -319,7 +174,7 @@
                         </a>
                      
                         <a
-                           href="https://twitter.com/share?url=https%3A%2F%2Ftechwhale.in%2Fhow-to-install-portainer-on-linux-os-ubuntu-debian-centos-raspbian%2F&amp;via=%40techwhale.in&amp;text=How%20to%20install%20Portainer%20on%20Linux%20OS%20(Ubuntu%2C%20Debian%2C%20CentOS%2C%20Raspbian)"
+                           href="https://twitter.com/share?url=https%3A%2F%2Ftechwhale.in%2Fhow-to-install-pm2-process-management-on-ubuntu-2210-debian-11%2F&amp;via=%40techwhale.in&amp;text=How%20to%20install%20PM2%20(Process%20Management)%20on%20Ubuntu%2022.10%20%2F%20Debian%2011"
                            class="js-share twitter"
                            title="Share with Twitter"
                            rel="nofollow noopener noreferrer"
@@ -332,7 +187,7 @@
                      
                      
                         <a
-                           href="https://wa.me/?text=How%20to%20install%20Portainer%20on%20Linux%20OS%20(Ubuntu%2C%20Debian%2C%20CentOS%2C%20Raspbian) https%3A%2F%2Ftechwhale.in%2Fhow-to-install-portainer-on-linux-os-ubuntu-debian-centos-raspbian%2F"
+                           href="https://wa.me/?text=How%20to%20install%20PM2%20(Process%20Management)%20on%20Ubuntu%2022.10%20%2F%20Debian%2011 https%3A%2F%2Ftechwhale.in%2Fhow-to-install-pm2-process-management-on-ubuntu-2210-debian-11%2F"
                            class="js-share whatsapp"
                            rel="nofollow noopener noreferrer"
                            title="Share with WhatsApp"
@@ -343,7 +198,7 @@
                         </a>
                      
                         <a
-                           href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftechwhale.in%2Fhow-to-install-portainer-on-linux-os-ubuntu-debian-centos-raspbian%2F"
+                           href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftechwhale.in%2Fhow-to-install-pm2-process-management-on-ubuntu-2210-debian-11%2F"
                            class="js-share linkedin"
                            title="Share with LinkedIn"
                            rel="nofollow noopener noreferrer"
@@ -360,9 +215,15 @@
                      <ul class="post__tag box">
                            <li>
                               <a
-                                 href="https://techwhale.in/category/docker/"
+                                 href="https://techwhale.in/category/debian/"
                                  class="u-tag u-tag--1"
-                                 title="Docker">Docker</a>
+                                 title="Debian">Debian</a>
+                           </li>
+                           <li>
+                              <a
+                                 href="https://techwhale.in/category/devops/"
+                                 class="u-tag u-tag--1"
+                                 title="DevOps">DevOps</a>
                            </li>
                            <li>
                               <a
@@ -370,40 +231,30 @@
                                  class="u-tag u-tag--1"
                                  title="Tutorials">Tutorials</a>
                            </li>
+                           <li>
+                              <a
+                                 href="https://techwhale.in/category/ubuntu/"
+                                 class="u-tag u-tag--1"
+                                 title="Ubuntu">Ubuntu</a>
+                           </li>
                      </ul>
 
 
                      <nav class="post__nav box">
                            <div class="post__nav__prev">
-                              <a href="https://techwhale.in/how-to-install-nginx-proxy-manager-on-raspberry-pi-4-arm64/" class="post__nav__link" rel="prev">
+                              <a href="https://techwhale.in/how-to-bypass-specific-website-or-ip-from-openvpn-connection-on-mac/" class="post__nav__link" rel="prev">
                                        <img 
-                                          src="https://techwhale.in/media/posts/8/responsive/imageedit_31_2317095391-xs.jpg" 
+                                          src="https://techwhale.in/media/posts/33/responsive/bypass-openvpn-xs.jpg" 
                                            loading="lazy"  
-                                          alt="install-nginx-proxy-manager-raspberry-pi-4-b"
-                                          height="585" 
-                                          width="780">                                   
+                                          alt="bypass-openvpn"
+                                          height="900" 
+                                          width="1200">                                   
                                  <div class="u-small">
                                     Previous Post
                                     <h5>
-                                       How to install &quot;Nginx Proxy Manager&quot; on Raspberry Pi 4 [arm64]
+                                       How to bypass specific website or IP from OpenVPN connection on Mac
                                     </h5>
                                  </div>
-                              </a>
-                           </div>
-                           <div class="post__nav__next">
-                              <a href="https://techwhale.in/automate-smart-plug-to-charge-laptop-using-webhook-and-shell-script/" class="post__nav__link" rel="next">
-                                 <div class="u-small">
-                                    Next Post
-                                    <h5>
-                                       Automate Smart Plug to charge laptop using Webhook and Shell Script.
-                                    </h5>
-                                 </div>
-                                       <img 
-                                          src="https://techwhale.in/media/posts/15/responsive/Untitled-Design-xs.jpg" 
-                                           loading="lazy"  
-                                          alt="auto turn on and off laptop charger whenever battery gets low and full."
-                                          height="628" 
-                                          width="1200">                                   
                               </a>
                            </div>
                      </nav>
@@ -414,20 +265,38 @@
                         </h3>
                         <div class="post__related-wrap">
                               <figure class="post__related-item">
-                                       <a href="https://techwhale.in/how-to-install-pm2-process-management-on-ubuntu-2210-debian-11/" class="c-card__image">
+                                       <a href="https://techwhale.in/how-to-create-swap-partition-on-aws-ec2-instance-for-ubuntu-2004/" class="c-card__image">
                                           <img 
-                                             src="https://techwhale.in/media/posts/34/responsive/install-pm2-xs.png" 
+                                             src="https://techwhale.in/media/posts/18/responsive/how-to-create-swap-parition-ubuntu-204-3-xs.png" 
                                               loading="lazy" 
-                                             height="628"
-                                             width="1200"
-                                             alt="">
+                                             height="1023"
+                                             width="2048"
+                                             alt="create swap partition on ubuntu 204">
                                        </a>                                     
                                  <figcaption>
                                     <h4 class="post__related-title">
-                                       <a href="https://techwhale.in/how-to-install-pm2-process-management-on-ubuntu-2210-debian-11/" class="inverse">How to install PM2 (Process Management) on Ubuntu 22.10 / Debian 11</a>
+                                       <a href="https://techwhale.in/how-to-create-swap-partition-on-aws-ec2-instance-for-ubuntu-2004/" class="inverse">How to create Swap Partition on Ubuntu 20.04 and Debian 10</a>
                                     </h4>
-                                    <time datetime="2023-05-19T11:53" class="u-small">
-                                          May 19, 2023
+                                    <time datetime="2021-07-19T17:07" class="u-small">
+                                          July 19, 2021
+                                    </time>
+                                 </figcaption>
+                              </figure>
+                              <figure class="post__related-item">
+                                       <a href="https://techwhale.in/how-to-install-portainer-on-linux-os-ubuntu-debian-centos-raspbian/" class="c-card__image">
+                                          <img 
+                                             src="https://techwhale.in/media/posts/10/responsive/Annotation-2020-06-25-082542-min-compressed-xs.jpg" 
+                                              loading="lazy" 
+                                             height="623"
+                                             width="1269"
+                                             alt="Install Portainer">
+                                       </a>                                     
+                                 <figcaption>
+                                    <h4 class="post__related-title">
+                                       <a href="https://techwhale.in/how-to-install-portainer-on-linux-os-ubuntu-debian-centos-raspbian/" class="inverse">How to install Portainer on Linux OS (Ubuntu, Debian, CentOS, Raspbian)</a>
+                                    </h4>
+                                    <time datetime="2020-06-15T13:03" class="u-small">
+                                          June 15, 2020
                                     </time>
                                  </figcaption>
                               </figure>
@@ -450,38 +319,20 @@
                                  </figcaption>
                               </figure>
                               <figure class="post__related-item">
-                                       <a href="https://techwhale.in/how-to-install-docker-and-docker-compose-on-ubuntu-1804/" class="c-card__image">
+                                       <a href="https://techwhale.in/how-to-setup-user-ssh-keys-on-ubuntu-1804/" class="c-card__image">
                                           <img 
-                                             src="https://techwhale.in/media/posts/5/responsive/Webp.net-compress-image-2-xs.jpg" 
+                                             src="https://techwhale.in/media/posts/6/responsive/image-0-compressed-xs.jpg" 
                                               loading="lazy" 
-                                             height="769"
-                                             width="1476"
-                                             alt="How to install docker on Ubuntu 18.04">
+                                             height="1109"
+                                             width="1496"
+                                             alt="setup ssh keys on linux">
                                        </a>                                     
                                  <figcaption>
                                     <h4 class="post__related-title">
-                                       <a href="https://techwhale.in/how-to-install-docker-and-docker-compose-on-ubuntu-1804/" class="inverse">How to install docker and docker-compose on Ubuntu 18.04</a>
+                                       <a href="https://techwhale.in/how-to-setup-user-ssh-keys-on-ubuntu-1804/" class="inverse">How to setup user SSH Keys on Ubuntu 18.04</a>
                                     </h4>
-                                    <time datetime="2020-05-20T21:38" class="u-small">
-                                          May 20, 2020
-                                    </time>
-                                 </figcaption>
-                              </figure>
-                              <figure class="post__related-item">
-                                       <a href="https://techwhale.in/install-jitsi-meet-on-ubuntu-1804/" class="c-card__image">
-                                          <img 
-                                             src="https://techwhale.in/media/posts/4/responsive/image-8-compressed-xs.jpg" 
-                                              loading="lazy" 
-                                             height="722"
-                                             width="1376"
-                                             alt="">
-                                       </a>                                     
-                                 <figcaption>
-                                    <h4 class="post__related-title">
-                                       <a href="https://techwhale.in/install-jitsi-meet-on-ubuntu-1804/" class="inverse">Install Jitsi Meet on Ubuntu 18.04</a>
-                                    </h4>
-                                    <time datetime="2020-05-18T01:58" class="u-small">
-                                          May 18, 2020
+                                    <time datetime="2020-05-23T16:53" class="u-small">
+                                          May 23, 2020
                                     </time>
                                  </figcaption>
                               </figure>
