@@ -5,6 +5,10 @@
 <loc>https://techwhale.in/</loc>
 </url>
 <url>
+<loc>https://techwhale.in/automate-linux-system-management-with-ansible-system-roles/</loc>
+<lastmod>2023-07-14T02:49:33+05:30</lastmod>
+</url>
+<url>
 <loc>https://techwhale.in/automate-smart-plug-to-charge-laptop-using-webhook-and-shell-script/</loc>
 <lastmod>2021-07-16T18:56:43+05:30</lastmod>
 <image:image>
@@ -31,6 +35,9 @@
 <loc>https://techwhale.in/category/fastest-webserver-with-best-security-policies/</loc>
 </url>
 <url>
+<loc>https://techwhale.in/category/mysql/</loc>
+</url>
+<url>
 <loc>https://techwhale.in/category/techwale/</loc>
 </url>
 <url>
@@ -38,6 +45,9 @@
 </url>
 <url>
 <loc>https://techwhale.in/category/tutorials/</loc>
+</url>
+<url>
+<loc>https://techwhale.in/category/tutorials/page/2/</loc>
 </url>
 <url>
 <loc>https://techwhale.in/category/ubuntu/</loc>
@@ -55,11 +65,31 @@
 </image:image>
 </url>
 <url>
+<loc>https://techwhale.in/how-to-add-swap-space-on-ubuntu-22-and-debian-11-12/</loc>
+<lastmod>2023-07-14T02:57:48+05:30</lastmod>
+</url>
+<url>
+<loc>https://techwhale.in/how-to-automate-initial-server-setup-of-multiple-ubuntu-2204-servers-using-ansible/</loc>
+<lastmod>2023-07-26T17:34:34+05:30</lastmod>
+<image:image>
+<image:loc>https://techwhale.in/media/posts/43/git-workflow-copy.jpg</image:loc>
+<image:title><![CDATA[How To Automate Initial Server Setup of Multiple Ubuntu 22.04 Servers Using Ansible]]></image:title>
+</image:image>
+</url>
+<url>
 <loc>https://techwhale.in/how-to-bypass-specific-website-or-ip-from-openvpn-connection-on-mac/</loc>
 <lastmod>2023-04-21T21:55:22+05:30</lastmod>
 <image:image>
 <image:loc>https://techwhale.in/media/posts/33/bypass-openvpn.jpg</image:loc>
 <image:title><![CDATA[bypass-openvpn]]></image:title>
+</image:image>
+</url>
+<url>
+<loc>https://techwhale.in/how-to-configure-logging-and-log-rotation-in-nginx-on-an-ubuntu-22-and-debian-12/</loc>
+<lastmod>2023-07-26T17:40:32+05:30</lastmod>
+<image:image>
+<image:loc>https://techwhale.in/media/posts/40/ScreenShot-20230726-174020.png</image:loc>
+<image:title><![CDATA[How To Configure Logging and Log Rotation in Nginx on an Ubuntu 22 and Debian 12]]></image:title>
 </image:image>
 </url>
 <url>
@@ -91,6 +121,14 @@
 </image:image>
 </url>
 <url>
+<loc>https://techwhale.in/how-to-install-aws-cli-on-linux-windows-and-mac/</loc>
+<lastmod>2023-07-26T17:34:52+05:30</lastmod>
+<image:image>
+<image:loc>https://techwhale.in/media/posts/42/git-workflow-copy-1.jpg</image:loc>
+<image:title><![CDATA[How to Install AWS CLI on Linux, Windows, and Mac]]></image:title>
+</image:image>
+</url>
+<url>
 <loc>https://techwhale.in/how-to-install-docker-and-docker-compose-on-ubuntu-1804/</loc>
 <lastmod>2020-06-30T17:23:33+05:30</lastmod>
 <image:image>
@@ -103,6 +141,14 @@
 </image:image>
 </url>
 <url>
+<loc>https://techwhale.in/how-to-install-mariadb-110-with-phpmyadmin-on-rocky-amalinux/</loc>
+<lastmod>2023-07-26T17:33:11+05:30</lastmod>
+<image:image>
+<image:loc>https://techwhale.in/media/posts/38/ScreenShot-20230726-173240.png</image:loc>
+<image:title><![CDATA[How to Install MariaDB 11.0 With phpMyAdmin on Rocky / AmaLinux]]></image:title>
+</image:image>
+</url>
+<url>
 <loc>https://techwhale.in/how-to-install-nginx-proxy-manager-on-raspberry-pi-4-arm64/</loc>
 <lastmod>2021-06-07T00:07:34+05:30</lastmod>
 <image:image>
@@ -112,9 +158,17 @@
 </url>
 <url>
 <loc>https://techwhale.in/how-to-install-pm2-process-management-on-ubuntu-2210-debian-11/</loc>
-<lastmod>2023-05-24T18:25:21+05:30</lastmod>
+<lastmod>2023-05-31T00:22:11+05:30</lastmod>
 <image:image>
 <image:loc>https://techwhale.in/media/posts/34/install-pm2.png</image:loc>
+<image:title><![CDATA[]]></image:title>
+</image:image>
+</url>
+<url>
+<loc>https://techwhale.in/how-to-install-podman-compose-on-debian-12-bookworm/</loc>
+<lastmod>2023-07-26T17:33:45+05:30</lastmod>
+<image:image>
+<image:loc>https://techwhale.in/media/posts/37/git-workflow-copy-2.jpg</image:loc>
 <image:title><![CDATA[]]></image:title>
 </image:image>
 </url>
@@ -171,6 +225,9 @@
 <lastmod>2022-12-26T19:42:32+05:30</lastmod>
 </url>
 <url>
+<loc>https://techwhale.in/page/2/</loc>
+</url>
+<url>
 <loc>https://techwhale.in/prepare-yourself-for-the-arrival-of-devops-in-the-year-2023/</loc>
 <lastmod>2022-12-26T03:44:33+05:30</lastmod>
 </url>
@@ -184,6 +241,14 @@
 <image:image>
 <image:loc>https://techwhale.in/media/posts/23/Untitled-Design-1.png</image:loc>
 <image:title><![CDATA[]]></image:title>
+</image:image>
+</url>
+<url>
+<loc>https://techwhale.in/upgrade-old-version-of-nginx-on-ubuntu-2204/</loc>
+<lastmod>2023-07-26T17:38:07+05:30</lastmod>
+<image:image>
+<image:loc>https://techwhale.in/media/posts/44/ScreenShot-20230726-173736.png</image:loc>
+<image:title><![CDATA[How to upgrade old version of Nginx on Ubuntu 22.04]]></image:title>
 </image:image>
 </url>
 </urlset>

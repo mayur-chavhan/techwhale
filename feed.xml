@@ -3,12 +3,953 @@
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2023-05-24T18:25:21+05:30</updated>
+    <updated>2023-07-26T17:40:32+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
     <id>https://techwhale.in</id>
 
+    <entry>
+        <title>How to upgrade old version of Nginx on Ubuntu 22.04</title>
+        <author>
+            <name>Mayur Chavhan</name>
+        </author>
+        <link href="https://techwhale.in/upgrade-old-version-of-nginx-on-ubuntu-2204/"/>
+        <id>https://techwhale.in/upgrade-old-version-of-nginx-on-ubuntu-2204/</id>
+        <media:content url="https://techwhale.in/media/posts/44/ScreenShot-20230726-173736.png" medium="image" />
+            <category term="Tutorials"/>
+            <category term="Nginx"/>
+
+        <updated>2023-07-26T17:38:07+05:30</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://techwhale.in/media/posts/44/ScreenShot-20230726-173736.png" alt="How to upgrade old version of Nginx on Ubuntu 22.04" />
+                    Nginx is a powerful web server, load balancer, and reverse proxy that is used by some of the most popular websites in the world. It can help improve the performance and security of your web applications, and this guide will show you how to install&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://techwhale.in/media/posts/44/ScreenShot-20230726-173736.png" class="type:primaryImage" alt="How to upgrade old version of Nginx on Ubuntu 22.04" /></p>
+                <p>Nginx is a powerful web server, load balancer, and reverse proxy that is used by some of the most popular websites in the world. It can help improve the performance and security of your web applications, and this guide will show you how to install the latest version of Nginx on Ubuntu 22.04.</p>
+<p>To install Nginx, you need to follow these steps:</p>
+<ol>
+<li>Log in as root
+To proceed with the installation of Nginx, you need to be logged in as root. If you are not already logged in as root, you can switch to the root user using the following command:</li>
+</ol>
+<pre><code>$ sudo -i
+</code></pre>
+<ol>
+<li>Update package list
+The next step is to update the package list using the following command:</li>
+</ol>
+<pre><code># apt update
+</code></pre>
+<ol>
+<li>Install required packages
+Install the required packages to your system using the following command:</li>
+</ol>
+<pre><code># apt install curl gnupg2 ca-certificates lsb-release ubuntu-keyring -y
+</code></pre>
+<ol>
+<li>Import the Nginx signing key
+Import the Nginx signing key using the following command:</li>
+</ol>
+<pre><code># wget -O- &lt;https://nginx.org/keys/nginx_signing.key&gt; | gpg --dearmor \\
+    | tee /etc/apt/trusted.gpg.d/nginx.gpg &gt; /dev/null
+</code></pre>
+<ol>
+<li>Verify the key
+Verify that the downloaded file contains the proper key using the following command:</li>
+</ol>
+<pre><code># gpg --dry-run --quiet --import --import-options import-show /etc/apt/trusted.gpg.d/nginx.gpg
+</code></pre>
+<ol>
+<li>Set up the apt repository
+Set up the apt repository for stable Nginx packages using the following command:</li>
+</ol>
+<pre><code># echo &quot;deb &lt;http://nginx.org/packages/ubuntu&gt; `lsb_release -cs` nginx&quot; \\
+    | tee /etc/apt/sources.list.d/nginx.list
+</code></pre>
+<ol>
+<li>Update repository information
+Update the repository information using the following command:</li>
+</ol>
+<pre><code># apt update
+</code></pre>
+<ol>
+<li>Remove existing Nginx installations
+Remove all existing Nginx installations using the following command. (This step can be skipped on new systems.)</li>
+</ol>
+<pre><code># apt purge nginx nginx-common nginx-full nginx-core
+</code></pre>
+<ol>
+<li>Install Nginx
+Install Nginx using the following command:</li>
+</ol>
+<pre><code># apt install nginx
+</code></pre>
+<ol>
+<li>Verify the installation
+Verify the installation and Nginx version using the following command:</li>
+</ol>
+<pre><code># nginx -v
+</code></pre>
+<ol>
+<li>Enable the Nginx service
+Enable the Nginx service using the following command:</li>
+</ol>
+<pre><code># systemctl enable nginx
+</code></pre>
+<ol>
+<li>Start Nginx
+Start Nginx using the following command:</li>
+</ol>
+<pre><code># systemctl start nginx
+</code></pre>
+<ol>
+<li>Modify the default configuration
+The default configuration when installing Nginx through the Nginx repository differs from the default configuration when installing Nginx through the Ubuntu repository. We will modify a few things to achieve this. First, create additional directories using the following command:</li>
+</ol>
+<pre><code># mkdir /etc/nginx/{modules-available,modules-enabled,sites-available,sites-enabled,snippets}
+</code></pre>
+<ol>
+<li>Edit the nginx.conf file
+Edit the nginx.conf file using the following command:</li>
+</ol>
+<pre><code># cat &gt; /etc/nginx/nginx.conf &lt;&lt;EOF
+user  www-data;
+worker_processes  auto;
+pid        /var/run/nginx.pid;
+include /etc/nginx/modules-enabled/*.conf;
+events {
+    worker_connections  1024;
+}
+http {
+    sendfile on;
+    tcp_nopush on;
+    types_hash_max_size 2048;
+
+    server_tokens off;
+
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE
+    ssl_prefer_server_ciphers on;
+
+    access_log  /var/log/nginx/access.log;
+    error_log /var/log/nginx/error.log;
+
+    gzip  on;
+
+    include /etc/nginx/conf.d/*.conf;
+    include /etc/nginx/sites-enabled/*;
+}
+EOF
+</code></pre>
+<ol>
+<li>Check the configuration
+Check the configuration using the following command:</li>
+</ol>
+<pre><code># nginx -t
+</code></pre>
+<ol>
+<li>Restart Nginx
+Restart Nginx using the following command:</li>
+</ol>
+<pre><code># systemctl restart nginx
+</code></pre>
+<ol>
+<li>Test Nginx
+Test if Nginx is responding using the curl command:</li>
+</ol>
+<pre><code># curl localhost
+</code></pre>
+<p>It is important to note that this tutorial assumes you are using Ubuntu 22.04. If you are using a different version of Ubuntu or a different operating system, the commands may be different. Also, make sure you have appropriate permissions before running commands.</p>
+
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>How To Automate Initial Server Setup of Multiple Ubuntu 22.04 Servers Using Ansible</title>
+        <author>
+            <name>Mayur Chavhan</name>
+        </author>
+        <link href="https://techwhale.in/how-to-automate-initial-server-setup-of-multiple-ubuntu-2204-servers-using-ansible/"/>
+        <id>https://techwhale.in/how-to-automate-initial-server-setup-of-multiple-ubuntu-2204-servers-using-ansible/</id>
+        <media:content url="https://techwhale.in/media/posts/43/git-workflow-copy.jpg" medium="image" />
+            <category term="Ubuntu"/>
+            <category term="Tutorials"/>
+            <category term="Automation"/>
+            <category term="Ansible"/>
+
+        <updated>2023-07-26T17:34:34+05:30</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://techwhale.in/media/posts/43/git-workflow-copy.jpg" alt="How To Automate Initial Server Setup of Multiple Ubuntu 22.04 Servers Using Ansible" />
+                    Automation is a key aspect of modern infrastructure management. It allows you to quickly and easily perform repetitive tasks across multiple servers with minimal human intervention. Ansible is a popular automation tool that enables you to automate the initial server setup of multiple Ubuntu 22.04&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://techwhale.in/media/posts/43/git-workflow-copy.jpg" class="type:primaryImage" alt="How To Automate Initial Server Setup of Multiple Ubuntu 22.04 Servers Using Ansible" /></p>
+                <p>Automation is a key aspect of modern infrastructure management. It allows you to quickly and easily perform repetitive tasks across multiple servers with minimal human intervention. Ansible is a popular automation tool that enables you to automate the initial server setup of multiple Ubuntu 22.04 servers with ease.</p>
+<p>In this guide, we will walk you through the steps to automate the initial server setup of multiple Ubuntu 22.04 servers using Ansible. We will cover the installation of Ansible, creating an inventory file, configuring SSH access, setting up sudo access, and installing some common packages.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before we begin, you will need the following:</p>
+<ul>
+<li>Multiple Ubuntu 22.04 servers.</li>
+<li>A user account with sudo privileges on each server.</li>
+<li>Ansible installed on your local machine.</li>
+</ul>
+<h2 id="step-1-installing-ansible">Step 1: Installing Ansible</h2>
+<p>Ansible is not installed by default on Ubuntu 22.04. To install Ansible on your local machine, follow these steps:</p>
+<ol>
+<li>Open a terminal window on your local machine.</li>
+<li>Update the package lists and install Ansible with the following command:</li>
+</ol>
+<pre><code>sudo apt update
+sudo apt install ansible
+</code></pre>
+<ol>
+<li>Verify that Ansible is installed by running the following command:</li>
+</ol>
+<pre><code>ansible --version
+</code></pre>
+<p>You should see the version of Ansible that you installed.</p>
+<h2 id="step-2-creating-an-inventory-file">Step 2: Creating an Inventory File</h2>
+<p>The inventory file is a list of all the servers that Ansible should manage. This file is written in INI format and can be located anywhere on your local machine. To create an inventory file, follow these steps:</p>
+<ol>
+<li>Open a terminal window on your local machine.</li>
+<li>Create a new text file with the following command:</li>
+</ol>
+<pre><code>nano inventory.ini
+</code></pre>
+<ol>
+<li>Add the IP addresses or hostnames of each server to the file, one per line:</li>
+</ol>
+<pre><code>[webserver]
+192.168.1.101
+192.168.1.102
+
+[database]
+192.168.1.103
+192.168.1.104
+</code></pre>
+<p>In this example, we have two groups of servers: webserver and database. The IP addresses of the servers in each group are listed below the group name.</p>
+<ol>
+<li>Save and close the file.</li>
+</ol>
+<h2 id="step-3-configuring-ssh-access">Step 3: Configuring SSH Access</h2>
+<p>In order for Ansible to manage your servers, it needs to be able to connect to them using SSH. To configure SSH access, follow these steps:</p>
+<ol>
+<li>Generate an SSH key pair on your local machine with the following command:</li>
+</ol>
+<pre><code>ssh-keygen
+</code></pre>
+<ol>
+<li>Copy the public key to each server with the following command:</li>
+</ol>
+<pre><code>ssh-copy-id username@server_ip_address
+</code></pre>
+<ol>
+<li>Test that you can connect to each server with the following command:</li>
+</ol>
+<pre><code>ssh username@server_ip_address
+</code></pre>
+<h2 id="step-4-setting-up-sudo-access">Step 4: Setting Up Sudo Access</h2>
+<p>In order to perform certain tasks, such as installing packages, Ansible needs to be able to run commands with sudo privileges. To set up sudo access, follow these steps:</p>
+<ol>
+<li>Open a terminal window on each server.</li>
+<li>Add your user account to the sudo group with the following command:</li>
+</ol>
+<pre><code>sudo usermod -aG sudo username
+</code></pre>
+<ol>
+<li>Test that your user account has sudo access with the following command:</li>
+</ol>
+<pre><code>sudo whoami
+</code></pre>
+<p>You should see “root” as the output.</p>
+<h2 id="step-5-installing-common-packages">Step 5: Installing Common Packages</h2>
+<p>Now that Ansible is set up and configured to manage your servers, we can install some common packages. To do this, we will create a playbook.</p>
+<ol>
+<li>Create a new text file with the following command:</li>
+</ol>
+<pre><code>nano playbook.yml
+</code></pre>
+<ol>
+<li>Add the following code to the file:</li>
+</ol>
+<pre><code>---
+- name: Install common packages
+  hosts: all
+  become: true
+  tasks:
+    - name: Update package lists
+      apt:
+        update_cache: yes
+
+    - name: Install packages
+      apt:
+        name:
+          - nano
+          - git
+          - curl
+          - wget
+</code></pre>
+<p>This playbook will update the package lists and install the Nano, Git, Curl, and Wget packages on all servers in the inventory file.</p>
+<ol>
+<li>Save and close the file.</li>
+<li>Run the playbook with the following command:</li>
+</ol>
+<pre><code>ansible-playbook -i inventory.ini playbook.yml
+</code></pre>
+<p>Ansible will connect to each server, update the package lists, and install the specified packages.</p>
+<h2 id="step-6-creating-a-custom-user">Step 6: Creating a Custom User</h2>
+<p>By default, Ubuntu 22.04 comes with a user named “ubuntu”. It is recommended that you create a custom user with a unique username and password for security reasons. To create a new user, follow these steps:</p>
+<ol>
+<li>Open a terminal window on each server.</li>
+<li>Create a new user with the following command, replacing “newuser” with your desired username:</li>
+</ol>
+<pre><code>sudo adduser newuser
+</code></pre>
+<ol>
+<li>Set a password for the new user when prompted.</li>
+<li>Add the new user to the sudo group with the following command:</li>
+</ol>
+<pre><code>sudo usermod -aG sudo newuser
+</code></pre>
+<ol>
+<li>Test that the new user has sudo access with the following command:</li>
+</ol>
+<pre><code>sudo whoami
+</code></pre>
+<p>You should see “root” as the output.</p>
+<h2 id="step-7-configuring-firewall">Step 7: Configuring Firewall</h2>
+<p>A firewall is an essential security tool that prevents unauthorized access to your servers. Ubuntu 22.04 comes with UFW (Uncomplicated Firewall) pre-installed. To configure UFW, follow these steps:</p>
+<ol>
+<li>Open a terminal window on each server.</li>
+<li>Enable UFW with the following command:</li>
+</ol>
+<pre><code>sudo ufw enable
+</code></pre>
+<ol>
+<li>Allow SSH access with the following command:</li>
+</ol>
+<pre><code>sudo ufw allow ssh
+</code></pre>
+<ol>
+<li>Allow HTTP and HTTPS access (if applicable) with the following command:</li>
+</ol>
+<pre><code>sudo ufw allow http
+sudo ufw allow https
+</code></pre>
+<ol>
+<li>Verify that the firewall is configured correctly with the following command:</li>
+</ol>
+<pre><code>sudo ufw status verbose
+</code></pre>
+<p>You should see the rules that you just configured listed.</p>
+<h2 id="step-8-configuring-timezone">Step 8: Configuring Timezone</h2>
+<p>By default, Ubuntu 22.04 is set to the UTC timezone. To change the timezone, follow these steps:</p>
+<ol>
+<li>Open a terminal window on each server.</li>
+<li>List the available time zones with the following command:</li>
+</ol>
+<pre><code>timedatectl list-timezones
+</code></pre>
+<ol>
+<li>Set the timezone to your desired timezone with the following command, replacing “America/New_York” with your desired timezone:</li>
+</ol>
+<pre><code>sudo timedatectl set-timezone America/New_York
+</code></pre>
+<ol>
+<li>Verify that the timezone is set correctly with the following command:</li>
+</ol>
+<pre><code>timedatectl
+</code></pre>
+<p>You should see the timezone that you just set listed.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this guide, we have shown you how to automate the initial server setup of multiple Ubuntu 22.04 servers using Ansible. We covered the installation of Ansible, creating an inventory file, configuring SSH access, setting up sudo access, installing some common packages, creating a custom user, configuring firewall, and configuring timezone. With this knowledge, you can easily automate the setup and configuration of your infrastructure, saving you time and effort.</p>
+
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>How to Install AWS CLI on Linux, Windows, and Mac</title>
+        <author>
+            <name>Mayur Chavhan</name>
+        </author>
+        <link href="https://techwhale.in/how-to-install-aws-cli-on-linux-windows-and-mac/"/>
+        <id>https://techwhale.in/how-to-install-aws-cli-on-linux-windows-and-mac/</id>
+        <media:content url="https://techwhale.in/media/posts/42/git-workflow-copy-1.jpg" medium="image" />
+            <category term="Tutorials"/>
+            <category term="DevOps"/>
+
+        <updated>2023-07-26T17:34:52+05:30</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://techwhale.in/media/posts/42/git-workflow-copy-1.jpg" alt="How to Install AWS CLI on Linux, Windows, and Mac" />
+                    AWS CLI (Command Line Interface) is a command-line tool used by developers and system administrators to interact with AWS services. In this tutorial, we will learn how to install AWS CLI on Linux, Windows, and Mac. We will also learn some tips and tricks to&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://techwhale.in/media/posts/42/git-workflow-copy-1.jpg" class="type:primaryImage" alt="How to Install AWS CLI on Linux, Windows, and Mac" /></p>
+                <p>AWS CLI (Command Line Interface) is a command-line tool used by developers and system administrators to interact with AWS services. In this tutorial, we will learn how to install AWS CLI on Linux, Windows, and Mac. We will also learn some tips and tricks to make working with AWS CLI easier.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before we start, make sure you have the following prerequisites:</p>
+<ul>
+<li>A Linux, Windows, or Mac machine with administrative privileges</li>
+<li>Python 2.7.9 or later, or Python 3.4 or later</li>
+</ul>
+<h2 id="installing-aws-cli-on-linux">Installing AWS CLI on Linux</h2>
+<p>Follow the steps below to install AWS CLI on Linux:</p>
+<ol>
+<li><p>Open the terminal on your Linux machine.</p>
+</li>
+<li><p>Update the package list:</p>
+<pre><code>sudo apt-get update
+</code></pre>
+</li>
+<li><p>Install the AWS CLI package:</p>
+<pre><code>sudo apt-get install awscli
+</code></pre>
+</li>
+<li><p>Verify the installation:</p>
+<pre><code>aws --version
+</code></pre>
+<p> The above command should output the version of AWS CLI installed on your machine.</p>
+</li>
+</ol>
+<h2 id="installing-aws-cli-on-windows">Installing AWS CLI on Windows</h2>
+<p>Follow the steps below to install AWS CLI on Windows:</p>
+<ol>
+<li><p>Download the AWS CLI MSI installer for Windows from the <a href="https://aws.amazon.com/cli/">official AWS CLI website</a>.</p>
+</li>
+<li><p>Run the installer and follow the prompts to install AWS CLI.</p>
+</li>
+<li><p>Open Command Prompt or PowerShell and run the following command:</p>
+<pre><code>aws --version
+</code></pre>
+<p> The above command should output the version of AWS CLI installed on your machine.</p>
+</li>
+</ol>
+<h2 id="installing-aws-cli-on-mac">Installing AWS CLI on Mac</h2>
+<p>Follow the steps below to install AWS CLI on Mac:</p>
+<ol>
+<li><p>Open the terminal on your Mac machine.</p>
+</li>
+<li><p>Install AWS CLI using Homebrew:</p>
+<pre><code>brew install awscli
+</code></pre>
+</li>
+<li><p>Verify the installation:</p>
+<pre><code>aws --version
+</code></pre>
+<p> The above command should output the version of AWS CLI installed on your machine.</p>
+</li>
+</ol>
+<h2 id="tips-and-tricks">Tips and Tricks</h2>
+<h3 id="multiple-aws-profiles">Multiple AWS Profiles</h3>
+<p>You can configure multiple AWS profiles on your machine. This is useful if you have multiple AWS accounts or if you are working with multiple IAM users.</p>
+<p>To create a new AWS profile, run the following command:</p>
+<pre><code>aws configure --profile &lt;profile-name&gt;
+</code></pre>
+<p>Replace <code>&lt;profile-name&gt;</code> with the name of your new profile. Follow the prompts to provide your AWS access key, secret access key, region, and output format.</p>
+<p>To switch between AWS profiles, specify the profile name when running AWS CLI commands:</p>
+<pre><code>aws s3 ls --profile &lt;profile-name&gt;
+</code></pre>
+<h3 id="using-aws-sso">Using AWS SSO</h3>
+<p>If your organization uses AWS SSO (Single Sign-On), you can use AWS CLI to log in to your AWS account without providing your AWS access key and secret access key.</p>
+<p>To use AWS SSO with AWS CLI, run the following command:</p>
+<pre><code>aws sso login --profile &lt;profile-name&gt; --region &lt;aws-region&gt;
+</code></pre>
+<p>Replace <code>&lt;profile-name&gt;</code> with the name of your AWS profile and <code>&lt;aws-region&gt;</code> with the AWS region you want to log in to.</p>
+<h3 id="syncing-files-to-amazon-s3">Syncing Files to Amazon S3</h3>
+<p>You can use AWS CLI to sync files and directories to Amazon S3. This is useful for backing up files to Amazon S3 or for distributing files to a large number of users.</p>
+<p>To sync a local directory to an S3 bucket, run the following command:</p>
+<pre><code>aws s3 sync /path/to/local/directory s3://&lt;bucket-name&gt;/&lt;prefix&gt;
+</code></pre>
+<p>Replace <code>/path/to/local/directory</code> with the path to your local directory, <code>&lt;bucket-name&gt;</code> with the name of your S3 bucket, and <code>&lt;prefix&gt;</code> with the prefix to use for the uploaded files.</p>
+<h3 id="copying-files-between-amazon-s3-buckets">Copying Files Between Amazon S3 Buckets</h3>
+<p>You can use AWS CLI to copy files between Amazon S3 buckets. This is useful if you want to duplicate files in different buckets or regions.</p>
+<p>To copy a file between S3 buckets, run the following command:</p>
+<pre><code>aws s3 cp s3://&lt;source-bucket&gt;/&lt;source-key&gt; s3://&lt;destination-bucket&gt;/&lt;destination-key&gt;
+</code></pre>
+<p>Replace <code>&lt;source-bucket&gt;</code> with the name of the source S3 bucket, <code>&lt;source-key&gt;</code> with the key of the source file, <code>&lt;destination-bucket&gt;</code> with the name of the destination S3 bucket, and <code>&lt;destination-key&gt;</code> with the key of the destination file.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this tutorial, we learned how to install AWS CLI on Linux, Windows, and Mac. We also learned some tips and tricks to make working with AWS CLI easier. With AWS CLI, you can manage your AWS infrastructure from the command line, making it easier to automate common tasks.</p>
+
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>How To Add Swap Space on Ubuntu 22 and Debian 11 / 12</title>
+        <author>
+            <name>Mayur Chavhan</name>
+        </author>
+        <link href="https://techwhale.in/how-to-add-swap-space-on-ubuntu-22-and-debian-11-12/"/>
+        <id>https://techwhale.in/how-to-add-swap-space-on-ubuntu-22-and-debian-11-12/</id>
+            <category term="Ubuntu"/>
+            <category term="Tutorials"/>
+            <category term="Debian"/>
+
+        <updated>2023-07-14T02:57:48+05:30</updated>
+            <summary>
+                <![CDATA[
+                    If you are running a Debian 11 system and are experiencing slow performance or running out of memory, you may need to add swap space to your system. Swap space is a designated area on your hard drive that is used to temporarily store data&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>If you are running a Debian 11 system and are experiencing slow performance or running out of memory, you may need to add swap space to your system. Swap space is a designated area on your hard drive that is used to temporarily store data when your system has run out of physical memory (RAM). In this guide, we will walk you through the steps to add swap space to your Debian 11 system.</p>
+<h2 id="step-1-checking-for-existing-swap-space">Step 1: Checking for Existing Swap Space</h2>
+<p>Before adding a new swap file, you should first check if there is any existing swap space on your system. To do this, run the following command in your terminal:</p>
+<pre><code>sudo swapon --show
+</code></pre>
+<p>If you get no output, it means there is no existing swap space on your system.</p>
+<h2 id="step-2-creating-a-swap-file">Step 2: Creating a Swap File</h2>
+<p>To create a new swap file, we will use the <code>fallocate</code> command. This command creates a file with a specified size. For example, to create a 2GB swap file, run the following command:</p>
+<pre><code>sudo fallocate -l 2G /swapfile
+</code></pre>
+<p>Next, we need to restrict access to the swap file to root only. Run the following command:</p>
+<pre><code>sudo chmod 600 /swapfile
+</code></pre>
+<h2 id="step-3-enabling-the-swap-file">Step 3: Enabling the Swap File</h2>
+<p>Now that we have created the swap file, we need to enable it. Run the following command:</p>
+<pre><code>sudo mkswap /swapfile
+</code></pre>
+<p>This command initializes the swap file. Next, we need to enable the swap file with the following command:</p>
+<pre><code>sudo swapon /swapfile
+</code></pre>
+<p>To make the swap file permanent, we need to add it to the <code>/etc/fstab</code> file. Open the file with your preferred text editor:</p>
+<pre><code>sudo nano /etc/fstab
+</code></pre>
+<p>Add the following line to the file:</p>
+<pre><code>/swapfile swap swap defaults 0 0
+</code></pre>
+<p>Save and close the file.</p>
+<h2 id="step-4-verifying-the-swap-space">Step 4: Verifying the Swap Space</h2>
+<p>To verify that the swap space has been added, you can run the following command:</p>
+<pre><code>sudo swapon --show
+</code></pre>
+<p>This command should now display your new swap file.</p>
+<h2 id="tips-and-tricks">Tips and Tricks</h2>
+<h3 id="customizing-the-size-of-the-swap-file">Customizing the Size of the Swap File</h3>
+<p>You can customize the size of the swap file to your requirements. Just replace “2G” in the <code>fallocate</code> command with the desired size (e.g. 4G, 8G, etc.). However, it is recommended to have a swap space of 2GB or less, depending on your system’s needs.</p>
+<h3 id="swap-file-vs-swap-partition">Swap File vs Swap Partition</h3>
+<p>You can also create a swap partition instead of a swap file. However, it is recommended to use a swap file as it is easier to resize and manage.</p>
+<h3 id="adding-too-much-swap-space">Adding Too Much Swap Space</h3>
+<p>Adding too much swap space can actually slow down your system, as the system will start using the swap space instead of physical memory. It is recommended to have a swap space of 2GB or less, depending on your system’s needs.</p>
+<h3 id="verifying-swap-space-usage">Verifying Swap Space Usage</h3>
+<p>To verify how much swap space is being used, run the following command:</p>
+<pre><code>sudo swapon --summary
+</code></pre>
+<p>This command will show you the amount of swap space being used, as well as the total amount of swap space available.</p>
+<h3 id="removing-swap-space">Removing Swap Space</h3>
+<p>If you no longer need the swap space, you can remove it by running the following commands:</p>
+<pre><code>sudo swapoff /swapfile
+sudo rm /swapfile
+</code></pre>
+<p>Congratulations! You have successfully added swap space to your Debian 11 system.</p>
+
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>How To Configure Logging and Log Rotation in Nginx on an Ubuntu 22 and Debian 12</title>
+        <author>
+            <name>Mayur Chavhan</name>
+        </author>
+        <link href="https://techwhale.in/how-to-configure-logging-and-log-rotation-in-nginx-on-an-ubuntu-22-and-debian-12/"/>
+        <id>https://techwhale.in/how-to-configure-logging-and-log-rotation-in-nginx-on-an-ubuntu-22-and-debian-12/</id>
+        <media:content url="https://techwhale.in/media/posts/40/ScreenShot-20230726-174020.png" medium="image" />
+            <category term="TechWhale Guides"/>
+            <category term="Nginx"/>
+
+        <updated>2023-07-26T17:40:32+05:30</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://techwhale.in/media/posts/40/ScreenShot-20230726-174020.png" alt="How To Configure Logging and Log Rotation in Nginx on an Ubuntu 22 and Debian 12" />
+                    Nginx is a popular web server used to serve web applications. It is known for its high performance, reliability, and scalability. Nginx logs all the requests that are processed by the server. These logs can be useful for troubleshooting issues with the server, analyzing traffic&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://techwhale.in/media/posts/40/ScreenShot-20230726-174020.png" class="type:primaryImage" alt="How To Configure Logging and Log Rotation in Nginx on an Ubuntu 22 and Debian 12" /></p>
+                <p>Nginx is a popular web server used to serve web applications. It is known for its high performance, reliability, and scalability. Nginx logs all the requests that are processed by the server. These logs can be useful for troubleshooting issues with the server, analyzing traffic patterns, and monitoring server activity. However, if the logs are not properly configured and rotated, they can consume too much disk space and make it difficult to analyze the logs over time. In this guide, we will show you how to configure logging and log rotation in Nginx on an Ubuntu 22 and Debian Server 12.</p>
+<h2 id="step-1-configuring-nginx-logging">Step 1: Configuring Nginx Logging</h2>
+<p>Nginx logs all the requests that are processed by the server. By default, Nginx logs all the requests to the error log file. However, it is recommended to configure separate access and error log files to make it easier to analyze the logs.</p>
+<ol>
+<li><p>Open the Nginx configuration file <code>/etc/nginx/nginx.conf</code> using a text editor. You can use any text editor of your choice, such as <code>nano</code>, <code>vim</code>, or <code>emacs</code>.</p>
+<pre><code>sudo nano /etc/nginx/nginx.conf
+</code></pre>
+</li>
+<li><p>Locate the <code>http</code> block in the configuration file. This block contains the main configuration for the HTTP server.</p>
+</li>
+<li><p>Add the following lines to the <code>http</code> block to enable logging:
+This will create two log files: <code>/var/log/nginx/access.log</code> for all access logs and <code>/var/log/nginx/error.log</code> for all error logs.</p>
+<pre><code>access_log  /var/log/nginx/access.log;
+error_log  /var/log/nginx/error.log;
+</code></pre>
+</li>
+<li><p>Save the changes and exit the text editor.</p>
+</li>
+<li><p>Restart Nginx to apply the changes:</p>
+<pre><code>sudo systemctl restart nginx
+</code></pre>
+</li>
+</ol>
+<h2 id="step-2-configuring-log-rotation">Step 2: Configuring Log Rotation</h2>
+<p>Log rotation is the process of archiving old log files and creating new ones to prevent disk space issues. In Nginx, log rotation can be configured using the <code>logrotate</code> utility. The <code>logrotate</code> utility is a system tool that can be used to manage log files.</p>
+<ol>
+<li><p>Create a new log rotation configuration file for Nginx:</p>
+<pre><code>sudo nano /etc/logrotate.d/nginx
+</code></pre>
+</li>
+<li><p>Add the following lines to the file:
+This configuration will rotate the logs daily, keep 52 rotated logs, compress the rotated logs, delay compression until the next rotation, and create new log files with permissions <code>0640</code> owned by the <code>www-data</code> and <code>adm</code> groups.</p>
+<pre><code>/var/log/nginx/*.log {
+    daily
+    missingok
+    rotate 52
+    compress
+    delaycompress
+    notifempty
+    create 0640 www-data adm
+    sharedscripts
+    postrotate
+        [ -f /run/nginx.pid ] &amp;&amp; kill -USR1 `cat /run/nginx.pid`
+    endscript
+}
+</code></pre>
+</li>
+<li><p>Save the changes and exit the text editor.</p>
+</li>
+<li><p>Test the log rotation configuration:
+This command will force a log rotation and print any errors to the console.</p>
+<pre><code>sudo logrotate -f /etc/logrotate.d/nginx
+</code></pre>
+</li>
+</ol>
+<h2 id="tips-and-tricks">Tips and Tricks</h2>
+<h3 id="real-time-nginx-logs">Real-time Nginx logs</h3>
+<p>To view the Nginx logs in real-time, use the <code>tail</code> command:</p>
+<pre><code>tail -f /var/log/nginx/access.log
+tail -f /var/log/nginx/error.log
+</code></pre>
+<p>The <code>tail</code> command will display the last few lines of the log file and wait for new lines to be added to the file. This is useful for monitoring the logs in real-time.</p>
+<h3 id="analyzing-nginx-logs">Analyzing Nginx logs</h3>
+<p>To analyze the Nginx logs, use a log analyzer like <code>goaccess</code>. <code>goaccess</code> is a command-line tool that can be used to generate reports from log files. <code>goaccess</code> can generate reports in HTML, JSON, or CSV format.</p>
+<p>To install <code>goaccess</code> on Ubuntu 22 or Debian Server 12, run the following command:</p>
+<pre><code>sudo apt install goaccess
+</code></pre>
+<p>To generate an HTML report from the access log, run the following command:</p>
+<pre><code>goaccess /var/log/nginx/access.log -o /var/www/html/report.html --log-format=COMBINED
+</code></pre>
+<p>This command will generate an HTML report from the access log and save it to <code>/var/www/html/report.html</code>.</p>
+<h3 id="excluding-specific-requests-from-being-logged">Excluding specific requests from being logged</h3>
+<p>To exclude specific requests from being logged, use the <code>map</code> directive in the Nginx configuration file. The <code>map</code> directive can be used to define a variable that can be used in the configuration file.</p>
+<p>For example, to exclude requests that match the regular expression <code>~*^/admin</code> from being logged, add the following configuration to the Nginx configuration file:</p>
+<pre><code>map $request_uri $loggable {
+    default 1;
+    ~*^/admin 0;
+}
+server {
+    ...
+    access_log  /var/log/nginx/access.log combined if=$loggable;
+    ...
+}
+</code></pre>
+<p>This configuration will exclude requests that match the regular expression <code>~*^/admin</code> from being logged.</p>
+<h3 id="customizing-log-formats">Customizing log formats</h3>
+<p>By default, Nginx uses the <code>combined</code> log format, which includes the client IP address, request time, request method, request URL, HTTP version, status code, size of the response, referrer, and user agent. However, you can customize the log format to include only the information that you need.</p>
+<p>To customize the log format, modify the <code>access_log</code> directive in the Nginx configuration file. For example, to include only the client IP address, request time, request URL, and user agent, add the following line to the <code>http</code> block in the Nginx configuration file:</p>
+<pre><code>log_format  mylog  &#39;$remote_addr - $time_local - &quot;$request&quot; - &quot;$http_user_agent&quot;&#39;;
+</code></pre>
+<p>Then, update the <code>access_log</code> directive to use the new log format:</p>
+<pre><code>access_log  /var/log/nginx/access.log mylog;
+</code></pre>
+<p>This will create a log file at <code>/var/log/nginx/access.log</code> using the <code>mylog</code> log format.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this guide, we have shown you how to configure logging and log rotation in Nginx on an Ubuntu 22 and Debian Server 12. By following these steps, you can ensure that your Nginx logs are properly configured and rotated to prevent disk space issues and make it easier to analyze the logs when troubleshooting issues. We have also provided some tips and tricks to help you monitor and analyze the logs, customize log formats, and exclude specific requests from being logged.</p>
+
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Automate Linux System Management with Ansible System Roles</title>
+        <author>
+            <name>Mayur Chavhan</name>
+        </author>
+        <link href="https://techwhale.in/automate-linux-system-management-with-ansible-system-roles/"/>
+        <id>https://techwhale.in/automate-linux-system-management-with-ansible-system-roles/</id>
+            <category term="Docker"/>
+            <category term="DevOps"/>
+            <category term="Ansible"/>
+
+        <updated>2023-07-14T02:49:33+05:30</updated>
+            <summary>
+                <![CDATA[
+                    Ansible is an open-source automation tool that allows you to automate tasks across multiple servers. Ansible System Roles are pre-written Ansible playbooks that are designed to automate the installation, configuration, and management of specific services and applications on Linux systems. By using Ansible System Roles,&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>Ansible is an open-source automation tool that allows you to automate tasks across multiple servers. Ansible System Roles are pre-written Ansible playbooks that are designed to automate the installation, configuration, and management of specific services and applications on Linux systems.</p>
+<p>By using Ansible System Roles, you can automate the deployment of various applications and services like Apache, MySQL, Nginx, PostgreSQL, and many more. In this guide, we will walk you through the steps to automate Linux systems with Ansible System Roles.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before we start, you need to have Ansible installed on your system. You can install Ansible by running the following command:</p>
+<pre><code>sudo apt-get install ansible
+</code></pre>
+<h2 id="step-1-create-a-playbook">Step 1: Create a Playbook</h2>
+<p>The first step in automating Linux systems with Ansible System Roles is to create a playbook. A playbook is a file that contains a set of instructions that Ansible will execute on your servers.</p>
+<p>To create a playbook, create a file with a <code>.yml</code> extension and add the following code:</p>
+<pre><code>---
+- name: Install Apache
+  hosts: webservers
+  become: true
+  roles:
+    - geerlingguy.apache
+</code></pre>
+<p>In the above code, we have specified the name of the playbook, the hosts on which the playbook will be executed, and the Ansible System Role that we want to use for installing Apache. In this case, we are using the <code>geerlingguy.apache</code> System Role.</p>
+<h2 id="step-2-define-hosts">Step 2: Define Hosts</h2>
+<p>The next step is to define the hosts on which you want to execute the playbook. You can define hosts in the <code>/etc/ansible/hosts</code> file. Open the file with your favorite text editor and add the following code:</p>
+<pre><code>[webservers]
+server1.example.com
+server2.example.com
+</code></pre>
+<p>In the above code, we have defined a group of hosts with the name <code>webservers</code> and added two servers to the group.</p>
+<h2 id="step-3-execute-the-playbook">Step 3: Execute the Playbook</h2>
+<p>Now that we have created the playbook and defined the hosts, we can execute the playbook by running the following command:</p>
+<pre><code>ansible-playbook playbook.yml
+</code></pre>
+<p>In the above command, <code>playbook.yml</code> is the name of the playbook that we created in Step 1.</p>
+<h2 id="example-1-install-nginx">Example 1: Install Nginx</h2>
+<p>To install Nginx using Ansible System Roles, create a playbook with the following code:</p>
+<pre><code>---
+- name: Install Nginx
+  hosts: webservers
+  become: true
+  roles:
+    - geerlingguy.nginx
+</code></pre>
+<p>In the above code, we are using the <code>geerlingguy.nginx</code> System Role to install Nginx.</p>
+<h2 id="example-2-install-mysql">Example 2: Install MySQL</h2>
+<p>To install MySQL using Ansible System Roles, create a playbook with the following code:</p>
+<pre><code>---
+- name: Install MySQL
+  hosts: databases
+  become: true
+  roles:
+    - geerlingguy.mysql
+</code></pre>
+<p>In the above code, we are using the <code>geerlingguy.mysql</code> System Role to install MySQL.</p>
+<h2 id="example-3-install-postgresql">Example 3: Install PostgreSQL</h2>
+<p>To install PostgreSQL using Ansible System Roles, create a playbook with the following code:</p>
+<pre><code>---
+- name: Install PostgreSQL
+  hosts: databases
+  become: true
+  roles:
+    - geerlingguy.postgresql
+</code></pre>
+<p>In the above code, we are using the <code>geerlingguy.postgresql</code> System Role to install PostgreSQL.</p>
+<h2 id="example-4-install-redis">Example 4: Install Redis</h2>
+<p>To install Redis using Ansible System Roles, create a playbook with the following code:</p>
+<pre><code>---
+- name: Install Redis
+  hosts: cacheservers
+  become: true
+  roles:
+    - geerlingguy.redis
+</code></pre>
+<p>In the above code, we are using the <code>geerlingguy.redis</code> System Role to install Redis.</p>
+<h2 id="example-5-install-docker">Example 5: Install Docker</h2>
+<p>To install Docker using Ansible System Roles, create a playbook with the following code:</p>
+<pre><code>---
+- name: Install Docker
+  hosts: dockerservers
+  become: true
+  roles:
+    - geerlingguy.docker
+</code></pre>
+<p>In the above code, we are using the <code>geerlingguy.docker</code> System Role to install Docker.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this guide, we have shown you how to automate Linux systems with Ansible System Roles. By using Ansible System Roles, you can easily automate the deployment of various applications and services on your Linux servers. With the examples provided in this guide, you can now start automating your Linux systems with Ansible System Roles.</p>
+
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>How to Install MariaDB 11.0 With phpMyAdmin on Rocky / AmaLinux</title>
+        <author>
+            <name>Mayur Chavhan</name>
+        </author>
+        <link href="https://techwhale.in/how-to-install-mariadb-110-with-phpmyadmin-on-rocky-amalinux/"/>
+        <id>https://techwhale.in/how-to-install-mariadb-110-with-phpmyadmin-on-rocky-amalinux/</id>
+        <media:content url="https://techwhale.in/media/posts/38/ScreenShot-20230726-173240.png" medium="image" />
+            <category term="TechWhale Guides"/>
+            <category term="MySQL"/>
+
+        <updated>2023-07-26T17:33:11+05:30</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://techwhale.in/media/posts/38/ScreenShot-20230726-173240.png" alt="How to Install MariaDB 11.0 With phpMyAdmin on Rocky / AmaLinux" />
+                    MariaDB is an open-source relational database management system that is a drop-in replacement for MySQL. It is developed by the original creators of MySQL and is widely used in web applications. phpMyAdmin is a free and open-source web-based application that provides a graphical user interface&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://techwhale.in/media/posts/38/ScreenShot-20230726-173240.png" class="type:primaryImage" alt="How to Install MariaDB 11.0 With phpMyAdmin on Rocky / AmaLinux" /></p>
+                <p>MariaDB is an open-source relational database management system that is a drop-in replacement for MySQL. It is developed by the original creators of MySQL and is widely used in web applications. phpMyAdmin is a free and open-source web-based application that provides a graphical user interface for managing MySQL and MariaDB databases. In this tutorial, we will install MariaDB 11.0 and phpMyAdmin on Rocky / AmaLinux.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before starting the installation process, make sure that you have the following:</p>
+<ul>
+<li>A Rocky / AmaLinux server with sudo privileges.</li>
+<li>Access to the internet to download and install the required packages.</li>
+</ul>
+<h2 id="step-1-update-the-system">Step 1: Update the System</h2>
+<p>The first step is to update the system packages to their latest versions. Open the terminal and execute the following command:</p>
+<pre><code>sudo yum update
+</code></pre>
+<p>This command will update all the installed packages to their latest versions.</p>
+<h2 id="step-2-install-mariadb-110">Step 2: Install MariaDB 11.0</h2>
+<p>To install MariaDB 11.0, execute the following command in the terminal:</p>
+<pre><code>sudo yum install -y mariadb-server
+</code></pre>
+<p>This command will install the MariaDB server on your system. Once the installation is complete, start the MariaDB service and enable it to start at boot time using the following commands:</p>
+<pre><code>sudo systemctl start mariadb
+sudo systemctl enable mariadb
+</code></pre>
+<p>Next, run the following command to secure your MariaDB server:</p>
+<pre><code>sudo mysql_secure_installation
+</code></pre>
+<p>This command will prompt you to set a root password, remove anonymous users, disallow remote root login, and remove test databases. Follow the prompts and answer the questions to secure your MariaDB server.</p>
+<h2 id="step-3-install-phpmyadmin">Step 3: Install phpMyAdmin</h2>
+<p>To install phpMyAdmin, execute the following command in the terminal:</p>
+<pre><code>sudo yum install -y epel-release
+sudo yum install -y phpMyAdmin
+</code></pre>
+<p>This command will install phpMyAdmin and its dependencies on your system.</p>
+<h2 id="step-4-configure-phpmyadmin">Step 4: Configure phpMyAdmin</h2>
+<p>After installing phpMyAdmin, you need to configure it to work with MariaDB. Open the phpMyAdmin configuration file using the following command:</p>
+<pre><code>sudo nano /etc/httpd/conf.d/phpMyAdmin.conf
+</code></pre>
+<p>In this file, find the following line:</p>
+<pre><code>&lt;IfModule mod_authz_core.c&gt;
+</code></pre>
+<p>Add the following lines after it:</p>
+<pre><code># Apache 2.4
+&lt;RequireAny&gt;
+Require ip 127.0.0.1
+Require ip ::1
+&lt;/RequireAny&gt;
+</code></pre>
+<p>Save and close the file.</p>
+<h2 id="step-5-restart-the-services">Step 5: Restart the Services</h2>
+<p>After making the necessary changes to the configuration files, restart the services using the following commands:</p>
+<pre><code>sudo systemctl restart httpd
+sudo systemctl restart mariadb
+</code></pre>
+<h2 id="step-6-access-phpmyadmin">Step 6: Access phpMyAdmin</h2>
+<p>Open your web browser and navigate to the following URL:</p>
+<pre><code>&lt;http://your-server-ip/phpMyAdmin&gt;
+</code></pre>
+<p>Replace ‘your-server-ip’ with the IP address of your server. You will be prompted to enter your MariaDB username and password. Enter the credentials and click on the ‘Go’ button to access the phpMyAdmin dashboard.</p>
+<h2 id="issues-and-fixes">Issues and Fixes</h2>
+<p>If you encounter any issues during the installation process, try the following fixes:</p>
+<ul>
+<li>If you get the error ‘No package epel-release available’, run the following command and try again:</li>
+</ul>
+<pre><code>sudo yum install -y &lt;https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm&gt;
+</code></pre>
+<ul>
+<li>If you get the error ‘Access denied for user ‘root‘@’localhost’ (using password: YES)’, try resetting the MariaDB root password using the following commands:</li>
+</ul>
+<pre><code>sudo systemctl stop mariadb
+sudo mysqld_safe --skip-grant-tables &amp;
+mysql -u root
+UPDATE mysql.user SET Password=PASSWORD(&#39;new_password&#39;) WHERE User=&#39;root&#39;;
+FLUSH PRIVILEGES;
+exit;
+sudo systemctl start mariadb
+</code></pre>
+<ul>
+<li>If you get the error ‘Cannot connect: invalid settings’, open the phpMyAdmin configuration file using the following command and replace the existing lines with the following:</li>
+</ul>
+<pre><code>$cfg[&#39;Servers&#39;][$i][&#39;auth_type&#39;] = &#39;cookie&#39;;
+$cfg[&#39;Servers&#39;][$i][&#39;host&#39;] = &#39;localhost&#39;;
+$cfg[&#39;Servers&#39;][$i][&#39;compress&#39;] = false;
+$cfg[&#39;Servers&#39;][$i][&#39;AllowNoPassword&#39;] = false;
+</code></pre>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this tutorial, we have shown you how to install MariaDB 11.0 with phpMyAdmin on Rocky / AmaLinux. We have also shown you how to configure phpMyAdmin and access it from a web browser. If you encounter any issues during the installation process, try the available fixes.</p>
+
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>How to install Podman Compose on Debian 12 (Bookworm)</title>
+        <author>
+            <name>Mayur Chavhan</name>
+        </author>
+        <link href="https://techwhale.in/how-to-install-podman-compose-on-debian-12-bookworm/"/>
+        <id>https://techwhale.in/how-to-install-podman-compose-on-debian-12-bookworm/</id>
+        <media:content url="https://techwhale.in/media/posts/37/git-workflow-copy-2.jpg" medium="image" />
+            <category term="Tutorials"/>
+            <category term="Docker"/>
+
+        <updated>2023-07-26T17:33:45+05:30</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://techwhale.in/media/posts/37/git-workflow-copy-2.jpg" alt="" />
+                    f you are running Debian 12 (Bookworm) and want to use Docker Compose or Podman Compose, here are the steps to install Podman Compose on your system. Docker and Podman are both container runtimes, but they have some differences in their architecture and features. Docker&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://techwhale.in/media/posts/37/git-workflow-copy-2.jpg" class="type:primaryImage" alt="" /></p>
+                <p>f you are running Debian 12 (Bookworm) and want to use Docker Compose or Podman Compose, here are the steps to install Podman Compose on your system.</p>
+<h2 id="comparing-docker-and-podman">Comparing Docker and Podman</h2>
+<p>Docker and Podman are both container runtimes, but they have some differences in their architecture and features.</p>
+<h3 id="architecture">Architecture</h3>
+<p>Docker uses a client-server architecture, where the Docker client communicates with the Docker daemon to manage containers. The Docker daemon runs as a background process on the host machine.</p>
+<p>Podman, on the other hand, uses a daemonless architecture, where each container is managed as a separate process on the host machine. This makes Podman more lightweight and secure than Docker.</p>
+<h3 id="features">Features</h3>
+<p>Docker has a larger ecosystem and more features than Podman, including a wider variety of plugins and tools. However, Podman has some unique features that Docker does not have, such as rootless containers and the ability to run containers without a daemon.</p>
+<h2 id="installing-podman-compose">Installing Podman Compose</h2>
+<ol>
+<li><p>Add the Podman repository to your system by running the following command:</p>
+<pre><code>echo &quot;deb &lt;https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_12/&gt; /&quot; | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+</code></pre>
+</li>
+<li><p>Add the repository key to your system by running the following command:</p>
+<pre><code>curl -L &lt;https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_12/Release.key&gt; | sudo apt-key add -
+</code></pre>
+</li>
+<li><p>Update the package list by running the following command:</p>
+<pre><code>sudo apt-get update
+</code></pre>
+</li>
+<li><p>Install Podman Compose by running the following command:</p>
+<pre><code>sudo apt-get install podman-compose
+</code></pre>
+</li>
+<li><p>Verify Podman Compose installation by running the following command:</p>
+<pre><code>podman-compose version
+</code></pre>
+<p> If the installation was successful, you should see the version number of Podman Compose.</p>
+</li>
+</ol>
+<h3 id="conclusion">Conclusion</h3>
+<p>Both Docker and Podman have their strengths and weaknesses, and the choice of which one to use depends on your specific use case and requirements. If you value security and lightweight architecture, Podman may be a better choice for you. If you need a wider variety of tools and plugins, Docker may be the better option.</p>
+
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>How to install PM2 (Process Management) on Ubuntu 22.10 / Debian 11</title>
         <author>
@@ -22,7 +963,7 @@
             <category term="DevOps"/>
             <category term="Debian"/>
 
-        <updated>2023-05-24T18:25:21+05:30</updated>
+        <updated>2023-05-31T00:22:11+05:30</updated>
             <summary>
                 <![CDATA[
                         <img src="https://techwhale.in/media/posts/34/install-pm2.png" alt="" />
@@ -778,682 +1719,6 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful</code></pre>
 <blockquote>
 <p>Thank you for reading!</p>
 </blockquote>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>How to install Portainer on Linux OS (Ubuntu, Debian, CentOS, Raspbian)</title>
-        <author>
-            <name>Mayur Chavhan</name>
-        </author>
-        <link href="https://techwhale.in/how-to-install-portainer-on-linux-os-ubuntu-debian-centos-raspbian/"/>
-        <id>https://techwhale.in/how-to-install-portainer-on-linux-os-ubuntu-debian-centos-raspbian/</id>
-        <media:content url="https://techwhale.in/media/posts/10/Annotation-2020-06-25-082542-min-compressed.jpg" medium="image" />
-            <category term="Tutorials"/>
-            <category term="Docker"/>
-
-        <updated>2021-06-07T02:38:55+05:30</updated>
-            <summary>
-                <![CDATA[
-                        <img src="https://techwhale.in/media/posts/10/Annotation-2020-06-25-082542-min-compressed.jpg" alt="Install Portainer" />
-                    Portainer is docker web GUI application in where you can manage all your docker containers, Images and Volumes. It offers more features than just showing docker containers but you can even manage other docker nodes in one Portainer application.&nbsp; This guide will show you how&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                    <p><img src="https://techwhale.in/media/posts/10/Annotation-2020-06-25-082542-min-compressed.jpg" class="type:primaryImage" alt="Install Portainer" /></p>
-                
-  <p id="overviewbr">
-    <br>
-  </p>
-
-  <div class="post__toc">
-    <h3>Index:</h3>
-    <ul>
-      <li><a href="#overviewbr">Overview:<br></a></li><li><a href="#installationbr">Installation.<br></a></li><li><a href="#acess-portainer-gui">Acess Portainer GUI</a></li><li><a href="#portainer-docker-processnbsp">Portainer Docker Process&nbsp;</a></li><li><a href="#update-portainer">Update Portainer</a></li>
-    </ul>
-  </div>
-  
-
-    <h2 id="overviewbr">
-      Overview:<br>
-    </h2>
-
-  <p>
-    Portainer is docker web GUI application in where you can manage all your docker containers, Images and Volumes. It offers more features than just showing docker containers but you can even manage other docker nodes in one Portainer application.&nbsp;<br>
-  </p>
-
-  <p>
-    This guide will show you how easy is to install Portainer on any linux machines but before that you need to keep in mind that it needs some preparation before installing it.&nbsp;
-  </p>
-
-  <p>
-    There are two method is to install Portainer but this guide  will show you the easiest one.
-  </p>
-
-    <h2 id="installationbr">
-      Installation.<br>
-    </h2>
-
-  <p>
-    The easiest method to install Portainer is of course is docker. To manage Docker, you need to deploy a docker container that contains Portainer binary and it access host docker process file to get all information what are docker containers with volumes are running.
-  </p>
-
-  <p>
-    Check out our guide on how to install Docker on Linux so you can install Portainer.
-  </p>
-
-  <p>
-    Now, Here we go, To Install Portainer here is this one line command that simply pulls up the Portainer image.
-  </p>
-
-  <p>
-    <mark>sudo docker run --name portainer --restart=unless-stopped -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer</mark>
-  </p>
-
-  <p>
-    In this line of command, We specified docker name "portainer" and port in which Portainer Docker can be accessible to the public network. Which in this case is port "<strong>9000</strong>"
-  </p>
-
-  <ul>
-    <li>"-v portainer_data" is host location where on the Docker Host the Portainer data.</li><li>"-v /var/run/docker.sock" is Docker process where portainer can access all information and control docker applications.</li><li>"portainer/portainer" is the official docker image which will get pull from official Docker repository.</li>
-  </ul>
-
-    <h2 id="acess-portainer-gui">
-      Acess Portainer GUI
-    </h2>
-
-  <p>
-    Now, Go to the browser and put Docker Host Server IP in there like this:
-  </p>
-
-  <p class="msg msg--success">
-    http://[public-ip-address]:9000
-  </p>
-
-  <p>
-    Replace your public ip address in above field and if you are running docker in your private machine then put your private IP like : <strong>192.168.0.10:9000,192.168.1.10:9000</strong> and so on..
-  </p>
-
-    <h2 id="portainer-docker-processnbsp">
-      Portainer Docker Process&nbsp;
-    </h2>
-
-  <p>
-    To check if portainer is running on your host machine simply run below command,
-  </p>
-
-  <p class="msg msg--success">
-    sudo docker ps
-  </p>
-
-  <p>
-    <strong>Command Output:</strong>
-  </p>
-
-  <p class="msg msg--highlight">
-    docker ps<br>CONTAINER ID        IMAGE                                COMMAND             CREATED             STATUS              PORTS                                                               NAMES<br>9a83bdecfc56        portainer/portainer                  "/portainer"        2 hours ago         Up 2 hours          0.0.0.0:8000-8000/tcp, 0.0.0.0:9000-&gt;9000/tcp                      portainer
-  </p>
-
-  <p>
-    Above output it shows that it exposes application to port 8000 and port 9000 but we use 9000 to access Portainer GUI.
-  </p>
-
-    <h2 id="update-portainer">
-      Update Portainer
-    </h2>
-
-  <p>
-    If you want to update Docker of Portainer then simple run these following commands,
-  </p>
-
-  <p class="msg msg--success">
-    sudo docker pull portainer/portainer
-  </p>
-
-  <p>
-    Above command will pull the latest image from official docker repository but it will not update the current running Portainer Docker so we will stop the running container so it will use updated image.
-  </p>
-
-  <p class="msg msg--success">
-    sudo docker stop portainer&nbsp;
-  </p>
-
-  <p>
-    Here we have stopped our Portainer container and if you seem to notice we don't have to use docker id to stop portainer container but we used "portainer" name and this happened because we gave our docker container a name called "portainer" so using a name for container is makes easy to manage like stop and run the container.
-  </p>
-
-  <p>
-    Now, Delete old Portainer image to replace updated one.
-  </p>
-
-  <p class="msg msg--success">
-    sudo docker rm portainer <br>
-  </p>
-
-  <p>
-    Above command will delete only image but not the volume where we are keeping our Portainer data.
-  </p>
-
-  <p>
-    Re-run the docker portainer command to launch portainer with updated image at same volume and exposed ports we have given before.
-  </p>
-
-  <p class="msg msg--success">
-    sudo docker run --name portainer --restart=unless-stopped -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer <br>
-  </p>
-
-  <p>
-    Check again for docker process and if it's running then we are good to know. Hope this guide helped you.
-  </p>
-
-    <figure class="blockquote">
-      <blockquote>Thank you for reading!</blockquote>
-      <figcaption>Mayur Chavhan</figcaption>
-    </figure>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>How to install &quot;Nginx Proxy Manager&quot; on Raspberry Pi 4 [arm64]</title>
-        <author>
-            <name>Mayur Chavhan</name>
-        </author>
-        <link href="https://techwhale.in/how-to-install-nginx-proxy-manager-on-raspberry-pi-4-arm64/"/>
-        <id>https://techwhale.in/how-to-install-nginx-proxy-manager-on-raspberry-pi-4-arm64/</id>
-        <media:content url="https://techwhale.in/media/posts/8/imageedit_31_2317095391.jpg" medium="image" />
-            <category term="Tutorials"/>
-            <category term="TechWhale Guides"/>
-            <category term="Docker"/>
-
-        <updated>2021-06-07T00:07:34+05:30</updated>
-            <summary>
-                <![CDATA[
-                        <img src="https://techwhale.in/media/posts/8/imageedit_31_2317095391.jpg" alt="install-nginx-proxy-manager-raspberry-pi-4-b" />
-                    Overview: In DevOps deployments Reverse Proxy is very common for port routing in backend applications. One of the popular is Traefik. Similar to Traefik there are HAproxy and Nginx. HAproxy which is known for Server Load Balancer but also can be used as a reverse&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                    <p><img src="https://techwhale.in/media/posts/8/imageedit_31_2317095391.jpg" class="type:primaryImage" alt="install-nginx-proxy-manager-raspberry-pi-4-b" /></p>
-                <div class="post__toc">
-<h3>Table of Contents</h3>
-<ul>
-<li><a href="#mcetoc_1eal5n5a90">Overview:</a></li>
-<li><a href="#mcetoc_1eal5nqjb5">Prerequisite:</a></li>
-<li><a href="#mcetoc_1eal5oajo7">Step-1: Create folders.</a></li>
-<li><a href="#mcetoc_1eal5q1579">Step-2: Create a file called "config.json"</a></li>
-<li><a href="#mcetoc_1eal5qq5ba">Step-3: Create Docker-Compose File</a></li>
-<li><a href="#mcetoc_1eal5rduib">Step-5: Run Docker-Compose File</a></li>
-<li><a href="#mcetoc_1eal5s74vc">Step-6: Login to NPMan dashboard</a></li>
-</ul>
-</div>
-<h2 id="mcetoc_1eal5n5a90">Overview:</h2>
-<p><span style="font-weight: 400;">In DevOps deployments Reverse Proxy is very common for port routing in backend applications. One of the popular is <a href="https://containo.us/traefik/" target="_blank" rel="noopener noreferrer">Traefik</a>. Similar to Traefik there are HAproxy and Nginx.</span></p>
-<p><span style="font-weight: 400;"><a href="http://www.haproxy.org/" target="_blank" rel="noopener noreferrer">HAproxy </a>which is known for Server Load Balancer but also can be used as a reverse proxy.</span></p>
-<p><span style="font-weight: 400;">Nginx is the fastest web server that can also be used as a reverse proxy for backend applications. </span></p>
-<figure class="post__image post__image--center"><img decoding="async" loading="lazy"  src="https://i.imgur.com/0hZKBEF.png" alt="Reverse-Proxy" width="1137" height="286" data-is-external-image="true"></figure>
-<p><span style="font-weight: 400;">All these three are excellent and popular reverse proxies used in servers but all these have one common problem: they need to write configuration files and it's not noobie server admin friendly since it involves years of experience to understand how exactly reverse proxy works. In Nginx and HAproxy, When you need to install SSL certificates for domai, It makes the configuration a little complicated and tiresome where in Traefik, It automatically handles domain certificates which makes Traefik awesome.</span></p>
-<p><span style="font-weight: 400;">When i started learning Traefik it took few months for me to get a proper grip on its configuration and i learned on old Traefik version and when new Traefik versions came out then i have to read their documentation for new version changes plus then i have to added new changes to docker-compose file so my docker container can properly communicate with Traefik routing which adds big sigh for me. Don't get me wrong Traefik is still best for reverse proxy and if you can write Bash and Ansible Yaml scripts to automate with docker or backend applications then you're golden.</span><span style="font-weight: 400;">Where "Jamie Curnow" aka "</span><a href="https://jc21.com/"><span style="font-weight: 400;">jc21</span></a><span style="font-weight: 400;">" did all these three things in a single docker GUI application called "Nginx Proxy Manager '' In which you can easily bind backend applications without writing a single line of code. Which makes it easy enough for newbie server admin also for Developers who don’t need to learn reverse proxy complex configurations.</span></p>
-<p>This installation can run same for any linux distros out there also docker image file also supports architecture for <a href="https://en.wikipedia.org/wiki/ARM_architecture" target="_blank" rel="noopener noreferrer">armhf and arm64</a> so it can easily run on Raspberry Pi 3B and 4B without any issue. I personally used Raspbian Lite for testing purpose and it works well.</p>
-<figure class="post__image post__image--center" ><img decoding="async" loading="lazy" src="https://i.imgur.com/urx8Zmg.png" alt="Nnginx-Proxy-Manager" width="593" height="224" data-is-external-image="true">
-<figcaption >Nginx-Proxy-Manager</figcaption>
-</figure>
-<h2 id="mcetoc_1eal5nqjb5"><strong>Prerequisite:</strong></h2>
-<ol>
-<li><a href="https://en.wikipedia.org/wiki/Docker_(software)" target="_blank" rel="noopener noreferrer">Docker </a></li>
-<li><strong>Docker-Compose</strong></li>
-<li>[Optional] <strong><a href="https://www.portainer.io/" target="_blank" rel="noopener noreferrer">Portainer</a></strong></li>
-</ol>
-<h2 id="mcetoc_1eal5oajo7">Step-1: <strong>Create folders.</strong></h2>
-<pre>sudo mkdir npman</pre>
-<p>Inside NPman folder create these three folders [data, data/mysql and letsencrypt] or run below command,</p>
-<pre>sudo mkdir -p npman/{data/mysql,letsencrypt}</pre>
-<h2 id="mcetoc_1eal5q1579"><strong>Step-2: </strong><strong>Create a file called "config.json"</strong></h2>
-<p id="mcetoc_1eal64sejd"><strong>paste below lines of code into it.</strong></p>
-<pre>{
-  "database": {
-    "engine": "mysql",
-    "host": "db",
-    "name": "DBNAME",
-    "user": "DBUSERNAME",
-    "password": "DBPASSWORD",
-    "port": 3306
-  }</pre>
-<h2 id="mcetoc_1eal5qq5ba">Step-3: Create Docker-Compose File</h2>
-<p><strong>Now, Create a file called "docker-compose.yaml" and paste following code into it.</strong></p>
-<p class="msg msg--info">Source: <a href="https://github.com/jeff89179">https://github.com/jeff89179</a> [ Thanks to him]</p>
-<p> </p>
-<pre data-enlighter-language="yaml">version: '2'
-services:
-  app:
-    image: 'jc21/nginx-proxy-manager:latest'
-    restart: always
-    ports:
-      - '80:80'
-      - '443:443'
-      - '81:81'
-    volumes:
-      - './config.json:/app/config/production.json'
-      - './data:/data'
-      - './letsencrypt:/etc/letsencrypt'
-    depends_on:
-      - db
-  db:
-    image: 'yobasystems/alpine-mariadb:latest'
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: npman
-      MYSQL_DATABASE: npman
-      MYSQL_USER: npman
-      MYSQL_PASSWORD: password
-    volumes:
-      - './data/mysql:/var/lib/mysql'</pre>
-<address class="msg msg--info"> Change MySQL password for production security purpose.</address>
-<h2 id="mcetoc_1eal5rduib">Step-5: Run Docker-Compose File</h2>
-<p> </p>
-<p><strong>Run Docker-Compose command to download docker images and services,</strong></p>
-<pre><strong>sudo docker-compose up -d</strong></pre>
-<p>If you have Portainer running then go into the Portainer UI, And in the Stacks, add a new stack named "NPMan" and paste above docker-compose code and deploy it.</p>
-<p>After deployment check if container health and port are showing like this..</p>
-<figure class="post__image post__image--center"><img decoding="async" loading="lazy"  src="https://i.imgur.com/TvK1WNK.png" alt="Portainer-Nginx-Proxy-Manager" width="1901" height="328" data-is-external-image="true"></figure>
-<h2 id="mcetoc_1eal5s74vc">Step-6: Login to NPMan dashboard</h2>
-<address>Go to browser and replace &lt;&lt;docker-host-server-ip&gt;&gt; to docker host server ip like this,</address><address><br><a href="http://&lt;&lt;docker-host-serve-ip&gt;&gt;:81/login">http://&lt;&lt;docker-host-server-ip&gt;&gt;:81/login</a></address>
-<p><img decoding="async" loading="lazy" src="https://i.imgur.com/4RE3JjY.png" data-is-external-image="true"></p>
-<p>If everything goes right then enter below default credentials,</p>
-<p><strong>Credential for NPMan,</strong></p>
-<p> </p>
-<address class="msg msg--highlight  msg--success"><span style="text-decoration: underline;">Email</span>: <a href="mailto:admin@example.com">admin@example.com</a><br><br><span style="text-decoration: underline;">Password</span>: changeme</address>
-<p>Visit our repository has all codes in this tutorial,</p>
-<p class="msg msg--success msg--highlight  post__lead">https://github.com/mayur-chavhan/Nginx-Proxy-Manager</p>
-<p> </p>
-<p>Cheers!</p>
-<blockquote>
-<p>Thank you for reading</p>
-</blockquote>
-<p> </p>
-<p> </p>
-<p> </p>
-<p> </p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>How to setup user SSH Keys on Ubuntu 18.04</title>
-        <author>
-            <name>Mayur Chavhan</name>
-        </author>
-        <link href="https://techwhale.in/how-to-setup-user-ssh-keys-on-ubuntu-1804/"/>
-        <id>https://techwhale.in/how-to-setup-user-ssh-keys-on-ubuntu-1804/</id>
-        <media:content url="https://techwhale.in/media/posts/6/image-0-compressed.jpg" medium="image" />
-            <category term="Ubuntu"/>
-            <category term="Tutorials"/>
-            <category term="TechWhale Guides"/>
-
-        <updated>2020-06-30T17:22:43+05:30</updated>
-            <summary>
-                <![CDATA[
-                        <img src="https://techwhale.in/media/posts/6/image-0-compressed.jpg" alt="setup ssh keys on linux" />
-                    Overview SSH [ Secure Shell ] is a famous encrypted protocol are widely becoming popular for communicate server access. For security purpose SSH provide lot of features and one of the famous is SSH Keys and for some its complicated and mostly biased to use&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                    <p><img src="https://techwhale.in/media/posts/6/image-0-compressed.jpg" class="type:primaryImage" alt="setup ssh keys on linux" /></p>
-                <div class="post__toc">
-<h3>Table of Contents</h3>
-<ul>
-<li><a href="#mcetoc_1e91n65hn3">Overview</a></li>
-<li><a href="#mcetoc_1e91n560l2">Step 1 : Generate a RSA Key Pair on your machine.</a></li>
-<li><a href="#mcetoc_1e91n4u7m1">Step 2 : Copy SSH Public Key to remote server.</a></li>
-</ul>
-</div>
-<h3 id="mcetoc_1e91n65hn3">Overview</h3>
-<p><strong>SSH</strong> [ Secure Shell ] is a famous encrypted protocol are widely becoming popular for communicate server access. For security purpose SSH provide lot of features and one of the famous is SSH Keys and for some its complicated and mostly biased to use SSH password method.</p>
-<p>Cloud Service providers like AWS and GCP are default using ssh key method before creating any Instance. So they can generate SSH keys for you and you can download it for you to access it remotely. But other server provider mostly generate and provide you SSH password.</p>
-<p>SSH Password method is secured but password can be bruteforce by millions of bots are out there for cracking passwords and who knows if someone has supercomputer who can break your password within minutes but fear not cause SSH key to the rescue.</p>
-<p>In reality, SSH Keys gives an easy and perfectly secure way to connect your remote server and one SSH key can be use for multiple users.</p>
-<p>In this tutorial, How we can setup user ssh keys for Ubuntu 18.04 but it also applicable to any linux OS.</p>
-<p>For this example we will take a remote server which enabled with SSH password authentication and applying SSH Key based authentication.</p>
-<p>Before communication with remote server we have to do following steps.</p>
-<h3 id="mcetoc_1e91n560l2">Step 1 : Generate a RSA Key Pair on your machine.</h3>
-<table style="width: 693.156px; background-color: yellow;" border="7">
-<tbody>
-<tr>
-<td class="align-center" style="width: 28px;"><span style="color: #843fa1;"><strong>$</strong></span></td>
-<td style="width: 660.156px;"><address><span style="color: #843fa1;"><strong>ssh-keygen</strong></span></address></td>
-</tr>
-</tbody>
-</table>
-<p>Above command will generate 2048 bit RSA key pair consists of public and private keys. [ id_rsa and id_rsa.pub ] When you run ssh-keygen command it will ask for custom path to store your keys but for now default location is shown in below image.</p>
-<p><img decoding="async" loading="lazy" src="https://i.imgur.com/NFHy3XT.png" data-is-external-image="true"></p>
-<p><strong> Press enter to select default path for RSA keys.</strong></p>
-<p>Next, You should then see the following prompt:</p>
-<p class="msg msg--highlight ">Enter passphrase (empty for no passphrase):</p>
-<p>Additional security if you want to protect your SSH key using passphrase and empty for no passphrase so when you establish remote connection it will not ask for password everytime but its highly recommended that you should use passphrase and it gives more security and that's what we need.</p>
-<p><img decoding="async" loading="lazy" src="https://i.imgur.com/DQska4v.png" data-is-external-image="true"></p>
-<p> Here's the result after creation of the key</p>
-<p class="msg msg--success"><strong>Your identification has been saved in /your_home/.ssh/id_rsa.</strong><br><br><strong>Your public key has been saved in /your_home/.ssh/id_rsa.pub.</strong><br><br><strong>The key fingerprint is:</strong><br><strong>SHA256:tQX64BUmMF2BY1wUSTdeJEYQQUjFIf9wrUAz0RJlaU4 user@remote-server</strong><br><strong>The key's randomart image is:</strong><br><strong>+---[RSA 2048]----+</strong><br><strong>| o=+@^#Ooo |</strong><br><strong>| .BB+XE= |</strong><br><strong>| .o.*=+ . |</strong><br><strong>| . = B.. |</strong><br><strong>| S o o |</strong><br><strong>| |</strong><br><strong>| |</strong><br><strong>| |</strong><br><strong>| |</strong><br><strong>+----[SHA256]-----+</strong></p>
-<p> </p>
-<p> And at this path you'll find ssh keys as follows,</p>
-<figure class="post__image"><img decoding="async" loading="lazy"  src="https://i.imgur.com/xhRQmXn.png" alt="ssh-key-path" width="689" height="236" data-is-external-image="true"></figure>
-<p> That's it, Now you've generated public and private ssh key on your machine. Next step is very easy and we have to copy our public key to remote server so we can SSH Key based authentication for SSH.</p>
-<h3 id="mcetoc_1e91n4u7m1">Step 2 : Copy SSH Public Key to remote server.</h3>
-<p>Now we have SSH public key which can authenticate remote machine from our host machine. There is fastest method to copy public key ID to remote host is simple tool called <strong>"ssh-copy-id" </strong></p>
-<p>Simple yet very useful for copying public ssh key to remote host. Remote host must have enabled password authentication so once public key authentication is done. Later, We can disable password authentication so only gateway to access your server is SSH Key authentication.</p>
-<p class="msg msg--highlight  msg--success"><strong>ssh-copy-id <a href="mailto:user@remote_server">user@remote_server</a></strong></p>
-<p><strong>[OPTIONAL] - SSH Public Key for Custom Include Key Path</strong></p>
-<p>If you have SSH Key available on different path you can use add include path parameter like this</p>
-<p class="msg msg--highlight  msg--success"><strong>ssh-copy-id -i /ssh-key-folder/sshpub.key <a href="mailto:user@remote_server">user@remote_server</a></strong></p>
-<p><strong>[OPTIONAL] - SSH Public Key for Custom Port</strong></p>
-<p class="msg msg--highlight  msg--success"><strong>ssh-copy-id -p 5500 <a href="mailto:user@remote_server">user@remote_server</a></strong></p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>How to install docker and docker-compose on Ubuntu 18.04</title>
-        <author>
-            <name>Mayur Chavhan</name>
-        </author>
-        <link href="https://techwhale.in/how-to-install-docker-and-docker-compose-on-ubuntu-1804/"/>
-        <id>https://techwhale.in/how-to-install-docker-and-docker-compose-on-ubuntu-1804/</id>
-        <media:content url="https://techwhale.in/media/posts/5/Webp.net-compress-image-2.jpg" medium="image" />
-            <category term="Ubuntu"/>
-            <category term="Tutorials"/>
-            <category term="TechWhale Guides"/>
-            <category term="Docker"/>
-
-        <updated>2020-06-30T17:23:33+05:30</updated>
-            <summary>
-                <![CDATA[
-                        <img src="https://techwhale.in/media/posts/5/Webp.net-compress-image-2.jpg" alt="How to install docker on Ubuntu 18.04" />
-                    Overview Docker Container Image Docker is an application that makes it simple and easy to run application processes in a container, which are like virtual machines, but more small, more resource-friendly, and more dependent on the host OS Kernel. Docker-Compose in other hand is more&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                    <p><img src="https://techwhale.in/media/posts/5/Webp.net-compress-image-2.jpg" class="type:primaryImage" alt="How to install docker on Ubuntu 18.04" /></p>
-                <div class="post__toc">
-<h3>Table of Contents</h3>
-<ul>
-<li><a href="#mcetoc_1e8pdg7j87">Overview</a></li>
-<li><a href="#mcetoc_1e8pcknm71"> Update System</a></li>
-<li><a href="#mcetoc_1e8pcknm73">Install Prerequisite Packages</a></li>
-<li><a href="#mcetoc_1e8pcknm74">Add Docker Repositories</a></li>
-<li><a href="#mcetoc_1e8pcknm75">Install Docker on Ubuntu 18.04</a></li>
-<li><a href="#mcetoc_1e8pcknm76">Start Docker</a></li>
-</ul>
-</div>
-<hr>
-<h3 id="mcetoc_1e8pdg7j87">Overview</h3>
-<figure class="post__image post__image--center" ><img decoding="async" loading="lazy" src="https://techwhale.in/media/posts/5/docker-cloud-twitter-card.png" alt="Docker-Image" width="1586" height="600" sizes="(max-width: 48em) 100vw, 768px" srcset="https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-xs.png 300w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-sm.png 480w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-md.png 768w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-lg.png 1024w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-xl.png 1360w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-2xl.png 1600w">
-<figcaption >Docker Container Image</figcaption>
-</figure>
-<p> </p>
-<p id="1cd8" class="dropcap" data-selectable-paragraph="">Docker is an application that makes it simple and easy to run application processes in a container, which are like virtual machines, but more small, more resource-friendly, and more dependent on the host OS Kernel.</p>
-<p data-selectable-paragraph="">Docker-Compose in other hand is more advanced but fairly makes easy if you want to add multiple docker containers and services working together as a one using a single file. YML / YAML is language is used to create docker-compose file.</p>
-<p data-selectable-paragraph="">You’ll learn how to install and use it on an existing installation of Ubuntu 18.04.</p>
-<p class="msg msg--info" data-selectable-paragraph=""> Docker requires a 64-bit version of Ubuntu also a kernel version requires to greater than 3.10.X</p>
-<p>Ubuntu 18.04 doesn't comes with Docker official repository so we are going to add it and install it. Let's start with process to install Docker and Docker-Compose.</p>
-<h3 id="mcetoc_1e8pcknm71"> Update System</h3>
-<p>First and most important is to update the system to keep all packages up to date so we don't run with outdated dependencies.</p>
-<p>Run the following commands:</p>
-<p class="msg msg--highlight "><strong>sudo apt update -qq -y</strong></p>
-<h3 id="mcetoc_1e8pcknm73">Install Prerequisite Packages</h3>
-<p>Once we have updated the system, we need to install some necessary packages before we are ready to install Docker. You can do this with the help of a single command:</p>
-<p class="msg msg--highlight "><strong>sudo apt-get install curl apt-transport-https ca-certificates software-properties-common -qq -y </strong></p>
-<h3 id="mcetoc_1e8pcknm74">Add Docker Repositories</h3>
-<p>Following steps is to add Docker Key and Repository to officially supported method for the Docker installation.</p>
-<p>Add the GPG key using following command in terminal:</p>
-<p class="msg msg--highlight "><strong>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</strong></p>
-<p>Next, Add the repository:</p>
-<p class="msg msg--highlight "><strong>sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"</strong></p>
-<p>Update the repository information:</p>
-<p class="msg msg--highlight "><strong>sudo apt update -y</strong></p>
-<h3 id="mcetoc_1e8pcknm75">Install Docker on Ubuntu 18.04</h3>
-<p>We are almost close. Use apt command to install Docker:</p>
-<p class="msg msg--highlight "><strong>sudo apt install docker-ce -y</strong></p>
-<h3 id="mcetoc_1e8pcknm76">Start Docker</h3>
-<p>Once the installation is complete, Start the docker to enable the service:</p>
-<p class="msg msg--highlight "><strong>sudo systemctl start docker</strong></p>
-<p>Check the service using below command if docker service is active or not.</p>
-<p class="msg msg--highlight "><strong>sudo systemctl status docker</strong></p>
-<p><br>If all goes well then pat yourself in the back. Docker is installed on your Ubuntu machine. Now, Lets install Docker-Compose which is very easy now since we have docker installed on the machine.</p>
-<div class="uncode_text_column">
-<p>Check if you have curl installed in your machine.</p>
-<p>If not then install curl using following command:</p>
-<p class="msg msg--highlight "><strong>sudo apt install curl</strong></p>
-</div>
-<div class="heading-text el-text">
-<h3 id="mcetoc_1e8pepps7a" class="h3"><span id="htoc-download-the-latest-docker-compose-version">Install Latest Docker Compose</span></h3>
-</div>
-<div class="clear"> </div>
-<div class="uncode_text_column">
-<ol>
-<li>To download the latest version of Docker Compose, run below command:</li>
-</ol>
-<p class="msg msg--highlight "><strong>sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose</strong></p>
-<p>At the time this article was written, Docker Compose 1.25.5 is the latest version but if you want to change latest version go to this release page.</p>
-<p class="msg msg--info"><strong>https://github.com/docker/compose/releases</strong></p>
-<br>
-<p>2. Give executable permission to docker-compose at installed location:</p>
-<p class="msg msg--highlight "><strong>sudo chmod +x /usr/local/bin/docker-compose</strong></p>
-<p> That's it, Now you've successfully installed docker-compose on your Ubuntu 18.04, Easy isn't it? </p>
-</div>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>Install Jitsi Meet on Ubuntu 18.04</title>
-        <author>
-            <name>Mayur Chavhan</name>
-        </author>
-        <link href="https://techwhale.in/install-jitsi-meet-on-ubuntu-1804/"/>
-        <id>https://techwhale.in/install-jitsi-meet-on-ubuntu-1804/</id>
-        <media:content url="https://techwhale.in/media/posts/4/image-8-compressed.jpg" medium="image" />
-            <category term="Ubuntu"/>
-            <category term="Tutorials"/>
-            <category term="TechWhale Guides"/>
-
-        <updated>2020-06-25T22:18:06+05:30</updated>
-            <summary>
-                <![CDATA[
-                        <img src="https://techwhale.in/media/posts/4/image-8-compressed.jpg" alt="" />
-                    Provisioning New Ubuntu 18.04 x64 VPS Create a new sudo user. A domain jitsi.server.com being pointed to the server instance mentioned above. Update server packages: For security and performance purposes, its necessary to update the Ubuntu 18.04 LTS system to the latest status: sudo apt&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                    <p><img src="https://techwhale.in/media/posts/4/image-8-compressed.jpg" class="type:primaryImage" alt="" /></p>
-                <h3 id="Prerequisites">Provisioning</h3>
-<ul>
-<li>New Ubuntu 18.04 x64 VPS</li>
-<li>Create a new sudo user.</li>
-<li>A domain <code>jitsi.server.com</code> being pointed to the server instance mentioned above.</li>
-</ul>
-<h3 id="Step_4__Update_the_system">Update server packages:</h3>
-<p>For security and performance purposes, its necessary to update the Ubuntu 18.04 LTS system to the latest status:</p>
-<p class="msg msg--success"><strong>sudo apt update sudo apt upgrade -y &amp;&amp; sudo shutdown -r now</strong></p>
-<p>You need to properly setup a hostname and an FQDN for the machine before you can enable HTTPS security by deploying a Let's Encrypt HTTPS certificate.</p>
-<p>The following commands will setup a hostname / FQDN:</p>
-<p class="msg msg--success"><strong>sudo hostnamectl set-hostname jitsimeet</strong></p>
-<p class="msg msg--success"><strong>sudo sed -i 's/^127.0.1.1.*$/127.0.1.1 jitsi.server.com jitsimeet/g' /etc/hosts</strong></p>
-<p>Check if hostname is set properly.</p>
-<p class="msg msg--highlight "><strong>hostname</strong></p>
-<p class="msg msg--highlight "><strong>hostname -f </strong></p>
-<p class="msg msg--success"><br><strong>wget -qO - <a href="https://download.jitsi.org/jitsi-key.gpg.key">https://download.jitsi.org/jitsi-key.gpg.key</a> | sudo apt-key add -</strong></p>
-<p class="msg msg--success"><br><strong>apt-get update</strong></p>
-<p id="pre" class="msg msg--success"><strong>echo 'deb <a href="https://download.jitsi.org">https://download.jitsi.org</a> stable/' &gt;&gt; /etc/apt/sources.list.d/jitsi-stable.list</strong></p>
-<p id="pre" class="msg msg--success"><strong>wget -qO - <a href="https://download.jitsi.org/jitsi-key.gpg.key">https://download.jitsi.org/jitsi-key.gpg.key</a> | sudo apt-key add -</strong></p>
-<p id="pre" class="msg msg--success"><strong>apt-get install apt-transport-https</strong></p>
-<p id="pre" class="msg msg--success"><strong>apt-get update</strong></p>
-<p class="msg msg--success"><strong>apt-get -y install jitsi-meet</strong></p>
-<p class="msg msg--success"><strong>sudo /usr/share/jitsi-meet/scripts/install-letsencrypt-cert.sh</strong></p>
-<h3 id="Step_3__Tweak_firewall_rules_for_running_Jitsi_Meet">Firewall rules for Jitsi Meet</h3>
-<p>As required we need to allow <code>OpenSSH</code>, <code>HTTP</code>, and <code>HTTPS</code> traffic, along with inbound UDP traffic on port range of <code>5222-5281</code> and <code>10000</code> through port <code>20000</code>:</p>
-<p class="post__lead msg msg--highlight "><strong>sudo ufw allow OpenSSH</strong><br><strong>sudo ufw allow http</strong><br><strong>sudo ufw allow https</strong><br><strong>sudo ufw allow in 4443/tcp</strong><br><strong>sudo ufw allow in 5222/tcp</strong><br><strong>sudo ufw allow in 5269/tcp</strong><br><strong>sudo ufw allow in 5280:5281/tcp </strong><br><strong>sudo ufw allow in 10000:20000/udp</strong><br><br><strong>sudo ufw enable</strong></p>
-<p> </p>
-<p>During the process, input your email <code>admin@gmail.com</code> as prompted and then press <kbd>ENTER</kbd>. This script will automatically handle any tasks related to the Let's Encrypt SSL certificate.</p>
-<p>Finally, point your favorite web browser to <code>http://jitsimeet.server.com</code> or <code>https://jitsimeet.server.com</code> to access your Jitsi Meet Video conferencing service. Feel free to explore the interface. Clicking the <code>GO</code> button will immediately create a Video conferencing channel for you.</p>
-<p><br><code class=" language-bash"></code></p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>Guide : Git workflow for Developers</title>
-        <author>
-            <name>Mayur Chavhan</name>
-        </author>
-        <link href="https://techwhale.in/git-workflow-for-developers-and-devops/"/>
-        <id>https://techwhale.in/git-workflow-for-developers-and-devops/</id>
-        <media:content url="https://techwhale.in/media/posts/3/l2mvWRp1.png" medium="image" />
-            <category term="Tutorials"/>
-            <category term="TechWhale Guides"/>
-
-        <updated>2020-06-30T17:24:14+05:30</updated>
-            <summary>
-                <![CDATA[
-                        <img src="https://techwhale.in/media/posts/3/l2mvWRp1.png" alt="git-workflow-for-developers" />
-                    Git is a top distributed version control system and Nowadays all programmers and developers are dependent on its workflow. Manage to set up a proper Git code workflow is essential for projects that involve group collaboration. Follow procedures to keep working copy of your project&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                    <p><img src="https://techwhale.in/media/posts/3/l2mvWRp1.png" class="type:primaryImage" alt="git-workflow-for-developers" /></p>
-                <p><span style="font-weight: 400;"> </span></p>
-<div class="post__toc">
-<h3>Table of Contents</h3>
-<ul>
-<li><a href="#mcetoc_1e8i9uj8q3">Overview:</a></li>
-<li><a href="#mcetoc_1e8i9m22q1">Why Git or Github?</a></li>
-<li><a href="#c217">The Workflow Cheat Sheet</a></li>
-</ul>
-</div>
-<h3 id="mcetoc_1e8i9uj8q3">Overview:</h3>
-<p><span style="font-weight: 400;">Git is a top distributed version control system and Nowadays all programmers and developers are dependent on its workflow. Manage to set up a proper Git code workflow is essential for projects that involve group collaboration. Follow procedures to keep working copy of your project through identifying code problems and evolving into a big scale project.</span></p>
-<p><span style="font-weight: 400;">One of the biggest git repository hosting is Github. </span><a href="https://git-scm.com/"><span style="font-weight: 400;">Git</span></a><span style="font-weight: 400;"> is a distributed version control system accessible through a CLI. Git is </span><a href="https://en.wikipedia.org/wiki/Free_and_open-source_software"><span style="font-weight: 400;">free and open-source software</span></a><span style="font-weight: 400;"> distributed under the terms of the </span><a href="https://en.wikipedia.org/wiki/GNU_General_Public_License"><span style="font-weight: 400;">GNU General Public License</span></a><span style="font-weight: 400;"> version 2.</span></p>
-<p><span style="font-weight: 400;"> Using Github, I can share all of my coding projects with the world. Github has a plethora of unique features that enhance the git experience and make collaborative coding simple. I am far from a Git or Github expert, but this is a short guide to get you started with Git on Github:</span></p>
-<h3 id="mcetoc_1e8i9m22q1"><strong>Why Git or Github?</strong></h3>
-<p>It is the best and most popular system available for managing and tracking any code changes also it allows other developers to collaborate on projects at any scale.</p>
-<p>In simple words, GitHub is a “hub” for everyone who is working with the Git version control system. It provides a variety of features to make developers' jobs much easier and it's open for the public so anyone can share their code to the development community and can do better projects or make existing code repositories much better by power of collaboration.</p>
-<p>System like Git become a lot more obvious once you make sense of how they truly work. The objective of this guide is to reveal some insight into how Git functions in the engine. We're going to investigate a portion of Git's center ideas including its fundamental item stockpiling, how submits work, how branches and labels work, and we'll take a gander at the various types of converging in Git including the much-dreaded rebase. Ideally toward the finish, all things considered, you'll have a strong comprehension of these ideas and will have the option to utilize a portion of Git's further developed highlights with certainty. <br><br>It's important now that this guide isn't proposed to be a's first experience with Git. This guide was composed for individuals who as of now use Git, however might want to more readily comprehend it by taking a look in the engine, and get familiar with a couple of slick deceives en route. All things considered, we should start.</p>
-<p class="msg msg--info"><span style="font-weight: 400;">This is a short guide to get you started with Git on Github:</span></p>
-<table>
-<tbody>
-<tr>
-<td class="align-center">
-<p><strong>Repository </strong></p>
-</td>
-<td>
-<p><span style="font-weight: 400;">Commonly called the “repo,” this is where all of the updated versions (and the primary version) of a project are stored. This is your staging ground for the project. Each repo has a unique URL for easy access.</span></p>
-</td>
-</tr>
-<tr>
-<td class="align-center">
-<p><strong>Forking </strong></p>
-</td>
-<td>
-<p><span style="font-weight: 400;">Unless developers pay for a private repository, their project can be viewed by all other members of the GitHub community. If these members feel they could make a worthy contribution, then they can create a new project (repository) from yours. This is called “forking a repo.”</span></p>
-</td>
-</tr>
-<tr>
-<td class="align-center">
-<p><strong>Pull Request</strong></p>
-</td>
-<td>
-<p><span style="font-weight: 400;">After forking a repo and making new changes to existing code, GitHub users can invite the developers of the original repository to view the changes.</span></p>
-</td>
-</tr>
-<tr>
-<td class="align-center">
-<p><strong>Merging </strong></p>
-</td>
-<td>
-<p><span style="font-weight: 400;">If you like the changes someone made after forking your repository, you can opt to accept those changes and merge them with your existing repository.</span></p>
-</td>
-</tr>
-<tr>
-<td class="align-center">
-<p><strong>Changelogs </strong></p>
-</td>
-<td>
-<p><span style="font-weight: 400;">This lets developers working on a single project see all changes, who made them, and when.</span></p>
-</td>
-</tr>
-</tbody>
-</table>
-<p><span style="font-weight: 400;">Git workflow is the mixer of steps that we have to follow before starting the development cycle means how developers pull, push, commit, clone and manage code.</span></p>
-<h3 id="c217" class="hp hq ds ar aq hr du lr dw ls hu lt hw lu hy lv ia">The Workflow Cheat Sheet</h3>
-<p class="msg msg--success"><span id="2f9d" data-selectable-paragraph="">--------------------------------------------<br>Managing your Local Repo<br>--------------------------------------------<br>NOTE: If you need to hard reset your local repo to match <br>the remote master use the following commands:<br>$ git fetch origin<br>$ git reset --hard origin/master<br><br>Undo the act of committing, leaving everything else intact:<br>$ git reset --soft HEAD^:<br><br>Undo the act of committing and everything you'd staged, <br>but leave the work tree (your files intact):<br>$ git reset HEAD^<br><br>Completely undo it, throwing away all uncommitted changes,<br>resetting everything to the previous commit:<br>$ git reset --hard HEAD^<br><br>-------------------------------------------- <br>BEGIN WORKFLOW<br>-------------------------------------------- <br>Clone the Repo to local machine:<br>$ git clone https://github.com/user_name/repo_name.git<br><br>Make sure the local master is up-to-date:<br>$ git pull origin master<br><br>Create new branch:<br>$ git banch branch_name<br><br>Move to branch:<br>$ git checkout branch_name<br><br>Navigate file structure as needed:<br>$ ls <br>$ cd folder_name<br><br>Add the files to the branch:<br>$ git add .<br><br>Verify file: <br>$ git status<br><br>Commit the files:<br>$ git commit -m "comment"<br><br>Add branch and files to the Remote Repo:<br>$ git push -u origin branch_name<br><br>Go to the github website to manage pull request and merge. <br><br>Switch back to local master so you can delete the local branch:<br>$ git checkout master<br><br>Delete local branch: <br>$ git branch -d branch_name<br>OR <br>$ git branch -D branch_name<br><br>If you don't want to go to the website, you can merge your branch <br>to the master locally and push the new master to the remote repo:<br><br>Switch back to master branch:<br>$ git checkout master<br><br>Merge the branch with the local master:<br>$ git merge branch_name -m "comment"<br><br>Push the local master to the remote master:<br>$ git push origin master<br><br>Delete local branch: <br>$ git branch -d branch_name<br>OR <br>$ git branch -D branch_name</span></p>
-<p> </p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>How to install Ansible on Ubuntu 18.04 / Debian 10 Buster</title>
-        <author>
-            <name>Mayur Chavhan</name>
-        </author>
-        <link href="https://techwhale.in/how-to-install-ansible-on-ubuntu-1804-debian-10-buster/"/>
-        <id>https://techwhale.in/how-to-install-ansible-on-ubuntu-1804-debian-10-buster/</id>
-        <media:content url="https://techwhale.in/media/posts/2/Webp.net-compress-image-3.jpg" medium="image" />
-            <category term="Ubuntu"/>
-            <category term="DevOps"/>
-            <category term="Debian"/>
-            <category term="Automation"/>
-            <category term="Ansible"/>
-
-        <updated>2020-06-30T17:46:44+05:30</updated>
-            <summary>
-                <![CDATA[
-                        <img src="https://techwhale.in/media/posts/2/Webp.net-compress-image-3.jpg" alt="install ansible on ubuntu 18 and debian 10" />
-                    What is Ansible? Ansible is an open source DevOps automation tool that solves server provisioning in installing tools, configuration, deployment and provisioning. It leverages SSH to communicate between servers. It uses the playbook which states every steps of automation jobs, and playbook uses a simple language called "YAML".
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                    <p><img src="https://techwhale.in/media/posts/2/Webp.net-compress-image-3.jpg" class="type:primaryImage" alt="install ansible on ubuntu 18 and debian 10" /></p>
-                <div class="post__toc">
-<h3>Table of Contents</h3>
-<ul>
-<li><a href="#mcetoc_1e887o48e3">What is Ansible?</a></li>
-<li><a href="#mcetoc_1e883n8jk0">Prerequisites :</a></li>
-<li><a href="#step-1-—-installing-ansible">Before start...</a></li>
-<li><a href="#mcetoc_1e8s96ber2">Add official Ansible repository</a></li>
-<li><a href="#mcetoc_1e8s976in4">Update Packages</a></li>
-<li><a href="#step-1-—-installing-ansible">Install Ansible </a></li>
-</ul>
-</div>
-<h3 id="mcetoc_1e887o48e3">What is Ansible?</h3>
-<figure class="post__image post__image--center"><img decoding="async" loading="lazy"  src="https://techwhale.in/media/posts/2/imageedit_16_2728091063.png" alt="ansible" width="359" height="284" sizes="(max-width: 48em) 100vw, 768px" srcset="https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-xs.png 300w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-sm.png 480w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-md.png 768w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-lg.png 1024w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-xl.png 1360w ,https://techwhale.in/media/posts/2/responsive/imageedit_16_2728091063-2xl.png 1600w"></figure>
-<p id="mcetoc_1e8hhbh66b">Ansible is an open source DevOps automation tool that solves server provisioning in installing tools, configuration, deployment and provisioning. It leverages SSH to communicate between servers. It uses the playbook which states every steps of automation jobs, and playbook uses a simple language called "YAML".</p>
-<hr>
-<h3 id="mcetoc_1e883n8jk0">Prerequisites :</h3>
-<p class="msg msg--info"><strong>Operating System</strong>: Ubuntu 18.04 / Debian 10 Buster</p>
-<p class="msg msg--info"><strong>SSH Access</strong> :  You need remote server SSH access available with Password or Key Access so our ansible server can communicate remotely.</p>
-<p class="msg msg--info"><strong>Python</strong>: python version 2.7 or above it should be installed.</p>
-<p> </p>
-<h3 id="step-1-—-installing-ansible">Before start...</h3>
-<p>The use of Ansible as a capability of managing your server infrastructure, you want to install the Ansible software program on the machine that will serve as the Ansible manage node.</p>
-<p>Ansible’s only real dependency is Python. Once Python is installed, the simplest way to get Ansible running is to use pip, a simple package manager for Python. Don't worry most of the linux distro comes with default Python 2.7 and CentOS 8 comes with built in Python version 3.7.</p>
-<p>The easiest way to install Ansible on a Debian or Ubuntu system is to use the official apt package.</p>
-<h3 id="mcetoc_1e8s96ber2">Add official Ansible repository</h3>
-<p><br>From your ansible host node, run the following command to consist of the authentic project’s PPA and it is needed else you'll end up with older version of Ansible :</p>
-<p id="mcetoc_1e8hh88s18" class="msg msg--success"><strong>sudo apt-add-repository ppa:ansible/ansible</strong></p>
-<p class="msg msg--info">Press ENTER to proceed with PPA addition.</p>
-<h3 id="mcetoc_1e8s976in4">Update Packages</h3>
-<p>Newly added PPA needs to be updated :</p>
-<p id="mcetoc_1e8hh6keo7" class="msg msg--success"><strong>sudo apt update</strong></p>
-<p class="post__lead">If an error like <strong>“sudo: add-apt-repository: command not found”</strong>, then you’re missing the <strong><code>python-software-properties</code></strong> package. Install it with the following command:</p>
-<p id="mcetoc_1e8hh61i85" class="msg msg--highlight  msg--success post__lead"><strong>sudo apt-get install python-software-properties</strong></p>
-<h3 id="step-1-—-installing-ansible">Install Ansible </h3>
-<p>After update is done, you can easily install Ansible using simple install command,</p>
-<p id="mcetoc_1e8hh5qdi4" class="msg msg--success"><strong>sudo apt-get install ansible -y</strong></p>
-<p>Our installation process has been done. Now let’s check ansible version. </p>
-<p id="mcetoc_1e8hhi53oc" class="msg msg--success"><strong>sudo ansible --version</strong></p>
-<figure class="post__image post__image--center"><a href="https://i.imgur.com/YSu2ISW.png"><img decoding="async" loading="lazy"  src="https://i.imgur.com/YSu2ISW.png" alt="" width="1283" height="172" data-is-external-image="true"></figure></a></p>
-<p>That's all folks. Happy Hacking!!</p>
-<p> </p>
             ]]>
         </content>
     </entry>
