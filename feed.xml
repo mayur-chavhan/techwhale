@@ -1048,45 +1048,6 @@ $cfg[&#39;Servers&#39;][$i][&#39;AllowNoPassword&#39;] = false;
         </content>
     </entry>
     <entry>
-        <title>How to use SystemCtl for Daily Usage and It&#x27;s Helpful Tips </title>
-        <author>
-            <name>Mayur Chavhan</name>
-        </author>
-        <link href="https://techwhale.in/command-systemctl-helpful-tips-and-usage-for-you-to-tryout/"/>
-        <id>https://techwhale.in/command-systemctl-helpful-tips-and-usage-for-you-to-tryout/</id>
-
-        <updated>2023-04-21T19:36:22+05:30</updated>
-            <summary>
-                <![CDATA[
-                    When it comes to Linux, the systemctl command is your go-to for managing services. It controls the boot process and allows you to start, stop, enable, disable, and check the status of services. In order to make the most of the systemctl command, consider the&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <p>When it comes to Linux, the systemctl command is your go-to for managing services. It controls the boot process and allows you to start, stop, enable, disable, and check the status of services.<br><br>In order to make the most of the systemctl command, consider the following:<br><br>Services Provided List The list-units option and the —type=service flag will display a complete list of available services.</p>
-<pre><br>systemctl list-units —type=service</pre>
-<p><br><br>Just a list of all the defunct services, please. Use the —all option to see a list of all the disabled services:</p>
-<pre>Entering systemctl list-units —type=service —all</pre>
-<p>To launch a service: You can activate a service by typing "start" followed by the service's name.</p>
-<pre>servicename systemctl start</pre>
-<p>Service termination is accomplished by issuing the stop command followed by the service's name.</p>
-<pre>servicename stop systemctl</pre>
-<p>To restart a service, type the restart command, then the name of the service.</p>
-<pre>systemctl restart yourservicename</pre>
-<p>Activate a service by issuing the enable command followed by the service's name, as in:<br><br>To activate the service, type</p>
-<pre><span style="color: var(--text-primary-color); font-family: var(--editor-font-family); font-size: inherit; font-weight: var(--font-weight-normal);">systemctl enable servicename</span></pre>
-<p>Use the disable command followed by the name of the service to prevent it from starting automatically.</p>
-<pre> systemctl disable servicename</pre>
-<p>Verify the current condition of a service: The status command, followed by the name of the service to check, is used to do just that.</p>
-<pre>  systemctl status servicename</pre>
-<p>Review the service's logs to see if there were any errors. Journalctl service name will display the service's logs.<br><br>copy paste this into a terminal:</p>
-<pre>journalctl -u servicename</pre>
-<p><br>If you have modified the system manager configuration and want to apply your changes, you can do so with the daemon-reload command.</p>
-<pre>daemon-reload systemctl</pre>
-            ]]>
-        </content>
-    </entry>
-    <entry>
         <title>Master the Linux Terminal: 50 Essential Commands You Need to Know</title>
         <author>
             <name>Mayur Chavhan</name>
@@ -1149,114 +1110,6 @@ journalctl - View the system log
 dmesg - View the kernel log
 top - Display information about the top CPU and</p>
 
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>&quot;Mastering DevOps Tools: A Practical Guide to Boost Your Skills&quot;</title>
-        <author>
-            <name>Mayur Chavhan</name>
-        </author>
-        <link href="https://techwhale.in/mastering-devops-tools-a-practical-guide-to-boost-your-skills/"/>
-        <id>https://techwhale.in/mastering-devops-tools-a-practical-guide-to-boost-your-skills/</id>
-
-        <updated>2022-12-26T19:42:32+05:30</updated>
-            <summary>
-                <![CDATA[
-                    Because the DevOps movement has been gaining steam over the past several years, it is becoming increasingly vital for those who work in the technology industry to maintain familiarity with the most recent developments in both trends and methodologies. As a result, many IT professionals&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <div class="w-full border-b border-black/10 dark:border-gray-900/50 text-gray-800 dark:text-gray-100 group bg-gray-50 dark:bg-[#444654]">
-<div class="text-base gap-4 md:gap-6 m-auto md:max-w-2xl lg:max-w-2xl xl:max-w-3xl p-4 md:py-6 flex lg:px-0">
-<div class="relative flex w-[calc(100%-50px)] md:flex-col lg:w-[calc(100%-115px)]">
-<div class="flex flex-grow flex-col gap-3">
-<div class="min-h-[20px] flex flex-col items-start gap-4 whitespace-pre-wrap">
-<div class="markdown prose w-full break-words dark:prose-invert light">
-<p><span data-preserver-spaces="true">Because the DevOps movement has been gaining steam over the past several years, it is becoming increasingly vital for those who work in the technology industry to maintain familiarity with the most recent developments in both trends and methodologies. As a result, many IT professionals have set their sights on the year 2023 to become "masters" of DevOps.</span></p>
-<p><span data-preserver-spaces="true">The combination of software development and software operations is referred to as "DevOps," It is a process that requires coordination between teams responsible for software development and teams responsible for software operations. DevOps practitioners aspire to continuously give value to their clients by improving the speed, quality, and consistency of the software delivery process. They do this by leveraging modern automation tools and processes.</span></p>
-<p><span data-preserver-spaces="true">In the year 2023, if you would like to become an expert in DevOps, the following are some pointers to get you started:</span></p>
-<p><span data-preserver-spaces="true">1. Get Familiar with the Fundamentals To become an expert in DevOps, you must first become familiar with the fundamentals of the process. To get started, you should familiarize with the essentials, such as continuous integration and delivery. It would help if you also familiarize with common DevOps tools and methods, such as Docker, Kubernetes, and Ansible.</span></p>
-<p><span data-preserver-spaces="true">2. Obtain a Certification: Although obtaining certificates is not essential to become a master of DevOps, doing so can be an effective approach to demonstrating your abilities and understanding. Certifications such as the Red Hat Certified System Administrator (RHCSA) and the Certified Kubernetes Administrator are quite common in the DevOps industry (CKA).</span></p>
-<p><span data-preserver-spaces="true">3. Participate in a Community Participating in a DevOps community is an excellent method to keep up with the most recent developments in best practices and trends. Find online forums, in-person gatherings, and conferences covering DevOps issues and attend those.</span></p>
-<p><span data-preserver-spaces="true">4. Automate Everything: Automation is the cornerstone of DevOps, and it is important to become a master of DevOps in 2023. Automating everything you do is the fourth step to becoming a master of DevOps. Make it a priority to acquire knowledge of operating automation tools like Jenkins and Ansible, and gain experience configuring automated pipelines and processes.</span></p>
-<p><span data-preserver-spaces="true">5. Always Stay Current Because the DevOps landscape is in a perpetual evolution, it is essential always to be updated on the most recent trends and practices. Staying updated requires that you keep up with the newest news and blogs, participate in webinars, and follow industry experts.</span></p>
-<p><span data-preserver-spaces="true">As a developer or IT professional, keeping up with the latest tools and techniques in the DevOps field is essential. Whether you're new to DevOps or have been working in the field for a while, there are always new tools to learn and ways to improve your skills.</span></p>
-<p><span data-preserver-spaces="true">Here are some tips for learning and using DevOps tools effectively:</span></p>
-<ol>
-<li><span data-preserver-spaces="true">Please choose the right tools for your needs: There are countless DevOps tools available, so it's important to choose the ones that are right for your project or organization. Consider factors such as your team's skills and experience, the technology stack you're using, and the goals you're trying to achieve.</span></li>
-<li><span data-preserver-spaces="true">Get hands-on experience: The best way to learn a new tool is to use it. Set aside time to experiment with different tools and see how they work in a real-world setting. This will help you understand their capabilities and limitations and give you the confidence to use them effectively in your projects.</span></li>
-<li><span data-preserver-spaces="true">Learn from others: Many resources are available for learning about DevOps tools, including online courses, tutorials, and blogs. Follow experts in the field, join online communities, and seek out opportunities to learn from others who are experienced with the tools you're interested in.</span></li>
-<li><span data-preserver-spaces="true">Automate as much as possible: Automation is a key component of DevOps, and many tools are designed to automate various tasks and processes. Take your time to learn how to use these tools to automate tasks and streamline your workflow, as this will save you time and effort in the long run.</span></li>
-<li><span data-preserver-spaces="true">Keep learning: The DevOps field is constantly evolving, and new tools and techniques are always being developed. Stay up-to-date with the latest developments and continue learning new skills to stay competitive in your career.</span></li>
-</ol>
-<p><span data-preserver-spaces="true">By following these tips and putting in the effort to learn and use DevOps tools effectively, you'll be well on path to mastering the field and becoming a valuable asset to your team or organization. Happy learning!</span></p>
-<p><span data-preserver-spaces="true"> </span></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>Increase your salary and prepare yourself for DevOps in the year 2023.</title>
-        <author>
-            <name>Mayur Chavhan</name>
-        </author>
-        <link href="https://techwhale.in/prepare-yourself-for-the-arrival-of-devops-in-the-year-2023/"/>
-        <id>https://techwhale.in/prepare-yourself-for-the-arrival-of-devops-in-the-year-2023/</id>
-
-        <updated>2022-12-26T03:44:33+05:30</updated>
-            <summary>
-                <![CDATA[
-                    As a software engineer or IT professional, you are always looking for ways to improve your skills and advance your career. One area that can be particularly lucrative is DevOps, a set of practices that combines software development and operations to streamline the delivery of&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <p>As a software engineer or IT professional, you are always looking for ways to improve your skills and advance your career. One area that can be particularly lucrative is DevOps, a set of practices that combines software development and operations to streamline the delivery of software. By learning DevOps, you can increase your value as an employee and potentially negotiate a higher salary.</p>
-<p>Here are some tips for scaling your salary with DevOps in 2023:</p>
-<ol>
-<li>
-<p>Learn the fundamentals: Start by familiarizing yourself with the core concepts of DevOps, such as continuous integration, continuous delivery, and infrastructure as code.</p>
-</li>
-<li>
-<p>Gain experience with popular tools: To be a successful DevOps engineer, you will need to be proficient with tools such as Git, Docker, Jenkins, and Ansible. These tools are used to automate the build, test, and deployment process, as well as manage infrastructure.</p>
-</li>
-<li>
-<p>Join a DevOps team: The best way to learn DevOps is by doing it. Look for opportunities to join a DevOps team at your current company or consider seeking out a new job with a company that values DevOps practices.</p>
-</li>
-<li>
-<p>Build your network: DevOps is a rapidly evolving field, and staying up to date with the latest trends and technologies is crucial. Attend meetups, conferences, and online events to connect with other DevOps professionals and learn from experts in the field.</p>
-</li>
-<li>
-<p>Pursue certification: While not required, earning a DevOps certification can help you stand out in the job market and demonstrate your expertise to potential employers. There are several options to choose from, including the Certified Kubernetes Administrator (CKA) and the Certified Cloud Native Professional (CCNP).</p>
-</li>
-</ol>
-<p>By investing in your DevOps skills, you can increase your value as an employee and potentially negotiate a higher salary. With the right combination of knowledge, experience, and networking, you can position yourself as a valuable asset to any organization and scale your salary in 2023 and beyond.</p>
-<p>As a developer or IT professional, staying up-to-date with the latest tools and technologies is crucial in order to remain competitive in the job market. This is especially true in the field of DevOps, where the use of automation and other technologies can greatly improve the efficiency and reliability of software delivery. With that in mind, here are some tools and practices that you should consider adopting in preparation for DevOps in 2023:</p>
-<ol>
-<li>
-<p>Containerization: Containerization involves packaging applications and their dependencies into a self-contained unit that can be easily deployed and run on any host. This makes it easy to deploy applications in a consistent environment, regardless of the underlying infrastructure. Docker is currently the most popular tool for containerization, but alternatives such as Kubernetes and Apache Mesos are also worth considering.</p>
-</li>
-<li>
-<p>Infrastructure as code (IaC): IaC involves using code to automate the provisioning and management of infrastructure resources, such as servers, networking, and storage. This allows you to version control your infrastructure and makes it easier to reproduce and scale your environment. Some popular tools for IaC include Terraform, Ansible, and CloudFormation.</p>
-</li>
-<li>
-<p>Continuous integration (CI) and continuous delivery (CD): CI and CD are practices that involve automatically building, testing, and deploying code changes as they are made. This allows for faster and more reliable software delivery, as it reduces the risk of errors and makes it easier to roll back changes if necessary. Tools such as Jenkins, Travis CI, and CircleCI can help automate this process.</p>
-</li>
-<li>
-<p>Monitoring and logging: In order to effectively manage and troubleshoot a distributed system, it's important to have visibility into the various components and their behavior. This can be achieved through monitoring tools such as Datadog, New Relic, and Prometheus, which allow you to track key metrics and alerts in real-time. Additionally, logging tools such as Elasticsearch, Logstash, and Kibana (ELK stack) can help you collect and analyze log data from your applications and infrastructure.</p>
-</li>
-<li>
-<p>Collaboration and communication: DevOps is all about collaboration and communication, and there are a number of tools that can help facilitate this process. Tools such as Slack, Microsoft Teams, and Asana can help team members stay connected and share information in real-time. Additionally, code review tools such as GitHub, Bitbucket, and GitLab can help teams collaborate on code changes and ensure that code is of high quality before it is deployed.</p>
-</li>
-</ol>
-<p>By adopting these tools and practices, you can position yourself to be well-prepared for the demands of DevOps in 2023 and beyond. As always, it's important to keep an eye on emerging technologies and stay open to learning and adapting as the field evolves.</p>
             ]]>
         </content>
     </entry>
@@ -1719,6 +1572,375 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful</code></pre>
 <blockquote>
 <p>Thank you for reading!</p>
 </blockquote>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>How to install Portainer on Linux OS (Ubuntu, Debian, CentOS, Raspbian)</title>
+        <author>
+            <name>Mayur Chavhan</name>
+        </author>
+        <link href="https://techwhale.in/how-to-install-portainer-on-linux-os-ubuntu-debian-centos-raspbian/"/>
+        <id>https://techwhale.in/how-to-install-portainer-on-linux-os-ubuntu-debian-centos-raspbian/</id>
+        <media:content url="https://techwhale.in/media/posts/10/Annotation-2020-06-25-082542-min-compressed.jpg" medium="image" />
+            <category term="Tutorials"/>
+            <category term="Docker"/>
+
+        <updated>2021-06-07T02:38:55+05:30</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://techwhale.in/media/posts/10/Annotation-2020-06-25-082542-min-compressed.jpg" alt="Install Portainer" />
+                    Portainer is docker web GUI application in where you can manage all your docker containers, Images and Volumes. It offers more features than just showing docker containers but you can even manage other docker nodes in one Portainer application.&nbsp; This guide will show you how&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://techwhale.in/media/posts/10/Annotation-2020-06-25-082542-min-compressed.jpg" class="type:primaryImage" alt="Install Portainer" /></p>
+                
+  <p id="overviewbr">
+    <br>
+  </p>
+
+  <div class="post__toc">
+    <h3>Index:</h3>
+    <ul>
+      <li><a href="#overviewbr">Overview:<br></a></li><li><a href="#installationbr">Installation.<br></a></li><li><a href="#acess-portainer-gui">Acess Portainer GUI</a></li><li><a href="#portainer-docker-processnbsp">Portainer Docker Process&nbsp;</a></li><li><a href="#update-portainer">Update Portainer</a></li>
+    </ul>
+  </div>
+  
+
+    <h2 id="overviewbr">
+      Overview:<br>
+    </h2>
+
+  <p>
+    Portainer is docker web GUI application in where you can manage all your docker containers, Images and Volumes. It offers more features than just showing docker containers but you can even manage other docker nodes in one Portainer application.&nbsp;<br>
+  </p>
+
+  <p>
+    This guide will show you how easy is to install Portainer on any linux machines but before that you need to keep in mind that it needs some preparation before installing it.&nbsp;
+  </p>
+
+  <p>
+    There are two method is to install Portainer but this guide  will show you the easiest one.
+  </p>
+
+    <h2 id="installationbr">
+      Installation.<br>
+    </h2>
+
+  <p>
+    The easiest method to install Portainer is of course is docker. To manage Docker, you need to deploy a docker container that contains Portainer binary and it access host docker process file to get all information what are docker containers with volumes are running.
+  </p>
+
+  <p>
+    Check out our guide on how to install Docker on Linux so you can install Portainer.
+  </p>
+
+  <p>
+    Now, Here we go, To Install Portainer here is this one line command that simply pulls up the Portainer image.
+  </p>
+
+  <p>
+    <mark>sudo docker run --name portainer --restart=unless-stopped -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer</mark>
+  </p>
+
+  <p>
+    In this line of command, We specified docker name "portainer" and port in which Portainer Docker can be accessible to the public network. Which in this case is port "<strong>9000</strong>"
+  </p>
+
+  <ul>
+    <li>"-v portainer_data" is host location where on the Docker Host the Portainer data.</li><li>"-v /var/run/docker.sock" is Docker process where portainer can access all information and control docker applications.</li><li>"portainer/portainer" is the official docker image which will get pull from official Docker repository.</li>
+  </ul>
+
+    <h2 id="acess-portainer-gui">
+      Acess Portainer GUI
+    </h2>
+
+  <p>
+    Now, Go to the browser and put Docker Host Server IP in there like this:
+  </p>
+
+  <p class="msg msg--success">
+    http://[public-ip-address]:9000
+  </p>
+
+  <p>
+    Replace your public ip address in above field and if you are running docker in your private machine then put your private IP like : <strong>192.168.0.10:9000,192.168.1.10:9000</strong> and so on..
+  </p>
+
+    <h2 id="portainer-docker-processnbsp">
+      Portainer Docker Process&nbsp;
+    </h2>
+
+  <p>
+    To check if portainer is running on your host machine simply run below command,
+  </p>
+
+  <p class="msg msg--success">
+    sudo docker ps
+  </p>
+
+  <p>
+    <strong>Command Output:</strong>
+  </p>
+
+  <p class="msg msg--highlight">
+    docker ps<br>CONTAINER ID        IMAGE                                COMMAND             CREATED             STATUS              PORTS                                                               NAMES<br>9a83bdecfc56        portainer/portainer                  "/portainer"        2 hours ago         Up 2 hours          0.0.0.0:8000-8000/tcp, 0.0.0.0:9000-&gt;9000/tcp                      portainer
+  </p>
+
+  <p>
+    Above output it shows that it exposes application to port 8000 and port 9000 but we use 9000 to access Portainer GUI.
+  </p>
+
+    <h2 id="update-portainer">
+      Update Portainer
+    </h2>
+
+  <p>
+    If you want to update Docker of Portainer then simple run these following commands,
+  </p>
+
+  <p class="msg msg--success">
+    sudo docker pull portainer/portainer
+  </p>
+
+  <p>
+    Above command will pull the latest image from official docker repository but it will not update the current running Portainer Docker so we will stop the running container so it will use updated image.
+  </p>
+
+  <p class="msg msg--success">
+    sudo docker stop portainer&nbsp;
+  </p>
+
+  <p>
+    Here we have stopped our Portainer container and if you seem to notice we don't have to use docker id to stop portainer container but we used "portainer" name and this happened because we gave our docker container a name called "portainer" so using a name for container is makes easy to manage like stop and run the container.
+  </p>
+
+  <p>
+    Now, Delete old Portainer image to replace updated one.
+  </p>
+
+  <p class="msg msg--success">
+    sudo docker rm portainer <br>
+  </p>
+
+  <p>
+    Above command will delete only image but not the volume where we are keeping our Portainer data.
+  </p>
+
+  <p>
+    Re-run the docker portainer command to launch portainer with updated image at same volume and exposed ports we have given before.
+  </p>
+
+  <p class="msg msg--success">
+    sudo docker run --name portainer --restart=unless-stopped -d -p 8000:8000 -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer <br>
+  </p>
+
+  <p>
+    Check again for docker process and if it's running then we are good to know. Hope this guide helped you.
+  </p>
+
+    <figure class="blockquote">
+      <blockquote>Thank you for reading!</blockquote>
+      <figcaption>Mayur Chavhan</figcaption>
+    </figure>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>How to install &quot;Nginx Proxy Manager&quot; on Raspberry Pi 4 [arm64]</title>
+        <author>
+            <name>Mayur Chavhan</name>
+        </author>
+        <link href="https://techwhale.in/how-to-install-nginx-proxy-manager-on-raspberry-pi-4-arm64/"/>
+        <id>https://techwhale.in/how-to-install-nginx-proxy-manager-on-raspberry-pi-4-arm64/</id>
+        <media:content url="https://techwhale.in/media/posts/8/imageedit_31_2317095391.jpg" medium="image" />
+            <category term="Tutorials"/>
+            <category term="TechWhale Guides"/>
+            <category term="Docker"/>
+
+        <updated>2021-06-07T00:07:34+05:30</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://techwhale.in/media/posts/8/imageedit_31_2317095391.jpg" alt="install-nginx-proxy-manager-raspberry-pi-4-b" />
+                    Overview: In DevOps deployments Reverse Proxy is very common for port routing in backend applications. One of the popular is Traefik. Similar to Traefik there are HAproxy and Nginx. HAproxy which is known for Server Load Balancer but also can be used as a reverse&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://techwhale.in/media/posts/8/imageedit_31_2317095391.jpg" class="type:primaryImage" alt="install-nginx-proxy-manager-raspberry-pi-4-b" /></p>
+                <div class="post__toc">
+<h3>Table of Contents</h3>
+<ul>
+<li><a href="#mcetoc_1eal5n5a90">Overview:</a></li>
+<li><a href="#mcetoc_1eal5nqjb5">Prerequisite:</a></li>
+<li><a href="#mcetoc_1eal5oajo7">Step-1: Create folders.</a></li>
+<li><a href="#mcetoc_1eal5q1579">Step-2: Create a file called "config.json"</a></li>
+<li><a href="#mcetoc_1eal5qq5ba">Step-3: Create Docker-Compose File</a></li>
+<li><a href="#mcetoc_1eal5rduib">Step-5: Run Docker-Compose File</a></li>
+<li><a href="#mcetoc_1eal5s74vc">Step-6: Login to NPMan dashboard</a></li>
+</ul>
+</div>
+<h2 id="mcetoc_1eal5n5a90">Overview:</h2>
+<p><span style="font-weight: 400;">In DevOps deployments Reverse Proxy is very common for port routing in backend applications. One of the popular is <a href="https://containo.us/traefik/" target="_blank" rel="noopener noreferrer">Traefik</a>. Similar to Traefik there are HAproxy and Nginx.</span></p>
+<p><span style="font-weight: 400;"><a href="http://www.haproxy.org/" target="_blank" rel="noopener noreferrer">HAproxy </a>which is known for Server Load Balancer but also can be used as a reverse proxy.</span></p>
+<p><span style="font-weight: 400;">Nginx is the fastest web server that can also be used as a reverse proxy for backend applications. </span></p>
+<figure class="post__image post__image--center"><img decoding="async" loading="lazy"  src="https://i.imgur.com/0hZKBEF.png" alt="Reverse-Proxy" width="1137" height="286" data-is-external-image="true"></figure>
+<p><span style="font-weight: 400;">All these three are excellent and popular reverse proxies used in servers but all these have one common problem: they need to write configuration files and it's not noobie server admin friendly since it involves years of experience to understand how exactly reverse proxy works. In Nginx and HAproxy, When you need to install SSL certificates for domai, It makes the configuration a little complicated and tiresome where in Traefik, It automatically handles domain certificates which makes Traefik awesome.</span></p>
+<p><span style="font-weight: 400;">When i started learning Traefik it took few months for me to get a proper grip on its configuration and i learned on old Traefik version and when new Traefik versions came out then i have to read their documentation for new version changes plus then i have to added new changes to docker-compose file so my docker container can properly communicate with Traefik routing which adds big sigh for me. Don't get me wrong Traefik is still best for reverse proxy and if you can write Bash and Ansible Yaml scripts to automate with docker or backend applications then you're golden.</span><span style="font-weight: 400;">Where "Jamie Curnow" aka "</span><a href="https://jc21.com/"><span style="font-weight: 400;">jc21</span></a><span style="font-weight: 400;">" did all these three things in a single docker GUI application called "Nginx Proxy Manager '' In which you can easily bind backend applications without writing a single line of code. Which makes it easy enough for newbie server admin also for Developers who don’t need to learn reverse proxy complex configurations.</span></p>
+<p>This installation can run same for any linux distros out there also docker image file also supports architecture for <a href="https://en.wikipedia.org/wiki/ARM_architecture" target="_blank" rel="noopener noreferrer">armhf and arm64</a> so it can easily run on Raspberry Pi 3B and 4B without any issue. I personally used Raspbian Lite for testing purpose and it works well.</p>
+<figure class="post__image post__image--center" ><img decoding="async" loading="lazy" src="https://i.imgur.com/urx8Zmg.png" alt="Nnginx-Proxy-Manager" width="593" height="224" data-is-external-image="true">
+<figcaption >Nginx-Proxy-Manager</figcaption>
+</figure>
+<h2 id="mcetoc_1eal5nqjb5"><strong>Prerequisite:</strong></h2>
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/Docker_(software)" target="_blank" rel="noopener noreferrer">Docker </a></li>
+<li><strong>Docker-Compose</strong></li>
+<li>[Optional] <strong><a href="https://www.portainer.io/" target="_blank" rel="noopener noreferrer">Portainer</a></strong></li>
+</ol>
+<h2 id="mcetoc_1eal5oajo7">Step-1: <strong>Create folders.</strong></h2>
+<pre>sudo mkdir npman</pre>
+<p>Inside NPman folder create these three folders [data, data/mysql and letsencrypt] or run below command,</p>
+<pre>sudo mkdir -p npman/{data/mysql,letsencrypt}</pre>
+<h2 id="mcetoc_1eal5q1579"><strong>Step-2: </strong><strong>Create a file called "config.json"</strong></h2>
+<p id="mcetoc_1eal64sejd"><strong>paste below lines of code into it.</strong></p>
+<pre>{
+  "database": {
+    "engine": "mysql",
+    "host": "db",
+    "name": "DBNAME",
+    "user": "DBUSERNAME",
+    "password": "DBPASSWORD",
+    "port": 3306
+  }</pre>
+<h2 id="mcetoc_1eal5qq5ba">Step-3: Create Docker-Compose File</h2>
+<p><strong>Now, Create a file called "docker-compose.yaml" and paste following code into it.</strong></p>
+<p class="msg msg--info">Source: <a href="https://github.com/jeff89179">https://github.com/jeff89179</a> [ Thanks to him]</p>
+<p> </p>
+<pre data-enlighter-language="yaml">version: '2'
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: always
+    ports:
+      - '80:80'
+      - '443:443'
+      - '81:81'
+    volumes:
+      - './config.json:/app/config/production.json'
+      - './data:/data'
+      - './letsencrypt:/etc/letsencrypt'
+    depends_on:
+      - db
+  db:
+    image: 'yobasystems/alpine-mariadb:latest'
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: npman
+      MYSQL_DATABASE: npman
+      MYSQL_USER: npman
+      MYSQL_PASSWORD: password
+    volumes:
+      - './data/mysql:/var/lib/mysql'</pre>
+<address class="msg msg--info"> Change MySQL password for production security purpose.</address>
+<h2 id="mcetoc_1eal5rduib">Step-5: Run Docker-Compose File</h2>
+<p> </p>
+<p><strong>Run Docker-Compose command to download docker images and services,</strong></p>
+<pre><strong>sudo docker-compose up -d</strong></pre>
+<p>If you have Portainer running then go into the Portainer UI, And in the Stacks, add a new stack named "NPMan" and paste above docker-compose code and deploy it.</p>
+<p>After deployment check if container health and port are showing like this..</p>
+<figure class="post__image post__image--center"><img decoding="async" loading="lazy"  src="https://i.imgur.com/TvK1WNK.png" alt="Portainer-Nginx-Proxy-Manager" width="1901" height="328" data-is-external-image="true"></figure>
+<h2 id="mcetoc_1eal5s74vc">Step-6: Login to NPMan dashboard</h2>
+<address>Go to browser and replace &lt;&lt;docker-host-server-ip&gt;&gt; to docker host server ip like this,</address><address><br><a href="http://&lt;&lt;docker-host-serve-ip&gt;&gt;:81/login">http://&lt;&lt;docker-host-server-ip&gt;&gt;:81/login</a></address>
+<p><img decoding="async" loading="lazy" src="https://i.imgur.com/4RE3JjY.png" data-is-external-image="true"></p>
+<p>If everything goes right then enter below default credentials,</p>
+<p><strong>Credential for NPMan,</strong></p>
+<p> </p>
+<address class="msg msg--highlight  msg--success"><span style="text-decoration: underline;">Email</span>: <a href="mailto:admin@example.com">admin@example.com</a><br><br><span style="text-decoration: underline;">Password</span>: changeme</address>
+<p>Visit our repository has all codes in this tutorial,</p>
+<p class="msg msg--success msg--highlight  post__lead">https://github.com/mayur-chavhan/Nginx-Proxy-Manager</p>
+<p> </p>
+<p>Cheers!</p>
+<blockquote>
+<p>Thank you for reading</p>
+</blockquote>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>How to setup user SSH Keys on Ubuntu 18.04</title>
+        <author>
+            <name>Mayur Chavhan</name>
+        </author>
+        <link href="https://techwhale.in/how-to-setup-user-ssh-keys-on-ubuntu-1804/"/>
+        <id>https://techwhale.in/how-to-setup-user-ssh-keys-on-ubuntu-1804/</id>
+        <media:content url="https://techwhale.in/media/posts/6/image-0-compressed.jpg" medium="image" />
+            <category term="Ubuntu"/>
+            <category term="Tutorials"/>
+            <category term="TechWhale Guides"/>
+
+        <updated>2020-06-30T17:22:43+05:30</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://techwhale.in/media/posts/6/image-0-compressed.jpg" alt="setup ssh keys on linux" />
+                    Overview SSH [ Secure Shell ] is a famous encrypted protocol are widely becoming popular for communicate server access. For security purpose SSH provide lot of features and one of the famous is SSH Keys and for some its complicated and mostly biased to use&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://techwhale.in/media/posts/6/image-0-compressed.jpg" class="type:primaryImage" alt="setup ssh keys on linux" /></p>
+                <div class="post__toc">
+<h3>Table of Contents</h3>
+<ul>
+<li><a href="#mcetoc_1e91n65hn3">Overview</a></li>
+<li><a href="#mcetoc_1e91n560l2">Step 1 : Generate a RSA Key Pair on your machine.</a></li>
+<li><a href="#mcetoc_1e91n4u7m1">Step 2 : Copy SSH Public Key to remote server.</a></li>
+</ul>
+</div>
+<h3 id="mcetoc_1e91n65hn3">Overview</h3>
+<p><strong>SSH</strong> [ Secure Shell ] is a famous encrypted protocol are widely becoming popular for communicate server access. For security purpose SSH provide lot of features and one of the famous is SSH Keys and for some its complicated and mostly biased to use SSH password method.</p>
+<p>Cloud Service providers like AWS and GCP are default using ssh key method before creating any Instance. So they can generate SSH keys for you and you can download it for you to access it remotely. But other server provider mostly generate and provide you SSH password.</p>
+<p>SSH Password method is secured but password can be bruteforce by millions of bots are out there for cracking passwords and who knows if someone has supercomputer who can break your password within minutes but fear not cause SSH key to the rescue.</p>
+<p>In reality, SSH Keys gives an easy and perfectly secure way to connect your remote server and one SSH key can be use for multiple users.</p>
+<p>In this tutorial, How we can setup user ssh keys for Ubuntu 18.04 but it also applicable to any linux OS.</p>
+<p>For this example we will take a remote server which enabled with SSH password authentication and applying SSH Key based authentication.</p>
+<p>Before communication with remote server we have to do following steps.</p>
+<h3 id="mcetoc_1e91n560l2">Step 1 : Generate a RSA Key Pair on your machine.</h3>
+<table style="width: 693.156px; background-color: yellow;" border="7">
+<tbody>
+<tr>
+<td class="align-center" style="width: 28px;"><span style="color: #843fa1;"><strong>$</strong></span></td>
+<td style="width: 660.156px;"><address><span style="color: #843fa1;"><strong>ssh-keygen</strong></span></address></td>
+</tr>
+</tbody>
+</table>
+<p>Above command will generate 2048 bit RSA key pair consists of public and private keys. [ id_rsa and id_rsa.pub ] When you run ssh-keygen command it will ask for custom path to store your keys but for now default location is shown in below image.</p>
+<p><img decoding="async" loading="lazy" src="https://i.imgur.com/NFHy3XT.png" data-is-external-image="true"></p>
+<p><strong> Press enter to select default path for RSA keys.</strong></p>
+<p>Next, You should then see the following prompt:</p>
+<p class="msg msg--highlight ">Enter passphrase (empty for no passphrase):</p>
+<p>Additional security if you want to protect your SSH key using passphrase and empty for no passphrase so when you establish remote connection it will not ask for password everytime but its highly recommended that you should use passphrase and it gives more security and that's what we need.</p>
+<p><img decoding="async" loading="lazy" src="https://i.imgur.com/DQska4v.png" data-is-external-image="true"></p>
+<p> Here's the result after creation of the key</p>
+<p class="msg msg--success"><strong>Your identification has been saved in /your_home/.ssh/id_rsa.</strong><br><br><strong>Your public key has been saved in /your_home/.ssh/id_rsa.pub.</strong><br><br><strong>The key fingerprint is:</strong><br><strong>SHA256:tQX64BUmMF2BY1wUSTdeJEYQQUjFIf9wrUAz0RJlaU4 user@remote-server</strong><br><strong>The key's randomart image is:</strong><br><strong>+---[RSA 2048]----+</strong><br><strong>| o=+@^#Ooo |</strong><br><strong>| .BB+XE= |</strong><br><strong>| .o.*=+ . |</strong><br><strong>| . = B.. |</strong><br><strong>| S o o |</strong><br><strong>| |</strong><br><strong>| |</strong><br><strong>| |</strong><br><strong>| |</strong><br><strong>+----[SHA256]-----+</strong></p>
+<p> </p>
+<p> And at this path you'll find ssh keys as follows,</p>
+<figure class="post__image"><img decoding="async" loading="lazy"  src="https://i.imgur.com/xhRQmXn.png" alt="ssh-key-path" width="689" height="236" data-is-external-image="true"></figure>
+<p> That's it, Now you've generated public and private ssh key on your machine. Next step is very easy and we have to copy our public key to remote server so we can SSH Key based authentication for SSH.</p>
+<h3 id="mcetoc_1e91n4u7m1">Step 2 : Copy SSH Public Key to remote server.</h3>
+<p>Now we have SSH public key which can authenticate remote machine from our host machine. There is fastest method to copy public key ID to remote host is simple tool called <strong>"ssh-copy-id" </strong></p>
+<p>Simple yet very useful for copying public ssh key to remote host. Remote host must have enabled password authentication so once public key authentication is done. Later, We can disable password authentication so only gateway to access your server is SSH Key authentication.</p>
+<p class="msg msg--highlight  msg--success"><strong>ssh-copy-id <a href="mailto:user@remote_server">user@remote_server</a></strong></p>
+<p><strong>[OPTIONAL] - SSH Public Key for Custom Include Key Path</strong></p>
+<p>If you have SSH Key available on different path you can use add include path parameter like this</p>
+<p class="msg msg--highlight  msg--success"><strong>ssh-copy-id -i /ssh-key-folder/sshpub.key <a href="mailto:user@remote_server">user@remote_server</a></strong></p>
+<p><strong>[OPTIONAL] - SSH Public Key for Custom Port</strong></p>
+<p class="msg msg--highlight  msg--success"><strong>ssh-copy-id -p 5500 <a href="mailto:user@remote_server">user@remote_server</a></strong></p>
             ]]>
         </content>
     </entry>
