@@ -3,7 +3,7 @@
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2023-07-26T17:40:32+05:30</updated>
+    <updated>2023-07-26T19:17:05+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
@@ -1048,117 +1048,51 @@ $cfg[&#39;Servers&#39;][$i][&#39;AllowNoPassword&#39;] = false;
         </content>
     </entry>
     <entry>
-        <title>Master the Linux Terminal: 50 Essential Commands You Need to Know</title>
-        <author>
-            <name>Mayur Chavhan</name>
-        </author>
-        <link href="https://techwhale.in/master-the-linux-terminal-50-essential-commands-you-need-to-know/"/>
-        <id>https://techwhale.in/master-the-linux-terminal-50-essential-commands-you-need-to-know/</id>
-
-        <updated>2022-12-27T02:07:05+05:30</updated>
-            <summary>
-                <![CDATA[
-                    As a Linux user, the terminal is an essential tool for interacting with your operating system. From installing and updating software to managing files and performing advanced tasks, the terminal allows you to accomplish a wide range of tasks more efficiently than using a graphical&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <p>As a Linux user, the terminal is an essential tool for interacting with your operating system. From installing and updating software to managing files and performing advanced tasks, the terminal allows you to accomplish a wide range of tasks more efficiently than using a graphical user interface (GUI).</p>
-<p>Here are 50 important Linux commands you should know:</p>
-<p>cd - Change the current directory
-ls - List the files in a directory
-pwd - Print the current working directory
-mkdir - Create a new directory
-rmdir - Remove an empty directory
-rm - Remove a file or directory
-cp - Copy a file or directory
-mv - Move a file or directory
-cat - Display the contents of a file
-less - View the contents of a file one page at a time
-head - Display the first few lines of a file
-tail - Display the last few lines of a file
-grep - Search for patterns in a file
-find - Search for files based on criteria
-sort - Sort the lines in a file
-uniq - Remove duplicate lines from a file
-wc - Count the number of lines, words, and characters in a file
-chmod - Change the permissions of a file or directory
-chown - Change the owner of a file or directory
-sudo - Run a command with superuser privileges
-su - Switch to a different user account
-whoami - Display the current user’s username
-passwd - Change the current user’s password
-ping - Test a network connection
-traceroute - Trace the route packets take to a destination
-telnet - Connect to a remote server using the Telnet protocol
-ssh - Connect to a remote server using the SSH protocol
-scp - Copy files between servers using the SSH protocol
-ftp - Transfer files using the FTP protocol
-rsync - Synchronize files between servers
-tar - Create and extract archives
-gzip - Compress and decompress files
-bzip2 - Compress and decompress files
-unzip - Extract files from a ZIP archive
-gunzip - Decompress a GZIP archive
-bunzip2 - Decompress a BZIP2 archive
-apt-get - Install and manage packages on Debian-based systems
-yum - Install and manage packages on Red Hat-based systems
-dnf - Install and manage packages on Fedora-based systems
-systemctl - Manage system services
-service - Manage system services
-journalctl - View the system log
-dmesg - View the kernel log
-top - Display information about the top CPU and</p>
-
-            ]]>
-        </content>
-    </entry>
-    <entry>
         <title>The Best 10 DevOps Tools Available for Use in 2023</title>
         <author>
             <name>Mayur Chavhan</name>
         </author>
         <link href="https://techwhale.in/the-best-10-devops-tools-available-for-use-in-2023/"/>
         <id>https://techwhale.in/the-best-10-devops-tools-available-for-use-in-2023/</id>
+        <media:content url="https://techwhale.in/media/posts/24/ScreenShot-20230726-191645.png" medium="image" />
+            <category term="DevOps"/>
 
-        <updated>2022-12-26T03:21:22+05:30</updated>
+        <updated>2023-07-26T19:17:05+05:30</updated>
             <summary>
                 <![CDATA[
-                    Git: Git is a version control system that is widely used for software development and version control. It allows developers to track changes to their code and collaborate with team members on projects. Docker: Docker is a containerization platform that allows developers to package applications&hellip;
+                        <img src="https://techwhale.in/media/posts/24/ScreenShot-20230726-191645.png" alt="" />
+                    DevOps has become an integral part of modern software development. The DevOps process aims to speed up software development and deployment while ensuring quality and reliability. To achieve this goal, DevOps teams use a wide range of tools to automate tasks, manage code, and track&hellip;
                 ]]>
             </summary>
         <content type="html">
             <![CDATA[
+                    <p><img src="https://techwhale.in/media/posts/24/ScreenShot-20230726-191645.png" class="type:primaryImage" alt="" /></p>
                 <ol>
 <li>
-<p>Git: Git is a version control system that is widely used for software development and version control. It allows developers to track changes to their code and collaborate with team members on projects.</p>
-</li>
-<li>
-<p>Docker: Docker is a containerization platform that allows developers to package applications and their dependencies into containers, which can then be easily deployed on any host.</p>
-</li>
-<li>
-<p>Jenkins: Jenkins is an open-source automation server that helps automate parts of the software development process. It can be used to build, test, and deploy software projects.</p>
-</li>
-<li>
-<p>Ansible: Ansible is an open-source configuration management tool that can be used to automate the deployment and management of applications and infrastructure.</p>
-</li>
-<li>
-<p>Kubernetes: Kubernetes is an open-source container orchestration platform that allows developers to deploy and manage containerized applications at scale.</p>
-</li>
-<li>
-<p>Nagios: Nagios is a popular open-source monitoring tool that can be used to monitor servers, applications, and network devices.</p>
-</li>
-<li>
-<p>Terraform: Terraform is an infrastructure as code (IAC) tool that allows developers to define and manage infrastructure resources using declarative configuration files.</p>
-</li>
-<li>
-<p>ELK Stack: The ELK Stack (Elasticsearch, Logstash, and Kibana) is a popular open-source log management platform that allows developers to collect, process, and visualize log data.</p>
-</li>
-<li>
-<p>Grafana: Grafana is an open-source visualization and monitoring platform that allows developers to create dashboards and alerts for their applications and infrastructure.</p>
-</li>
-<li>
-<p>Splunk: Splunk is a powerful log management and analysis platform that allows developers to search, analyze, and visualize log data in real-time.</p>
+<p>DevOps has become an integral part of modern software development. The DevOps process aims to speed up software development and deployment while ensuring quality and reliability. To achieve this goal, DevOps teams use a wide range of tools to automate tasks, manage code, and track issues.</p>
+<p>In recent years, DevOps has evolved dramatically, and so have the tools used by DevOps teams. As we look ahead to 2023, we can expect even more advanced DevOps tools to be available to help teams streamline their processes and achieve their goals.</p>
+<p>Here are the top 10 DevOps tools that will be available for use in 2023:</p>
+<h2>1. Docker</h2>
+<p>Docker is one of the most popular DevOps tools available. It allows developers to package software into containers that can be easily moved between environments. This makes it easy to create consistent development, testing, and production environments. Docker has become an essential tool for DevOps teams, and we can expect it to become even more widely used in the years to come.</p>
+<h2>2. Jenkins</h2>
+<p>Jenkins is an open-source automation server that is used to automate many parts of the software development process. It can be used to build, test, and deploy code, as well as to automate other tasks such as code analysis and security testing. Jenkins has a large and active community of users and developers, which means that it is constantly improving and evolving.</p>
+<h2>3. GitLab</h2>
+<p>GitLab is a web-based Git repository manager that provides source code management, continuous integration, and continuous delivery. It is a complete DevOps platform that allows teams to manage the entire software development lifecycle. GitLab has become a popular alternative to GitHub, and we can expect it to continue to grow in popularity in the years to come.</p>
+<h2>4. Ansible</h2>
+<p>Ansible is an open-source automation tool that is used to automate many parts of the software development process. It can be used to deploy applications, manage configurations, and automate other tasks. Ansible has become an essential tool for many DevOps teams, and we can expect it to become even more widely used in the coming years.</p>
+<h2>5. Kubernetes</h2>
+<p>Kubernetes is an open-source container orchestration platform. It is used to automate the deployment, scaling, and management of containerized applications. Kubernetes has become the de facto standard for container orchestration, and we can expect it to continue to dominate the market in the years to come.</p>
+<h2>6. Grafana</h2>
+<p>Grafana is an open-source analytics and monitoring platform. It is used to visualize and analyze metrics from a wide variety of data sources. Grafana has become an essential tool for monitoring and troubleshooting complex systems, and we can expect it to continue to be widely used in the years to come.</p>
+<h2>7. Prometheus</h2>
+<p>Prometheus is an open-source monitoring system that is used to monitor containers, services, and applications. It is designed to be highly scalable and can handle millions of metrics per second. Prometheus has become a popular alternative to traditional monitoring tools, and we can expect it to continue to grow in popularity in the coming years.</p>
+<h2>8. Slack</h2>
+<p>Slack is a team communication platform that is used to improve collaboration and communication within DevOps teams. It is particularly useful for remote teams. Slack has become an essential tool for many teams, and we can expect it to continue to be widely used in the years to come.</p>
+<h2>9. Splunk</h2>
+<p>Splunk is an analytics and monitoring platform that is used to collect and analyze machine data. It is particularly useful for identifying issues and troubleshooting problems. Splunk has become an essential tool for many DevOps teams, and we can expect it to continue to be widely used in the coming years.</p>
+<h2>10. Nagios</h2>
+<p>Nagios is an open-source monitoring system that is used to monitor network devices, servers, and applications. It can be used to alert DevOps teams to issues before they become critical. Nagios has been around for a long time, and we can expect it to continue to be a popular choice for monitoring in the years to come.</p>
+<p>In conclusion, DevOps is a critical part of modern software development, and these 10 tools will be crucial for DevOps teams in 2023. As DevOps evolves and becomes more complex, we can expect even more advanced tools to be developed to help teams streamline their processes and achieve their goals. It is important to choose the right tools for your team's needs to ensure that your DevOps process is efficient, reliable, and effective.</p>
 </li>
 </ol>
             ]]>
@@ -1941,6 +1875,99 @@ services:
 <p class="msg msg--highlight  msg--success"><strong>ssh-copy-id -i /ssh-key-folder/sshpub.key <a href="mailto:user@remote_server">user@remote_server</a></strong></p>
 <p><strong>[OPTIONAL] - SSH Public Key for Custom Port</strong></p>
 <p class="msg msg--highlight  msg--success"><strong>ssh-copy-id -p 5500 <a href="mailto:user@remote_server">user@remote_server</a></strong></p>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>How to install docker and docker-compose on Ubuntu 18.04</title>
+        <author>
+            <name>Mayur Chavhan</name>
+        </author>
+        <link href="https://techwhale.in/how-to-install-docker-and-docker-compose-on-ubuntu-1804/"/>
+        <id>https://techwhale.in/how-to-install-docker-and-docker-compose-on-ubuntu-1804/</id>
+        <media:content url="https://techwhale.in/media/posts/5/Webp.net-compress-image-2.jpg" medium="image" />
+            <category term="Ubuntu"/>
+            <category term="Tutorials"/>
+            <category term="TechWhale Guides"/>
+            <category term="Docker"/>
+
+        <updated>2020-06-30T17:23:33+05:30</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://techwhale.in/media/posts/5/Webp.net-compress-image-2.jpg" alt="How to install docker on Ubuntu 18.04" />
+                    Overview Docker Container Image Docker is an application that makes it simple and easy to run application processes in a container, which are like virtual machines, but more small, more resource-friendly, and more dependent on the host OS Kernel. Docker-Compose in other hand is more&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://techwhale.in/media/posts/5/Webp.net-compress-image-2.jpg" class="type:primaryImage" alt="How to install docker on Ubuntu 18.04" /></p>
+                <div class="post__toc">
+<h3>Table of Contents</h3>
+<ul>
+<li><a href="#mcetoc_1e8pdg7j87">Overview</a></li>
+<li><a href="#mcetoc_1e8pcknm71"> Update System</a></li>
+<li><a href="#mcetoc_1e8pcknm73">Install Prerequisite Packages</a></li>
+<li><a href="#mcetoc_1e8pcknm74">Add Docker Repositories</a></li>
+<li><a href="#mcetoc_1e8pcknm75">Install Docker on Ubuntu 18.04</a></li>
+<li><a href="#mcetoc_1e8pcknm76">Start Docker</a></li>
+</ul>
+</div>
+<hr>
+<h3 id="mcetoc_1e8pdg7j87">Overview</h3>
+<figure class="post__image post__image--center" ><img decoding="async" loading="lazy" src="https://techwhale.in/media/posts/5/docker-cloud-twitter-card.png" alt="Docker-Image" width="1586" height="600" sizes="(max-width: 48em) 100vw, 768px" srcset="https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-xs.png 300w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-sm.png 480w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-md.png 768w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-lg.png 1024w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-xl.png 1360w ,https://techwhale.in/media/posts/5/responsive/docker-cloud-twitter-card-2xl.png 1600w">
+<figcaption >Docker Container Image</figcaption>
+</figure>
+<p> </p>
+<p id="1cd8" class="dropcap" data-selectable-paragraph="">Docker is an application that makes it simple and easy to run application processes in a container, which are like virtual machines, but more small, more resource-friendly, and more dependent on the host OS Kernel.</p>
+<p data-selectable-paragraph="">Docker-Compose in other hand is more advanced but fairly makes easy if you want to add multiple docker containers and services working together as a one using a single file. YML / YAML is language is used to create docker-compose file.</p>
+<p data-selectable-paragraph="">You’ll learn how to install and use it on an existing installation of Ubuntu 18.04.</p>
+<p class="msg msg--info" data-selectable-paragraph=""> Docker requires a 64-bit version of Ubuntu also a kernel version requires to greater than 3.10.X</p>
+<p>Ubuntu 18.04 doesn't comes with Docker official repository so we are going to add it and install it. Let's start with process to install Docker and Docker-Compose.</p>
+<h3 id="mcetoc_1e8pcknm71"> Update System</h3>
+<p>First and most important is to update the system to keep all packages up to date so we don't run with outdated dependencies.</p>
+<p>Run the following commands:</p>
+<p class="msg msg--highlight "><strong>sudo apt update -qq -y</strong></p>
+<h3 id="mcetoc_1e8pcknm73">Install Prerequisite Packages</h3>
+<p>Once we have updated the system, we need to install some necessary packages before we are ready to install Docker. You can do this with the help of a single command:</p>
+<p class="msg msg--highlight "><strong>sudo apt-get install curl apt-transport-https ca-certificates software-properties-common -qq -y </strong></p>
+<h3 id="mcetoc_1e8pcknm74">Add Docker Repositories</h3>
+<p>Following steps is to add Docker Key and Repository to officially supported method for the Docker installation.</p>
+<p>Add the GPG key using following command in terminal:</p>
+<p class="msg msg--highlight "><strong>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</strong></p>
+<p>Next, Add the repository:</p>
+<p class="msg msg--highlight "><strong>sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"</strong></p>
+<p>Update the repository information:</p>
+<p class="msg msg--highlight "><strong>sudo apt update -y</strong></p>
+<h3 id="mcetoc_1e8pcknm75">Install Docker on Ubuntu 18.04</h3>
+<p>We are almost close. Use apt command to install Docker:</p>
+<p class="msg msg--highlight "><strong>sudo apt install docker-ce -y</strong></p>
+<h3 id="mcetoc_1e8pcknm76">Start Docker</h3>
+<p>Once the installation is complete, Start the docker to enable the service:</p>
+<p class="msg msg--highlight "><strong>sudo systemctl start docker</strong></p>
+<p>Check the service using below command if docker service is active or not.</p>
+<p class="msg msg--highlight "><strong>sudo systemctl status docker</strong></p>
+<p><br>If all goes well then pat yourself in the back. Docker is installed on your Ubuntu machine. Now, Lets install Docker-Compose which is very easy now since we have docker installed on the machine.</p>
+<div class="uncode_text_column">
+<p>Check if you have curl installed in your machine.</p>
+<p>If not then install curl using following command:</p>
+<p class="msg msg--highlight "><strong>sudo apt install curl</strong></p>
+</div>
+<div class="heading-text el-text">
+<h3 id="mcetoc_1e8pepps7a" class="h3"><span id="htoc-download-the-latest-docker-compose-version">Install Latest Docker Compose</span></h3>
+</div>
+<div class="clear"> </div>
+<div class="uncode_text_column">
+<ol>
+<li>To download the latest version of Docker Compose, run below command:</li>
+</ol>
+<p class="msg msg--highlight "><strong>sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose</strong></p>
+<p>At the time this article was written, Docker Compose 1.25.5 is the latest version but if you want to change latest version go to this release page.</p>
+<p class="msg msg--info"><strong>https://github.com/docker/compose/releases</strong></p>
+<br>
+<p>2. Give executable permission to docker-compose at installed location:</p>
+<p class="msg msg--highlight "><strong>sudo chmod +x /usr/local/bin/docker-compose</strong></p>
+<p> That's it, Now you've successfully installed docker-compose on your Ubuntu 18.04, Easy isn't it? </p>
+</div>
             ]]>
         </content>
     </entry>
