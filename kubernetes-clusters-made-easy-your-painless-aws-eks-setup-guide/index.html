@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Busy Developer&#x27;s Guide to Painless AWS Clusters: AWS EKS Setup Guide   - TechWhale </title>
+	
+    
+	<link rel="canonical" href="https://techwhale.in/kubernetes-clusters-made-easy-your-painless-aws-eks-setup-guide/">
+	
+	<link rel="alternate" type="application/atom+xml" href="https://techwhale.in/feed.xml" title="TechWhale - RSS" />
+<link rel="alternate" type="application/json" href="https://techwhale.in/feed.json" title="TechWhale - JSON" />
+
+    
+	    <link rel="shortcut icon" href="https://techwhale.in/media/website/imageedit_26_9569312189.png" type="image/x-icon" />
+    
+    <link rel="stylesheet" href="https://techwhale.in/assets/css/style.css?v=a6644564c1a37b93df20a78bed859f25">	
+	<script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://techwhale.in/kubernetes-clusters-made-easy-your-painless-aws-eks-setup-guide/"},"headline":"The Busy Developer's Guide to Painless AWS Clusters: AWS EKS Setup Guide  ","datePublished":"2025-04-06T11:50+05:30","dateModified":"2025-04-09T01:48+05:30","image":{"@type":"ImageObject","url":"https://techwhale.in/media/posts/48/3.png","height":1260,"width":2240},"description":"The Busy Developer's Guide to Painless AWS Clusters: AWS EKS Setup Guide  ","author":{"@type":"Person","name":"Mayur Chavhan","url":"https://techwhale.in/authors/mayur-chavhan/"},"publisher":{"@type":"Organization","name":"Mayur Chavhan","logo":{"@type":"ImageObject","url":"https://techwhale.in/media/website/imageedit_19_3669952192.png","height":183,"width":778}}}</script>
+        
+	<link rel="stylesheet" href="{{css "prism.css" }}">
+ 
+<script data-ad-client="ca-pub-4519080780415943" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146201757-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-146201757-2');
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LP4P7CP531"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LP4P7CP531');
+</script>
+
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script>
+  window.OneSignal = window.OneSignal || [];
+  OneSignal.push(function() {
+    OneSignal.init({
+      appId: "e75acce1-984a-46e6-ad91-9eb63ee0e9b1",
+    });
+  });
+</script>
+<script data-ad-client="ca-pub-4591308678247525" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+<body>
+	
+<header class="topbar" id="js-header">
+    <div class="topbar__inner">
+        <a class="logo" href="https://techwhale.in/">
+                <img src="https://techwhale.in/media/website/imageedit_19_3669952192.png" alt="TechWhale" width="778" height="183">
+        </a>
+               <nav class="navbar">
+                  <button
+                     class="navbar__toggle"
+                     aria-label="Menu"
+                     aria-haspopup="true"
+                     aria-expanded="false">
+                     <span class="navbar__toggle-box">
+                        <span class="navbar__toggle-inner">Menu</span>
+                     </span>
+                  </button>
+                <ul class="navbar__menu">
+                         <li>
+                           <a
+                              href="https://techwhale.in/"
+                                 title="home"
+                                 target="_self"
+            >
+                              Home
+                          </a>
+            
+                     </li>
+                         <li>
+                           <a
+                              href="https://techwhale.in/category/devops/"
+                                 target="_self"
+            >
+                              Guides
+                          </a>
+            
+                     </li>
+                         <li>
+                           <a
+                              href="https://techwhale.in/category/tutorials/"
+                                 title="tutorial"
+                                 target="_self"
+            >
+                              Tutorials
+                          </a>
+            
+                     </li>
+                         <li>
+                           <a
+                              href="https://techwhale.in/authors/mayur-chavhan/"
+                                 target="_self"
+            >
+                              Contact
+                          </a>
+            
+                     </li>
+                </ul>
+               </nav>
+    </div>
+</header>
+<div class="main-content">
+<main class="main post">
+      <article class="content">
+               <figure class="content__featured-image">                      
+                  <img
+                     src="https://techwhale.in/media/posts/48/3.png"
+                        srcset="https://techwhale.in/media/posts/48/responsive/3-xs.webp 300w ,https://techwhale.in/media/posts/48/responsive/3-sm.webp 480w ,https://techwhale.in/media/posts/48/responsive/3-md.webp 768w ,https://techwhale.in/media/posts/48/responsive/3-lg.webp 1024w ,https://techwhale.in/media/posts/48/responsive/3-xl.webp 1360w ,https://techwhale.in/media/posts/48/responsive/3-2xl.webp 1600w" sizes="(max-width: 1600px) 100vw, 1600px"
+                      loading="eager"
+                     height="1260"
+                     width="2240"
+                     alt="The Busy Developer&#x27;s Guide to Painless AWS Clusters: AWS EKS Setup Guide  ">
+                     
+                     <figcaption>
+                        The Busy Developer&#x27;s Guide to Painless AWS Clusters: AWS EKS Setup Guide  
+                        
+                     </figcaption>                      
+               </figure>
+
+         <header class="u-header content__header">
+            <h1>
+               The Busy Developer&#x27;s Guide to Painless AWS Clusters: AWS EKS Setup Guide  
+            </h1>
+               <div class="u-header__meta u-small">
+
+
+                  <div>
+                           <a href="https://techwhale.in/authors/mayur-chavhan/" title="Mayur Chavhan">Mayur Chavhan</a>
+
+                        <time datetime="2025-04-06T11:50">
+                              April 6, 2025
+                        </time>
+
+                           <a
+                              href="https://techwhale.in/category/devops/"
+                              class="u-tag u-tag--devops">DevOps</a>                            
+                  </div>
+
+               </div>
+         </header>
+
+         <div class="content__entry u-inner">
+            <p>Imagine having a personal robot army that automatically scales to handle website traffic spikes, self-heals when servers fail, and deploys updates without downtime. That’s AWS Elastic Kubernetes Service (EKS) in a nutshell. </p><h2 id="kubernetes-terms-in-plain-english">Kubernetes Terms in Plain English</h2>
+<p><strong>Control Plane</strong> <em>(The Brain)</em>: AWS-managed components making cluster decisions.<br><strong>Node Group</strong> <em>(Worker Bees)</em>: EC2 instances running your containers.  </p><p><strong>Pod</strong> <em>(Shipping Container)</em>: Smallest deployable unit holding 1+ containers.  </p><p><strong>Service</strong> <em>(Post Office)</em>: Stable network endpoint for pods.</p><p><strong>Deployment</strong> (<em>Blueprints</em>): Desired state for your applications.</p><p>This step-by-step guide will transform you from Kubernetes curious to cluster commander in under 30 minutes. Ready to ditch deployment drama? Let’s roll! 🚀  </p><h2 id="why-eks-is-your-new-devops-best-friend">Why EKS is Your New DevOps Best Friend</h2>
+<p><strong>AWS EKS</strong> <em>(think auto-pilot for container orchestration)</em> eliminates 72% of traditional Kubernetes headaches by managing control plane components like etcd and the API server. For development teams, this means:  </p><ul>
+<li><strong>Zero Master Node Maintenance</strong>: AWS handles security patches and updates automatically  </li>
+<li><strong>Native AWS Integration</strong>: Seamless connectivity with RDS databases, S3 buckets, and IAM roles  </li>
+<li><strong>Hybrid Cloud Ready</strong>: Deploy identical clusters across AWS cloud and on-premises data centers</li>
+</ul>
+<p>Real-world impact? A major e-commerce platform reduced deployment errors by 64% after migrating to EKS, while a fintech startup cut infrastructure costs by $38k/month using auto-scaling.  </p><h2 id="pre-flight-checklist-tools-youll-need">Pre-Flight Checklist: Tools You’ll Need</h2>
+<h3 id="1-aws-cli-installation">1. AWS CLI Installation</h3>
+<pre><code class="language-bash"># For MacOS  
+brew install awscli  
+
+# Windows (PowerShell)  
+msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi  
+</code></pre>
+<p>Verify with <code>aws --version</code>.  </p><h3 id="2-eksctl---your-cluster-magic-wand">2. eksctl - Your Cluster Magic Wand</h3>
+<h4 id="maclinux">Mac/Linux</h4>
+<pre><code class="language-bash">brew tap weaveworks/tap &amp;&amp; brew install eksctl  
+</code></pre>
+<h4 id="windows">Windows</h4>
+<pre><code class="language-bash">choco install eksctl  
+</code></pre>
+<p>Confirm installation: <code>eksctl version</code>. </p><h3 id="3-kubectl---cluster-control">3. kubectl - Cluster Control</h3>
+<h4 id="mac">Mac</h4>
+<pre><code class="language-bash">brew install kubernetes-cli  
+</code></pre>
+<h4 id="windows-1">Windows</h4>
+<pre><code class="language-bash">choco install kubernetes-cli  
+</code></pre>
+<p>Test with <code>kubectl version --client</code>.  </p><h2 id="cluster-creation-step-by-step-visual-guide">Cluster Creation: Step-by-Step Visual Guide</h2>
+<h3 id="1-configure-aws-credentials">1. Configure AWS Credentials</h3>
+<pre><code class="language-bash">aws configure  
+# Follow prompts to enter Access Key ID/Secret  
+</code></pre>
+<p>💡 <em>Pro Tip: Use IAM roles instead of keys for production clusters.</em>  </p><h3 id="2-create-ssh-key-optional">2. Create SSH Key (Optional)</h3>
+<pre><code class="language-bash">ssh-keygen -t rsa -b 4096 -f ~/.ssh/eks-cluster  
+</code></pre>
+<h3 id="3-cluster-configuration-file">3. Cluster Configuration File</h3>
+<p>Create <code>cluster.yaml</code>:  </p><pre><code class="language-yaml">apiVersion: eksctl.io/v1alpha5  
+kind: ClusterConfig  
+
+metadata:  
+  name: techwhale-cluster  
+  region: us-west-2  
+  version: &quot;1.28&quot;  
+
+nodeGroups:  
+  - name: ng-1  
+    instanceType: t3.medium  
+    desiredCapacity: 3  
+    ssh:  
+      publicKeyPath: ~/.ssh/eks-cluster.pub  
+</code></pre>
+<h3 id="4-launch-your-cluster">4. Launch Your Cluster</h3>
+<pre><code class="language-bash">eksctl create cluster -f cluster.yaml  
+</code></pre>
+<p>⏱️ <em>This takes 10-15 minutes - perfect coffee break time!</em>  </p><h3 id="5-verify-deployment">5. Verify Deployment</h3>
+<pre><code class="language-bash">kubectl get nodes  
+# Should show 3 Ready nodes  
+</code></pre>
+<p>🎉 <em>Congratulations! You now have a production-grade Kubernetes cluster.</em>  </p><h2 id="post-setup-must-dos">Post-Setup Must-Do’s</h2>
+<h3 id="1-enable-cluster-autoscaling">1. Enable Cluster Autoscaling</h3>
+<pre><code class="language-bash">eksctl create iamserviceaccount \  
+  --cluster=techwhale-cluster \  
+  --namespace=kube-system \  
+  --name=cluster-autoscaler \  
+  --attach-policy-arn=arn:aws:iam::aws:policy/AmazonEKSClusterAutoscalerPolicy \  
+  --approve  
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/autoscaler/master/cluster-autoscaler/cloudprovider/aws/examples/cluster-autoscaler-autodiscover.yaml  
+</code></pre>
+<h3 id="2-install-kubernetes-dashboard">2. Install Kubernetes Dashboard</h3>
+<pre><code class="language-bash">kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml  
+</code></pre>
+<p>Access via:  </p><pre><code class="language-bash">kubectl proxy  
+# Visit http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/  
+</code></pre>
+<h2 id="pro-tips-from-aws-experts-⚠️">Pro Tips from AWS Experts ⚠️</h2>
+<h3 id="⚠️-cost-optimization-hack">⚠️ Cost Optimization Hack</h3>
+<p>Use Spot Instances for non-critical workloads:  </p><pre><code class="language-yaml">nodeGroups:  
+  - name: spot-ng  
+    instanceType: t3.medium  
+    desiredCapacity: 2  
+    spot: true  
+    ssh:  
+      publicKeyPath: ~/.ssh/eks-cluster.pub  
+</code></pre>
+<p>Cuts costs by up to 90%.  </p><h3 id="⚠️-security-hardening">⚠️ Security Hardening</h3>
+<p>Enable encryption at rest:  </p><pre><code class="language-yaml">metadata:  
+  name: secure-cluster  
+  region: us-west-2  
+  version: &quot;1.28&quot;  
+  encrypted: true  
+</code></pre>
+<h3 id="⚠️-disaster-recovery-setup">⚠️ Disaster Recovery Setup</h3>
+<p>Automate cluster backups:  </p><pre><code class="language-bash">velero install \  
+    --provider aws \  
+    --plugins velero/velero-plugin-for-aws:v1.7.0 \  
+    --bucket your-backup-bucket \  
+    --backup-location-config region=us-west-2 \  
+    --snapshot-location-config region=us-west-2  
+</code></pre>
+<h2 id="troubleshooting-common-issues">Troubleshooting Common Issues</h2>
+<p><strong>Problem</strong>: <code>kubectl</code> commands timing out<br>✅ Fix:  </p><pre><code class="language-bash">aws eks update-kubeconfig --name techwhale-cluster --region us-west-2  
+</code></pre>
+<p><strong>Problem</strong>: Nodes stuck in NotReady state<br>✅ Fix:  </p><pre><code class="language-bash">kubectl get nodes  
+kubectl describe node  | grep -i taint  
+# Remove NoSchedule taints if present  
+</code></pre>
+<p><strong>Problem</strong>: Container images not pulling<br>✅ Fix:  </p><pre><code class="language-bash">kubectl create secret docker-registry ecr-cred \  
+  --docker-server=ACCOUNT.dkr.ecr.REGION.amazonaws.com \  
+  --docker-username=AWS \  
+  --docker-password=$(aws ecr get-login-password)  
+</code></pre>
+<h2 id="conclusion-your-cluster-supercharged">Conclusion: Your Cluster, Supercharged</h2>
+<p>You’ve just deployed an enterprise-grade Kubernetes cluster that would make even Amazon engineers nod in approval. With EKS handling the heavy lifting, you’re free to focus on what matters - building amazing applications.  </p><p>Ready to level up? Explore these next steps:</p><ul>
+<li>Implement GitOps with ArgoCD</li>
+<li>Set up Istio service mesh</li>
+<li>Automate deployments with EKS Blueprints</li>
+</ul>
+
+         </div>
+         
+            <aside class="content__aside">
+                     <div class="content__share">
+                           <a
+                              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftechwhale.in%2Fkubernetes-clusters-made-easy-your-painless-aws-eks-setup-guide%2F"
+                              class="js-share facebook"
+                              title="Share with Facebook"
+                              rel="nofollow noopener noreferrer"
+                              aria-label="Share with Facebook">
+                              <svg class="u-icon">
+                                 <use xlink:href="https://techwhale.in/assets/svg/svg-map.svg#facebook"/>
+                              </svg>
+                           </a>
+                        
+                           <a
+                              href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftechwhale.in%2Fkubernetes-clusters-made-easy-your-painless-aws-eks-setup-guide%2F&amp;via=%40techwhale.in&amp;text=The%20Busy%20Developer's%20Guide%20to%20Painless%20AWS%20Clusters%3A%20AWS%20EKS%20Setup%20Guide%C2%A0%C2%A0"
+                              class="js-share twitter"
+                              title="Share with Twitter"
+                              rel="nofollow noopener noreferrer"
+                              aria-label="Share with Twitter">
+                              <svg class="u-icon">
+                                 <use xlink:href="https://techwhale.in/assets/svg/svg-map.svg#twitter"/>
+                              </svg>
+                           </a>
+                        
+                        
+                           <a
+                              href="https://mix.com/add?url=https%3A%2F%2Ftechwhale.in%2Fkubernetes-clusters-made-easy-your-painless-aws-eks-setup-guide%2F"
+                              class="js-share mix"
+                              title="Share with Mix"
+                              rel="nofollow noopener noreferrer"
+                              aria-label="Share with Mix">
+                              <svg class="u-icon">
+                                 <use xlink:href="https://techwhale.in/assets/svg/svg-map.svg#mix"/>
+                              </svg>
+                           </a>
+                        
+                           <a
+                              href="https://wa.me/?text=The%20Busy%20Developer's%20Guide%20to%20Painless%20AWS%20Clusters%3A%20AWS%20EKS%20Setup%20Guide%C2%A0%C2%A0 https%3A%2F%2Ftechwhale.in%2Fkubernetes-clusters-made-easy-your-painless-aws-eks-setup-guide%2F"
+                              class="js-share whatsapp"
+                              rel="nofollow noopener noreferrer"
+                              title="Share with WhatsApp"
+                              aria-label="Share with WhatsApp">
+                              <svg class="u-icon">
+                                 <use xlink:href="https://techwhale.in/assets/svg/svg-map.svg#whatsapp"/>
+                              </svg>
+                           </a>
+                        
+                           <a
+                              href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftechwhale.in%2Fkubernetes-clusters-made-easy-your-painless-aws-eks-setup-guide%2F"
+                              class="js-share linkedin"
+                              title="Share with LinkedIn"
+                              rel="nofollow noopener noreferrer"
+                              aria-label="Share with LinkedIn">
+                              <svg class="u-icon">
+                                 <use xlink:href="https://techwhale.in/assets/svg/svg-map.svg#linkedin"/>
+                              </svg>
+                           </a>
+                        
+                           <a
+                              href="https://buffer.com/add?text=The%20Busy%20Developer's%20Guide%20to%20Painless%20AWS%20Clusters%3A%20AWS%20EKS%20Setup%20Guide%C2%A0%C2%A0&amp;url=https%3A%2F%2Ftechwhale.in%2Fkubernetes-clusters-made-easy-your-painless-aws-eks-setup-guide%2F"
+                              class="js-share buffer"
+                              title="Share with Buffer"
+                              rel="nofollow noopener noreferrer"
+                              aria-label="Share with Buffer">
+                              <svg class="u-icon">
+                                 <use xlink:href="https://techwhale.in/assets/svg/svg-map.svg#buffer"/>
+                              </svg>
+                           </a>
+                     </div>
+            </aside>
+            <footer class="content__footer">
+        
+                     <ul class="content__tag box">
+                           <li>
+                              <a
+                                 href="https://techwhale.in/category/automation/"
+                                 class="u-tag u-tag--automation"
+                                 title="Automation">Automation</a>
+                           </li>
+                           <li>
+                              <a
+                                 href="https://techwhale.in/category/aws/"
+                                 class="u-tag u-tag--aws"
+                                 title="AWS">AWS</a>
+                           </li>
+                           <li>
+                              <a
+                                 href="https://techwhale.in/category/devops/"
+                                 class="u-tag u-tag--devops"
+                                 title="DevOps">DevOps</a>
+                           </li>
+                           <li>
+                              <a
+                                 href="https://techwhale.in/category/kubernetes/"
+                                 class="u-tag u-tag--kubernetes"
+                                 title="Kubernetes">Kubernetes</a>
+                           </li>
+                           <li>
+                              <a
+                                 href="https://techwhale.in/category/techwale/"
+                                 class="u-tag u-tag--techwale"
+                                 title="TechWhale Guides">TechWhale Guides</a>
+                           </li>
+                           <li>
+                              <a
+                                 href="https://techwhale.in/category/terraform/"
+                                 class="u-tag u-tag--terraform"
+                                 title="Terraform">Terraform</a>
+                           </li>
+                     </ul>
+
+
+                     <nav class="content__nav box">
+                           <div class="content__nav__prev">
+                              <a href="https://techwhale.in/building-nodejs-container-images-in-kubernetes-the-kaniko-way/" class="content__nav__link" rel="prev">
+                                       <img 
+                                             src="https://techwhale.in/media/posts/47/responsive/1-xs.webp"
+                                           loading="lazy"  
+                                          alt=""
+                                          height="1260" 
+                                          width="2240">                                   
+                                 <div class="u-small">
+                                    Previous Post
+                                    <h5>
+                                       From Code to Kubernetes: The Kaniko Method for Node.js Deployment
+                                    </h5>
+                                 </div>
+                              </a>
+                           </div>
+                     </nav>
+
+                     <div class="content__related box">
+                        <h3 class="box__title">
+                           Related posts
+                        </h3>
+                        <div class="content__related-wrap">
+                              <figure class="content__related-item">
+                                       <a href="https://techwhale.in/how-to-automate-initial-server-setup-of-multiple-ubuntu-2204-servers-using-ansible/" class="c-card__image">
+                                          <img 
+                                                src="https://techwhale.in/media/posts/43/responsive/git-workflow-copy-xs.webp"
+                                              loading="lazy" 
+                                             height="230"
+                                             width="370"
+                                             alt="How To Automate Initial Server Setup of Multiple Ubuntu 22.04 Servers Using Ansible">
+                                       </a>                                     
+                                 <figcaption>
+                                    <h4 class="content__related-title">
+                                       <a href="https://techwhale.in/how-to-automate-initial-server-setup-of-multiple-ubuntu-2204-servers-using-ansible/" class="inverse">How To Automate Initial Server Setup of Multiple Ubuntu 22.04 Servers Using Ansible</a>
+                                    </h4>
+                                    <time datetime="2023-07-14T03:04" class="u-small">
+                                          July 14, 2023
+                                    </time>
+                                 </figcaption>
+                              </figure>
+                              <figure class="content__related-item">
+                                       <a href="https://techwhale.in/update-your-docker-compose-containers-easily-with-two-steps/" class="c-card__image">
+                                          <img 
+                                                src="https://techwhale.in/media/posts/23/responsive/Untitled-Design-1-xs.webp"
+                                              loading="lazy" 
+                                             height="1256"
+                                             width="2400"
+                                             alt="">
+                                       </a>                                     
+                                 <figcaption>
+                                    <h4 class="content__related-title">
+                                       <a href="https://techwhale.in/update-your-docker-compose-containers-easily-with-two-steps/" class="inverse">Streamline Your Container Updates with Docker: A Step-by-Step Guide</a>
+                                    </h4>
+                                    <time datetime="2022-07-01T03:25" class="u-small">
+                                          July 1, 2022
+                                    </time>
+                                 </figcaption>
+                              </figure>
+                              <figure class="content__related-item">
+                                       <a href="https://techwhale.in/how-to-setup-user-ssh-keys-on-ubuntu-1804/" class="c-card__image">
+                                          <img 
+                                                src="https://techwhale.in/media/posts/6/responsive/image-0-compressed-xs.webp"
+                                              loading="lazy" 
+                                             height="1109"
+                                             width="1496"
+                                             alt="setup ssh keys on linux">
+                                       </a>                                     
+                                 <figcaption>
+                                    <h4 class="content__related-title">
+                                       <a href="https://techwhale.in/how-to-setup-user-ssh-keys-on-ubuntu-1804/" class="inverse">How to setup user SSH Keys on Ubuntu 18.04</a>
+                                    </h4>
+                                    <time datetime="2020-05-23T16:53" class="u-small">
+                                          May 23, 2020
+                                    </time>
+                                 </figcaption>
+                              </figure>
+                              <figure class="content__related-item">
+                                       <a href="https://techwhale.in/git-workflow-for-developers-and-devops/" class="c-card__image">
+                                          <img 
+                                                src="https://techwhale.in/media/posts/3/responsive/l2mvWRp1-xs.webp"
+                                              loading="lazy" 
+                                             height="399"
+                                             width="550"
+                                             alt="git-workflow-for-developers">
+                                       </a>                                     
+                                 <figcaption>
+                                    <h4 class="content__related-title">
+                                       <a href="https://techwhale.in/git-workflow-for-developers-and-devops/" class="inverse">Guide : Git workflow for Developers</a>
+                                    </h4>
+                                    <time datetime="2020-05-18T01:16" class="u-small">
+                                          May 18, 2020
+                                    </time>
+                                 </figcaption>
+                              </figure>
+                        </div>
+                     </div>
+            </footer>
+      </article>
+
+         <div class="comments-area box">
+            
+         </div>
+
+         <div class="banner banner--after-content">
+            <style>.bmc-button img{height: 34px !important;width: 35px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{padding: 7px 15px 7px 10px !important;line-height: 35px !important;height:51px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#BD5FFF !important;border-radius: 5px !important;border: 1px solid transparent !important;padding: 7px 15px 7px 10px !important;font-size: 20px !important;letter-spacing:-0.08px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Lato', sans-serif !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/mrmayur"><img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px;font-size:19px !important;">Buy me a coffee</span></a>
+         </div>
+</main>
+<div class="sidebar">
+         <section class="box featured">
+            <h3 class="box__title">Featured</h3>
+            <ul class="featured__container">
+                     <li class="featured__item">
+                                 <a href="https://techwhale.in/kubernetes-clusters-made-easy-your-painless-aws-eks-setup-guide/" class="featured__image-link">
+                                    <img 
+                                          src="https://techwhale.in/media/posts/48/responsive/3-xs.webp"
+                                       class="lazyload"
+                                        loading="lazy" 
+                                       alt="The Busy Developer&#x27;s Guide to Painless AWS Clusters: AWS EKS Setup Guide  " 
+                                       height="1260" 
+                                       width="1260">
+                                 </a>                               
+                        <div>
+                           <a href="https://techwhale.in/kubernetes-clusters-made-easy-your-painless-aws-eks-setup-guide/" class="featured__title">The Busy Developer&#x27;s Guide to Painless AWS Clusters: AWS EKS Setup Guide  </a>
+                              <time class="u-small" datetime="2025-04-06T11:50">
+                                    April 6, 2025
+                              </time>
+                        </div>
+                     </li>
+                     <li class="featured__item">
+                                 <a href="https://techwhale.in/building-nodejs-container-images-in-kubernetes-the-kaniko-way/" class="featured__image-link">
+                                    <img 
+                                          src="https://techwhale.in/media/posts/47/responsive/1-xs.webp"
+                                       class="lazyload"
+                                        loading="lazy" 
+                                       alt="" 
+                                       height="1260" 
+                                       width="1260">
+                                 </a>                               
+                        <div>
+                           <a href="https://techwhale.in/building-nodejs-container-images-in-kubernetes-the-kaniko-way/" class="featured__title">From Code to Kubernetes: The Kaniko Method for Node.js Deployment</a>
+                              <time class="u-small" datetime="2025-03-30T16:30">
+                                    March 30, 2025
+                              </time>
+                        </div>
+                     </li>
+                     <li class="featured__item">
+                                 <a href="https://techwhale.in/how-to-automate-initial-server-setup-of-multiple-ubuntu-2204-servers-using-ansible/" class="featured__image-link">
+                                    <img 
+                                          src="https://techwhale.in/media/posts/43/responsive/git-workflow-copy-xs.webp"
+                                       class="lazyload"
+                                        loading="lazy" 
+                                       alt="How To Automate Initial Server Setup of Multiple Ubuntu 22.04 Servers Using Ansible" 
+                                       height="230" 
+                                       width="230">
+                                 </a>                               
+                        <div>
+                           <a href="https://techwhale.in/how-to-automate-initial-server-setup-of-multiple-ubuntu-2204-servers-using-ansible/" class="featured__title">How To Automate Initial Server Setup of Multiple Ubuntu 22.04 Servers Using Ansible</a>
+                              <time class="u-small" datetime="2023-07-14T03:04">
+                                    July 14, 2023
+                              </time>
+                        </div>
+                     </li>
+                     <li class="featured__item">
+                                 <a href="https://techwhale.in/how-to-install-aws-cli-on-linux-windows-and-mac/" class="featured__image-link">
+                                    <img 
+                                          src="https://techwhale.in/media/posts/42/responsive/git-workflow-copy-1-xs.webp"
+                                       class="lazyload"
+                                        loading="lazy" 
+                                       alt="How to Install AWS CLI on Linux, Windows, and Mac" 
+                                       height="230" 
+                                       width="230">
+                                 </a>                               
+                        <div>
+                           <a href="https://techwhale.in/how-to-install-aws-cli-on-linux-windows-and-mac/" class="featured__title">How to Install AWS CLI on Linux, Windows, and Mac</a>
+                              <time class="u-small" datetime="2023-07-14T03:00">
+                                    July 14, 2023
+                              </time>
+                        </div>
+                     </li>
+                     <li class="featured__item">
+                                 <a href="https://techwhale.in/how-to-add-swap-space-on-ubuntu-22-and-debian-11-12/" class="featured__image-link">
+                                    <img 
+                                          src="https://techwhale.in/media/posts/41/responsive/2-xs.webp"
+                                       class="lazyload"
+                                        loading="lazy" 
+                                       alt="How To Add Swap Space on Ubuntu and Debian 12 / 13" 
+                                       height="1260" 
+                                       width="1260">
+                                 </a>                               
+                        <div>
+                           <a href="https://techwhale.in/how-to-add-swap-space-on-ubuntu-22-and-debian-11-12/" class="featured__title">How To Add Swap Space on Ubuntu and Debian 12 / 13</a>
+                              <time class="u-small" datetime="2023-07-14T02:57">
+                                    July 14, 2023
+                              </time>
+                        </div>
+                     </li>
+            </ul>
+         </section>
+      <section class="box">
+         <h3 class="box__title">Follow us</h3>
+         <div class="follow">
+                  <a
+                     href="https://www.facebook.com/techwhale.in"
+                     class="facebook"
+                     aria-label="Facebook">
+                     <svg class="u-icon">
+                        <use xlink:href="https://techwhale.in/assets/svg/svg-map.svg#facebook"/>
+                     </svg>
+                     Facebook
+                  </a>
+                  <a href="https://twitter.com/techwhale.in" class="twitter" aria-label="Twitter">
+                     <svg class="u-icon">
+                        <use xlink:href="https://techwhale.in/assets/svg/svg-map.svg#twitter"/>
+                     </svg>
+                     Twitter
+                  </a>
+         </div>
+      </section>
+      <section class="box authors">
+         <h3 class="box__title">Authors</h3>
+         <ul class="authors__cotainer">
+                  <li class="authors__item">
+                     <div>
+                        <a href="https://techwhale.in/authors/mayur-chavhan/" class="authors__title">Mayur Chavhan</a>
+                           <span class="u-small">Post: 
+                              26
+                           </span>
+                     </div>
+                  </li>
+         </ul>
+      </section>
+
+
+         <section class="box">
+            <h3 class="box__title">Tags</h3>
+            <ul class="tags">
+                     <li>
+                        <a href="https://techwhale.in/category/ansible/">Ansible</a>
+                        <span class="u-small">(3)</span>
+                     </li>
+                     <li>
+                        <a href="https://techwhale.in/category/automation/">Automation</a>
+                        <span class="u-small">(5)</span>
+                     </li>
+                     <li>
+                        <a href="https://techwhale.in/category/aws/">AWS</a>
+                        <span class="u-small">(2)</span>
+                     </li>
+                     <li>
+                        <a href="https://techwhale.in/category/debian/">Debian</a>
+                        <span class="u-small">(3)</span>
+                     </li>
+                     <li>
+                        <a href="https://techwhale.in/category/devops/">DevOps</a>
+                        <span class="u-small">(8)</span>
+                     </li>
+            </ul>
+         </section>
+</div>
+<footer class="footer">
+        <a class="footer__logo" href="https://techwhale.in/">
+                <img src="https://techwhale.in/media/website/imageedit_19_3669952192.png" alt="TechWhale">
+        </a>
+
+           <nav>
+            <ul class="footer__nav">
+            </ul>
+           </nav>
+
+            <div class="footer__follow">
+                        <a href="https://www.facebook.com/techwhale.in" aria-label="Facebook">
+                            <svg>
+                                <use xlink:href="https://techwhale.in/assets/svg/svg-map.svg#facebook" />
+                            </svg>
+                        </a>
+                        <a href="https://twitter.com/techwhale.in" aria-label="Twitter">
+                            <svg>
+                                <use xlink:href="https://techwhale.in/assets/svg/svg-map.svg#twitter" />
+                            </svg>
+                        </a>
+            </div>
+
+            <div class="footer__copyright">
+                <p>© <a href="https://techwhale.in">All copyrights are reserved to TechWhale </a></p>
+            </div>
+
+    </footer>
+</div>
+
+<script>
+   window.MenuConfig = {    
+        mobileMenuMode: 'sidebar',
+        animationSpeed: 300,
+        submenuWidth: 'auto',
+        doubleClickTime: 500,
+        mobileMenuExpandableSubmenus: true, 
+        relatedContainerForOverlayMenuSelector: '.navbar',
+   };
+</script>
+
+<script defer src="https://techwhale.in/assets/js/scripts.min.js?v=ae681ac2b3d516e2313cb9704d36e345"></script>
+<script defer src="{{js "prism.js"}}"></script>
+
+<!-- Start main cookie container -->
+<div 
+    class="pcb"
+    data-behaviour="badge"
+    data-behaviour-link="#cookie-settings"
+    data-revision="1"
+    data-config-ttl="90"
+    data-debug-mode="false">
+    <!-- Start Banner -->
+    <div 
+        role="dialog" 
+        aria-modal="true" 
+        aria-hidden="true" 
+        aria-labelledby="pcb-title" 
+        aria-describedby="pcb-txt" 
+        class="pcb__banner ">
+        <div class="pcb__inner">
+            <div 
+                id="pcb-title" 
+                role="heading" 
+                aria-level="2" 
+                class="pcb__title">
+                This website uses cookies
+            </div>
+            <div 
+                id="pcb-txt" 
+                class="pcb__txt">
+                Select which cookies to opt-in to via the checkboxes below; our website uses cookies to examine site traffic and user activity while on our site, for marketing, and to provide social media functionality.
+                <a href="#not-specified">More details...</a>
+            </div>
+          
+            <div class="pcb__buttons">
+                
+                <button 
+                    type="button" 
+                    class="pcb__btn pcb__btn--link pcb__btn--configure" 
+                    aria-haspopup="dialog">
+                    Manage preferences
+                </button>
+                
+                
+                <button 
+                    type="button" 
+                    class="pcb__btn pcb__btn--solid pcb__btn--accept">
+                    Save
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- End of Banner -->
+
+    
+    <!-- Start Popup -->
+    <div 
+        class="pcb__popup" 
+        role="dialog" 
+        aria-modal="true" 
+        aria-hidden="true" 
+        aria-labelledby="pcb-popup-title">
+        <div class="pcb__popup__wrapper">
+            <div class="pcb__inner pcb__popup__inner">
+                <div class="pcb__popup__heading">
+                    <div 
+                        id="pcb-popup-title" 
+                        role="heading" 
+                        aria-level="2"
+                        class="pcb__title">
+                        Cookie settings
+                    </div>
+                    <button class="pcb__popup__close" aria-label="Close"></button>
+                </div>
+             
+                <div class="pcb__popup__content">
+                    <div class="pcb__txt pcb__popup__txt">
+                        We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.
+
+                        
+                        <a href="#not-specified">More details...</a>
+                        
+                    </div>
+                
+                    <ul class="pcb__groups">
+                        <li class="pcb__group">
+                    <details>
+                        <summary class="pcb__group__title no-desc">
+                            Required
+                        </summary>
+                        
+                    </details>
+                    <div class="pcb__popup__switch is-checked">
+                        <input 
+                            type="checkbox" 
+                            data-group-name=""
+                            id="pcb-group-0" 
+                            checked />
+                        <label for="pcb-group-0">Required</label>
+                    </div>
+                </li>
+            <li class="pcb__group">
+                <details>
+                    <summary class="pcb__group__title no-desc">
+                        Functionality
+                    </summary>
+                    
+                </details>
+                <div class="pcb__popup__switch">
+                    <input 
+                        type="checkbox"
+                        data-group-name="functions"
+                        id="functions-cookies" />
+                    <label for="functions-cookies">
+                        Functionality
+                    </label>
+                </div>
+            </li>
+            <li class="pcb__group">
+                <details>
+                    <summary class="pcb__group__title no-desc">
+                        Analytical
+                    </summary>
+                    
+                </details>
+                <div class="pcb__popup__switch">
+                    <input 
+                        type="checkbox"
+                        data-group-name="analytics"
+                        id="analytics-cookies" />
+                    <label for="analytics-cookies">
+                        Analytical
+                    </label>
+                </div>
+            </li>
+            <li class="pcb__group">
+                <details>
+                    <summary class="pcb__group__title no-desc">
+                        Marketing
+                    </summary>
+                    
+                </details>
+                <div class="pcb__popup__switch">
+                    <input 
+                        type="checkbox"
+                        data-group-name="marketing"
+                        id="marketing-cookies" />
+                    <label for="marketing-cookies">
+                        Marketing
+                    </label>
+                </div>
+            </li>
+                    </ul>
+                </div>
+
+                <div class="pcb__buttons pcb__popup__buttons">
+                    <button type="button" class="pcb__btn pcb__btn--solid pcb__btn--accept">Accept all</button>
+                    <button type="button" class="pcb__btn pcb__btn--reject">Reject all</button>
+                    <button type="button" class="pcb__btn pcb__btn--save">Save settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Popup -->
+    <!-- Overlay -->
+    <div class="pcb__overlay" aria-hidden="true"></div>
+    <!-- End of Overlay -->
+    
+
+    
+    <!-- Badge -->
+    <button 
+        class="pcb__badge" 
+        aria-label="Cookie Policy"
+        aria-hidden="true">
+        <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            aria-hidden="true" 
+            focusable="false" 
+            width="40" 
+            height="40" 
+            viewBox="0 0 23 23" 
+            fill="currentColor">
+            <path d="M21.41 12.71c-.08-.01-.15 0-.22 0h-.03c-.03 0-.05 0-.08.01-.07 0-.13.01-.19.04-.52.21-1.44.19-2.02-.22-.44-.31-.65-.83-.62-1.53a.758.758 0 0 0-.27-.61.73.73 0 0 0-.65-.14c-1.98.51-3.49.23-4.26-.78-.82-1.08-.73-2.89.24-4.49.14-.23.14-.52 0-.75a.756.756 0 0 0-.67-.36c-.64.03-1.11-.1-1.31-.35-.19-.26-.13-.71-.01-1.29.04-.18.06-.38.03-.59-.05-.4-.4-.7-.81-.66C5.1 1.54 1 6.04 1 11.48 1 17.28 5.75 22 11.6 22c5.02 0 9.39-3.54 10.39-8.42.08-.4-.18-.78-.58-.87Zm-9.81 7.82c-5.03 0-9.12-4.06-9.12-9.06 0-4.34 3.05-8 7.25-8.86-.08.7.05 1.33.42 1.81.24.32.66.67 1.38.84-.76 1.86-.65 3.78.36 5.11.61.81 2.03 2 4.95 1.51.18.96.71 1.54 1.18 1.87.62.43 1.38.62 2.1.62.05 0 .09 0 .13-.01-1.23 3.64-4.7 6.18-8.64 6.18ZM13 17c0 .55-.45 1-1 1s-1-.45-1-1 .45-1 1-1 1 .45 1 1Zm5.29-12.3a.99.99 0 0 1-.29-.71c0-.55.45-.99 1-.99a1 1 0 0 1 .71.3c.19.19.29.44.29.71 0 .55-.45.99-1 .99a1 1 0 0 1-.71-.3ZM9 13.5c0 .83-.67 1.5-1.5 1.5S6 14.33 6 13.5 6.67 12 7.5 12s1.5.67 1.5 1.5Zm3.25.81a.744.744 0 0 1-.06-1.05c.28-.32.75-.34 1.05-.06.31.28.33.75.05 1.06-.15.16-.35.25-.56.25-.18 0-.36-.06-.5-.19ZM8.68 7.26c.41.37.44 1 .07 1.41-.2.22-.47.33-.75.33a.96.96 0 0 1-.67-.26c-.41-.37-.44-1-.07-1.41.37-.42 1-.45 1.41-.08Zm11.48 1.88c.18-.19.52-.19.7 0 .05.04.09.1.11.16.03.06.04.12.04.19 0 .13-.05.26-.15.35-.09.1-.22.15-.35.15s-.26-.05-.35-.15a.355.355 0 0 1-.11-.16.433.433 0 0 1-.04-.19c0-.13.05-.26.15-.35Zm-4.93-1.86a.75.75 0 1 1 1.059-1.06.75.75 0 0 1-1.059 1.06Z" />
+        </svg>
+    </button>
+    <!-- End of Badge -->
+    
+</div>
+<!-- End of main cookie container -->
+
+        <script>
+            
+                window.dataLayer = window.dataLayer || [];
+                function gtag() { dataLayer.push(arguments); }
+
+                window.publiiCBGCM = {
+                    defaultState: {"ad_storage":false,"ad_personalization":false,"ad_user_data":false,"analytics_storage":true,"personalization_storage":false,"functionality_storage":false,"security_storage":false},
+                    groups: []
+                };
+            
+            (function(win) {
+    if (!document.querySelector('.pcb')) {
+        return;
+    }
+
+    var cbConfig = {
+        behaviour: document.querySelector('.pcb').getAttribute('data-behaviour'),
+        behaviourLink: document.querySelector('.pcb').getAttribute('data-behaviour-link'),
+        revision: document.querySelector('.pcb').getAttribute('data-revision'),
+        configTTL: parseInt(document.querySelector('.pcb').getAttribute('data-config-ttl'), 10),
+        debugMode: document.querySelector('.pcb').getAttribute('data-debug-mode') === 'true',
+        initialState: null,
+        initialLsState: null,
+        previouslyAccepted: []
+    };
+
+    var cbUI = {
+        wrapper: document.querySelector('.pcb'),
+        banner: {
+            element: null,
+            btnAccept: null,
+            btnReject: null,
+            btnConfigure: null
+        },
+        popup: {
+            element: null,
+            btnClose: null,
+            btnSave: null,
+            btnAccept: null,
+            btnReject: null,
+            checkboxes: null,
+        },
+        overlay: null,
+        badge: null,
+        blockedScripts: document.querySelectorAll('script[type^="gdpr-blocker/"]'),
+        triggerLinks: cbConfig.behaviourLink ? document.querySelectorAll('a[href*="' + cbConfig.behaviourLink + '"]') : null
+    };
+
+    function initUI () {
+        // setup banner elements
+        cbUI.banner.element = cbUI.wrapper.querySelector('.pcb__banner');
+        cbUI.banner.btnAccept = cbUI.banner.element.querySelector('.pcb__btn--accept');
+        cbUI.banner.btnReject = cbUI.banner.element.querySelector('.pcb__btn--reject');
+        cbUI.banner.btnConfigure = cbUI.banner.element.querySelector('.pcb__btn--configure');
+
+        // setup popup elements
+        if (cbUI.wrapper.querySelector('.pcb__popup')) {
+            cbUI.popup.element = cbUI.wrapper.querySelector('.pcb__popup');
+            cbUI.popup.btnClose = cbUI.wrapper.querySelector('.pcb__popup__close');
+            cbUI.popup.btnSave = cbUI.popup.element.querySelector('.pcb__btn--save');
+            cbUI.popup.btnAccept = cbUI.popup.element.querySelector('.pcb__btn--accept');
+            cbUI.popup.btnReject = cbUI.popup.element.querySelector('.pcb__btn--reject');
+            cbUI.popup.checkboxes = cbUI.popup.element.querySelector('input[type="checkbox"]');
+            // setup overlay
+            cbUI.overlay = cbUI.wrapper.querySelector('.pcb__overlay');
+        }
+
+        cbUI.badge = cbUI.wrapper.querySelector('.pcb__badge');
+
+        if (cbConfig.behaviour.indexOf('link') > -1) {
+            for (var i = 0; i < cbUI.triggerLinks.length; i++) {
+                cbUI.triggerLinks[i].addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showBannerOrPopup();
+                });
+            }
+        }
+    }
+
+    function initState () {
+        var lsKeyName = getConfigName();
+        var currentConfig = localStorage.getItem(lsKeyName);
+        var configIsFresh = checkIfConfigIsFresh();
+
+        if (!configIsFresh || currentConfig === null) {
+            if (cbConfig.debugMode) {
+                console.log('🍪 Config not found, or configuration expired');
+            }
+
+            if (window.publiiCBGCM) {
+                gtag('consent', 'default', {
+                    'ad_storage': window.publiiCBGCM.defaultState.ad_storage ? 'granted' : 'denied',
+                    'ad_personalization': window.publiiCBGCM.defaultState.ad_personalization ? 'granted' : 'denied',
+                    'ad_user_data': window.publiiCBGCM.defaultState.ad_user_data ? 'granted' : 'denied',
+                    'analytics_storage': window.publiiCBGCM.defaultState.analytics_storage ? 'granted' : 'denied',
+                    'personalization_storage': window.publiiCBGCM.defaultState.personalization_storage ? 'granted' : 'denied',
+                    'functionality_storage': window.publiiCBGCM.defaultState.functionality_storage ? 'granted' : 'denied',
+                    'security_storage': window.publiiCBGCM.defaultState.security_storage ? 'granted' : 'denied'
+                });  
+                
+                if (cbConfig.debugMode) {
+                    console.log('🍪 GCMv2 DEFAULT STATE: ' + JSON.stringify({
+                        'ad_storage': window.publiiCBGCM.defaultState.ad_storage ? 'granted' : 'denied',
+                        'ad_personalization': window.publiiCBGCM.defaultState.ad_personalization ? 'granted' : 'denied',
+                        'ad_user_data': window.publiiCBGCM.defaultState.ad_user_data ? 'granted' : 'denied',
+                        'analytics_storage': window.publiiCBGCM.defaultState.analytics_storage ? 'granted' : 'denied',
+                        'personalization_storage': window.publiiCBGCM.defaultState.personalization_storage ? 'granted' : 'denied',
+                        'functionality_storage': window.publiiCBGCM.defaultState.functionality_storage ? 'granted' : 'denied',
+                        'security_storage': window.publiiCBGCM.defaultState.security_storage ? 'granted' : 'denied'
+                    }));
+                }
+            }
+
+            showBanner();
+        } else if (typeof currentConfig === 'string') {
+            if (cbConfig.debugMode) {
+                console.log('🍪 Config founded');
+            }
+
+            cbConfig.initialLsState = currentConfig.split(',');
+
+            if (window.publiiCBGCM) {
+                gtag('consent', 'default', {
+                    'ad_storage': getDefaultConsentState(currentConfig, 'ad_storage'),
+                    'ad_personalization': getDefaultConsentState(currentConfig, 'ad_personalization'),
+                    'ad_user_data': getDefaultConsentState(currentConfig, 'ad_user_data'),
+                    'analytics_storage': getDefaultConsentState(currentConfig, 'analytics_storage'),
+                    'personalization_storage': getDefaultConsentState(currentConfig, 'personalization_storage'),
+                    'functionality_storage': getDefaultConsentState(currentConfig, 'functionality_storage'),
+                    'security_storage': getDefaultConsentState(currentConfig, 'security_storage')
+                });
+                
+                if (cbConfig.debugMode) {
+                    console.log('🍪 GCMv2 DEFAULT STATE: ' + JSON.stringify({
+                        'ad_storage': getDefaultConsentState(currentConfig, 'ad_storage'),
+                        'ad_personalization': getDefaultConsentState(currentConfig, 'ad_personalization'),
+                        'ad_user_data': getDefaultConsentState(currentConfig, 'ad_user_data'),
+                        'analytics_storage': getDefaultConsentState(currentConfig, 'analytics_storage'),
+                        'personalization_storage': getDefaultConsentState(currentConfig, 'personalization_storage'),
+                        'functionality_storage': getDefaultConsentState(currentConfig, 'functionality_storage'),
+                        'security_storage': getDefaultConsentState(currentConfig, 'security_storage')
+                    }));
+                }
+            }
+
+            showBadge();
+
+            if (cbUI.popup.element) {
+                var allowedGroups = currentConfig.split(',');
+                var checkedCheckboxes = cbUI.popup.element.querySelectorAll('input[type="checkbox"]:checked');
+
+                for (var j = 0; j < checkedCheckboxes.length; j++) {
+                    var name = checkedCheckboxes[j].getAttribute('data-group-name');
+
+                    if (name && name !== '-' && allowedGroups.indexOf(name) === -1) {
+                        checkedCheckboxes[j].checked = false;
+                    }
+                }
+
+                for (var i = 0; i < allowedGroups.length; i++) {
+                    var checkbox = cbUI.popup.element.querySelector('input[type="checkbox"][data-group-name="' + allowedGroups[i] + '"]');
+
+                    if (checkbox) {
+                        checkbox.checked = true;
+                    }
+
+                    allowCookieGroup(allowedGroups[i]);
+                }
+            }
+        }
+
+        setTimeout(function () {
+            cbConfig.initialState = getInitialStateOfConsents();
+        }, 0);
+    }
+
+    function checkIfConfigIsFresh () {
+        var lastConfigSave = localStorage.getItem('publii-gdpr-cookies-config-save-date');
+
+        if (lastConfigSave === null) {
+            return false;
+        }
+
+        lastConfigSave = parseInt(lastConfigSave, 10);
+
+        if (lastConfigSave === 0) {
+            return true;
+        }
+
+        if (+new Date() - lastConfigSave < cbConfig.configTTL * 24 * 60 * 60 * 1000) {
+            return true;
+        }
+
+        return false;
+    }
+
+    function getDefaultConsentState (currentConfig, consentGroup) {
+        let configGroups = currentConfig.split(',');
+
+        for (let i = 0; i < configGroups.length; i++) {
+            let groupName = configGroups[i];
+            let group = window.publiiCBGCM.groups.find(group => group.cookieGroup === groupName);
+
+            if (group && group[consentGroup]) {
+                return 'granted';
+            }
+        }  
+        
+        if (window.publiiCBGCM.defaultState[consentGroup]) {
+            return 'granted'; 
+        }
+        
+        return 'denied';
+    }
+
+    function initBannerEvents () {
+        cbUI.banner.btnAccept.addEventListener('click', function (e) {
+            e.preventDefault();
+            acceptAllCookies('banner');
+            showBadge();
+        }, false);
+
+        if (cbUI.banner.btnReject) {
+            cbUI.banner.btnReject.addEventListener('click', function (e) {
+                e.preventDefault();
+                rejectAllCookies();
+                showBadge();
+            }, false);
+        }
+
+        if (cbUI.banner.btnConfigure) {
+            cbUI.banner.btnConfigure.addEventListener('click', function (e) {
+                e.preventDefault();
+                hideBanner();
+                showAdvancedPopup();
+                showBadge();
+            }, false);
+        }
+    }
+
+    function initPopupEvents () {
+        if (!cbUI.popup.element) {
+            return;
+        }
+
+        cbUI.overlay.addEventListener('click', function (e) {
+            hideAdvancedPopup();
+        }, false);
+
+        cbUI.popup.element.addEventListener('click', function (e) {
+            e.stopPropagation();
+        }, false);
+
+        cbUI.popup.btnAccept.addEventListener('click', function (e) {
+            e.preventDefault();
+            acceptAllCookies('popup');
+        }, false);
+
+        cbUI.popup.btnReject.addEventListener('click', function (e) {
+            e.preventDefault();
+            rejectAllCookies();
+        }, false);
+
+        cbUI.popup.btnSave.addEventListener('click', function (e) {
+            e.preventDefault();
+            saveConfiguration();
+        }, false);
+
+        cbUI.popup.btnClose.addEventListener('click', function (e) {
+            e.preventDefault();
+            hideAdvancedPopup();
+        }, false);
+    }
+
+    function initBadgeEvents () {
+        if (!cbUI.badge) {
+            return;
+        }
+
+        cbUI.badge.addEventListener('click', function (e) {
+            showBannerOrPopup();
+        }, false);
+    }
+
+    initUI();
+    initState();
+    initBannerEvents();
+    initPopupEvents();
+    initBadgeEvents();
+
+    /**
+     * API
+     */
+    function addScript (src, inline) {
+        var newScript = document.createElement('script');
+
+        if (src) {
+            newScript.setAttribute('src', src);
+        }
+
+        if (inline) {
+            newScript.text = inline;
+        }
+
+        document.body.appendChild(newScript);
+    }
+
+    function allowCookieGroup (allowedGroup) {
+        var scripts = document.querySelectorAll('script[type="gdpr-blocker/' + allowedGroup + '"]');
+        cbConfig.previouslyAccepted.push(allowedGroup);
+    
+        for (var j = 0; j < scripts.length; j++) {
+            addScript(scripts[j].src, scripts[j].text);
+        }
+
+        var groupEvent = new Event('publii-cookie-banner-unblock-' + allowedGroup);
+        document.body.dispatchEvent(groupEvent);
+        unlockEmbeds(allowedGroup);
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Allowed group: ' + allowedGroup);
+        }
+
+        if (window.publiiCBGCM && cbConfig.initialLsState.indexOf(allowedGroup) === -1) {
+            let consentResult = {};
+            let group = window.publiiCBGCM.groups.find(group => group.cookieGroup === allowedGroup);
+
+            if (group) {
+                let foundSomeConsents = false;
+
+                Object.keys(group).forEach(key => {
+                    if (key !== 'cookieGroup' && group[key] === true) {
+                        consentResult[key] = 'granted';
+                        foundSomeConsents = true;
+                    }
+                });
+
+                if (foundSomeConsents) {
+                    gtag('consent', 'update', consentResult);   
+
+                    if (cbConfig.debugMode) {
+                        console.log('🍪 GCMv2 UPDATE: ' + JSON.stringify(consentResult));
+                    }
+                }
+            }
+        }
+    }
+
+    function showBannerOrPopup () {
+        if (cbUI.popup.element) {
+            showAdvancedPopup();
+        } else {
+            showBanner();
+        }
+    }
+
+    function showAdvancedPopup () {
+        cbUI.popup.element.classList.add('is-visible');
+        cbUI.overlay.classList.add('is-visible');
+        cbUI.popup.element.setAttribute('aria-hidden', 'false');
+        cbUI.overlay.setAttribute('aria-hidden', 'false');
+    }
+
+    function hideAdvancedPopup () {
+        cbUI.popup.element.classList.remove('is-visible');
+        cbUI.overlay.classList.remove('is-visible');
+        cbUI.popup.element.setAttribute('aria-hidden', 'true');
+        cbUI.overlay.setAttribute('aria-hidden', 'true');
+    }
+
+    function showBanner () {
+        cbUI.banner.element.classList.add('is-visible');
+        cbUI.banner.element.setAttribute('aria-hidden', 'false');
+    }
+
+    function hideBanner () {
+        cbUI.banner.element.classList.remove('is-visible');
+        cbUI.banner.element.setAttribute('aria-hidden', 'true');
+    }
+
+    function showBadge () {
+        if (!cbUI.badge) {
+            return;
+        }
+
+        cbUI.badge.classList.add('is-visible');
+        cbUI.badge.setAttribute('aria-hidden', 'false');
+    }
+
+    function getConfigName () {
+        var lsKeyName = 'publii-gdpr-allowed-cookies';
+
+        if (cbConfig.revision) {
+            lsKeyName = lsKeyName + '-v' + parseInt(cbConfig.revision, 10);
+        }
+
+        return lsKeyName;
+    }
+
+    function storeConfiguration (allowedGroups) {
+        var lsKeyName = getConfigName();
+        var dataToStore = allowedGroups.join(',');
+        localStorage.setItem(lsKeyName, dataToStore);
+
+        if (cbConfig.configTTL === 0) {
+            localStorage.setItem('publii-gdpr-cookies-config-save-date', 0);
+
+            if (cbConfig.debugMode) {
+                console.log('🍪 Store never expiring configuration');
+            }
+        } else {
+            localStorage.setItem('publii-gdpr-cookies-config-save-date', +new Date());
+        }
+    }
+
+    function getInitialStateOfConsents () {
+        if (!cbUI.popup.element) {
+            return [];
+        }
+
+        var checkedGroups = cbUI.popup.element.querySelectorAll('input[type="checkbox"]:checked');
+        var groups = [];
+
+        for (var i = 0; i < checkedGroups.length; i++) {
+            var allowedGroup = checkedGroups[i].getAttribute('data-group-name');
+
+            if (allowedGroup !== '') {
+                groups.push(allowedGroup);
+            }
+        }
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Initial state: ' + groups.join(', '));
+        }
+
+        return groups;
+    }
+
+    function getCurrentStateOfConsents () {
+        if (!cbUI.popup.element) {
+            return [];
+        }
+
+        var checkedGroups = cbUI.popup.element.querySelectorAll('input[type="checkbox"]:checked');
+        var groups = [];
+
+        for (var i = 0; i < checkedGroups.length; i++) {
+            var allowedGroup = checkedGroups[i].getAttribute('data-group-name');
+
+            if (allowedGroup !== '') {
+                groups.push(allowedGroup);
+            }
+        }
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 State to save: ' + groups.join(', '));
+        }
+
+        return groups;
+    }
+
+    function getAllGroups () {
+        if (!cbUI.popup.element) {
+            return [];
+        }
+
+        var checkedGroups = cbUI.popup.element.querySelectorAll('input[type="checkbox"]');
+        var groups = [];
+
+        for (var i = 0; i < checkedGroups.length; i++) {
+            var allowedGroup = checkedGroups[i].getAttribute('data-group-name');
+
+            if (allowedGroup !== '') {
+                groups.push(allowedGroup);
+            }
+        }
+
+        return groups;
+    }
+
+    function acceptAllCookies (source) {
+        var groupsToAccept = getAllGroups();
+        storeConfiguration(groupsToAccept);
+
+        for (var i = 0; i < groupsToAccept.length; i++) {
+            var group = groupsToAccept[i];
+
+            if (cbConfig.initialState.indexOf(group) > -1 || cbConfig.previouslyAccepted.indexOf(group) > -1) {
+                if (cbConfig.debugMode) {
+                    console.log('🍪 Skip previously activated group: ' + group);
+                }
+
+                continue;
+            }
+
+            allowCookieGroup(group);
+        }
+
+        if (cbUI.popup.element) {
+            var checkboxesToCheck = cbUI.popup.element.querySelectorAll('input[type="checkbox"]');
+
+            for (var j = 0; j < checkboxesToCheck.length; j++) {
+                checkboxesToCheck[j].checked = true;
+            }
+        }
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Accept all cookies: ', groupsToAccept.join(', '));
+        }
+
+        if (source === 'popup') {
+            hideAdvancedPopup();
+        } else if (source === 'banner') {
+            hideBanner();
+        }
+    }
+
+    function rejectAllCookies () {
+        if (cbConfig.debugMode) {
+            console.log('🍪 Reject all cookies');
+        }
+
+        storeConfiguration([]);
+        setTimeout(function () {
+            window.location.reload();
+        }, 100);
+    }
+
+    function saveConfiguration () {
+        var groupsToAccept = getCurrentStateOfConsents();
+        storeConfiguration(groupsToAccept);
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Save new config: ', groupsToAccept.join(', '));
+        }
+
+        if (reloadIsNeeded(groupsToAccept)) {
+            setTimeout(function () {
+                window.location.reload();
+            }, 100);
+            return;
+        }
+
+        for (var i = 0; i < groupsToAccept.length; i++) {
+            var group = groupsToAccept[i];
+
+            if (cbConfig.initialState.indexOf(group) > -1 || cbConfig.previouslyAccepted.indexOf(group) > -1) {
+                if (cbConfig.debugMode) {
+                    console.log('🍪 Skip previously activated group: ' + group);
+                }
+
+                continue;
+            }
+
+            allowCookieGroup(group);
+        }
+
+        hideAdvancedPopup();
+    }
+
+    function reloadIsNeeded (groupsToAccept) {
+        // check if user rejected consent for initial groups
+        var initialGroups = cbConfig.initialState;
+        var previouslyAcceptedGroups = cbConfig.previouslyAccepted;
+        var groupsToCheck = initialGroups.concat(previouslyAcceptedGroups);
+
+        for (var i = 0; i < groupsToCheck.length; i++) {
+            var groupToCheck = groupsToCheck[i];
+
+            if (groupToCheck !== '' && groupsToAccept.indexOf(groupToCheck) === -1) {
+                if (cbConfig.debugMode) {
+                    console.log('🍪 Reload is needed due lack of: ', groupToCheck);
+                }
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    function unlockEmbeds (cookieGroup) {
+        var iframesToUnlock = document.querySelectorAll('.pec-wrapper[data-consent-group-id="' + cookieGroup + '"]');
+
+        for (var i = 0; i < iframesToUnlock.length; i++) {
+            var iframeWrapper = iframesToUnlock[i];
+            iframeWrapper.querySelector('.pec-overlay').classList.remove('is-active');
+            iframeWrapper.querySelector('.pec-overlay').setAttribute('aria-hidden', 'true');
+            var iframe = iframeWrapper.querySelector('iframe');
+            iframe.setAttribute('src', iframe.getAttribute('data-consent-src'));
+        }
+    }
+
+    win.publiiEmbedConsentGiven = function (cookieGroup) {
+        // it will unlock embeds
+        allowCookieGroup(cookieGroup);
+
+        var checkbox = cbUI.popup.element.querySelector('input[type="checkbox"][data-group-name="' + cookieGroup + '"]');
+
+        if (checkbox) {
+            checkbox.checked = true;
+        }
+
+        var groupsToAccept = getCurrentStateOfConsents();
+        storeConfiguration(groupsToAccept);
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Save new config: ', groupsToAccept.join(', '));
+        }
+    }
+})(window);
+
+        </script>
+</body>
+</html>

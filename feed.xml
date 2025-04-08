@@ -3,12 +3,160 @@
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2025-03-30T17:20:52+05:30</updated>
+    <updated>2025-04-09T02:03:00+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
     <id>https://techwhale.in</id>
 
+    <entry>
+        <title>The Busy Developer&#x27;s Guide to Painless AWS Clusters: AWS EKS Setup Guide  </title>
+        <author>
+            <name>Mayur Chavhan</name>
+        </author>
+        <link href="https://techwhale.in/kubernetes-clusters-made-easy-your-painless-aws-eks-setup-guide/"/>
+        <id>https://techwhale.in/kubernetes-clusters-made-easy-your-painless-aws-eks-setup-guide/</id>
+        <media:content url="https://techwhale.in/media/posts/48/3.png" medium="image" />
+            <category term="Terraform"/>
+            <category term="Kubernetes"/>
+            <category term="DevOps"/>
+            <category term="Automation"/>
+            <category term="AWS"/>
+
+        <updated>2025-04-06T11:50:55+05:30</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://techwhale.in/media/posts/48/3.png" alt="The Busy Developer&#x27;s Guide to Painless AWS Clusters: AWS EKS Setup Guide  " />
+                    Imagine having a personal robot army that automatically scales to handle website traffic spikes, self-heals when servers fail, and deploys updates without downtime. That’s AWS Elastic Kubernetes Service (EKS) in a nutshell. Control Plane (The Brain): AWS-managed components making cluster decisions. Node Group (Worker Bees):&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://techwhale.in/media/posts/48/3.png" class="type:primaryImage" alt="The Busy Developer&#x27;s Guide to Painless AWS Clusters: AWS EKS Setup Guide  " /></p>
+                <p>Imagine having a personal robot army that automatically scales to handle website traffic spikes, self-heals when servers fail, and deploys updates without downtime. That’s AWS Elastic Kubernetes Service (EKS) in a nutshell. </p><h2 id="kubernetes-terms-in-plain-english">Kubernetes Terms in Plain English</h2>
+<p><strong>Control Plane</strong> <em>(The Brain)</em>: AWS-managed components making cluster decisions.<br><strong>Node Group</strong> <em>(Worker Bees)</em>: EC2 instances running your containers.  </p><p><strong>Pod</strong> <em>(Shipping Container)</em>: Smallest deployable unit holding 1+ containers.  </p><p><strong>Service</strong> <em>(Post Office)</em>: Stable network endpoint for pods.</p><p><strong>Deployment</strong> (<em>Blueprints</em>): Desired state for your applications.</p><p>This step-by-step guide will transform you from Kubernetes curious to cluster commander in under 30 minutes. Ready to ditch deployment drama? Let’s roll! 🚀  </p><h2 id="why-eks-is-your-new-devops-best-friend">Why EKS is Your New DevOps Best Friend</h2>
+<p><strong>AWS EKS</strong> <em>(think auto-pilot for container orchestration)</em> eliminates 72% of traditional Kubernetes headaches by managing control plane components like etcd and the API server. For development teams, this means:  </p><ul>
+<li><strong>Zero Master Node Maintenance</strong>: AWS handles security patches and updates automatically  </li>
+<li><strong>Native AWS Integration</strong>: Seamless connectivity with RDS databases, S3 buckets, and IAM roles  </li>
+<li><strong>Hybrid Cloud Ready</strong>: Deploy identical clusters across AWS cloud and on-premises data centers</li>
+</ul>
+<p>Real-world impact? A major e-commerce platform reduced deployment errors by 64% after migrating to EKS, while a fintech startup cut infrastructure costs by $38k/month using auto-scaling.  </p><h2 id="pre-flight-checklist-tools-youll-need">Pre-Flight Checklist: Tools You’ll Need</h2>
+<h3 id="1-aws-cli-installation">1. AWS CLI Installation</h3>
+<pre><code class="language-bash"># For MacOS  
+brew install awscli  
+
+# Windows (PowerShell)  
+msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi  
+</code></pre>
+<p>Verify with <code>aws --version</code>.  </p><h3 id="2-eksctl---your-cluster-magic-wand">2. eksctl - Your Cluster Magic Wand</h3>
+<h4 id="maclinux">Mac/Linux</h4>
+<pre><code class="language-bash">brew tap weaveworks/tap &amp;&amp; brew install eksctl  
+</code></pre>
+<h4 id="windows">Windows</h4>
+<pre><code class="language-bash">choco install eksctl  
+</code></pre>
+<p>Confirm installation: <code>eksctl version</code>. </p><h3 id="3-kubectl---cluster-control">3. kubectl - Cluster Control</h3>
+<h4 id="mac">Mac</h4>
+<pre><code class="language-bash">brew install kubernetes-cli  
+</code></pre>
+<h4 id="windows-1">Windows</h4>
+<pre><code class="language-bash">choco install kubernetes-cli  
+</code></pre>
+<p>Test with <code>kubectl version --client</code>.  </p><h2 id="cluster-creation-step-by-step-visual-guide">Cluster Creation: Step-by-Step Visual Guide</h2>
+<h3 id="1-configure-aws-credentials">1. Configure AWS Credentials</h3>
+<pre><code class="language-bash">aws configure  
+# Follow prompts to enter Access Key ID/Secret  
+</code></pre>
+<p>💡 <em>Pro Tip: Use IAM roles instead of keys for production clusters.</em>  </p><h3 id="2-create-ssh-key-optional">2. Create SSH Key (Optional)</h3>
+<pre><code class="language-bash">ssh-keygen -t rsa -b 4096 -f ~/.ssh/eks-cluster  
+</code></pre>
+<h3 id="3-cluster-configuration-file">3. Cluster Configuration File</h3>
+<p>Create <code>cluster.yaml</code>:  </p><pre><code class="language-yaml">apiVersion: eksctl.io/v1alpha5  
+kind: ClusterConfig  
+
+metadata:  
+  name: techwhale-cluster  
+  region: us-west-2  
+  version: &quot;1.28&quot;  
+
+nodeGroups:  
+  - name: ng-1  
+    instanceType: t3.medium  
+    desiredCapacity: 3  
+    ssh:  
+      publicKeyPath: ~/.ssh/eks-cluster.pub  
+</code></pre>
+<h3 id="4-launch-your-cluster">4. Launch Your Cluster</h3>
+<pre><code class="language-bash">eksctl create cluster -f cluster.yaml  
+</code></pre>
+<p>⏱️ <em>This takes 10-15 minutes - perfect coffee break time!</em>  </p><h3 id="5-verify-deployment">5. Verify Deployment</h3>
+<pre><code class="language-bash">kubectl get nodes  
+# Should show 3 Ready nodes  
+</code></pre>
+<p>🎉 <em>Congratulations! You now have a production-grade Kubernetes cluster.</em>  </p><h2 id="post-setup-must-dos">Post-Setup Must-Do’s</h2>
+<h3 id="1-enable-cluster-autoscaling">1. Enable Cluster Autoscaling</h3>
+<pre><code class="language-bash">eksctl create iamserviceaccount \  
+  --cluster=techwhale-cluster \  
+  --namespace=kube-system \  
+  --name=cluster-autoscaler \  
+  --attach-policy-arn=arn:aws:iam::aws:policy/AmazonEKSClusterAutoscalerPolicy \  
+  --approve  
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/autoscaler/master/cluster-autoscaler/cloudprovider/aws/examples/cluster-autoscaler-autodiscover.yaml  
+</code></pre>
+<h3 id="2-install-kubernetes-dashboard">2. Install Kubernetes Dashboard</h3>
+<pre><code class="language-bash">kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml  
+</code></pre>
+<p>Access via:  </p><pre><code class="language-bash">kubectl proxy  
+# Visit http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/  
+</code></pre>
+<h2 id="pro-tips-from-aws-experts-⚠️">Pro Tips from AWS Experts ⚠️</h2>
+<h3 id="⚠️-cost-optimization-hack">⚠️ Cost Optimization Hack</h3>
+<p>Use Spot Instances for non-critical workloads:  </p><pre><code class="language-yaml">nodeGroups:  
+  - name: spot-ng  
+    instanceType: t3.medium  
+    desiredCapacity: 2  
+    spot: true  
+    ssh:  
+      publicKeyPath: ~/.ssh/eks-cluster.pub  
+</code></pre>
+<p>Cuts costs by up to 90%.  </p><h3 id="⚠️-security-hardening">⚠️ Security Hardening</h3>
+<p>Enable encryption at rest:  </p><pre><code class="language-yaml">metadata:  
+  name: secure-cluster  
+  region: us-west-2  
+  version: &quot;1.28&quot;  
+  encrypted: true  
+</code></pre>
+<h3 id="⚠️-disaster-recovery-setup">⚠️ Disaster Recovery Setup</h3>
+<p>Automate cluster backups:  </p><pre><code class="language-bash">velero install \  
+    --provider aws \  
+    --plugins velero/velero-plugin-for-aws:v1.7.0 \  
+    --bucket your-backup-bucket \  
+    --backup-location-config region=us-west-2 \  
+    --snapshot-location-config region=us-west-2  
+</code></pre>
+<h2 id="troubleshooting-common-issues">Troubleshooting Common Issues</h2>
+<p><strong>Problem</strong>: <code>kubectl</code> commands timing out<br>✅ Fix:  </p><pre><code class="language-bash">aws eks update-kubeconfig --name techwhale-cluster --region us-west-2  
+</code></pre>
+<p><strong>Problem</strong>: Nodes stuck in NotReady state<br>✅ Fix:  </p><pre><code class="language-bash">kubectl get nodes  
+kubectl describe node  | grep -i taint  
+# Remove NoSchedule taints if present  
+</code></pre>
+<p><strong>Problem</strong>: Container images not pulling<br>✅ Fix:  </p><pre><code class="language-bash">kubectl create secret docker-registry ecr-cred \  
+  --docker-server=ACCOUNT.dkr.ecr.REGION.amazonaws.com \  
+  --docker-username=AWS \  
+  --docker-password=$(aws ecr get-login-password)  
+</code></pre>
+<h2 id="conclusion-your-cluster-supercharged">Conclusion: Your Cluster, Supercharged</h2>
+<p>You’ve just deployed an enterprise-grade Kubernetes cluster that would make even Amazon engineers nod in approval. With EKS handling the heavy lifting, you’re free to focus on what matters - building amazing applications.  </p><p>Ready to level up? Explore these next steps:</p><ul>
+<li>Implement GitOps with ArgoCD</li>
+<li>Set up Istio service mesh</li>
+<li>Automate deployments with EKS Blueprints</li>
+</ul>
+
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>From Code to Kubernetes: The Kaniko Method for Node.js Deployment</title>
         <author>
@@ -16,17 +164,19 @@
         </author>
         <link href="https://techwhale.in/building-nodejs-container-images-in-kubernetes-the-kaniko-way/"/>
         <id>https://techwhale.in/building-nodejs-container-images-in-kubernetes-the-kaniko-way/</id>
+        <media:content url="https://techwhale.in/media/posts/47/1.png" medium="image" />
 
         <updated>2025-03-30T16:30:16+05:30</updated>
             <summary>
                 <![CDATA[
-                    Can You Deploy Node.js Apps Without Docker? Kaniko Makes It Easy! Tired of wrestling with Docker-in-Docker for your Kubernetes deployments? Want to build container images right inside your cluster without the security headaches? This guide will walk you through deploying a Node.js application to Kubernetes&hellip;
+                        <img src="https://techwhale.in/media/posts/47/1.png" alt="" />
+                    Tired of wrestling with Docker-in-Docker for your Kubernetes deployments? Want to build container images right inside your cluster without the security headaches? This guide will walk you through deploying a Node.js application to Kubernetes using Kaniko - the container builder that works without needing a&hellip;
                 ]]>
             </summary>
         <content type="html">
             <![CDATA[
-                <h1 id="can-you-deploy-nodejs-apps-without-docker-kaniko-makes-it-easy">Can You Deploy Node.js Apps Without Docker? Kaniko Makes It Easy!</h1>
-<p>Tired of wrestling with Docker-in-Docker for your Kubernetes deployments? Want to build container images right inside your cluster without the security headaches? This guide will walk you through deploying a Node.js application to Kubernetes using Kaniko - the container builder that works without needing a Docker daemon. Ready to level-up your DevOps skills? Let’s dive in! 🚀</p><h2 id="why-this-matters-for-real-world-projects">Why This Matters (For Real-World Projects)</h2>
+                    <p><img src="https://techwhale.in/media/posts/47/1.png" class="type:primaryImage" alt="" /></p>
+                <p>Tired of wrestling with Docker-in-Docker for your Kubernetes deployments? Want to build container images right inside your cluster without the security headaches? This guide will walk you through deploying a Node.js application to Kubernetes using Kaniko - the container builder that works without needing a Docker daemon. Ready to level-up your DevOps skills? Let’s dive in! 🚀</p><h2 id="why-this-matters-for-real-world-projects">Why This Matters (For Real-World Projects)</h2>
 <p>In modern development environments, building container images inside Kubernetes clusters has become increasingly necessary. But running Docker inside containers creates security vulnerabilities and permission nightmares.</p><p><strong>Kaniko</strong> <em>(think of it as your robot assistant that builds containers without the usual Docker overhead)</em> solves this problem elegantly. Instead of requiring the Docker daemon, it executes container image builds in a standard Kubernetes pod, making your CI/CD pipeline more secure and flexible.</p><p>For production teams, this means:</p><ul>
 <li>No more privileged containers just to build images</li>
 <li>Streamlined build process inside your existing Kubernetes infrastructure</li>
@@ -190,6 +340,180 @@ kubectl get secret docker-credentials -o jsonpath=&#39;{.data.\.dockerconfigjson
 </code></pre>
 <p>Then access your app at <code>http://ip:30080</code>.</p><h2 id="wrapping-it-up">Wrapping It Up</h2>
 <p>Congratulations! You’ve successfully deployed a Node.js application to Kubernetes using Kaniko. No more privileged containers or Docker-in-Docker headaches! This approach gives you a more secure and flexible way to build container images directly within your Kubernetes ecosystem.</p><p>Remember, DevOps isn’t just about following steps—it’s about understanding why each piece matters and how they all fit together to create a smooth deployment pipeline. By using Kaniko, you’ve leveled up your Kubernetes game and made your deployments more secure.</p><p>What other containerization tools would you like to try with Kubernetes? Let us know in the comments below! 🚀💡🔧</p>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Python vs. Data Loss: Your EC2 Instance Backup Python Automation</title>
+        <author>
+            <name>Mayur Chavhan</name>
+        </author>
+        <link href="https://techwhale.in/mastering-aws-ec2-backup-automation-a-python-driven-approach/"/>
+        <id>https://techwhale.in/mastering-aws-ec2-backup-automation-a-python-driven-approach/</id>
+        <media:content url="https://techwhale.in/media/posts/46/From-Code-to-Kubernetes-The-Kaniko-Method-for-Node.js-Deployment.png" medium="image" />
+            <category term="Python"/>
+            <category term="EC2"/>
+            <category term="DevOps"/>
+            <category term="Automation"/>
+            <category term="AWS"/>
+
+        <updated>2024-10-28T17:19:37+05:30</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://techwhale.in/media/posts/46/From-Code-to-Kubernetes-The-Kaniko-Method-for-Node.js-Deployment.png" alt="" />
+                    Imagine your EC2 instances as precious digital pets. Would you leave them unsupervised? Of course not! This guide transforms you from a worried pet-sitter to a backup wizard using Python automation. We’ll create a self-operating safety net that works while you sleep. Ready to banish&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://techwhale.in/media/posts/46/From-Code-to-Kubernetes-The-Kaniko-Method-for-Node.js-Deployment.png" class="type:primaryImage" alt="" /></p>
+                <p>Imagine your EC2 instances as precious digital pets. Would you leave them unsupervised? Of course not! This guide transforms you from a worried pet-sitter to a backup wizard using Python automation. We’ll create a self-operating safety net that works while you sleep. Ready to banish backup headaches? Let’s code! 🚀  </p><h2 id="why-automated-backups-are-your-cloud-insurance-policy">Why Automated Backups Are Your Cloud Insurance Policy</h2>
+<p><strong>AWS EC2</strong> <em>(your cloud workhorse)</em> handles 63% of enterprise workloads, but 41% of companies experience data loss due to manual backup errors. Automation solves this with:  </p><ul>
+<li><strong>Zero human forgetfulness</strong>: Scheduled backups never miss a beat  </li>
+<li><strong>Consistent recovery points</strong>: 1-click restoration from any timestamp  </li>
+<li><strong>Cost optimization</strong>: Delete outdated backups automatically</li>
+</ul>
+<p>Real-world impact? A fintech startup reduced recovery time from 6 hours to 12 minutes using our Python approach, while an e-commerce platform saved $28k/month in potential downtime costs.  </p><h2 id="pre-flight-checklist-tools-youll-need">Pre-Flight Checklist: Tools You’ll Need</h2>
+<h3 id="1-aws-cli-setup">1. AWS CLI Setup</h3>
+<pre><code class="language-bash"># Linux/macOS  
+curl &quot;https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip&quot; -o &quot;awscliv2.zip&quot;  
+unzip awscliv2.zip  
+sudo ./aws/install  
+
+# Windows PowerShell  
+msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi  
+</code></pre>
+<p>Verify with <code>aws --version</code>.  </p><h3 id="2-python-environment">2. Python Environment</h3>
+<pre><code class="language-bash">pip install boto3 schedule python-crontab  
+</code></pre>
+<p><strong>Boto3</strong> <em>(AWS’s Python toolkit)</em> will be our automation engine.  </p><h3 id="3-iam-permissions">3. IAM Permissions</h3>
+<p>Create a backup-manager policy:  </p><pre><code class="language-json">{
+  &quot;Version&quot;: &quot;2012-10-17&quot;,
+  &quot;Statement&quot;: [
+    {
+      &quot;Effect&quot;: &quot;Allow&quot;,
+      &quot;Action&quot;: [
+        &quot;ec2:CreateSnapshot&quot;,
+        &quot;ec2:CreateImage&quot;,
+        &quot;ec2:DescribeInstances&quot;,
+        &quot;ec2:DeleteSnapshot&quot;,
+        &quot;ec2:DeregisterImage&quot;
+      ],
+      &quot;Resource&quot;: &quot;*&quot;
+    }
+  ]
+}
+</code></pre>
+<p>Attach to an IAM role - never use root credentials!.  </p><h2 id="building-your-python-backup-robot">Building Your Python Backup Robot</h2>
+<h3 id="1-the-core-script-backup_robotpy">1. The Core Script (backup_robot.py)</h3>
+<pre><code class="language-python">import boto3
+from datetime import datetime, timedelta
+
+ec2 = boto3.client(&#39;ec2&#39;)
+retention_days = 7  # Keep backups for a week
+
+def create_backups():
+    instances = ec2.describe_instances(
+        Filters=[{&#39;Name&#39;: &#39;tag:Backup&#39;, &#39;Values&#39;: [&#39;true&#39;]}]
+    )[&#39;Reservations&#39;]
+    
+    for res in instances:
+        instance = res[&#39;Instances&#39;][0]
+        instance_id = instance[&#39;InstanceId&#39;]
+        timestamp = datetime.now().strftime(&quot;%Y%m%d-%H%M%S&quot;)
+        
+        # Create AMI
+        ami_id = ec2.create_image(
+            InstanceId=instance_id,
+            Name=f&quot;{instance_id}-backup-{timestamp}&quot;,
+            Description=&quot;Automated backup&quot;,
+            NoReboot=True  # Avoid downtime
+        )[&#39;ImageId&#39;]
+        
+        # Tag for tracking
+        ec2.create_tags(
+            Resources=[ami_id],
+            Tags=[{&#39;Key&#39;: &#39;DeleteAfter&#39;, &#39;Value&#39;: str(datetime.now() + timedelta(days=retention_days))}]
+        )
+        print(f&quot;Created backup {ami_id} for {instance_id}&quot;)
+
+def cleanup_old_backups():
+    images = ec2.describe_images(Owners=[&#39;self&#39;])[&#39;Images&#39;]
+    
+    for image in images:
+        delete_time = next((tag[&#39;Value&#39;] for tag in image.get(&#39;Tags&#39;, []) 
+                          if tag[&#39;Key&#39;] == &#39;DeleteAfter&#39;), None)
+        if delete_time and datetime.now() &gt; datetime.fromisoformat(delete_time):
+            ec2.deregister_image(ImageId=image[&#39;ImageId&#39;])
+            print(f&quot;Deleted old AMI {image[&#39;ImageId&#39;]}&quot;)
+            
+if __name__ == &quot;__main__&quot;:
+    create_backups()
+    cleanup_old_backups()
+</code></pre>
+<p>This script:  </p><ol>
+<li>Finds instances tagged “Backup=true”  </li>
+<li>Creates AMIs without rebooting instances  </li>
+<li>Tags backups with expiration dates  </li>
+<li>Auto-deletes expired backups</li>
+</ol>
+<h3 id="2-scheduling-with-cron-linuxmacos">2. Scheduling with Cron (Linux/macOS)</h3>
+<pre><code class="language-bash"># Edit cron jobs  
+crontab -e  
+
+# Add this line for daily 2AM backups  
+0 2 * * * /usr/bin/python3 /path/to/backup_robot.py &gt;&gt; /var/log/ec2_backups.log 2&gt;&amp;1  
+</code></pre>
+<h3 id="3-serverless-option-with-lambda">3. Serverless Option with Lambda</h3>
+<ol>
+<li>Zip your script with dependencies  </li>
+<li>Create Lambda function with Python 3.9+  </li>
+<li>Set CloudWatch Event trigger:</li>
+</ol>
+<pre><code class="language-json">{
+  &quot;schedule&quot;: &quot;cron(0 2 * * ? *)&quot;
+}
+</code></pre>
+<ol start="4">
+<li>Set timeout to 5 minutes</li>
+</ol>
+<h2 id="pro-tips-from-backup-ninjas-⚠️">Pro Tips from Backup Ninjas ⚠️</h2>
+<h3 id="⚠️-encrypt-your-backups">⚠️ Encrypt Your Backups</h3>
+<p>Add this to AMI creation:  </p><pre><code class="language-python">BlockDeviceMappings=[{
+    &#39;DeviceName&#39;: &#39;/dev/sda1&#39;,
+    &#39;Ebs&#39;: {
+        &#39;Encrypted&#39;: True,
+        &#39;KmsKeyId&#39;: &#39;alias/aws/ebs&#39;
+    }
+}]
+</code></pre>
+<p>Helps meet GDPR/HIPAA requirements.</p><h3 id="⚠️-cost-saving-with-spot-instances">⚠️ Cost-Saving with Spot Instances</h3>
+<p>Tag non-critical instances with “Backup=spot”:  </p><pre><code class="language-python">if &#39;spot&#39; in instance.get(&#39;Tags&#39;, []):
+    ec2.create_tags(Resources=[ami_id], Tags=[{&#39;Key&#39;: &#39;BackupType&#39;, &#39;Value&#39;: &#39;Spot&#39;}])
+</code></pre>
+<p>Use for 90% cost reduction on dev backups.  </p><h3 id="⚠️-multi-region-protection">⚠️ Multi-Region Protection</h3>
+<p>Modify cleanup function to handle cross-region:  </p><pre><code class="language-python">session = boto3.Session(region_name=&#39;us-west-2&#39;)
+ec2_secondary = session.client(&#39;ec2&#39;)
+# Copy AMI logic here
+</code></pre>
+<p>Complies with disaster recovery best practices.  </p><h2 id="troubleshooting-common-hiccups">Troubleshooting Common Hiccups</h2>
+<p><strong>Problem</strong>: “AccessDenied” errors<br>✅ Fix:  </p><pre><code class="language-bash">aws sts get-caller-identity  # Check current role
+aws iam list-attached-role-policies --role-name BackupRobot  
+</code></pre>
+<p>Ensure EC2 full access and IAM permissions.  </p><p><strong>Problem</strong>: Backups filling storage<br>✅ Fix: Adjust retention_days variable:  </p><pre><code class="language-python">retention_days = 30  # Monthly backups
+</code></pre>
+<p>Add tag-based retention:  </p><pre><code class="language-python">tag_days = next((int(tag[&#39;Value&#39;]) for tag in instance.get(&#39;Tags&#39;, []) 
+               if tag[&#39;Key&#39;] == &#39;RetentionDays&#39;), 7)
+</code></pre>
+<p><strong>Problem</strong>: Long backup times<br>✅ Fix: Enable incremental backups:  </p><pre><code class="language-python">ec2.create_snapshot(VolumeId=vol_id, Description=&quot;Incremental backup&quot;)
+</code></pre>
+<p>Combine with full weekly AMIs.  </p><h2 id="your-backup-automation-journey-starts-now">Your Backup Automation Journey Starts Now</h2>
+<p>You’ve just built an enterprise-grade backup system that would make AWS engineers nod in approval. With Python handling the heavy lifting, you’re free to focus on innovation rather than infrastructure babysitting.  </p><p><strong>Next-Level Ideas to Explore</strong>:  </p><ul>
+<li>Integrate with Slack alerts for backup status  </li>
+<li>Add cross-account backup sharing  </li>
+<li>Implement backup validation with automated restores</li>
+</ul>
+<p>🧠 <em>This approach combines AWS best practices with real-world battle scars from managing petabyte-scale backups. Remember, the cloud never sleeps - neither should your backup strategy!</em></p>
             ]]>
         </content>
     </entry>
@@ -610,21 +934,24 @@ sudo ufw allow https
         </content>
     </entry>
     <entry>
-        <title>How To Add Swap Space on Ubuntu 22 and Debian 11 / 12</title>
+        <title>How To Add Swap Space on Ubuntu and Debian 12 / 13</title>
         <author>
             <name>Mayur Chavhan</name>
         </author>
         <link href="https://techwhale.in/how-to-add-swap-space-on-ubuntu-22-and-debian-11-12/"/>
         <id>https://techwhale.in/how-to-add-swap-space-on-ubuntu-22-and-debian-11-12/</id>
+        <media:content url="https://techwhale.in/media/posts/41/2.png" medium="image" />
 
         <updated>2023-07-14T02:57:48+05:30</updated>
             <summary>
                 <![CDATA[
+                        <img src="https://techwhale.in/media/posts/41/2.png" alt="How To Add Swap Space on Ubuntu and Debian 12 / 13" />
                     If you are running a Debian 11 system and are experiencing slow performance or running out of memory, you may need to add swap space to your system. Swap space is a designated area on your hard drive that is used to temporarily store data&hellip;
                 ]]>
             </summary>
         <content type="html">
             <![CDATA[
+                    <p><img src="https://techwhale.in/media/posts/41/2.png" class="type:primaryImage" alt="How To Add Swap Space on Ubuntu and Debian 12 / 13" /></p>
                 <p>If you are running a Debian 11 system and are experiencing slow performance or running out of memory, you may need to add swap space to your system. Swap space is a designated area on your hard drive that is used to temporarily store data when your system has run out of physical memory (RAM). In this guide, we will walk you through the steps to add swap space to your Debian 11 system.</p><h2 id="step-1-checking-for-existing-swap-space">Step 1: Checking for Existing Swap Space</h2>
 <p>Before adding a new swap file, you should first check if there is any existing swap space on your system. To do this, run the following command in your terminal:</p><pre><code>sudo swapon --show
 </code></pre>
@@ -1676,197 +2003,6 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful</code></pre>
       <blockquote>Thank you for reading!</blockquote>
       <figcaption>Mayur Chavhan</figcaption>
     </figure>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>How to install &quot;Nginx Proxy Manager&quot; on Raspberry Pi 4 [arm64]</title>
-        <author>
-            <name>Mayur Chavhan</name>
-        </author>
-        <link href="https://techwhale.in/how-to-install-nginx-proxy-manager-on-raspberry-pi-4-arm64/"/>
-        <id>https://techwhale.in/how-to-install-nginx-proxy-manager-on-raspberry-pi-4-arm64/</id>
-        <media:content url="https://techwhale.in/media/posts/8/imageedit_31_2317095391.jpg" medium="image" />
-            <category term="Docker"/>
-
-        <updated>2020-06-13T01:03:53+05:30</updated>
-            <summary>
-                <![CDATA[
-                        <img src="https://techwhale.in/media/posts/8/imageedit_31_2317095391.jpg" alt="install-nginx-proxy-manager-raspberry-pi-4-b" />
-                    Overview: In DevOps deployments Reverse Proxy is very common for port routing in backend applications. One of the popular is Traefik. Similar to Traefik there are HAproxy and Nginx. HAproxy which is known for Server Load Balancer but also can be used as a reverse&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                    <p><img src="https://techwhale.in/media/posts/8/imageedit_31_2317095391.jpg" class="type:primaryImage" alt="install-nginx-proxy-manager-raspberry-pi-4-b" /></p>
-                <div class="post__toc">
-<h3>Table of Contents</h3>
-<ul>
-<li><a href="#mcetoc_1eal5n5a90">Overview:</a></li>
-<li><a href="#mcetoc_1eal5nqjb5">Prerequisite:</a></li>
-<li><a href="#mcetoc_1eal5oajo7">Step-1: Create folders.</a></li>
-<li><a href="#mcetoc_1eal5q1579">Step-2: Create a file called "config.json"</a></li>
-<li><a href="#mcetoc_1eal5qq5ba">Step-3: Create Docker-Compose File</a></li>
-<li><a href="#mcetoc_1eal5rduib">Step-5: Run Docker-Compose File</a></li>
-<li><a href="#mcetoc_1eal5s74vc">Step-6: Login to NPMan dashboard</a></li>
-</ul>
-</div>
-<h2 id="mcetoc_1eal5n5a90">Overview:</h2>
-<p><span style="font-weight: 400;">In DevOps deployments Reverse Proxy is very common for port routing in backend applications. One of the popular is <a href="https://containo.us/traefik/" target="_blank" rel="noopener noreferrer">Traefik</a>. Similar to Traefik there are HAproxy and Nginx.</span></p>
-<p><span style="font-weight: 400;"><a href="http://www.haproxy.org/" target="_blank" rel="noopener noreferrer">HAproxy </a>which is known for Server Load Balancer but also can be used as a reverse proxy.</span></p>
-<p><span style="font-weight: 400;">Nginx is the fastest web server that can also be used as a reverse proxy for backend applications. </span></p>
-<figure class="post__image post__image--center"><img decoding="async" loading="lazy"  src="https://i.imgur.com/0hZKBEF.png" alt="Reverse-Proxy" width="1137" height="286" data-is-external-image="true"></figure>
-<p><span style="font-weight: 400;">All these three are excellent and popular reverse proxies used in servers but all these have one common problem: they need to write configuration files and it's not noobie server admin friendly since it involves years of experience to understand how exactly reverse proxy works. In Nginx and HAproxy, When you need to install SSL certificates for domai, It makes the configuration a little complicated and tiresome where in Traefik, It automatically handles domain certificates which makes Traefik awesome.</span></p>
-<p><span style="font-weight: 400;">When i started learning Traefik it took few months for me to get a proper grip on its configuration and i learned on old Traefik version and when new Traefik versions came out then i have to read their documentation for new version changes plus then i have to added new changes to docker-compose file so my docker container can properly communicate with Traefik routing which adds big sigh for me. Don't get me wrong Traefik is still best for reverse proxy and if you can write Bash and Ansible Yaml scripts to automate with docker or backend applications then you're golden.</span><span style="font-weight: 400;">Where "Jamie Curnow" aka "</span><a href="https://jc21.com/"><span style="font-weight: 400;">jc21</span></a><span style="font-weight: 400;">" did all these three things in a single docker GUI application called "Nginx Proxy Manager '' In which you can easily bind backend applications without writing a single line of code. Which makes it easy enough for newbie server admin also for Developers who don’t need to learn reverse proxy complex configurations.</span></p>
-<p>This installation can run same for any linux distros out there also docker image file also supports architecture for <a href="https://en.wikipedia.org/wiki/ARM_architecture" target="_blank" rel="noopener noreferrer">armhf and arm64</a> so it can easily run on Raspberry Pi 3B and 4B without any issue. I personally used Raspbian Lite for testing purpose and it works well.</p>
-<figure class="post__image post__image--center" ><img decoding="async" loading="lazy" src="https://i.imgur.com/urx8Zmg.png" alt="Nnginx-Proxy-Manager" width="593" height="224" data-is-external-image="true">
-<figcaption >Nginx-Proxy-Manager</figcaption>
-</figure>
-<h2 id="mcetoc_1eal5nqjb5"><strong>Prerequisite:</strong></h2>
-<ol>
-<li><a href="https://en.wikipedia.org/wiki/Docker_(software)" target="_blank" rel="noopener noreferrer">Docker </a></li>
-<li><strong>Docker-Compose</strong></li>
-<li>[Optional] <strong><a href="https://www.portainer.io/" target="_blank" rel="noopener noreferrer">Portainer</a></strong></li>
-</ol>
-<h2 id="mcetoc_1eal5oajo7">Step-1: <strong>Create folders.</strong></h2>
-<pre>sudo mkdir npman</pre>
-<p>Inside NPman folder create these three folders [data, data/mysql and letsencrypt] or run below command,</p>
-<pre>sudo mkdir -p npman/{data/mysql,letsencrypt}</pre>
-<h2 id="mcetoc_1eal5q1579"><strong>Step-2: </strong><strong>Create a file called "config.json"</strong></h2>
-<p id="mcetoc_1eal64sejd"><strong>paste below lines of code into it.</strong></p>
-<pre>{
-  "database": {
-    "engine": "mysql",
-    "host": "db",
-    "name": "DBNAME",
-    "user": "DBUSERNAME",
-    "password": "DBPASSWORD",
-    "port": 3306
-  }</pre>
-<h2 id="mcetoc_1eal5qq5ba">Step-3: Create Docker-Compose File</h2>
-<p><strong>Now, Create a file called "docker-compose.yaml" and paste following code into it.</strong></p>
-<p class="msg msg--info">Source: <a href="https://github.com/jeff89179">https://github.com/jeff89179</a> [ Thanks to him]</p>
-<p> </p>
-<pre data-enlighter-language="yaml">version: '2'
-services:
-  app:
-    image: 'jc21/nginx-proxy-manager:latest'
-    restart: always
-    ports:
-      - '80:80'
-      - '443:443'
-      - '81:81'
-    volumes:
-      - './config.json:/app/config/production.json'
-      - './data:/data'
-      - './letsencrypt:/etc/letsencrypt'
-    depends_on:
-      - db
-  db:
-    image: 'yobasystems/alpine-mariadb:latest'
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: npman
-      MYSQL_DATABASE: npman
-      MYSQL_USER: npman
-      MYSQL_PASSWORD: password
-    volumes:
-      - './data/mysql:/var/lib/mysql'</pre>
-<address class="msg msg--info"> Change MySQL password for production security purpose.</address>
-<h2 id="mcetoc_1eal5rduib">Step-5: Run Docker-Compose File</h2>
-<p> </p>
-<p><strong>Run Docker-Compose command to download docker images and services,</strong></p>
-<pre><strong>sudo docker-compose up -d</strong></pre>
-<p>If you have Portainer running then go into the Portainer UI, And in the Stacks, add a new stack named "NPMan" and paste above docker-compose code and deploy it.</p>
-<p>After deployment check if container health and port are showing like this..</p>
-<figure class="post__image post__image--center"><img decoding="async" loading="lazy"  src="https://i.imgur.com/TvK1WNK.png" alt="Portainer-Nginx-Proxy-Manager" width="1901" height="328" data-is-external-image="true"></figure>
-<h2 id="mcetoc_1eal5s74vc">Step-6: Login to NPMan dashboard</h2>
-<address>Go to browser and replace &lt;&lt;docker-host-server-ip&gt;&gt; to docker host server ip like this,</address><address><br><a href="http://&lt;&lt;docker-host-serve-ip&gt;&gt;:81/login">http://&lt;&lt;docker-host-server-ip&gt;&gt;:81/login</a></address>
-<p><img decoding="async" loading="lazy" src="https://i.imgur.com/4RE3JjY.png" data-is-external-image="true"></p>
-<p>If everything goes right then enter below default credentials,</p>
-<p><strong>Credential for NPMan,</strong></p>
-<p> </p>
-<address class="msg msg--highlight  msg--success"><span style="text-decoration: underline;">Email</span>: <a href="mailto:admin@example.com">admin@example.com</a><br><br><span style="text-decoration: underline;">Password</span>: changeme</address>
-<p>Visit our repository has all codes in this tutorial,</p>
-<p class="msg msg--success msg--highlight  post__lead">https://github.com/mayur-chavhan/Nginx-Proxy-Manager</p>
-<p> </p>
-<p>Cheers!</p>
-<blockquote>
-<p>Thank you for reading</p>
-</blockquote>
-<p> </p>
-<p> </p>
-<p> </p>
-<p> </p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>How to setup user SSH Keys on Ubuntu 18.04</title>
-        <author>
-            <name>Mayur Chavhan</name>
-        </author>
-        <link href="https://techwhale.in/how-to-setup-user-ssh-keys-on-ubuntu-1804/"/>
-        <id>https://techwhale.in/how-to-setup-user-ssh-keys-on-ubuntu-1804/</id>
-        <media:content url="https://techwhale.in/media/posts/6/image-0-compressed.jpg" medium="image" />
-
-        <updated>2020-05-23T16:53:11+05:30</updated>
-            <summary>
-                <![CDATA[
-                        <img src="https://techwhale.in/media/posts/6/image-0-compressed.jpg" alt="setup ssh keys on linux" />
-                    Overview SSH [ Secure Shell ] is a famous encrypted protocol are widely becoming popular for communicate server access. For security purpose SSH provide lot of features and one of the famous is SSH Keys and for some its complicated and mostly biased to use&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                    <p><img src="https://techwhale.in/media/posts/6/image-0-compressed.jpg" class="type:primaryImage" alt="setup ssh keys on linux" /></p>
-                <div class="post__toc">
-<h3>Table of Contents</h3>
-<ul>
-<li><a href="#mcetoc_1e91n65hn3">Overview</a></li>
-<li><a href="#mcetoc_1e91n560l2">Step 1 : Generate a RSA Key Pair on your machine.</a></li>
-<li><a href="#mcetoc_1e91n4u7m1">Step 2 : Copy SSH Public Key to remote server.</a></li>
-</ul>
-</div>
-<h3 id="mcetoc_1e91n65hn3">Overview</h3>
-<p><strong>SSH</strong> [ Secure Shell ] is a famous encrypted protocol are widely becoming popular for communicate server access. For security purpose SSH provide lot of features and one of the famous is SSH Keys and for some its complicated and mostly biased to use SSH password method.</p>
-<p>Cloud Service providers like AWS and GCP are default using ssh key method before creating any Instance. So they can generate SSH keys for you and you can download it for you to access it remotely. But other server provider mostly generate and provide you SSH password.</p>
-<p>SSH Password method is secured but password can be bruteforce by millions of bots are out there for cracking passwords and who knows if someone has supercomputer who can break your password within minutes but fear not cause SSH key to the rescue.</p>
-<p>In reality, SSH Keys gives an easy and perfectly secure way to connect your remote server and one SSH key can be use for multiple users.</p>
-<p>In this tutorial, How we can setup user ssh keys for Ubuntu 18.04 but it also applicable to any linux OS.</p>
-<p>For this example we will take a remote server which enabled with SSH password authentication and applying SSH Key based authentication.</p>
-<p>Before communication with remote server we have to do following steps.</p>
-<h3 id="mcetoc_1e91n560l2">Step 1 : Generate a RSA Key Pair on your machine.</h3>
-<table style="width: 693.156px; background-color: yellow;" border="7">
-<tbody>
-<tr>
-<td class="align-center" style="width: 28px;"><span style="color: #843fa1;"><strong>$</strong></span></td>
-<td style="width: 660.156px;"><address><span style="color: #843fa1;"><strong>ssh-keygen</strong></span></address></td>
-</tr>
-</tbody>
-</table>
-<p>Above command will generate 2048 bit RSA key pair consists of public and private keys. [ id_rsa and id_rsa.pub ] When you run ssh-keygen command it will ask for custom path to store your keys but for now default location is shown in below image.</p>
-<p><img decoding="async" loading="lazy" src="https://i.imgur.com/NFHy3XT.png" data-is-external-image="true"></p>
-<p><strong> Press enter to select default path for RSA keys.</strong></p>
-<p>Next, You should then see the following prompt:</p>
-<p class="msg msg--highlight ">Enter passphrase (empty for no passphrase):</p>
-<p>Additional security if you want to protect your SSH key using passphrase and empty for no passphrase so when you establish remote connection it will not ask for password everytime but its highly recommended that you should use passphrase and it gives more security and that's what we need.</p>
-<p><img decoding="async" loading="lazy" src="https://i.imgur.com/DQska4v.png" data-is-external-image="true"></p>
-<p> Here's the result after creation of the key</p>
-<p class="msg msg--success"><strong>Your identification has been saved in /your_home/.ssh/id_rsa.</strong><br><br><strong>Your public key has been saved in /your_home/.ssh/id_rsa.pub.</strong><br><br><strong>The key fingerprint is:</strong><br><strong>SHA256:tQX64BUmMF2BY1wUSTdeJEYQQUjFIf9wrUAz0RJlaU4 user@remote-server</strong><br><strong>The key's randomart image is:</strong><br><strong>+---[RSA 2048]----+</strong><br><strong>| o=+@^#Ooo |</strong><br><strong>| .BB+XE= |</strong><br><strong>| .o.*=+ . |</strong><br><strong>| . = B.. |</strong><br><strong>| S o o |</strong><br><strong>| |</strong><br><strong>| |</strong><br><strong>| |</strong><br><strong>| |</strong><br><strong>+----[SHA256]-----+</strong></p>
-<p> </p>
-<p> And at this path you'll find ssh keys as follows,</p>
-<figure class="post__image"><img decoding="async" loading="lazy"  src="https://i.imgur.com/xhRQmXn.png" alt="ssh-key-path" width="689" height="236" data-is-external-image="true"></figure>
-<p> That's it, Now you've generated public and private ssh key on your machine. Next step is very easy and we have to copy our public key to remote server so we can SSH Key based authentication for SSH.</p>
-<h3 id="mcetoc_1e91n4u7m1">Step 2 : Copy SSH Public Key to remote server.</h3>
-<p>Now we have SSH public key which can authenticate remote machine from our host machine. There is fastest method to copy public key ID to remote host is simple tool called <strong>"ssh-copy-id" </strong></p>
-<p>Simple yet very useful for copying public ssh key to remote host. Remote host must have enabled password authentication so once public key authentication is done. Later, We can disable password authentication so only gateway to access your server is SSH Key authentication.</p>
-<p class="msg msg--highlight  msg--success"><strong>ssh-copy-id <a href="mailto:user@remote_server">user@remote_server</a></strong></p>
-<p><strong>[OPTIONAL] - SSH Public Key for Custom Include Key Path</strong></p>
-<p>If you have SSH Key available on different path you can use add include path parameter like this</p>
-<p class="msg msg--highlight  msg--success"><strong>ssh-copy-id -i /ssh-key-folder/sshpub.key <a href="mailto:user@remote_server">user@remote_server</a></strong></p>
-<p><strong>[OPTIONAL] - SSH Public Key for Custom Port</strong></p>
-<p class="msg msg--highlight  msg--success"><strong>ssh-copy-id -p 5500 <a href="mailto:user@remote_server">user@remote_server</a></strong></p>
             ]]>
         </content>
     </entry>

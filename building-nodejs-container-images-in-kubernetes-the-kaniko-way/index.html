@@ -16,7 +16,7 @@
 	    <link rel="shortcut icon" href="https://techwhale.in/media/website/imageedit_26_9569312189.png" type="image/x-icon" />
     
     <link rel="stylesheet" href="https://techwhale.in/assets/css/style.css?v=a6644564c1a37b93df20a78bed859f25">	
-	<script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://techwhale.in/building-nodejs-container-images-in-kubernetes-the-kaniko-way/"},"headline":"From Code to Kubernetes: The Kaniko Method for Node.js Deployment","datePublished":"2025-03-30T16:30+05:30","dateModified":"2025-03-30T17:20+05:30","image":{"@type":"ImageObject","url":"https://techwhale.in/media/website/imageedit_19_3669952192.png","height":183,"width":778},"description":"Install free and open source application on Linux, Docker, Virtualization, Ansible Automation","author":{"@type":"Person","name":"Mayur Chavhan","url":"https://techwhale.in/authors/mayur-chavhan/"},"publisher":{"@type":"Organization","name":"Mayur Chavhan","logo":{"@type":"ImageObject","url":"https://techwhale.in/media/website/imageedit_19_3669952192.png","height":183,"width":778}}}</script>
+	<script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://techwhale.in/building-nodejs-container-images-in-kubernetes-the-kaniko-way/"},"headline":"From Code to Kubernetes: The Kaniko Method for Node.js Deployment","datePublished":"2025-03-30T16:30+05:30","dateModified":"2025-04-09T01:48+05:30","image":{"@type":"ImageObject","url":"https://techwhale.in/media/posts/47/1.png","height":1260,"width":2240},"description":"Install free and open source application on Linux, Docker, Virtualization, Ansible Automation","author":{"@type":"Person","name":"Mayur Chavhan","url":"https://techwhale.in/authors/mayur-chavhan/"},"publisher":{"@type":"Organization","name":"Mayur Chavhan","logo":{"@type":"ImageObject","url":"https://techwhale.in/media/website/imageedit_19_3669952192.png","height":183,"width":778}}}</script>
         
 	<link rel="stylesheet" href="{{css "prism.css" }}">
  
@@ -116,6 +116,16 @@
 <div class="main-content">
 <main class="main post">
       <article class="content">
+               <figure class="content__featured-image">                      
+                  <img
+                     src="https://techwhale.in/media/posts/47/1.png"
+                        srcset="https://techwhale.in/media/posts/47/responsive/1-xs.webp 300w ,https://techwhale.in/media/posts/47/responsive/1-sm.webp 480w ,https://techwhale.in/media/posts/47/responsive/1-md.webp 768w ,https://techwhale.in/media/posts/47/responsive/1-lg.webp 1024w ,https://techwhale.in/media/posts/47/responsive/1-xl.webp 1360w ,https://techwhale.in/media/posts/47/responsive/1-2xl.webp 1600w" sizes="(max-width: 1600px) 100vw, 1600px"
+                      loading="eager"
+                     height="1260"
+                     width="2240"
+                     alt="">
+                     
+               </figure>
 
          <header class="u-header content__header">
             <h1>
@@ -137,8 +147,7 @@
          </header>
 
          <div class="content__entry u-inner">
-            <h1 id="can-you-deploy-nodejs-apps-without-docker-kaniko-makes-it-easy">Can You Deploy Node.js Apps Without Docker? Kaniko Makes It Easy!</h1>
-<p>Tired of wrestling with Docker-in-Docker for your Kubernetes deployments? Want to build container images right inside your cluster without the security headaches? This guide will walk you through deploying a Node.js application to Kubernetes using Kaniko - the container builder that works without needing a Docker daemon. Ready to level-up your DevOps skills? Let’s dive in! 🚀</p><h2 id="why-this-matters-for-real-world-projects">Why This Matters (For Real-World Projects)</h2>
+            <p>Tired of wrestling with Docker-in-Docker for your Kubernetes deployments? Want to build container images right inside your cluster without the security headaches? This guide will walk you through deploying a Node.js application to Kubernetes using Kaniko - the container builder that works without needing a Docker daemon. Ready to level-up your DevOps skills? Let’s dive in! 🚀</p><h2 id="why-this-matters-for-real-world-projects">Why This Matters (For Real-World Projects)</h2>
 <p>In modern development environments, building container images inside Kubernetes clusters has become increasingly necessary. But running Docker inside containers creates security vulnerabilities and permission nightmares.</p><p><strong>Kaniko</strong> <em>(think of it as your robot assistant that builds containers without the usual Docker overhead)</em> solves this problem elegantly. Instead of requiring the Docker daemon, it executes container image builds in a standard Kubernetes pod, making your CI/CD pipeline more secure and flexible.</p><p>For production teams, this means:</p><ul>
 <li>No more privileged containers just to build images</li>
 <li>Streamlined build process inside your existing Kubernetes infrastructure</li>
@@ -380,19 +389,35 @@ kubectl get secret docker-credentials -o jsonpath=&#39;{.data.\.dockerconfigjson
 
                      <nav class="content__nav box">
                            <div class="content__nav__prev">
-                              <a href="https://techwhale.in/upgrade-old-version-of-nginx-on-ubuntu-2204/" class="content__nav__link" rel="prev">
+                              <a href="https://techwhale.in/mastering-aws-ec2-backup-automation-a-python-driven-approach/" class="content__nav__link" rel="prev">
                                        <img 
-                                             src="https://techwhale.in/media/posts/44/responsive/ScreenShot-20230726-173736-xs.webp"
+                                             src="https://techwhale.in/media/posts/46/responsive/From-Code-to-Kubernetes-The-Kaniko-Method-for-Node.js-Deployment-xs.webp"
                                            loading="lazy"  
-                                          alt="How to upgrade old version of Nginx on Ubuntu 22.04"
-                                          height="881" 
-                                          width="1680">                                   
+                                          alt=""
+                                          height="1260" 
+                                          width="2240">                                   
                                  <div class="u-small">
                                     Previous Post
                                     <h5>
-                                       How to upgrade old version of Nginx on Ubuntu 22.04
+                                       Python vs. Data Loss: Your EC2 Instance Backup Python Automation
                                     </h5>
                                  </div>
+                              </a>
+                           </div>
+                           <div class="content__nav__next">
+                              <a href="https://techwhale.in/kubernetes-clusters-made-easy-your-painless-aws-eks-setup-guide/" class="content__nav__link" rel="next">
+                                 <div class="u-small">
+                                    Next Post
+                                    <h5>
+                                       The Busy Developer&#x27;s Guide to Painless AWS Clusters: AWS EKS Setup Guide  
+                                    </h5>
+                                 </div>
+                                       <img 
+                                             src="https://techwhale.in/media/posts/48/responsive/3-xs.webp"
+                                           loading="lazy"  
+                                          alt="The Busy Developer&#x27;s Guide to Painless AWS Clusters: AWS EKS Setup Guide  "
+                                          height="1260" 
+                                          width="2240">                                   
                               </a>
                            </div>
                      </nav>
@@ -456,6 +481,32 @@ kubectl get secret docker-credentials -o jsonpath=&#39;{.data.\.dockerconfigjson
             <h3 class="box__title">Featured</h3>
             <ul class="featured__container">
                      <li class="featured__item">
+                                 <a href="https://techwhale.in/kubernetes-clusters-made-easy-your-painless-aws-eks-setup-guide/" class="featured__image-link">
+                                    <img 
+                                          src="https://techwhale.in/media/posts/48/responsive/3-xs.webp"
+                                       class="lazyload"
+                                        loading="lazy" 
+                                       alt="The Busy Developer&#x27;s Guide to Painless AWS Clusters: AWS EKS Setup Guide  " 
+                                       height="1260" 
+                                       width="1260">
+                                 </a>                               
+                        <div>
+                           <a href="https://techwhale.in/kubernetes-clusters-made-easy-your-painless-aws-eks-setup-guide/" class="featured__title">The Busy Developer&#x27;s Guide to Painless AWS Clusters: AWS EKS Setup Guide  </a>
+                              <time class="u-small" datetime="2025-04-06T11:50">
+                                    April 6, 2025
+                              </time>
+                        </div>
+                     </li>
+                     <li class="featured__item">
+                                 <a href="https://techwhale.in/building-nodejs-container-images-in-kubernetes-the-kaniko-way/" class="featured__image-link">
+                                    <img 
+                                          src="https://techwhale.in/media/posts/47/responsive/1-xs.webp"
+                                       class="lazyload"
+                                        loading="lazy" 
+                                       alt="" 
+                                       height="1260" 
+                                       width="1260">
+                                 </a>                               
                         <div>
                            <a href="https://techwhale.in/building-nodejs-container-images-in-kubernetes-the-kaniko-way/" class="featured__title">From Code to Kubernetes: The Kaniko Method for Node.js Deployment</a>
                               <time class="u-small" datetime="2025-03-30T16:30">
@@ -498,26 +549,18 @@ kubectl get secret docker-credentials -o jsonpath=&#39;{.data.\.dockerconfigjson
                         </div>
                      </li>
                      <li class="featured__item">
-                        <div>
-                           <a href="https://techwhale.in/how-to-add-swap-space-on-ubuntu-22-and-debian-11-12/" class="featured__title">How To Add Swap Space on Ubuntu 22 and Debian 11 / 12</a>
-                              <time class="u-small" datetime="2023-07-14T02:57">
-                                    July 14, 2023
-                              </time>
-                        </div>
-                     </li>
-                     <li class="featured__item">
-                                 <a href="https://techwhale.in/how-to-configure-logging-and-log-rotation-in-nginx-on-an-ubuntu-22-and-debian-12/" class="featured__image-link">
+                                 <a href="https://techwhale.in/how-to-add-swap-space-on-ubuntu-22-and-debian-11-12/" class="featured__image-link">
                                     <img 
-                                          src="https://techwhale.in/media/posts/40/responsive/ScreenShot-20230726-174020-xs.webp"
+                                          src="https://techwhale.in/media/posts/41/responsive/2-xs.webp"
                                        class="lazyload"
                                         loading="lazy" 
-                                       alt="How To Configure Logging and Log Rotation in Nginx on an Ubuntu 22 and Debian 12" 
-                                       height="878" 
-                                       width="878">
+                                       alt="How To Add Swap Space on Ubuntu and Debian 12 / 13" 
+                                       height="1260" 
+                                       width="1260">
                                  </a>                               
                         <div>
-                           <a href="https://techwhale.in/how-to-configure-logging-and-log-rotation-in-nginx-on-an-ubuntu-22-and-debian-12/" class="featured__title">How To Configure Logging and Log Rotation in Nginx on an Ubuntu 22 and Debian 12</a>
-                              <time class="u-small" datetime="2023-07-14T02:54">
+                           <a href="https://techwhale.in/how-to-add-swap-space-on-ubuntu-22-and-debian-11-12/" class="featured__title">How To Add Swap Space on Ubuntu and Debian 12 / 13</a>
+                              <time class="u-small" datetime="2023-07-14T02:57">
                                     July 14, 2023
                               </time>
                         </div>
@@ -551,7 +594,7 @@ kubectl get secret docker-credentials -o jsonpath=&#39;{.data.\.dockerconfigjson
                      <div>
                         <a href="https://techwhale.in/authors/mayur-chavhan/" class="authors__title">Mayur Chavhan</a>
                            <span class="u-small">Post: 
-                              24
+                              26
                            </span>
                      </div>
                   </li>
@@ -568,7 +611,11 @@ kubectl get secret docker-credentials -o jsonpath=&#39;{.data.\.dockerconfigjson
                      </li>
                      <li>
                         <a href="https://techwhale.in/category/automation/">Automation</a>
-                        <span class="u-small">(3)</span>
+                        <span class="u-small">(5)</span>
+                     </li>
+                     <li>
+                        <a href="https://techwhale.in/category/aws/">AWS</a>
+                        <span class="u-small">(2)</span>
                      </li>
                      <li>
                         <a href="https://techwhale.in/category/debian/">Debian</a>
@@ -576,11 +623,7 @@ kubectl get secret docker-credentials -o jsonpath=&#39;{.data.\.dockerconfigjson
                      </li>
                      <li>
                         <a href="https://techwhale.in/category/devops/">DevOps</a>
-                        <span class="u-small">(6)</span>
-                     </li>
-                     <li>
-                        <a href="https://techwhale.in/category/docker/">Docker</a>
-                        <span class="u-small">(7)</span>
+                        <span class="u-small">(8)</span>
                      </li>
             </ul>
          </section>
