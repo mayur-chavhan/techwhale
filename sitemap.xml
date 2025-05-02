@@ -64,6 +64,9 @@
 <loc>https://techwhale.in/category/techwale/</loc>
 </url>
 <url>
+<loc>https://techwhale.in/category/techwale/page/2/</loc>
+</url>
+<url>
 <loc>https://techwhale.in/category/terraform/</loc>
 </url>
 <url>
@@ -85,6 +88,10 @@
 <image:loc>https://techwhale.in/media/posts/3/l2mvWRp1.png</image:loc>
 <image:title><![CDATA[git-workflow-for-developers]]></image:title>
 </image:image>
+</url>
+<url>
+<loc>https://techwhale.in/gitops-revolution-argocd-as-your-kubernetes-deployment-conductor/</loc>
+<lastmod>2025-04-15T12:27:00+05:30</lastmod>
 </url>
 <url>
 <loc>https://techwhale.in/how-to-add-swap-space-on-ubuntu-22-and-debian-11-12/</loc>
@@ -259,6 +266,10 @@
 </image:image>
 </url>
 <url>
+<loc>https://techwhale.in/mastering-kubernetes-a-deep-dive-into-building-a-cluster-the-hard-way/</loc>
+<lastmod>2025-04-15T12:26:22+05:30</lastmod>
+</url>
+<url>
 <loc>https://techwhale.in/page/2/</loc>
 </url>
 <url>
@@ -283,6 +294,14 @@
 <image:image>
 <image:loc>https://techwhale.in/media/posts/44/ScreenShot-20230726-173736.png</image:loc>
 <image:title><![CDATA[How to upgrade old version of Nginx on Ubuntu 22.04]]></image:title>
+</image:image>
+</url>
+<url>
+<loc>https://techwhale.in/wordops-backup-the-script-i-wish-i-had-when-my-wordpress-site-needed-saving/</loc>
+<lastmod>2025-05-03T02:42:02+05:30</lastmod>
+<image:image>
+<image:loc>https://techwhale.in/media/posts/51/From-Code-to-Kubernetes-The-Kaniko-Method-for-Node.js-Deployment-1.png</image:loc>
+<image:title><![CDATA[WordOps-Backup: The Script I Wish I Had When My WordPress Site Needed Saving]]></image:title>
 </image:image>
 </url>
 </urlset>
