@@ -3,12 +3,79 @@
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2025-05-03T02:42:02+05:30</updated>
+    <updated>2025-05-03T11:20:14+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
     <id>https://techwhale.in</id>
 
+    <entry>
+        <title>Unlocking AI Superpowers in VS Code: A Deep Dive into the Prompt Boost Extension</title>
+        <author>
+            <name>Mayur Chavhan</name>
+        </author>
+        <link href="https://techwhale.in/unlocking-ai-superpowers-in-vs-code-a-deep-dive-into-the-prompt-boost-extension/"/>
+        <id>https://techwhale.in/unlocking-ai-superpowers-in-vs-code-a-deep-dive-into-the-prompt-boost-extension/</id>
+            <category term="Automation"/>
+
+        <updated>2025-05-03T11:20:14+05:30</updated>
+            <summary>
+                <![CDATA[
+                    Modern developers are increasingly relying on AI tools like GitHub Copilot to boost productivity. But what if you could supercharge your AI interactions, making every prompt smarter, clearer, and more context-aware-without rewriting your requests each time? Enter the Prompt Boost extension for Visual Studio Code,&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>Modern developers are increasingly relying on AI tools like GitHub Copilot to boost productivity. But what if you could <em>supercharge</em> your AI interactions, making every prompt smarter, clearer, and more context-aware-without rewriting your requests each time? Enter the <strong>Prompt Boost</strong> extension for Visual Studio Code, a tool designed to turn your basic prompts into powerful, context-rich instructions that help Copilot (and other AI agents) deliver more accurate, relevant, and actionable responses.</p><hr>
+<h2 id="what-is-prompt-boost-and-how-does-it-work">What Is Prompt Boost and How Does It Work?</h2>
+<p>Prompt Boost is a Visual Studio Code extension that enhances your prompts by automatically injecting technical context, best practices, and specific requirements. Its core mission: to bridge the gap between what you <em>mean</em> and what the AI <em>understands</em>-giving you better code, documentation, and suggestions, every time you interact with GitHub Copilot or similar tools.</p><p><strong>How it works:</strong></p><ul>
+<li><strong>Transform Simple Prompts:</strong> You start with a basic request (e.g., “create a to-do app”). Prompt Boost analyzes your intent and context, then rewrites your prompt to be more detailed and explicit, adding relevant technical information and best practices.</li>
+<li><strong>Context Awareness:</strong> It pulls in details from your current file, project structure, and even coding standards, making your prompts richer and more precise.</li>
+<li><strong>Seamless Integration:</strong> Works directly within VS Code’s chat and agent modes, so you can boost prompts with a single click or command.</li>
+</ul>
+<hr>
+<h2 id="how-prompt-boost-enhances-ai-interactions-in-vs-code">How Prompt Boost Enhances AI Interactions in VS Code</h2>
+<p>Prompt Boost significantly upgrades your interactions with AI agents like GitHub Copilot by:</p><ul>
+<li><strong>Automating Prompt Engineering:</strong> No need to manually craft long, detailed prompts. Prompt Boost does the heavy lifting, ensuring your requests are clear and comprehensive.</li>
+<li><strong>Reducing Misunderstandings:</strong> By adding technical context and requirements, it minimizes vague outputs and increases the relevance of AI-generated code or explanations.</li>
+<li><strong>Saving Time:</strong> Developers spend less time iterating on prompts and more time building features, as the AI gets it right the first time.</li>
+</ul>
+<hr>
+<h2 id="real-world-example-using-prompt-boost-in-a-project">Real-World Example: Using Prompt Boost in a Project</h2>
+<p>Let’s say you want Copilot to help you build a to-do app. Normally, you might type:</p><blockquote>
+<p>“Create a to-do app.”</p></blockquote>
+<p>With Prompt Boost, you simply select this prompt and click “Boost Prompt.” The extension transforms it into something like:</p><blockquote>
+<p>“Create a to-do application in React using functional components. Include features for adding, editing, and deleting tasks. Use local state management, and ensure the UI is accessible and responsive. Follow best practices for file structure and code comments.”</p></blockquote>
+<p>Now, when you send this enhanced prompt to Copilot, you get a much more complete and production-ready code snippet-saving you time and reducing the need for follow-up clarifications.</p><hr>
+<h2 id="main-benefits-over-other-prompt-optimization-tools">Main Benefits Over Other Prompt Optimization Tools</h2>
+<ul>
+<li><strong>Automatic Context Injection:</strong> Unlike generic prompt tools, Prompt Boost leverages your project’s context, coding standards, and technical requirements automatically.</li>
+<li><strong>One-Click Enhancement:</strong> No need to manually rewrite prompts-just select and boost.</li>
+<li><strong>Tailored for Developers:</strong> Designed specifically for software development workflows, not just generic AI chat.</li>
+<li><strong>Seamless Copilot Integration:</strong> Works hand-in-hand with GitHub Copilot, enhancing its understanding and output quality.</li>
+</ul>
+<hr>
+<h2 id="integration-with-github-copilot">Integration with GitHub Copilot</h2>
+<p>Prompt Boost is built to complement GitHub Copilot:</p><ul>
+<li><strong>Enhanced Prompting:</strong> When you use Copilot in VS Code, Prompt Boost can be invoked directly from the chat or agent mode interface. This means your Copilot prompts are automatically upgraded for better results.</li>
+<li><strong>Agent Mode Tools:</strong> In Copilot’s agent mode, Prompt Boost appears as a tool you can reference (e.g., by typing <code>#prompt boost</code>), or it can be triggered automatically based on your prompt’s content.</li>
+<li><strong>No Extra Setup:</strong> Once installed, Prompt Boost works out of the box with Copilot, requiring no additional configuration.</li>
+</ul>
+<hr>
+<h2 id="technical-contexts-added-by-prompt-boost">Technical Contexts Added by Prompt Boost</h2>
+<p>Prompt Boost doesn’t just pad your prompts-it adds specific, actionable context, such as:</p><ul>
+<li><strong>Programming language and framework:</strong> Ensures AI knows whether you’re working in Python, JavaScript, React, etc.</li>
+<li><strong>Project structure:</strong> References relevant files, folders, and dependencies.</li>
+<li><strong>Best practices:</strong> Injects guidelines for code quality, security, and maintainability.</li>
+<li><strong>Specific requirements:</strong> Adds details like error handling, testing, or accessibility needs.</li>
+<li><strong>Coding standards:</strong> Adapts prompts to match your team’s or project’s conventions.</li>
+</ul>
+<hr>
+<h2 id="conclusion">Conclusion</h2>
+<p>Prompt Boost is a game-changer for anyone using AI assistants in Visual Studio Code. By automating prompt engineering and integrating deeply with GitHub Copilot, it helps you get better, faster, and more reliable results-without the hassle of crafting perfect prompts every time. Whether you’re building your next side project or working in a large codebase, Prompt Boost ensures your AI pair programmer always understands you loud and clear.</p>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>WordOps-Backup: The Script I Wish I Had When My WordPress Site Needed Saving</title>
         <author>
@@ -1913,135 +1980,6 @@ $cfg[&#39;Servers&#39;][$i][&#39;AllowNoPassword&#39;] = false;
 <p>This will start the <code>traefik</code> service in the background (detached mode) and create any other necessary containers, as specified in the <code>docker-compose.yml</code> file.</p>
 <p>Note: The specific configuration options used in the <code>traefik.toml</code> file will depend on your specific needs and setup. You can find more information about how to configure Traefik in the <a href="https://docs.traefik.io/" target="_new">Traefik documentation</a>.</p>
 <p> </p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>How to secure your site from SQL Injection, Exploits and Spamming Agents using Nginx.</title>
-        <author>
-            <name>Mayur Chavhan</name>
-        </author>
-        <link href="https://techwhale.in/how-to-secure-your-site-from-sql-injection-exploits-and-spamming-agents-using-nginx/"/>
-        <id>https://techwhale.in/how-to-secure-your-site-from-sql-injection-exploits-and-spamming-agents-using-nginx/</id>
-        <media:content url="https://techwhale.in/media/posts/19/secure-nginx-server-2.png" medium="image" />
-            <category term="Nginx"/>
-
-        <updated>2021-07-20T01:07:56+05:30</updated>
-            <summary>
-                <![CDATA[
-                        <img src="https://techwhale.in/media/posts/19/secure-nginx-server-2.png" alt="nginx securing configuration for attacker using SQL injection, File Injection, SPAM and User Agents" />
-                    Nginx is one of most popular web server that has so many features that even it may surprise you. One of best feature of Nginx that it has huge library of security policies that it makes your web-server absolute hacker-proof and you won't even need&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                    <p><img src="https://techwhale.in/media/posts/19/secure-nginx-server-2.png" class="type:primaryImage" alt="nginx securing configuration for attacker using SQL injection, File Injection, SPAM and User Agents" /></p>
-                <p>Nginx is one of most popular web server that has so many features that even it may surprise you. One of best feature of Nginx that it has huge library of security policies that it makes your web-server absolute hacker-proof and you won't even need another tool to protect your sites.</p>
-<p>All your Nginx sites config can be import from another location so for clean code we are going to keep the security policies on a separate configuration file.</p>
-<p>Lets call our file a <span style="color: #3598db;"><strong>security.conf</strong></span> under <strong>"<span style="color: #f1c40f;">/etc/nginx/</span>"</strong></p>
-<p>There are variant of attacks can be done by attackers and famous attack types are listed down below,</p>
-<ul>
-<li>SQL Injection</li>
-<li>File Injection</li>
-<li>Spam</li>
-<li>User Agents</li>
-<li>Bandwidth Hogs and Hacking Tools</li>
-</ul>
-<p>Here's the <span style="color: #3598db;"><strong>security.conf</strong></span> file content as follows,</p>
-<pre><code class="language-bash">$ cd /etc/nginx</code></pre>
-<pre><code class="language-bash">$ nano security.conf </code></pre>
-<p>Paste below code into the file and save the file using CTRL + X and ENTER.</p>
-<pre data-trimmed="true"><code>##
-# Protection against SQL injection
-##
-location ~* "(eval()"  { deny all; }
-location ~* "(127.0.0.1)"  { deny all; }
-location ~*</code> "([a-z0-9]{2000})" <code>{ deny all; }
-location ~* "(javascript:)(.*)(;)"  { deny all; }
-location ~* "(base64_encode)(.*)(()"  { deny all; }
-location ~* "(GLOBALS|REQUEST)(=|[|%)"  { deny all; }
-location ~* "(&lt;|%3C).*script.*(&gt;|%3)" { deny all; }
-location ~ "(|...|../|~|`|&lt;|&gt;||)" { deny all; }
-location ~* "(boot.ini|etc/passwd|self/environ)" { deny all; }
-location ~* "(thumbs?(_editor|open)?|tim(thumb)?).php" { deny all; }
-location ~* "('|")(.*)(drop|insert|md5|select|union)" { deny all; }
-location ~* "(https?|ftp|php):/" { deny all; }
-location ~* "(='|=%27|/'/?)." { deny all; }
-location ~ "({0}|(/(|...|+++|"")" { deny all; }
-location ~ "(~|`|&lt;|&gt;|:|;|%||s|{|}|[|]||)" { deny all; }
-location ~* "/(=|$&amp;|_mm|(wp-)?config.|cgi-|etc/passwd|muieblack)" { deny all; }
-location ~* "(&amp;pws=0|_vti_|(null)|{$itemURL}|echo(.*)kae|etc/passwd|eval(|self/environ)" { deny all; }
-location ~* ".(aspx?|bash|bak?|cfg|cgi|dll|exe|git|hg|ini|jsp|log|mdb|out|sql|svn|swp|tar|rdf)$" { deny all; }
-location ~* "/(^$|mobiquo|phpinfo|shell|sqlpatch|thumb|thumb_editor|thumbopen|timthumb|webshell).php" { deny all; }
-##
-# Block SQL injections Attacks
-##
-set $block_sql_injections 0; if ($query_string ~ "union.*select.*(") { set $block_sql_injections 1; }
-if ($query_string ~ "union.*all.*select.*") { set $block_sql_injections 1; }
-if ($query_string ~ "concat.*(") { set $block_sql_injections 1; }
-if ($block_sql_injections = 1) { return 404; }
-##
-# Block File injections Attacks
-##
-set $block_file_injections 0;
-if ($query_string ~ "[a-zA-Z0-9_]=http://") { set $block_file_injections 1; }
-if ($query_string ~ "[a-zA-Z0-9_]=(..//?)+") { set $block_file_injections 1; }
-if ($query_string ~ "[a-zA-Z0-9_]=/([a-z0-9_.]//?)+") { set $block_file_injections 1; }
-if ($block_file_injections = 1) { return 404; }
-##
-# Block common bad exploits 
-##
-set $block_common_exploits 0;
-if ($query_string ~ "(&lt;|%3C).*script.*(&gt;|%3E)") { set $block_common_exploits 1; }
-if ($query_string ~ "GLOBALS(=|[|%[0-9A-Z]{0,2})") { set $block_common_exploits 1; }
-if ($query_string ~ "_REQUEST(=|[|%[0-9A-Z]{0,2})") { set $block_common_exploits 1; }
-if ($query_string ~ "proc/self/environ") { set $block_common_exploits 1; }
-if ($query_string ~ "mosConfig_[a-zA-Z_]{1,21}(=|%3D)") { set $block_common_exploits 1; }
-if ($query_string ~ "base64_(en|de)code(.*)") { set $block_common_exploits 1; }
-if ($block_common_exploits = 1) { return 404; }
-##
-# Block SPAM Keywords
-##
-set $block_spam 0;
-if ($query_string ~ "b(ultram|unicauca|valium|viagra|vicodin|xanax|ypxaieo)b") { set $block_spam 1; }
-if ($query_string ~ "b(erections|hoodia|huronriveracres|impotence|levitra|libido)b") { set $block_spam 1; }
-if ($query_string ~ "b(ambien|bluespill|cialis|cocaine|ejaculation|erectile)b") { set $block_spam 1; }
-if ($query_string ~ "b(lipitor|phentermin|pro[sz]ac|sandyauer|tramadol|troyhamby)b") { set $block_spam 1; }
-if ($block_spam = 1) { return 404; }
-##
-# Block bad user agents
-##
-set $block_user_agents 0;
-# Don't disable wget if you need it to run cron jobs!
-#if ($http_user_agent ~ "Wget") { set $block_user_agents 1; }
-# Disable Akeeba Remote Control 2.5 and earlier
-if ($http_user_agent ~ "Indy Library") { set $block_user_agents 1; }
-##
-# Common bandwidth hoggers and hacking tools.
-##
-if ($http_user_agent ~ "libwww-perl") { set $block_user_agents 1; }
-if ($http_user_agent ~ "GetRight") { set $block_user_agents 1; }
-if ($http_user_agent ~ "GetWeb!") { set $block_user_agents 1; }
-if ($http_user_agent ~ "Go!Zilla") { set $block_user_agents 1; }
-if ($http_user_agent ~ "Download Demon") { set $block_user_agents 1; }
-if ($http_user_agent ~ "Go-Ahead-Got-It") { set $block_user_agents 1; }
-if ($http_user_agent ~ "TurnitinBot") { set $block_user_agents 1; }
-if ($http_user_agent ~ "GrabNet") { set $block_user_agents 1; }
-if ($block_user_agents = 1) { return 404; }
-##
-<br></code></pre>
-<p>Now, Go to the site-available folder and add the below line to running site configuration file to secure the site,</p>
-<p>For example, If you wish to protect the <a href="http://www.example.com.conf">www.example.com.conf</a> then edit the file and add before closing " } " </p>
-<pre><code> include security.conf;</code></pre>
-<p>Since, security.conf file exists at /etc/nginx folder root path so you don't have to put whole file path.</p>
-<p>After these changes you will need to reload nginx configuration if everything is in order but before that verify Nginx configuration is working properly following this command,</p>
-<pre><code>$ sudo nginx -t</code></pre>
-<p>if output of above command shows this then it's mean all went OK...</p>
-<pre data-trimmed="true"><code>nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
-nginx: configuration file /etc/nginx/nginx.conf test is successful</code></pre>
-<p>Next step is to reload Nginx service to see the effect of configuration we made in the website.</p>
-<pre><code>$ service nginx reload</code></pre>
-<p>Voila!! You're SET!!</p>
             ]]>
         </content>
     </entry>
