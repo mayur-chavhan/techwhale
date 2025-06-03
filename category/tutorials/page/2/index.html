@@ -9,8 +9,8 @@
     
 	<link rel="canonical" href="https://techwhale.in/category/tutorials/page/2/">
 	
-	<link rel="alternate" type="application/atom+xml" href="https://techwhale.in/feed.xml" title="TechWhale - RSS" />
-<link rel="alternate" type="application/json" href="https://techwhale.in/feed.json" title="TechWhale - JSON" />
+	<link rel="alternate" type="application/atom+xml" href="https://techwhale.in/feed.xml" title="TechWhale - RSS">
+<link rel="alternate" type="application/json" href="https://techwhale.in/feed.json" title="TechWhale - JSON">
 
     
 	    <link rel="shortcut icon" href="https://techwhale.in/media/website/imageedit_26_9569312189.png" type="image/x-icon" />
@@ -345,6 +345,23 @@
             <h3 class="box__title">Featured</h3>
             <ul class="featured__container">
                      <li class="featured__item">
+                                 <a href="https://techwhale.in/the-complete-beginners-guide-to-uv-pythons-lightning-fast-package-manager/" class="featured__image-link">
+                                    <img 
+                                          src="https://techwhale.in/media/posts/53/responsive/From-Code-to-Kubernetes-The-Kaniko-Method-for-Node.js-Deployment-2-xs.webp"
+                                       class="lazyload"
+                                        loading="lazy" 
+                                       alt="The Complete Beginner&#x27;s Guide to uv: Python&#x27;s Lightning-Fast Package Manager" 
+                                       height="1260" 
+                                       width="1260">
+                                 </a>                               
+                        <div>
+                           <a href="https://techwhale.in/the-complete-beginners-guide-to-uv-pythons-lightning-fast-package-manager/" class="featured__title">The Complete Beginner&#x27;s Guide to uv: Python&#x27;s Lightning-Fast Package Manager</a>
+                              <time class="u-small" datetime="2025-06-03T19:23">
+                                    June 3, 2025
+                              </time>
+                        </div>
+                     </li>
+                     <li class="featured__item">
                                  <a href="https://techwhale.in/wordops-backup-the-script-i-wish-i-had-when-my-wordpress-site-needed-saving/" class="featured__image-link">
                                     <img 
                                           src="https://techwhale.in/media/posts/51/responsive/From-Code-to-Kubernetes-The-Kaniko-Method-for-Node.js-Deployment-1-xs.webp"
@@ -412,23 +429,6 @@
                               </time>
                         </div>
                      </li>
-                     <li class="featured__item">
-                                 <a href="https://techwhale.in/how-to-install-aws-cli-on-linux-windows-and-mac/" class="featured__image-link">
-                                    <img 
-                                          src="https://techwhale.in/media/posts/42/responsive/git-workflow-copy-1-xs.webp"
-                                       class="lazyload"
-                                        loading="lazy" 
-                                       alt="How to Install AWS CLI on Linux, Windows, and Mac" 
-                                       height="230" 
-                                       width="230">
-                                 </a>                               
-                        <div>
-                           <a href="https://techwhale.in/how-to-install-aws-cli-on-linux-windows-and-mac/" class="featured__title">How to Install AWS CLI on Linux, Windows, and Mac</a>
-                              <time class="u-small" datetime="2023-07-14T03:00">
-                                    July 14, 2023
-                              </time>
-                        </div>
-                     </li>
             </ul>
          </section>
       <section class="box">
@@ -458,7 +458,7 @@
                      <div>
                         <a href="https://techwhale.in/authors/mayur-chavhan/" class="authors__title">Mayur Chavhan</a>
                            <span class="u-small">Post: 
-                              30
+                              31
                            </span>
                      </div>
                   </li>
@@ -487,7 +487,7 @@
                      </li>
                      <li>
                         <a href="https://techwhale.in/category/devops/">DevOps</a>
-                        <span class="u-small">(10)</span>
+                        <span class="u-small">(11)</span>
                      </li>
             </ul>
          </section>
@@ -630,7 +630,7 @@
                             type="checkbox" 
                             data-group-name=""
                             id="pcb-group-0" 
-                            checked />
+                            checked>
                         <label for="pcb-group-0">Required</label>
                     </div>
                 </li>
@@ -1047,7 +1047,7 @@
             console.log('🍪 Allowed group: ' + allowedGroup);
         }
 
-        if (window.publiiCBGCM && cbConfig.initialLsState.indexOf(allowedGroup) === -1) {
+        if (window.publiiCBGCM && (!cbConfig.initialLsState || cbConfig.initialLsState.indexOf(allowedGroup) === -1)) {
             let consentResult = {};
             let group = window.publiiCBGCM.groups.find(group => group.cookieGroup === allowedGroup);
 

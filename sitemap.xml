@@ -43,6 +43,9 @@
 <loc>https://techwhale.in/category/devops/</loc>
 </url>
 <url>
+<loc>https://techwhale.in/category/devops/page/2/</loc>
+</url>
+<url>
 <loc>https://techwhale.in/category/docker/</loc>
 </url>
 <url>
@@ -278,6 +281,14 @@
 <image:image>
 <image:loc>https://techwhale.in/media/posts/24/ScreenShot-20230726-191645.png</image:loc>
 <image:title><![CDATA[]]></image:title>
+</image:image>
+</url>
+<url>
+<loc>https://techwhale.in/the-complete-beginners-guide-to-uv-pythons-lightning-fast-package-manager/</loc>
+<lastmod>2025-06-03T20:25:13+05:30</lastmod>
+<image:image>
+<image:loc>https://techwhale.in/media/posts/53/From-Code-to-Kubernetes-The-Kaniko-Method-for-Node.js-Deployment-2.png</image:loc>
+<image:title><![CDATA[The Complete Beginner's Guide to uv: Python's Lightning-Fast Package Manager]]></image:title>
 </image:image>
 </url>
 <url>
