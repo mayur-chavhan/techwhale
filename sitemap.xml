@@ -36,6 +36,9 @@
 <loc>https://techwhale.in/category/</loc>
 </url>
 <url>
+<loc>https://techwhale.in/category/ai/</loc>
+</url>
+<url>
 <loc>https://techwhale.in/category/ansible/</loc>
 </url>
 <url>
@@ -43,6 +46,9 @@
 </url>
 <url>
 <loc>https://techwhale.in/category/aws/</loc>
+</url>
+<url>
+<loc>https://techwhale.in/category/claude/</loc>
 </url>
 <url>
 <loc>https://techwhale.in/category/debian/</loc>
@@ -63,7 +69,13 @@
 <loc>https://techwhale.in/category/fastest-webserver-with-best-security-policies/</loc>
 </url>
 <url>
+<loc>https://techwhale.in/category/figma/</loc>
+</url>
+<url>
 <loc>https://techwhale.in/category/kubernetes/</loc>
+</url>
+<url>
+<loc>https://techwhale.in/category/mcp/</loc>
 </url>
 <url>
 <loc>https://techwhale.in/category/mysql/</loc>
@@ -91,6 +103,17 @@
 </url>
 <url>
 <loc>https://techwhale.in/category/ubuntu/</loc>
+</url>
+<url>
+<loc>https://techwhale.in/category/ui/</loc>
+</url>
+<url>
+<loc>https://techwhale.in/complete-guide-building-beautiful-websites-with-claude-code-vscode-and-design-tools/</loc>
+<lastmod>2025-08-21T11:46:53+05:30</lastmod>
+<image:image>
+<image:loc>https://techwhale.in/media/posts/55/From-Code-to-Kubernetes-The-Kaniko-Method-for-Node.js-Deployment-3.png</image:loc>
+<image:title><![CDATA[Complete Guide: Building Beautiful Websites with Claude Code, VSCode, and Design Tools]]></image:title>
+</image:image>
 </url>
 <url>
 <loc>https://techwhale.in/git-workflow-for-developers-and-devops/</loc>
