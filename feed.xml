@@ -3,12 +3,384 @@
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2025-08-21T11:46:53+05:30</updated>
+    <updated>2025-09-05T14:19:06+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
     <id>https://techwhale.in</id>
 
+    <entry>
+        <title>Ultimate MCP Tools Setup Guide for Claude Code</title>
+        <author>
+            <name>Mayur Chavhan</name>
+        </author>
+        <link href="https://techwhale.in/ultimate-mcp-tools-setup-guide-for-claude-code-with-kimi-k2-api/"/>
+        <id>https://techwhale.in/ultimate-mcp-tools-setup-guide-for-claude-code-with-kimi-k2-api/</id>
+            <category term="MCP"/>
+            <category term="CLAUDE"/>
+            <category term="AI"/>
+
+        <updated>2025-09-05T14:15:27+05:30</updated>
+            <summary>
+                <![CDATA[
+                    Executive Summary This comprehensive guide provides the complete CLI installation setup for the top 15 MCP tools that will supercharge your Claude Code environment with memory persistence, browser automation, debugging capabilities, and cost-effective API usage. These tools transform Claude Code into a production-ready full-stack development&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <h2 id="executive-summary">Executive Summary</h2>
+<p>This comprehensive guide provides the <strong>complete CLI installation setup</strong> for the <strong>top 15 MCP tools</strong> that will supercharge your Claude Code environment with <strong>memory persistence</strong>, <strong>browser automation</strong>, <strong>debugging capabilities</strong>, and <strong>cost-effective API usage</strong>. These tools transform Claude Code into a <strong>production-ready full-stack development environment</strong>.</p><h2 id="top-15-mcp-tools-for-full-stack-development">Top 15 MCP Tools for Full-Stack Development</h2>
+<h3 id="1-memory-mcp-context-persistence-⭐⭐⭐⭐⭐">1. Memory MCP (Context Persistence) ⭐⭐⭐⭐⭐</h3>
+<p><strong>Purpose</strong>: Provides persistent memory across conversations, dramatically reducing API costs by maintaining context[1]</p><pre><code class="language-bash"># Install Memory MCP
+claude mcp add memory --scope user -- npx -y @mcp-plugins/memory --memory-file ~/claude-memory.json
+</code></pre>
+<p><strong>Features</strong>:</p><ul>
+<li><strong>Persistent conversation memory</strong> across sessions[1]</li>
+<li><strong>Entity relationship tracking</strong> for complex projects[1]</li>
+<li><strong>Cost reduction</strong> by avoiding context re-prompting[1]</li>
+<li><strong>Structured memory storage</strong> in JSON format[1]</li>
+</ul>
+<p><strong>Configuration</strong>:</p><pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;memory&quot;: {
+      &quot;command&quot;: &quot;npx&quot;,
+      &quot;args&quot;: [
+        &quot;@mcp-plugins/memory&quot;,
+        &quot;--memory-file&quot;,
+        &quot;/Users/your-username/claude-memory.json&quot;
+      ]
+    }
+  }
+}
+</code></pre>
+<h3 id="2-browser-tools-mcp-ui-debugging-⭐⭐⭐⭐⭐">2. Browser Tools MCP (UI Debugging) ⭐⭐⭐⭐⭐</h3>
+<p><strong>Purpose</strong>: Complete browser automation and debugging solution for UI issues[2]</p><pre><code class="language-bash"># Install Browser Tools (requires 2 components)
+# Component 1: MCP Server
+claude mcp add browser-tools --scope user -- npx -y @agentdeskai/browser-tools-mcp@1.2.1
+
+# Component 2: Middleware Server (run in separate terminal)
+npx @agentdeskai/browser-tools-server@1.2.1
+</code></pre>
+<p><strong>Capabilities</strong>:</p><ul>
+<li><strong>Console log capture</strong> and error monitoring[2]</li>
+<li><strong>Network request monitoring</strong> for API debugging[2]</li>
+<li><strong>Automated screenshot capture</strong> on errors[2]</li>
+<li><strong>Chrome DevTools integration</strong> for deep debugging[2]</li>
+<li><strong>Lighthouse performance audits</strong>[2]</li>
+</ul>
+<p><strong>Chrome Extension</strong>: Install from <a href="https://github.com/AgentDeskAI/browser-tools-mcp/releases">BrowserToolsMCP Extension</a></p><h3 id="3-sequential-thinking-mcp-problem-solving-⭐⭐⭐⭐⭐">3. Sequential Thinking MCP (Problem Solving) ⭐⭐⭐⭐⭐</h3>
+<p><strong>Purpose</strong>: Structured problem-solving for complex development challenges[3]</p><pre><code class="language-bash"># Install Sequential Thinking
+claude mcp add sequential-thinking --scope user -- npx -y @modelcontextprotocol/server-sequential-thinking
+</code></pre>
+<p><strong>Benefits</strong>:</p><ul>
+<li><strong>Break down complex problems</strong> into manageable steps[3]</li>
+<li><strong>Revise and refine</strong> thoughts as understanding deepens[3]</li>
+<li><strong>Branch into alternative</strong> reasoning paths[3]</li>
+<li><strong>Dynamic thought adjustment</strong> based on complexity[3]</li>
+</ul>
+<h3 id="4-filesystem-mcp-local-file-access-⭐⭐⭐⭐⭐">4. Filesystem MCP (Local File Access) ⭐⭐⭐⭐⭐</h3>
+<p><strong>Purpose</strong>: Complete filesystem access for reading, writing, and managing project files[4]</p><pre><code class="language-bash"># Install Filesystem Access
+claude mcp add filesystem --scope user -- npx -y @modelcontextprotocol/server-filesystem ~/Documents ~/Downloads ~/Projects ~/src
+</code></pre>
+<p><strong>Features</strong>:</p><ul>
+<li><strong>Read/write file operations</strong> across specified directories[4]</li>
+<li><strong>Directory listing and navigation</strong>[4]</li>
+<li><strong>File creation and deletion</strong> capabilities[4]</li>
+<li><strong>Project structure analysis</strong>[4]</li>
+</ul>
+<h3 id="5-puppeteer-mcp-browser-automation-⭐⭐⭐⭐">5. Puppeteer MCP (Browser Automation) ⭐⭐⭐⭐</h3>
+<p><strong>Purpose</strong>: Headless browser automation for testing and debugging[5]</p><pre><code class="language-bash"># Install Puppeteer MCP
+claude mcp add puppeteer --scope user -- npx -y @modelcontextprotocol/server-puppeteer
+</code></pre>
+<p><strong>Use Cases</strong>:</p><ul>
+<li><strong>Automated UI testing</strong> for full-stack applications[6]</li>
+<li><strong>Screenshot generation</strong> for documentation[6]</li>
+<li><strong>Form interaction testing</strong> for authentication flows[6]</li>
+<li><strong>Performance monitoring</strong> during development[6]</li>
+</ul>
+<h3 id="6-fetch-mcp-web-content-analysis-⭐⭐⭐⭐">6. Fetch MCP (Web Content Analysis) ⭐⭐⭐⭐</h3>
+<p><strong>Purpose</strong>: Advanced web content fetching and analysis[7]</p><pre><code class="language-bash"># Install Fetch MCP
+claude mcp add fetch --scope user -- npx -y @kazuhitonakayama/mcp-fetch
+</code></pre>
+<p><strong>Capabilities</strong>:</p><ul>
+<li><strong>Web page content extraction</strong>[7]</li>
+<li><strong>Markdown conversion</strong> for documentation[7]</li>
+<li><strong>API endpoint testing</strong> and analysis[7]</li>
+<li><strong>Content summarization</strong> for research[7]</li>
+</ul>
+<h3 id="7-git-mcp-version-control-⭐⭐⭐⭐">7. Git MCP (Version Control) ⭐⭐⭐⭐</h3>
+<p><strong>Purpose</strong>: Integrated Git operations within Claude Code</p><pre><code class="language-bash"># Install Git MCP
+claude mcp add git --scope user -- npx -y @modelcontextprotocol/server-git
+</code></pre>
+<p><strong>Features</strong>:</p><ul>
+<li><strong>Repository analysis</strong> and commit history review</li>
+<li><strong>Branch management</strong> and merge conflict resolution</li>
+<li><strong>Code diff analysis</strong> for debugging</li>
+<li><strong>Automated commit message generation</strong></li>
+</ul>
+<h3 id="8-sqlite-mcp-database-operations-⭐⭐⭐⭐">8. SQLite MCP (Database Operations) ⭐⭐⭐⭐</h3>
+<p><strong>Purpose</strong>: Local database management and analysis</p><pre><code class="language-bash"># Install SQLite MCP
+claude mcp add sqlite --scope user -- npx -y @modelcontextprotocol/server-sqlite
+</code></pre>
+<p><strong>Use Cases</strong>:</p><ul>
+<li><strong>Database schema analysis</strong> for debugging</li>
+<li><strong>Query optimization</strong> and performance tuning</li>
+<li><strong>Data migration</strong> assistance</li>
+<li><strong>Test data generation</strong> and seeding</li>
+</ul>
+<h3 id="9-github-mcp-repository-integration-⭐⭐⭐⭐">9. GitHub MCP (Repository Integration) ⭐⭐⭐⭐</h3>
+<p><strong>Purpose</strong>: Direct GitHub repository access and management[8]</p><pre><code class="language-bash"># Install GitHub MCP
+claude mcp add github --scope user -- npx -y @modelcontextprotocol/server-github
+</code></pre>
+<p><strong>Requirements</strong>:</p><ul>
+<li>GitHub Personal Access Token</li>
+<li>Repository permissions configuration</li>
+</ul>
+<h3 id="10-brave-search-mcp-web-research-⭐⭐⭐">10. Brave Search MCP (Web Research) ⭐⭐⭐</h3>
+<p><strong>Purpose</strong>: Integrated web search for development research</p><pre><code class="language-bash"># Install Brave Search (requires API key)
+claude mcp add brave-search --scope user -- npx -y @brave/search-mcp
+</code></pre>
+<p><strong>Environment Setup</strong>:</p><pre><code class="language-bash">export BRAVE_API_KEY=&quot;your-brave-api-key&quot;
+</code></pre>
+<h2 id="advanced-installation--configuration">Advanced Installation &amp; Configuration</h2>
+<h3 id="memory-mcp-advanced-setup">Memory MCP Advanced Setup</h3>
+<pre><code class="language-bash"># Create memory directory
+mkdir -p ~/claude-mcp-configs
+
+# Initialize memory file
+echo &#39;{
+  &quot;entities&quot;: [],
+  &quot;relations&quot;: [],
+  &quot;conversations&quot;: []
+}&#39; &gt; ~/claude-mcp-configs/memory.json
+
+# Install with custom memory file
+claude mcp add memory --scope user -- npx -y @mcp-plugins/memory --memory-file ~/claude-mcp-configs/memory.json
+</code></pre>
+<h3 id="browser-tools-complete-setup">Browser Tools Complete Setup</h3>
+<pre><code class="language-bash"># Step 1: Install Chrome Extension
+# Download from: https://github.com/AgentDeskAI/browser-tools-mcp/releases
+
+# Step 2: Start middleware server (keep running)
+npx @agentdeskai/browser-tools-server@1.2.1 &amp;
+
+# Step 3: Install MCP server
+claude mcp add browser-tools --scope user -- npx -y @agentdeskai/browser-tools-mcp@1.2.1
+
+# Step 4: Open Chrome DevTools and look for &quot;BrowserTools&quot; tab
+</code></pre>
+<h3 id="filesystem-mcp-project-specific-setup">Filesystem MCP Project-Specific Setup</h3>
+<pre><code class="language-bash"># Create project structure
+mkdir -p ~/Projects/my-fullstack-app/{frontend,backend,database,docs}
+
+# Install with project-specific access
+claude mcp add filesystem --scope user -- npx -y @modelcontextprotocol/server-filesystem \
+  ~/Projects/my-fullstack-app \
+  ~/Documents/Development \
+  ~/Downloads
+</code></pre>
+<h2 id="configuration-file-management">Configuration File Management</h2>
+<h3 id="direct-config-file-editing-advanced">Direct Config File Editing (Advanced)</h3>
+<pre><code class="language-bash"># Open Claude Code config file
+code ~/.claude.json
+
+# Or find config location
+find ~ -name &quot;.claude.json&quot; 2&gt;/dev/null
+</code></pre>
+<p><strong>Example Complete Configuration</strong>:</p><pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;memory&quot;: {
+      &quot;command&quot;: &quot;npx&quot;,
+      &quot;args&quot;: [
+        &quot;-y&quot;,
+        &quot;@mcp-plugins/memory&quot;,
+        &quot;--memory-file&quot;,
+        &quot;/Users/your-username/claude-memory.json&quot;
+      ]
+    },
+    &quot;browser-tools&quot;: {
+      &quot;command&quot;: &quot;npx&quot;,
+      &quot;args&quot;: [&quot;-y&quot;, &quot;@agentdeskai/browser-tools-mcp@1.2.1&quot;]
+    },
+    &quot;filesystem&quot;: {
+      &quot;command&quot;: &quot;npx&quot;,
+      &quot;args&quot;: [
+        &quot;-y&quot;,
+        &quot;@modelcontextprotocol/server-filesystem&quot;,
+        &quot;/Users/your-username/Projects&quot;,
+        &quot;/Users/your-username/Documents&quot;
+      ]
+    },
+    &quot;sequential-thinking&quot;: {
+      &quot;command&quot;: &quot;npx&quot;,
+      &quot;args&quot;: [&quot;-y&quot;, &quot;@modelcontextprotocol/server-sequential-thinking&quot;]
+    },
+    &quot;puppeteer&quot;: {
+      &quot;command&quot;: &quot;npx&quot;,
+      &quot;args&quot;: [&quot;-y&quot;, &quot;@modelcontextprotocol/server-puppeteer&quot;]
+    }
+  }
+}
+</code></pre>
+<h2 id="full-stack-development-workflow">Full-Stack Development Workflow</h2>
+<h3 id="ui-bug-debugging-workflow">UI Bug Debugging Workflow</h3>
+<pre><code class="language-bash"># 1. Start browser tools middleware
+npx @agentdeskai/browser-tools-server@1.2.1 &amp;
+
+# 2. Use Claude Code with browser automation
+claude &quot;Use browser-tools to:
+1. Navigate to localhost:3000
+2. Monitor console errors
+3. Take screenshots of UI issues
+4. Generate bug report with network analysis&quot;
+</code></pre>
+<h3 id="memory-enhanced-development">Memory-Enhanced Development</h3>
+<pre><code class="language-bash"># Use memory for persistent context
+claude &quot;Remember that this project uses:
+- Next.js 14 with App Router
+- Supabase for authentication
+- TailwindCSS for styling
+- TypeScript throughout
+
+Store this context for future conversations.&quot;
+</code></pre>
+<h3 id="sequential-problem-solving">Sequential Problem Solving</h3>
+<pre><code class="language-bash"># Break down complex problems
+claude &quot;Use sequential-thinking to analyze this authentication issue:
+1. User login flow is broken
+2. API returns 401 but token seems valid
+3. Need systematic debugging approach&quot;
+</code></pre>
+<h2 id="cost-optimization-strategies">Cost Optimization Strategies</h2>
+<h3 id="memory-driven-cost-reduction">Memory-Driven Cost Reduction</h3>
+<p>🧠 <strong>Brain Mode</strong>: The Memory MCP is your secret weapon for API cost reduction. Instead of re-explaining your entire project context in every conversation, Memory MCP stores and recalls project details, team preferences, and development patterns. This can reduce your token usage by 60-80% in long-term projects.</p><p><strong>Setup for Maximum Savings</strong>:</p><pre><code class="language-bash"># Initialize comprehensive memory
+claude &quot;Store in memory:
+- Project: Next.js admin dashboard with Supabase
+- Tech stack: TypeScript, TailwindCSS, Prisma
+- Authentication: Supabase Auth with RLS
+- Database: PostgreSQL with migrations
+- Deployment: Vercel with preview branches
+- Testing: Jest + Playwright for E2E&quot;
+</code></pre>
+<h3 id="context-aware-development">Context-Aware Development</h3>
+<pre><code class="language-bash"># Use filesystem + memory combination
+claude &quot;Using filesystem access, analyze my project structure and store the architecture in memory for future reference. Focus on:
+1. Component organization patterns
+2. API route structure  
+3. Database schema relationships
+4. Authentication flow implementation&quot;
+</code></pre>
+<h2 id="essential-mcp-tools-installation-one-command-setup">Essential MCP Tools Installation (One-Command Setup)</h2>
+<h3 id="quick-installation-script">Quick Installation Script</h3>
+<pre><code class="language-bash">#!/bin/bash
+# Save as install-mcp-tools.sh and run: chmod +x install-mcp-tools.sh &amp;&amp; ./install-mcp-tools.sh
+
+# Memory &amp; Context Tools
+claude mcp add memory --scope user -- npx -y @mcp-plugins/memory --memory-file ~/claude-memory.json
+claude mcp add sequential-thinking --scope user -- npx -y @modelcontextprotocol/server-sequential-thinking
+
+# Filesystem Access
+claude mcp add filesystem --scope user -- npx -y @modelcontextprotocol/server-filesystem ~/Documents ~/Downloads ~/Projects
+
+# Browser Automation &amp; Debugging
+claude mcp add browser-tools --scope user -- npx -y @agentdeskai/browser-tools-mcp@1.2.1
+claude mcp add puppeteer --scope user -- npx -y @modelcontextprotocol/server-puppeteer
+
+# Web Fetching &amp; Analysis
+claude mcp add fetch --scope user -- npx -y @kazuhitonakayama/mcp-fetch
+claude mcp add web-search --scope user -- npx -y @brave/search-mcp
+
+# Development Tools
+claude mcp add git --scope user -- npx -y @modelcontextprotocol/server-git
+claude mcp add sqlite --scope user -- npx -y @modelcontextprotocol/server-sqlite
+
+# Check installation
+claude mcp list
+</code></pre>
+<h2 id="troubleshooting--verification">Troubleshooting &amp; Verification</h2>
+<h3 id="verify-installation">Verify Installation</h3>
+<pre><code class="language-bash"># Check all installed MCP servers
+claude mcp list
+
+# Test specific server
+claude doctor
+
+# Restart Claude Code if needed
+claude restart
+</code></pre>
+<h3 id="common-issues--solutions">Common Issues &amp; Solutions</h3>
+<p><strong>Server Not Starting</strong>:</p><pre><code class="language-bash"># Check Node.js version
+node --version
+
+# Clear npm cache
+npm cache clean --force
+
+# Reinstall problematic server
+claude mcp remove server-name
+claude mcp add server-name --scope user -- npx -y package-name
+</code></pre>
+<p><strong>Permission Issues</strong>:</p><pre><code class="language-bash"># Fix filesystem permissions
+chmod -R 755 ~/Projects
+chmod -R 755 ~/Documents
+
+# Reset Claude config
+rm ~/.claude.json
+claude mcp add filesystem --scope user -- npx -y @modelcontextprotocol/server-filesystem ~/Projects
+</code></pre>
+<h3 id="testing-your-setup">Testing Your Setup</h3>
+<pre><code class="language-bash"># Test browser automation
+claude &quot;Use browser-tools to take a screenshot of google.com and analyze the page structure&quot;
+
+# Test memory persistence
+claude &quot;What do you remember about my current project?&quot;
+
+# Test filesystem access
+claude &quot;List the contents of my Projects directory and analyze the structure&quot;
+
+# Test sequential thinking
+claude &quot;Use sequential-thinking to plan the implementation of a new authentication feature&quot;
+</code></pre>
+<h2 id="production-ready-workflow-integration">Production-Ready Workflow Integration</h2>
+<h3 id="cicd-integration">CI/CD Integration</h3>
+<pre><code class="language-bash"># Create automation script
+cat &gt; ~/.claude-automation.sh &lt;&lt; &#39;EOF&#39;
+#!/bin/bash
+# Start all MCP services
+npx @agentdeskai/browser-tools-server@1.2.1 &amp;
+echo &quot;Browser tools server started&quot;
+
+# Run automated tests with Claude
+claude &quot;Use browser-tools and puppeteer to:
+1. Run smoke tests on staging environment
+2. Generate performance report
+3. Check for console errors
+4. Store results in memory for tracking&quot;
+EOF
+
+chmod +x ~/.claude-automation.sh
+</code></pre>
+<h3 id="project-specific-mcp-profiles">Project-Specific MCP Profiles</h3>
+<pre><code class="language-bash"># Create project-specific config
+mkdir -p ~/Projects/my-app/.claude
+cat &gt; ~/Projects/my-app/.claude/config.json &lt;&lt; &#39;EOF&#39;
+{
+  &quot;mcpServers&quot;: {
+    &quot;project-filesystem&quot;: {
+      &quot;command&quot;: &quot;npx&quot;,
+      &quot;args&quot;: [
+        &quot;-y&quot;,
+        &quot;@modelcontextprotocol/server-filesystem&quot;,
+        &quot;/Users/your-username/Projects/my-app&quot;
+      ]
+    }
+  }
+}
+EOF
+</code></pre>
+<p>This comprehensive setup transforms Claude Code into a <strong>production-ready development environment</strong> that <strong>significantly outperforms</strong> basic setups by providing <strong>persistent memory</strong>, <strong>advanced browser automation</strong>, <strong>comprehensive debugging tools</strong>, and <strong>substantial API cost savings</strong> through intelligent context management.</p>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>Complete Guide: Building Beautiful Websites with Claude Code, VSCode, and Design Tools</title>
         <author>
@@ -3459,57 +3831,6 @@ $cfg[&#39;Servers&#39;][$i][&#39;AllowNoPassword&#39;] = false;
   <p>
     
   </p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>How to bypass specific website or IP from OpenVPN connection on Mac</title>
-        <author>
-            <name>Mayur Chavhan</name>
-        </author>
-        <link href="https://techwhale.in/how-to-bypass-specific-website-or-ip-from-openvpn-connection-on-mac/"/>
-        <id>https://techwhale.in/how-to-bypass-specific-website-or-ip-from-openvpn-connection-on-mac/</id>
-        <media:content url="https://techwhale.in/media/posts/33/bypass-openvpn.jpg" medium="image" />
-
-        <updated>2023-04-21T19:32:59+05:30</updated>
-            <summary>
-                <![CDATA[
-                        <img src="https://techwhale.in/media/posts/33/bypass-openvpn.jpg" alt="bypass-openvpn" />
-                    We all have sites that needs to bypass the VPN connection and OpenVPN is popular open source VPN software but it lacks to have bypass a website from it’s network but if you’ve a mac then it’s a easy process as shown in below guide&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                    <p><img src="https://techwhale.in/media/posts/33/bypass-openvpn.jpg" class="type:primaryImage" alt="bypass-openvpn" /></p>
-                <p>We all have sites that needs to bypass the VPN connection and OpenVPN is popular open source VPN software but it lacks to have bypass a website from it’s network but if you’ve a mac then it’s a easy process as shown in below guide and hope it helps you.</p><p>To bypass specific websites or IP addresses from OpenVPN connection on a Mac, you can use the route command to exclude them from the VPN tunnel. Here’s how you can do it:</p><ol>
-<li><p>Open the Terminal app on your Mac. You can find it in Applications &gt; Utilities.</p></li>
-<li><p>First, find your default gateway IP address. You can do this by running the following command in Terminal:</p></li>
-</ol>
-<pre><code>netstat -nr | grep default
-</code></pre>
-<p>This command will display your default gateway IP address in the second column. Note it down as you’ll need it in the next steps.</p><ol start="3">
-<li>Now, find the IP address of the website you want to bypass. You can use the following command, replacing “example.com” with the website you want to bypass:</li>
-</ol>
-<pre><code>nslookup example.com
-</code></pre>
-<p>This command will give you the IP address of the website. Note it down as you’ll need it in the next steps.</p><ol start="4">
-<li>To bypass the website from theOpenVPN connection, use the route command with the following syntax, replacing “your_gateway_ip” with the default gateway IP you noted down earlier, and “website_ip” with the IP address of the website you want to bypass:</li>
-</ol>
-<pre><code>sudo route add -host website_ip your_gateway_ip
-</code></pre>
-<p>For example, if your default gateway IP is 192.168.1.1 and the website’s IP is 123.45.67.89, the command would be:</p><pre><code>sudo route add -host 123.45.67.89 192.168.1.1
-</code></pre>
-<ol start="5">
-<li><p>You will be prompted to enter your Mac’s admin password to execute the command. Once you’ve entered the password, the route will be added, and the specified website will be bypassed from the OpenVPN connection.</p></li>
-<li><p>To check if the bypass is working, you can visit the website and check your IP address. It should show your regular IP address instead of the VPN IP address.</p></li>
-<li><p>If you want to remove the bypass, you can use the following command, replacing “website_ip” with the IP address of the website you want to remove the bypass for:</p></li>
-</ol>
-<pre><code>sudo route delete -host website_ip
-</code></pre>
-<ol start="8">
-<li>You can repeat steps 3-7 for any additional websites or IP addresses you want to bypass from the OpenVPN connection.</li>
-</ol>
-<p>Note: These changes are temporary and will be reset when you restart your Mac. To make the bypass permanent, you can create a script to run these commands at startup or add them to your OpenVPN configuration file.</p>
             ]]>
         </content>
     </entry>
