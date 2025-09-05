@@ -3,7 +3,7 @@
     <title>TechWhale</title>
     <link href="https://techwhale.in/feed.xml" rel="self" />
     <link href="https://techwhale.in" />
-    <updated>2025-09-05T14:19:06+05:30</updated>
+    <updated>2025-09-05T14:23:27+05:30</updated>
     <author>
         <name>Mayur Chavhan</name>
     </author>
@@ -16,6 +16,7 @@
         </author>
         <link href="https://techwhale.in/ultimate-mcp-tools-setup-guide-for-claude-code-with-kimi-k2-api/"/>
         <id>https://techwhale.in/ultimate-mcp-tools-setup-guide-for-claude-code-with-kimi-k2-api/</id>
+        <media:content url="https://techwhale.in/media/posts/56/From-Code-to-Kubernetes-The-Kaniko-Method-for-Node.js-Deployment-4.png" medium="image" />
             <category term="MCP"/>
             <category term="CLAUDE"/>
             <category term="AI"/>
@@ -23,11 +24,13 @@
         <updated>2025-09-05T14:15:27+05:30</updated>
             <summary>
                 <![CDATA[
+                        <img src="https://techwhale.in/media/posts/56/From-Code-to-Kubernetes-The-Kaniko-Method-for-Node.js-Deployment-4.png" alt="Ultimate MCP Tools Setup Guide for Claude Code" />
                     Executive Summary This comprehensive guide provides the complete CLI installation setup for the top 15 MCP tools that will supercharge your Claude Code environment with memory persistence, browser automation, debugging capabilities, and cost-effective API usage. These tools transform Claude Code into a production-ready full-stack development&hellip;
                 ]]>
             </summary>
         <content type="html">
             <![CDATA[
+                    <p><img src="https://techwhale.in/media/posts/56/From-Code-to-Kubernetes-The-Kaniko-Method-for-Node.js-Deployment-4.png" class="type:primaryImage" alt="Ultimate MCP Tools Setup Guide for Claude Code" /></p>
                 <h2 id="executive-summary">Executive Summary</h2>
 <p>This comprehensive guide provides the <strong>complete CLI installation setup</strong> for the <strong>top 15 MCP tools</strong> that will supercharge your Claude Code environment with <strong>memory persistence</strong>, <strong>browser automation</strong>, <strong>debugging capabilities</strong>, and <strong>cost-effective API usage</strong>. These tools transform Claude Code into a <strong>production-ready full-stack development environment</strong>.</p><h2 id="top-15-mcp-tools-for-full-stack-development">Top 15 MCP Tools for Full-Stack Development</h2>
 <h3 id="1-memory-mcp-context-persistence-⭐⭐⭐⭐⭐">1. Memory MCP (Context Persistence) ⭐⭐⭐⭐⭐</h3>
